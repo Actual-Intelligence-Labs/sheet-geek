@@ -1,0 +1,8 @@
+{
+  "name": "spreadsheet-brain",
+  "version": "0.2.0",
+  "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file, keeps it current, and draws a map of what connects to what.",
+  "author": {"name": "Actual Intelligence Labs"},
+  "license": "Apache-2.0",
+  "keywords": ["spreadsheet", "excel", "csv", "data dictionary", "knowledge graph", "skill"]
+}

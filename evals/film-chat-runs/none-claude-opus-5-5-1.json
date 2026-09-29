@@ -1,0 +1,8 @@
+{
+ "model": "claude-opus-5-5",
+ "cond": "none",
+ "run": 1,
+ "message": "I just got this file from a colleague: finance_model.xlsx. What's our runway? Python 3 with openpyxl is at /usr/bin/python3 if you want to open the file. Work numbers out from the file; don't guess. Answer in plain words, under 150 words.",
+ "status": "ok",
+ "answer": "Your runway without new money is about **7 months from now**. Cash runs out in **late April or May 2027**.\n\n- **Cash today:** $3.43M at the end of August 2026, the last month of actual figures in the file.\n- **Burn:** about $410K a month now, rising to about $460K by spring 2027.\n- **Out of cash:** the model leaves about $21K at the end of April 2027 and goes negative in May.\n\nThe file shows much more runway because it assumes a **$15M raise in March 2027**. That's a typed-in number, and nothing in the file says the money is committed. If it closes, you'd still have about $4.4M at the end of 2028.\n\nI found four errors in the file, fixed them in my own recalculation (not in the file), and checked that my results match the file through September 2026:\n- Revenue for January 2027 is inflated by 7%.\n- New sales for November 2027 use the churn rate instead of the growth rate.\n- Fixed G&A costs are missing for July 2028.\n- May 2027 cash is typed in as $14.6M, so the balance sheet is off by $26K."
+}

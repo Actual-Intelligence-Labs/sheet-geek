@@ -1,0 +1,208 @@
+{
+ "inventory": {
+  "set": "heldout",
+  "files": [
+   "three_herons_inventory_2026.xlsx"
+  ],
+  "open": "I have a sit-down with my three kitchen managers next week about food cost. Go through this and tell me what I should be paying attention to, with the numbers I should bring.",
+  "plain": [
+   {
+    "ask": "What was the total value of inventory on hand across the group at the count for the week ending August 16?",
+    "answer": 17032.38,
+    "how": "Pier Nine (P9) kiosk excluded; Magnolia Aug 16 duplicate upload, keep only the Monday re-upload; Bar unit cost is per case of 12, so divide by 12. Value = Count x adjusted Unit Cost."
+   },
+   {
+    "ask": "How much did Ridgeline lose to waste, in dollars, from January through June?",
+    "answer": 5046.04,
+    "how": "RDG and RL are both Ridgeline; reason code 4 (returned to vendor for credit) excluded; Bar unit cost is per case of 12, so divide by 12. By waste Date, Jan 1 to Jun 30, 2026. Value = Qty x adjusted Unit Cost."
+   },
+   {
+    "ask": "What did waste cost the group in July?",
+    "answer": 2123.29,
+    "how": "Pier Nine (P9) kiosk excluded; reason code 4 excluded; Bar unit cost is per case of 12. By waste Date, Jul 1 to Jul 31, 2026. Value = Qty x adjusted Unit Cost."
+   }
+  ]
+ },
+ "payroll": {
+  "set": "heldout",
+  "files": [
+   "quillfield_payroll_register_2026.xlsx"
+  ],
+  "open": "My banker wants a labor cost summary by branch for January through August for our line of credit renewal. Get this register ready for that and tell me what I should pay attention to.",
+  "plain": [
+   {
+    "ask": "What did our gross payroll come to for checks dated April through June?",
+    "answer": 1537873.81,
+    "how": "KSB is paymaster only (exclude); voids (drop V and the check it voids, keep the M reissue); E0999 is a test employee (exclude). Excludes the two total rows."
+   },
+   {
+    "ask": "How many regular hours did Harrow Point work on checks dated January through March?",
+    "answer": 13746.0,
+    "how": "Old system Reg Hrs includes OT before the April 17 check (subtract OT); RN-FIELD Reg Hrs are visits, not hours (exclude); voids (drop V and the voided original, keep the M reissue)."
+   },
+   {
+    "ask": "Which of our branches had the most overtime hours on checks dated January through August, and how many hours?",
+    "answer": {
+     "branch": "Linden Falls",
+     "code": "LNF",
+     "ot_hours": 412.0
+    },
+    "how": "KSB is paymaster only and is not our branch (exclude); this decides the answer. Voids do not change the LNF figure but do change the runner-up (HPT 397.25 with voids handled, 410.25 without). Old rows show branch names, new rows show codes, so names must be mapped to codes."
+   }
+  ]
+ },
+ "orders": {
+  "set": "heldout",
+  "files": [
+   "kestrel_hollow_orders_2026.xlsx"
+  ],
+  "open": "I'm sitting down with my bookkeeper next week to close out November through June. Get this ready for that meeting: what are the real numbers and what should I pay attention to?",
+  "plain": [
+   {
+    "ask": "What were our net sales in February 2026?",
+    "answer": 22243.65,
+    "how": "F1 (percent discounts before March 2), F2 (drop the Feb 27 and 28 # copies), F3 (drop CS), F4 (Exchanged counts), F5 (drop gift cards)"
+   },
+   {
+    "ask": "How much did discounts cost us in total from November through June?",
+    "answer": 8483.24,
+    "how": "F1 (percent before March 2, dollars after), F2 (drop copies), F3 (drop CS), F4 (count Exchanged, skip Refunded and Cancelled), F5 (drop gift cards)"
+   },
+   {
+    "ask": "What was our best-selling product by net sales from April through June?",
+    "answer": "Talus 45L Pack",
+    "how": "F3 (CS tent replacements are not sales; counting them makes Ridgeline 2P Tent the top product)"
+   }
+  ]
+ },
+ "rentroll": {
+  "set": "heldout",
+  "files": [
+   "kestrel_lane_2025_ledger.xlsx"
+  ],
+  "open": "I'm sitting down with my accountant next week to close out 2025. Get this ledger and rent roll ready for that meeting and tell me what I should pay attention to.",
+  "plain": [
+   {
+    "ask": "How much rent and fee money did we actually collect in 2025?",
+    "answer": 1346300.24,
+    "how": "F1 (exclude status R payments), F2 (drop the DV-reference June 2025 duplicate copies), F4 (exclude GL 2200 security deposits). Computed as the sum of the Payment column for 2025 rows with status C or P, GL not 2200, and not a DV reference dated before 2025-07-01."
+   },
+   {
+    "ask": "Who owes us the most right now, and how much?",
+    "answer": {
+     "tenant_id": "T31877",
+     "unit": "Dunmore House 302",
+     "amount_owed": 5700.0
+    },
+    "how": "F3 (leave out superintendent T20418, who otherwise looks like the top debtor), F1 (T31877's two returned checks still owed; without F1 the top becomes T27730), F2 (June duplicate counted once, or every balance is understated by a month), F4 (deposits not applied to balances). Balance per tenant = all charges minus payments that are C or P, not GL 2200, not June DV duplicates."
+   },
+   {
+    "ask": "What's our total monthly rent coming in from occupied units right now?",
+    "answer": 106005.0,
+    "how": "F3 (the superintendent's unit is occupied but brings in no rent), F5 (keep Alder Court 305 at $425, do not replace with market rent). Computed as the sum of Actual Rent on the Rent Roll for every status except Vacant, excluding tenant T20418."
+   }
+  ]
+ },
+ "hotel": {
+  "set": "dev",
+  "files": [
+   "Hotel purchases.xlsx",
+   "Hotel contracts.xlsx"
+  ],
+  "open": "I'm taking over purchasing for this hotel group. What should I be paying attention to?",
+  "plain": [
+   {
+    "ask": "What was our total store spend from January 2025 through August 2026?",
+    "answer": 847098.73,
+    "how": "Total store spend January 2025 through August 2026 (CMSY left out, credits netted, fees included)"
+   },
+   {
+    "ask": "How much did each hotel spend in July and August 2026?",
+    "answer": {
+     "Anchor Bay": 5029.0,
+     "Harborlight": 8670.15,
+     "Palm Key": 17694.44,
+     "Sandpiper": 8478.64
+    },
+    "how": "Store spend by hotel for July and August 2026 (CMSY left out)"
+   },
+   {
+    "ask": "What rebate should Coastline Provisions owe us on 2025 purchases?",
+    "answer": {
+     "base": 194866.29,
+     "rate_pct": 2.0,
+     "rebate": 3897.33
+    },
+    "how": "$3,897.33: 2% of $194,866.29, Coastline net product spend at the hotels in 2025 (credits netted, fees and CMSY transfers excluded). Rebates arrive by check and are not in Detail."
+   }
+  ]
+ },
+ "finance": {
+  "set": "dev",
+  "files": [
+   "Tallowbird model.xlsx"
+  ],
+  "open": "I'm taking over this financial model. What should I be paying attention to, and is it ready to show the board?",
+  "plain": [
+   {
+    "ask": "Which formulas in the model look like mistakes?",
+    "answer": [
+     "Balance Sheet!AF5",
+     "P&L!AB9",
+     "Revenue!X5"
+    ],
+    "how": "Balance Sheet!AF5; P&L!AB9; Revenue!X5. New MRR in Nov 2027 multiplies by churn instead of Growth, G&A in Mar 2028 drops the fixed G&A, and AR in Jul 2028 points at the prior month's revenue."
+   },
+   {
+    "ask": "What does the Growth input mean?",
+    "answer": {
+     "rate": 0.04,
+     "period": "monthly",
+     "applies_to": "beginning MRR"
+    },
+    "how": "Month over month growth of MRR: each forecast month adds Growth x beginning MRR as New MRR (4% per month, not per year)."
+   },
+   {
+    "ask": "What's our lowest cash month?",
+    "answer": {
+     "month": "2027-02",
+     "cash": 934948.55
+    },
+    "how": "$934,948.55 in Feb 2027, the month before the planned Series B lands."
+   }
+  ]
+ },
+ "ledger": {
+  "set": "dev",
+  "files": [
+   "Heron and Hearth books.xlsx"
+  ],
+  "open": "I'm the new bookkeeper for this bakery. What should I pay attention to before I hand the 2025 books to our CPA?",
+  "plain": [
+   {
+    "ask": "What was our net income in 2025?",
+    "answer": {
+     "net_income": 157335.38,
+     "income": 1041833.36,
+     "cogs": 211877.98,
+     "expenses": 672620.0
+    },
+    "how": "$157,335.38: income $1,041,833.36, COGS $211,877.98, expenses $672,620.00."
+   },
+   {
+    "ask": "How much did Dana take out of the business in 2025?",
+    "answer": 70000.0,
+    "how": "$70,000.00 in 14 draws to Dana Whitfield (account 3100, equity, not an expense)."
+   },
+   {
+    "ask": "What's the biggest thing sitting in suspense, and where does it belong?",
+    "answer": {
+     "date": "2025-08-14",
+     "amount": 8750.0,
+     "should_be": 1500
+    },
+    "how": "The 2025-08-14 wire of $8,750.00 (memo WIRE OUT) is the deposit on the new deck oven from Brightforge Ovens; it belongs in 1500 Equipment, not an expense."
+   }
+  ]
+ }
+}

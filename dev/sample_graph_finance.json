@@ -1,0 +1,1527 @@
+{
+ "title": "operating_model_fy26.xlsx",
+ "subtitle": "Financial model . 6 tabs . 1,482 formulas",
+ "sentence": "Dots are labeled blocks of rows. Lines follow the formulas, from inputs through revenue and the P&L to cash and the balance sheet.",
+ "generated": "2026-09-25",
+ "footer": "Contains data from operating_model_fy26.xlsx. Local file, no internet. Send the sheet, not this page.",
+ "nodes": [
+  {
+   "id": "sheet:Inputs",
+   "label": "Inputs",
+   "type": "sheet",
+   "group": "inputs",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Assumptions . 64 typed cells",
+   "notes": [
+    {
+     "statement": "Inputs: Assumptions . 64 typed cells.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Revenue",
+   "label": "Revenue",
+   "type": "sheet",
+   "group": "revenue",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Volume x price by product . 216 formulas",
+   "notes": [
+    {
+     "statement": "Revenue: Volume x price by product . 216 formulas.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:P&L",
+   "label": "P&L",
+   "type": "sheet",
+   "group": "pl",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Monthly income statement . 412 formulas",
+   "notes": [
+    {
+     "statement": "P&L: Monthly income statement . 412 formulas.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Cash Flow",
+   "label": "Cash Flow",
+   "type": "sheet",
+   "group": "cf",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Indirect method . 288 formulas",
+   "notes": [
+    {
+     "statement": "Cash Flow: Indirect method . 288 formulas.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Balance Sheet",
+   "label": "Balance Sheet",
+   "type": "sheet",
+   "group": "bs",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Month-end balances . 336 formulas",
+   "notes": [
+    {
+     "statement": "Balance Sheet: Month-end balances . 336 formulas.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Checks",
+   "label": "Checks",
+   "type": "sheet",
+   "group": "checks",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Tie-outs . 36 formulas",
+   "notes": [
+    {
+     "statement": "Checks: Tie-outs . 36 formulas.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:growth",
+   "label": "Growth rates",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 180,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "Monthly growth by product",
+   "notes": [
+    {
+     "statement": "Growth rates come from the 2026 budget.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-10",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "f:price",
+   "label": "Price per unit",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 160,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "List price by product",
+   "notes": [
+    {
+     "statement": "Prices went up 4% in January.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-10",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "f:headcount",
+   "label": "Headcount plan",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 150,
+   "status": "current",
+   "source": "told",
+   "records": false,
+   "summary": "Hires by month and team",
+   "notes": [
+    {
+     "statement": "Headcount plan adds 6 people in Q2.",
+     "source": "told",
+     "status": "current",
+     "as_of": "2026-09-10",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "f:taxrate",
+   "label": "Tax rate",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 120,
+   "status": "disputed",
+   "source": "told",
+   "records": false,
+   "summary": "21% in the model",
+   "notes": [
+    {
+     "statement": "Tax rate is 21%.",
+     "source": "told",
+     "status": "disputed",
+     "as_of": "2026-01-15",
+     "said_by": "owner"
+    },
+    {
+     "statement": "The board deck uses a 25% blended rate.",
+     "source": "web",
+     "status": "disputed",
+     "as_of": "2026-08-30",
+     "said_by": "board-deck.pdf"
+    }
+   ]
+  },
+  {
+   "id": "f:capexplan",
+   "label": "Capex schedule",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 130,
+   "status": "current",
+   "source": "told",
+   "records": false,
+   "summary": "Equipment purchases by month",
+   "notes": [
+    {
+     "statement": "Equipment purchases by month",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:opening",
+   "label": "Opening balances",
+   "type": "formula_block",
+   "group": "inputs",
+   "size": 140,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Balances at 2025-12-31",
+   "notes": [
+    {
+     "statement": "Balances at 2025-12-31",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:volume",
+   "label": "Unit volume",
+   "type": "formula_block",
+   "group": "revenue",
+   "size": 300,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Units by product and month",
+   "notes": [
+    {
+     "statement": "Units by product and month",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:revprod",
+   "label": "Revenue by product",
+   "type": "formula_block",
+   "group": "revenue",
+   "size": 420,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Volume x price",
+   "notes": [
+    {
+     "statement": "Volume x price",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:revenue",
+   "label": "Total revenue",
+   "type": "formula_block",
+   "group": "revenue",
+   "size": 640,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$18.4M for FY26",
+   "notes": [
+    {
+     "statement": "Total revenue is $18.4M for FY26.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Revenue grows 3.1% a month on average.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:cogs",
+   "label": "COGS",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 380,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "38% of revenue",
+   "notes": [
+    {
+     "statement": "COGS is a flat 38% of revenue every month.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 38% looks like a planning shortcut, not a real cost build.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "f:gp",
+   "label": "Gross profit",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 460,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$11.4M, 62% margin",
+   "notes": [
+    {
+     "statement": "$11.4M, 62% margin",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:payroll",
+   "label": "Payroll",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 300,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Headcount x loaded cost",
+   "notes": [
+    {
+     "statement": "Headcount x loaded cost",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:opex",
+   "label": "Opex",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 360,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Rent, software, marketing, payroll",
+   "notes": [
+    {
+     "statement": "Rent, software, marketing, payroll",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:ebitda",
+   "label": "EBITDA",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 520,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$3.2M, 17% margin",
+   "notes": [
+    {
+     "statement": "$3.2M, 17% margin",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:da",
+   "label": "D&A",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 180,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Straight line over 5 years",
+   "notes": [
+    {
+     "statement": "Straight line over 5 years",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:interest",
+   "label": "Interest",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 160,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Debt balance x 7.5%",
+   "notes": [
+    {
+     "statement": "Debt balance x 7.5%",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:tax",
+   "label": "Tax expense",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 200,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Pre-tax income x Tax rate",
+   "notes": [
+    {
+     "statement": "Pre-tax income x Tax rate",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:ni",
+   "label": "Net income",
+   "type": "formula_block",
+   "group": "pl",
+   "size": 560,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$2.1M for FY26",
+   "notes": [
+    {
+     "statement": "$2.1M for FY26",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:wc",
+   "label": "Working capital change",
+   "type": "formula_block",
+   "group": "cf",
+   "size": 220,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Change in receivables and payables",
+   "notes": [
+    {
+     "statement": "Change in receivables and payables",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:ocf",
+   "label": "Operating cash flow",
+   "type": "formula_block",
+   "group": "cf",
+   "size": 440,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Net income plus non-cash, less working capital",
+   "notes": [
+    {
+     "statement": "Net income plus non-cash, less working capital",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:capex",
+   "label": "Capex",
+   "type": "formula_block",
+   "group": "cf",
+   "size": 200,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "From the capex schedule",
+   "notes": [
+    {
+     "statement": "From the capex schedule",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:fin",
+   "label": "Financing",
+   "type": "formula_block",
+   "group": "cf",
+   "size": 180,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Debt draws and repayments",
+   "notes": [
+    {
+     "statement": "Debt draws and repayments",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:endcash",
+   "label": "Ending cash",
+   "type": "formula_block",
+   "group": "cf",
+   "size": 480,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$4.6M at 2026-12-31",
+   "notes": [
+    {
+     "statement": "$4.6M at 2026-12-31",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:cash",
+   "label": "Cash",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 400,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Ties to Ending cash",
+   "notes": [
+    {
+     "statement": "Ties to Ending cash",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:ar",
+   "label": "Receivables",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 260,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "45 days of revenue",
+   "notes": [
+    {
+     "statement": "45 days of revenue",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:ppe",
+   "label": "PP&E",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 240,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Gross capex less D&A",
+   "notes": [
+    {
+     "statement": "Gross capex less D&A",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:debt",
+   "label": "Debt",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 230,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Term loan balance",
+   "notes": [
+    {
+     "statement": "Term loan balance",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:equity",
+   "label": "Equity",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 300,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Opening equity plus Net income",
+   "notes": [
+    {
+     "statement": "Opening equity plus Net income",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:assets",
+   "label": "Total assets",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 460,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Cash, receivables, PP&E",
+   "notes": [
+    {
+     "statement": "Cash, receivables, PP&E",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:le",
+   "label": "Liabilities and equity",
+   "type": "formula_block",
+   "group": "bs",
+   "size": 440,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Debt plus equity",
+   "notes": [
+    {
+     "statement": "Debt plus equity",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:bscheck",
+   "label": "Balance check",
+   "type": "formula_block",
+   "group": "checks",
+   "size": 340,
+   "status": "confirmed",
+   "source": "computed",
+   "records": false,
+   "summary": "Assets minus L&E is 0.00 every month",
+   "notes": [
+    {
+     "statement": "The balance sheet balances every month. Off by 0.00.",
+     "source": "computed",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:cashtie",
+   "label": "Cash tie-out",
+   "type": "formula_block",
+   "group": "checks",
+   "size": 260,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Ending cash equals BS cash",
+   "notes": [
+    {
+     "statement": "Ending cash on Cash Flow equals Cash on the Balance Sheet in all 12 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "i:pb1",
+   "label": "P&L row 47: typed 18,500",
+   "type": "insight",
+   "group": "pl",
+   "size": 150,
+   "status": "may-be-outdated",
+   "source": "computed",
+   "records": false,
+   "summary": "A typed number where the row's formula belongs (Mar 2026)",
+   "notes": [
+    {
+     "statement": "Opex row 47, March 2026, holds a typed 18,500 where every other month has a formula.",
+     "source": "computed",
+     "status": "may-be-outdated",
+     "as_of": "2026-04-02",
+     "said_by": "sb"
+    },
+    {
+     "statement": "It may have been a one-off correction that is no longer needed.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "i:pb2",
+   "label": "Tax: old rate cell",
+   "type": "insight",
+   "group": "pl",
+   "size": 140,
+   "status": "disputed",
+   "source": "inferred",
+   "records": false,
+   "summary": "Tax expense points at Inputs!C14, not the current rate",
+   "notes": [
+    {
+     "statement": "Tax expense reads Inputs!C14 (21%). The notes say the rate moved to C18 (25%).",
+     "source": "inferred",
+     "status": "disputed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "i:pb3",
+   "label": "Cash Flow row 22: range stops in Nov",
+   "type": "insight",
+   "group": "cf",
+   "size": 130,
+   "status": "may-be-outdated",
+   "source": "computed",
+   "records": false,
+   "summary": "SUM range ends at November, December is left out",
+   "notes": [
+    {
+     "statement": "Row 22 sums January to November. December is not included.",
+     "source": "computed",
+     "status": "may-be-outdated",
+     "as_of": "2026-09-12",
+     "said_by": "sb"
+    }
+   ]
+  }
+ ],
+ "links": [
+  {
+   "source": "f:growth",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:price",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:headcount",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:taxrate",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:capexplan",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:opening",
+   "target": "sheet:Inputs",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:volume",
+   "target": "sheet:Revenue",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:revprod",
+   "target": "sheet:Revenue",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:revenue",
+   "target": "sheet:Revenue",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:cogs",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:gp",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:payroll",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:opex",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:ebitda",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:da",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:interest",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:tax",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:ni",
+   "target": "sheet:P&L",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:wc",
+   "target": "sheet:Cash Flow",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:ocf",
+   "target": "sheet:Cash Flow",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:capex",
+   "target": "sheet:Cash Flow",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:fin",
+   "target": "sheet:Cash Flow",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:endcash",
+   "target": "sheet:Cash Flow",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:cash",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:ar",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:ppe",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:debt",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:equity",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:assets",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:le",
+   "target": "sheet:Balance Sheet",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:bscheck",
+   "target": "sheet:Checks",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:cashtie",
+   "target": "sheet:Checks",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "f:growth",
+   "target": "f:volume",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:price",
+   "target": "f:revprod",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:volume",
+   "target": "f:revprod",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:revprod",
+   "target": "f:revenue",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:cogs",
+   "target": "f:revenue",
+   "type": "derived_from",
+   "label": "",
+   "status": "unconfirmed",
+   "weight": 0.7
+  },
+  {
+   "source": "f:revenue",
+   "target": "f:gp",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:cogs",
+   "target": "f:gp",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:headcount",
+   "target": "f:payroll",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:payroll",
+   "target": "f:opex",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:gp",
+   "target": "f:ebitda",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:opex",
+   "target": "f:ebitda",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:da",
+   "target": "f:capexplan",
+   "type": "derived_from",
+   "label": "",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "f:ebitda",
+   "target": "f:ni",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:da",
+   "target": "f:ni",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:interest",
+   "target": "f:ni",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:tax",
+   "target": "f:ni",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:taxrate",
+   "target": "f:tax",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:ebitda",
+   "target": "f:tax",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:interest",
+   "target": "f:debt",
+   "type": "looks_up",
+   "label": "",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "f:ni",
+   "target": "f:ocf",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:wc",
+   "target": "f:ocf",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:wc",
+   "target": "f:ar",
+   "type": "derived_from",
+   "label": "",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "f:ocf",
+   "target": "f:endcash",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:capex",
+   "target": "f:endcash",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:fin",
+   "target": "f:endcash",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:opening",
+   "target": "f:endcash",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:capexplan",
+   "target": "f:capex",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:endcash",
+   "target": "f:cash",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:capex",
+   "target": "f:ppe",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:ni",
+   "target": "f:equity",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:fin",
+   "target": "f:debt",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:revenue",
+   "target": "f:ar",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:da",
+   "target": "f:ppe",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:cash",
+   "target": "f:assets",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:ar",
+   "target": "f:assets",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:ppe",
+   "target": "f:assets",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:debt",
+   "target": "f:le",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:equity",
+   "target": "f:le",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:assets",
+   "target": "f:bscheck",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:le",
+   "target": "f:bscheck",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:endcash",
+   "target": "f:cashtie",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "f:cash",
+   "target": "f:cashtie",
+   "type": "feeds",
+   "label": "",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "i:pb1",
+   "target": "f:opex",
+   "type": "relates",
+   "label": "breaks the pattern",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "i:pb2",
+   "target": "f:tax",
+   "type": "relates",
+   "label": "reads the old cell",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "i:pb2",
+   "target": "f:taxrate",
+   "type": "looks_up",
+   "label": "Inputs!C14",
+   "status": "unconfirmed",
+   "weight": 0.5
+  },
+  {
+   "source": "i:pb3",
+   "target": "f:ocf",
+   "type": "relates",
+   "label": "short range",
+   "status": "current",
+   "weight": 0.5
+  }
+ ],
+ "groups": [
+  {
+   "id": "inputs",
+   "label": "Inputs"
+  },
+  {
+   "id": "revenue",
+   "label": "Revenue"
+  },
+  {
+   "id": "pl",
+   "label": "P&L"
+  },
+  {
+   "id": "cf",
+   "label": "Cash Flow"
+  },
+  {
+   "id": "bs",
+   "label": "Balance Sheet"
+  },
+  {
+   "id": "checks",
+   "label": "Checks"
+  }
+ ],
+ "start_here": [
+  {
+   "node": "f:revenue",
+   "text": "Revenue is built from growth, volume and price"
+  },
+  {
+   "node": "i:pb1",
+   "text": "One P&L row has a typed number where a formula belongs"
+  },
+  {
+   "node": "i:pb2",
+   "text": "Tax rate: the model says 21%, the notes say 25%"
+  },
+  {
+   "node": "f:bscheck",
+   "text": "The balance sheet balances every month"
+  }
+ ]
+}

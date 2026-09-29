@@ -1,0 +1,641 @@
+Deal ID,Contact Email,Amount,Stage,Close Date
+D-10001,sadie.mbeki@mapleridgehealth.example,51600,Prospecting,2027-01-11
+D-10002,ecalder@northfieldmarine.example,11300,Negotiation,2026-09-27
+D-10003,vlowry@harborfieldlogistics.example,45300,Closed Won,2026-01-28
+D-10004,malik.mensah@maplelinemarine.example,37900,Closed Lost,2024-07-13
+D-10005,jdubois@silverbrookroofing.example,13500,Negotiation,2027-03-19
+D-10006,esmebecker75@mailbox.example,76200,Prospecting,2026-10-09
+D-10007,lena.sorensen@emberpointmedia.example,66400,Closed Lost,2025-07-01
+D-10008,liam.kaur@emberpointmedia.example,93800,Prospecting,2026-10-16
+D-10009,OROMANO@TIDALLINEROOFING.EXAMPLE,93700,Negotiation,2027-03-04
+D-10010,iris.takahashi@summitcrestdental.example,3800,Negotiation,2026-12-19
+D-10011,owen@willowstoneanalytics.example,102200,Proposal,2027-03-25
+D-10012,aisha.sorensen@embercrestlabs.example,30000,Prospecting,2027-02-11
+D-10013,aisha.kowalski@falconstoneanalytics.example,30800,Prospecting,2027-02-19
+D-10014,fdubois@bluepathdental.example,23400,Proposal,2027-01-02
+D-10015,mateo@willowlineroofing.example,90300,Proposal,2027-01-09
+D-10016,rlopez@willowridgeanalytics.example,35400,Closed Lost,2024-08-21
+D-10017,ivy.keller@granitebrooklegal.example,32700,Closed Lost,2025-12-22
+D-10018,sofia.tran@pioneerpathdental.example,12100,Prospecting,2026-11-11
+D-10019,nadia.sorensen@aspenwavelegal.example,83500,Prospecting,2026-12-09
+D-10020,aweber@harborpointbuilders.example,14900,Proposal,2027-01-17
+D-10021,nora@bluegateanalytics.example,3800,Negotiation,2027-03-04
+D-10022,hannah@emberridgelogistics.example,32400,Prospecting,2027-01-06
+D-10023,tobias.brennan@lumenfieldhealth.example,35500,Closed Lost,2025-04-29
+D-10024,carlos.mbeki@copperlinelabs.example,64300,Negotiation,2026-10-11
+D-10025,pkaur@willowcrestlogistics.example,36100,Closed Won,2024-03-04
+D-10026,nora.hughes@ironpointrealty.example,29100,Proposal,2027-03-16
+D-10027,zoyelaran@maplefieldhealth.example,44700,Proposal,2026-10-13
+D-10028,gabriel@summitstonedental.example,57900,Closed Lost,2026-02-07
+D-10029,elena.moreau@willowridgeanalytics.example,24200,Closed Lost,2024-02-19
+D-10030,zaraadeyemi81@mailbox.example,78600,Prospecting,2026-12-19
+D-10031,declan.everett@brightgateanalytics.example,8300,Prospecting,2026-10-04
+D-10032,simon@willowbrookrealty.example,82800,Prospecting,2026-11-26
+D-10033,tessa.mensah@silverstoneanalytics.example,45600,Prospecting,2027-03-19
+D-10034,omar.adeyemi@bluegatemarine.example,49300,Prospecting,2026-12-16
+D-10035,owen@cedarcrestfoods.example,38700,Negotiation,2027-02-27
+D-10036,mduarte@falconwavebuilders.example,15700,Prospecting,2027-01-08
+D-10037,noah.santos@ironlinebuilders.example,31400,Proposal,2027-01-12
+D-10038,ilopez@tidalridgebuilders.example,97500,Prospecting,2026-11-15
+D-10039,elena.moreau@willowridgeanalytics.example,74700,Closed Lost,2024-10-29
+D-10040,naomi@harborpathmarine.example,69800,Proposal,2027-03-15
+D-10041,ronan.varga@ironstonemarine.example,23500,Proposal,2026-12-27
+D-10042,luciaferreira62@mailbox.example,57500,Closed Won,2025-04-02
+D-10043,mateo@bluegatemarine.example,6600,Closed Won,2025-04-04
+D-10044,lucia.nguyen@falconcrestrealty.example,58200,Closed Lost,2025-01-27
+D-10045,elijah.jansen@aspenbrooklegal.example,109900,Proposal,2027-01-28
+D-10046,ethan.calder@maplefieldhealth.example,66300,Negotiation,2026-11-17
+D-10047,tobias.keller@coralbrookroofing.example,78600,Proposal,2026-11-16
+D-10048,ronanvarga57@mailbox.example,84800,Closed Lost,2024-07-07
+D-10049,emily@clearlinehealth.example,54800,Negotiation,2026-12-14
+D-10050,,76600,Proposal,2026-12-05
+D-10051,lucia.okafor@emberbrookrealty.example,86000,Prospecting,2026-11-03
+D-10052,declan@emberlineroofing.example,114100,Closed Won,2025-06-06
+D-10053,asantos@northwavelegal.example,102000,Closed Lost,2025-09-18
+D-10054,ada@clearlinelabs.example,15800,Closed Won,2024-10-01
+D-10055,theo.hughes@ironpointrealty.example,61300,Prospecting,2026-10-11
+D-10056,,104400,Negotiation,2027-01-31
+D-10057,eweber@lumenlinedental.example,88300,Closed Lost,2025-11-30
+D-10058,esorensen@clearstonedental.example,103400,Closed Lost,2024-02-17
+D-10059,tessa.kaur@cedarridgeroofing.example,38500,Negotiation,2026-12-15
+D-10060,ruby.calder@granitepointfoods.example,75000,Prospecting,2027-02-24
+D-10061,nweber@falconpathfoods.example,84100,Proposal,2027-03-22
+D-10062,avarga@clearlinehealth.example,73400,Closed Won,2025-07-24
+D-10063,sadie.castillo@summitcrestbuilders.example,90500,Closed Won,2026-01-16
+D-10064,lucia@silverpointfoods.example,77000,Closed Won,2026-05-18
+D-10065,MKAPLAN@FALCONWAVEBUILDERS.EXAMPLE,55800,Closed Lost,2024-08-04
+D-10066,NORA.ASHFORD@TIDALSTONEANALYTICS.EXAMPLE,47500,Proposal,2026-12-07
+D-10067,aisha@ironbrookmedia.example,25500,Closed Lost,2024-08-25
+D-10068,andre.santos@clearpathfoods.example,28100,Closed Won,2025-02-06
+D-10069,emily.romano@granitepathmedia.example,65600,Proposal,2026-11-25
+D-10070,ANDRE.WHITLOCK@WILLOWLINEANALYTICS.EXAMPLE,43200,Proposal,2027-03-31
+D-10071,james.larsen@aspenpathmarine.example,54500,Closed Lost,2026-09-15
+D-10072,MWHITLOCK@CEDARGATEREALTY.EXAMPLE,100500,Closed Won,2026-04-25
+D-10073,lfitzgerald@tidalstoneanalytics.example,98200,Closed Lost,2024-11-28
+D-10074,aishaweber68@mailbox.example,9200,Closed Won,2025-09-20
+D-10075,malik.nguyen@falconcrestfoods.example,90900,Closed Won,2025-09-26
+D-10076,ada.calder@granitewaveanalytics.example,93400,Closed Lost,2025-10-09
+D-10077,SOFIA@CLEARSTONEDENTAL.EXAMPLE,80900,Negotiation,2026-10-20
+D-10078,isaac.garcia@cedarpointlogistics.example,32700,Closed Won,2026-05-17
+D-10079,NAOMI.MBEKI@EMBERSTONEMARINE.EXAMPLE,92900,Negotiation,2027-01-04
+D-10080,,57000,Closed Lost,2024-09-01
+D-10081,HTAKAHASHI@BLUEPATHLABS.EXAMPLE,41100,Closed Lost,2024-03-08
+D-10082,clara@falconcrestfoods.example,14400,Closed Won,2026-05-04
+D-10083,rafael.okafor@cedarpointlogistics.example,118500,Proposal,2027-02-13
+D-10084,OPARK@BLUEPATHDENTAL.EXAMPLE,97100,Closed Won,2026-03-14
+D-10085,lucia@silverpointfoods.example,7000,Closed Won,2025-02-10
+D-10086,simon@willowgatemarine.example,109700,Closed Lost,2025-12-09
+D-10087,yduarte@bluegateanalytics.example,98000,Prospecting,2027-03-06
+D-10088,ESME.SATO@CEDARWAVEREALTY.EXAMPLE,90300,Prospecting,2027-02-21
+D-10089,felix.romano@tidalbrookfoods.example,48800,Closed Lost,2025-06-01
+D-10090,nweber@falconpathfoods.example,13900,Proposal,2027-01-27
+D-10091,tessa@tidalstoneroofing.example,44200,Closed Won,2024-05-13
+D-10092,msilva@cedarpathfoods.example,101000,Proposal,2027-02-28
+D-10093,mariareyes78@mailbox.example,112600,Closed Won,2024-03-06
+D-10094,MWHITLOCK@CEDARGATEREALTY.EXAMPLE,28900,Closed Lost,2026-01-10
+D-10095,omar.okafor@bluebrookanalytics.example,61700,Closed Lost,2024-05-23
+D-10096,aisha.chen@harborridgefoods.example,88900,Closed Won,2024-03-14
+D-10097,gkim@summitridgelabs.example,106000,Closed Won,2024-10-19
+D-10098,CHLOE@BRIGHTFIELDHEALTH.EXAMPLE,15100,Closed Lost,2025-06-18
+D-10099,tessa@willowgatemedia.example,112100,Closed Won,2025-06-10
+D-10100,sadie.ashford@clearfieldbuilders.example,23700,Proposal,2026-10-31
+D-10101,emily@brightgateanalytics.example,84500,Closed Lost,2025-02-21
+D-10102,ncosta@cedarpointhealth.example,104500,Proposal,2026-12-18
+D-10103,malik@clearlinelabs.example,4900,Negotiation,2026-11-29
+D-10104,yduarte@bluegateanalytics.example,92100,Prospecting,2026-10-08
+D-10105,hugo@harborpointbuilders.example,66100,Negotiation,2026-11-23
+D-10106,nfitzgerald@pioneercrestmedia.example,30800,Closed Lost,2026-07-09
+D-10107,jade.fitzgerald@northfieldmarine.example,62200,Negotiation,2027-01-28
+D-10108,mia.sato@silverpointfoods.example,109600,Closed Won,2024-07-18
+D-10109,priya.andersen@bluepathdental.example,68400,Proposal,2027-01-11
+D-10110,aweber@harborpointbuilders.example,75700,Negotiation,2026-12-04
+D-10111,hferreira@falconstoneanalytics.example,59400,Closed Lost,2026-07-16
+D-10112,iris@irongatehealth.example,53600,Proposal,2027-01-08
+D-10113,EMILY.SATO@TIDALSTONEANALYTICS.EXAMPLE,111100,Closed Lost,2024-01-19
+D-10114,apark@emberpointmedia.example,41100,Prospecting,2027-02-03
+D-10115,lchen@northwavelegal.example,47600,Closed Won,2024-05-30
+D-10116,ysato@northwavelogistics.example,45100,Prospecting,2026-12-04
+D-10117,rnovak@silverridgelegal.example,58500,Closed Won,2024-07-08
+D-10118,ETAKAHASHI@CLEARPATHFOODS.EXAMPLE,28600,Proposal,2027-01-21
+D-10119,,32400,Closed Lost,2024-07-20
+D-10120,aisha@summitcrestdental.example,75900,Proposal,2026-12-11
+D-10121,ava.chen@pioneerpathdental.example,40300,Negotiation,2026-12-10
+D-10122,ava@cedargaterealty.example,76800,Negotiation,2027-01-05
+D-10123,mpark@ironpointanalytics.example,113900,Closed Won,2024-04-01
+D-10124,naomi.dubois@coralgatedental.example,18700,Proposal,2027-03-05
+D-10125,carlos.keller@ironwavebuilders.example,118700,Closed Won,2025-11-28
+D-10126,lucas.patel@pioneerlinebuilders.example,71000,Negotiation,2027-03-24
+D-10127,ruby@aspenwavedental.example,110500,Closed Won,2025-11-02
+D-10128,tessa.takahashi@ironlinedental.example,73700,Proposal,2026-11-06
+D-10129,noah.holloway@maplewaveanalytics.example,32900,Closed Lost,2024-06-09
+D-10130,theo.lowry@cedarpathfoods.example,20600,Closed Won,2026-01-29
+D-10131,esorensen@falconlinehealth.example,82300,Proposal,2027-03-02
+D-10132,hpatel@falconpathhealth.example,43700,Closed Lost,2024-03-25
+D-10133,malik.delgado@clearridgeroofing.example,50000,Prospecting,2026-11-04
+D-10134,nora.kaur@granitewaveanalytics.example,37700,Negotiation,2026-12-13
+D-10135,mateo@willowlinefoods.example,79100,Closed Lost,2025-01-05
+D-10136,zoyelaran@maplefieldhealth.example,110600,Proposal,2027-01-01
+D-10137,jferreira@lumenstoneanalytics.example,43800,Closed Lost,2025-03-12
+D-10138,victor@ironpointrealty.example,43700,Closed Lost,2026-03-25
+D-10139,omar.castillo@northfieldmarine.example,64000,Closed Lost,2024-08-19
+D-10140,rafael.park@maplefieldlogistics.example,77200,Closed Won,2024-06-30
+D-10141,sadie@clearpathanalytics.example,105900,Prospecting,2027-01-06
+D-10142,lucia@copperlinelabs.example,104600,Prospecting,2026-10-08
+D-10143,marcus.jansen@cedargatemedia.example,61000,Prospecting,2026-10-15
+D-10144,chloe@willowbrookrealty.example,2700,Closed Won,2024-12-17
+D-10145,nadia.sorensen@aspenwavelegal.example,98300,Closed Lost,2025-02-03
+D-10146,adachen94@mailbox.example,45900,Prospecting,2027-03-01
+D-10147,maria.reyes@embercrestlabs.example,7600,Closed Lost,2025-01-30
+D-10148,OMAR@COPPERPATHROOFING.EXAMPLE,71500,Closed Won,2024-11-05
+D-10149,aisha.larsen@summitstonefoods.example,57200,Proposal,2027-03-24
+D-10150,ypark@bluepathlabs.example,112500,Closed Won,2025-05-06
+D-10151,victor.mensah@cedarpointlogistics.example,110700,Prospecting,2026-10-30
+D-10152,tessawhitlock66@mailbox.example,32300,Closed Lost,2024-12-15
+D-10153,esme.delgado@cedargatemedia.example,62700,Proposal,2027-02-07
+D-10154,aisha@bluebrookanalytics.example,19200,Proposal,2027-02-12
+D-10155,caleb.larsen@cedarlinelogistics.example,111800,Proposal,2026-12-06
+D-10156,gabriel@maplepathlegal.example,77700,Proposal,2027-01-26
+D-10157,elijah.lowry@summitridgefoods.example,32100,Closed Won,2025-11-11
+D-10158,james@falconwavebuilders.example,73900,Closed Won,2025-12-08
+D-10159,esme.pryor@granitegatehealth.example,84400,Closed Won,2025-09-20
+D-10160,HANNAH@CEDARCRESTFOODS.EXAMPLE,18300,Closed Lost,2024-12-19
+D-10161,ethan@cedarwaverealty.example,99300,Proposal,2027-03-17
+D-10162,declan.quinn@copperfieldlabs.example,67000,Closed Won,2026-01-24
+D-10163,pnguyen@tidalgatelogistics.example,3900,Prospecting,2026-10-18
+D-10164,shughes@aspenridgelegal.example,3300,Closed Lost,2024-05-18
+D-10165,IVY.ANDERSEN@MAPLESTONELABS.EXAMPLE,6600,Prospecting,2027-01-04
+D-10166,ethan@cedarwaverealty.example,11200,Negotiation,2026-10-27
+D-10167,liamkowalski97@mailbox.example,70900,Prospecting,2026-10-09
+D-10168,clara.everett@maplepathlabs.example,115800,Negotiation,2026-10-06
+D-10169,daniel.park@ironpathlabs.example,7300,Closed Won,2024-07-06
+D-10170,tessa.byrne@ironpointanalytics.example,79000,Prospecting,2026-09-27
+D-10171,dnovak@willowpointroofing.example,118200,Proposal,2026-12-16
+D-10172,daniel.park@ironpathlabs.example,105900,Proposal,2027-03-11
+D-10173,LENA@MAPLEPATHLEGAL.EXAMPLE,116200,Closed Won,2026-03-04
+D-10174,priya.delgado@willowbrookmarine.example,116400,Proposal,2026-09-29
+D-10175,theo@pioneercrestbuilders.example,37500,Prospecting,2026-12-18
+D-10176,lkeller@copperpointrealty.example,82400,Negotiation,2026-10-27
+D-10177,gkaur@pioneercrestroofing.example,16200,Closed Lost,2024-12-06
+D-10178,sadie@northfieldmarine.example,103300,Negotiation,2026-10-04
+D-10179,nadia.becker@pioneerbrookmarine.example,81600,Closed Won,2025-03-30
+D-10180,elijah.lindgren@maplecrestlabs.example,97000,Proposal,2026-10-19
+D-10181,james@ironpointrealty.example,24300,Closed Won,2025-10-12
+D-10182,maria.whitlock@brightridgefoods.example,105100,Prospecting,2026-11-05
+D-10183,ikeller@copperpathroofing.example,117100,Proposal,2026-11-09
+D-10184,noah@aspenwavedental.example,80800,Prospecting,2027-02-21
+D-10185,theo.ingram@clearcrestlegal.example,68900,Closed Lost,2025-03-20
+D-10186,daniel.byrne@willowlinefoods.example,60800,Proposal,2026-11-29
+D-10187,caleb.park@clearcrestlegal.example,65400,Closed Lost,2025-01-18
+D-10188,jade.okafor@maplefieldlogistics.example,100100,Prospecting,2026-10-16
+D-10189,ronan@corallinelegal.example,94500,Proposal,2027-01-12
+D-10190,zara.novak@pioneerridgerealty.example,60900,Closed Won,2026-05-15
+D-10191,sadie@clearpathanalytics.example,110600,Prospecting,2026-11-05
+D-10192,naomi.reyes@willowlinefoods.example,11900,Prospecting,2027-03-30
+D-10193,embeki@northwavelabs.example,45300,Negotiation,2027-01-02
+D-10194,lchen@northwavelegal.example,52300,Closed Won,2025-11-07
+D-10195,lucia.rossi@coralgatemarine.example,49200,Prospecting,2027-02-11
+D-10196,gabriel@coppergatemarine.example,68600,Closed Won,2024-05-30
+D-10197,llindgren@falconfieldlogistics.example,10400,Closed Lost,2024-09-23
+D-10198,eweber@lumenlinedental.example,43800,Closed Lost,2024-09-19
+D-10199,,114200,Closed Lost,2024-03-22
+D-10200,orossi@willowpointrealty.example,52900,Closed Lost,2024-05-28
+D-10201,carlos@clearwavemarine.example,20800,Prospecting,2026-10-29
+D-10202,ethan@granitefieldlogistics.example,32700,Closed Won,2024-04-10
+D-10203,,94700,Prospecting,2026-11-16
+D-10204,inguyen@willowstoneanalytics.example,19700,Prospecting,2027-01-11
+D-10205,lucas@copperpathroofing.example,48200,Negotiation,2027-02-11
+D-10206,isaac.mensah@coralgatemarine.example,98200,Proposal,2027-01-14
+D-10207,akaur@irongatemedia.example,19300,Proposal,2026-10-08
+D-10208,yuki@willowstoneanalytics.example,110300,Proposal,2026-11-19
+D-10209,nlarsen@tidallineanalytics.example,58800,Proposal,2026-09-25
+D-10210,victor.sorensen@maplelineanalytics.example,71900,Prospecting,2027-03-23
+D-10211,leah@emberbrookrealty.example,96500,Proposal,2026-11-08
+D-10212,daniel@clearstonelabs.example,87900,Closed Won,2024-09-05
+D-10213,ada.chen@summitcrestdental.example,59100,Negotiation,2026-11-03
+D-10214,emily.dubois@lumenpathmedia.example,46300,Closed Lost,2026-08-23
+D-10215,kwame.mensah@tidallinehealth.example,95300,Closed Lost,2026-09-18
+D-10216,grace@harborfieldmarine.example,25700,Proposal,2026-10-15
+D-10217,leah@willowlinebuilders.example,52300,Closed Won,2025-03-03
+D-10218,ethansorensen18@mailbox.example,48000,Negotiation,2026-11-02
+D-10219,carlos.andersen@pioneerfieldhealth.example,31900,Negotiation,2027-01-08
+D-10220,fkaur@clearfieldbuilders.example,11000,Closed Lost,2026-07-13
+D-10221,pkaur@willowcrestlogistics.example,53200,Closed Won,2024-10-17
+D-10222,gabriel@maplepathlegal.example,59000,Proposal,2026-10-20
+D-10223,rnovak@silverridgelegal.example,65200,Closed Won,2024-01-23
+D-10224,hugo.keller@lumencrestfoods.example,36200,Proposal,2026-12-06
+D-10225,isaacnash29@mailbox.example,101800,Negotiation,2027-02-04
+D-10226,tlarsen@falconstoneanalytics.example,65100,Closed Lost,2025-04-19
+D-10227,priya.duarte@emberstonemedia.example,25600,Prospecting,2026-09-25
+D-10228,noah@aspenwavedental.example,65000,Closed Won,2025-08-07
+D-10229,lchen@silverstoneanalytics.example,40400,Closed Lost,2025-09-15
+D-10230,mia.byrne@harborstonemedia.example,115900,Prospecting,2027-01-18
+D-10231,carlos.nguyen@brightfieldlogistics.example,112500,Closed Lost,2024-10-16
+D-10232,ivy.mensah@silverstoneanalytics.example,6500,Closed Lost,2024-05-02
+D-10233,aisha@emberstonemedia.example,53400,Negotiation,2027-02-20
+D-10234,esorensen@falconlinehealth.example,73900,Closed Lost,2024-01-26
+D-10235,iris@irongatehealth.example,62000,Closed Lost,2026-02-14
+D-10236,nmarsh@tidalgatelogistics.example,61400,Closed Won,2025-11-12
+D-10237,embeki@aspenwavelegal.example,84800,Closed Lost,2025-10-20
+D-10238,clara@northgatelegal.example,78400,Closed Lost,2024-10-05
+D-10239,luciaokafor11@mailbox.example,107400,Negotiation,2027-02-19
+D-10240,ltakahashi@lumenpathanalytics.example,100400,Closed Won,2026-08-27
+D-10241,mateokowalski74@mailbox.example,59400,Closed Lost,2025-11-13
+D-10242,jandersen@willowgatemedia.example,28700,Closed Won,2025-08-19
+D-10243,priya.everett@lumenlinedental.example,51700,Prospecting,2026-10-06
+D-10244,elijah.monroe@pioneerbrooklegal.example,9300,Closed Won,2025-12-25
+D-10245,grace.hughes@northstonehealth.example,91500,Prospecting,2026-10-09
+D-10246,hokafor@coralgatemarine.example,77500,Prospecting,2027-03-31
+D-10247,nadia.becker@pioneerbrookmarine.example,79100,Closed Won,2025-11-22
+D-10248,GABRIEL@MAPLEPATHLEGAL.EXAMPLE,68200,Closed Won,2024-04-18
+D-10249,HMARSH@SUMMITCRESTLOGISTICS.EXAMPLE,93100,Proposal,2027-02-16
+D-10250,ecalder@northfieldmarine.example,112600,Negotiation,2027-03-13
+D-10251,elijah.kowalski@coppergatemarine.example,58200,Proposal,2026-12-18
+D-10252,maria.reyes@embercrestlabs.example,85700,Closed Won,2026-05-13
+D-10253,grace@cedarpointmarine.example,29300,Proposal,2027-01-27
+D-10254,maria.kaplan@aspenbrooklegal.example,4700,Closed Lost,2026-06-03
+D-10255,theo.lopez@clearstoneanalytics.example,5000,Closed Lost,2025-07-26
+D-10256,malik.ibrahim@falconcrestrealty.example,77300,Prospecting,2026-12-04
+D-10257,tlarsen@falconstoneanalytics.example,22800,Prospecting,2026-11-22
+D-10258,toyelaran@lumenfieldhealth.example,32600,Negotiation,2027-01-21
+D-10259,rafael.haddad@aspenwavelabs.example,9200,Closed Lost,2025-04-28
+D-10260,ADA.CALDER@GRANITEWAVEANALYTICS.EXAMPLE,6900,Prospecting,2027-03-27
+D-10261,tsantos@willowpointroofing.example,110400,Closed Lost,2025-04-23
+D-10262,maya.andersen@lumencrestroofing.example,51200,Closed Lost,2025-05-05
+D-10263,tessa.ibrahim@northstonehealth.example,74300,Proposal,2027-03-27
+D-10264,lchen@northwavelegal.example,90800,Closed Won,2025-06-25
+D-10265,emily.ferreira@clearstoneanalytics.example,36700,Closed Won,2024-12-28
+D-10266,aisha.mbeki@falconbrooklegal.example,14100,Closed Won,2024-08-07
+D-10267,aisha.weber@ironfieldfoods.example,69600,Closed Won,2024-04-23
+D-10268,nbecker@tidalwavedental.example,69600,Closed Lost,2025-05-09
+D-10269,pcastillo@tidallinehealth.example,78200,Proposal,2026-12-18
+D-10270,hwhitlock@willowbrookrealty.example,90400,Proposal,2026-11-08
+D-10271,james@falconwavebuilders.example,52300,Closed Won,2026-05-30
+D-10272,isaac2@irongatemedia.example,17500,Proposal,2026-10-23
+D-10273,rhaddad@embercrestlabs.example,34600,Closed Won,2024-11-09
+D-10274,naomi@cedarwavedental.example,30500,Proposal,2027-02-03
+D-10275,YUKI@TIDALWAVEDENTAL.EXAMPLE,87700,Prospecting,2026-10-28
+D-10276,leverett@falconfieldlogistics.example,34400,Closed Lost,2024-09-06
+D-10277,maya.ibrahim@northstonehealth.example,18700,Closed Lost,2025-08-05
+D-10278,daniel.park@ironpathlabs.example,105800,Closed Won,2025-09-14
+D-10279,MARCUS.JANSEN@CEDARGATEMEDIA.EXAMPLE,76600,Proposal,2026-10-14
+D-10280,jrossi@falconcrestmarine.example,113700,Proposal,2026-09-28
+D-10281,tessa.andersen@tidalgatelogistics.example,46600,Closed Lost,2025-12-07
+D-10282,sadiekaplan28@mailbox.example,71300,Proposal,2027-03-06
+D-10283,lucas.duarte@harborpathroofing.example,35900,Negotiation,2026-10-09
+D-10284,freya.pryor@summitridgelabs.example,55100,Proposal,2026-12-02
+D-10285,,40700,Closed Won,2025-05-31
+D-10286,ruby.calder@granitepointfoods.example,95000,Proposal,2026-12-15
+D-10287,zhughes@northwavelegal.example,55600,Prospecting,2026-10-05
+D-10288,jsilva@willowcrestlogistics.example,111100,Closed Won,2025-09-28
+D-10289,djansen@falconcrestrealty.example,72400,Negotiation,2026-12-05
+D-10290,jade.fitzgerald@northwavelogistics.example,81500,Closed Lost,2024-10-19
+D-10291,gabriel@summitstonedental.example,47000,Negotiation,2027-03-26
+D-10292,htakahashi@bluepathlabs.example,56600,Negotiation,2027-02-17
+D-10293,cwalsh@falconfieldrealty.example,98800,Closed Won,2024-03-18
+D-10294,marcus.silva@ironstonemarine.example,12900,Closed Won,2025-05-18
+D-10295,lquinn@cedarpointfoods.example,76800,Prospecting,2026-12-02
+D-10296,liam@willowbrookmarine.example,8300,Closed Lost,2025-01-06
+D-10297,malik@emberfieldmarine.example,102600,Prospecting,2026-11-04
+D-10298,nchen@bluegatemarine.example,103200,Closed Lost,2024-12-31
+D-10299,ruby.calder@granitepointfoods.example,32800,Proposal,2026-11-03
+D-10300,lkeller@copperpointrealty.example,115000,Negotiation,2026-11-20
+D-10301,clara.whitlock@summitbrooklegal.example,44600,Closed Won,2026-09-09
+D-10302,theo.ibrahim@granitefielddental.example,10300,Closed Won,2026-02-25
+D-10303,gnovak@coppercrestanalytics.example,101400,Prospecting,2026-11-22
+D-10304,jsilva@willowcrestlogistics.example,62500,Closed Won,2025-01-15
+D-10305,omar.hale@harborstonelegal.example,12500,Prospecting,2026-12-28
+D-10306,ISAAC2@SUMMITRIDGEMARINE.EXAMPLE,34300,Closed Lost,2026-03-10
+D-10307,aisha@granitepointroofing.example,15400,Closed Won,2025-02-11
+D-10308,AISHA.CHEN@HARBORRIDGEFOODS.EXAMPLE,56900,Closed Won,2025-07-19
+D-10309,isaac.nash@emberstonemarine.example,26200,Negotiation,2026-12-07
+D-10310,jade.takahashi@northfielddental.example,34300,Closed Lost,2024-03-20
+D-10311,chloe@brightgateanalytics.example,51500,Prospecting,2027-03-10
+D-10312,aandersen@falconstoneanalytics.example,22000,Negotiation,2026-11-03
+D-10313,isaac.reyes@aspenwavelegal.example,24700,Closed Won,2025-01-02
+D-10314,tessa@willowlinefoods.example,79500,Closed Lost,2025-04-10
+D-10315,ronan@aspenridgeroofing.example,10800,Negotiation,2027-03-21
+D-10316,llindgren@falconfieldlogistics.example,79500,Negotiation,2026-12-25
+D-10317,malik.delgado@clearridgeroofing.example,79100,Closed Lost,2025-01-04
+D-10318,opryor@aspenlineanalytics.example,103100,Negotiation,2027-01-01
+D-10319,freya.ferreira@clearpointbuilders.example,112900,Closed Lost,2025-01-22
+D-10320,ncosta@cedarpointhealth.example,101000,Negotiation,2027-03-19
+D-10321,liam.kowalski@tidalstoneroofing.example,111500,Prospecting,2027-03-12
+D-10322,maya@brightstonefoods.example,106900,Negotiation,2027-02-02
+D-10323,tcalder@lumenridgeroofing.example,83100,Negotiation,2027-03-16
+D-10324,leah.patel@embercrestroofing.example,60000,Closed Won,2024-11-17
+D-10325,elenakowalski63@mailbox.example,67200,Closed Lost,2024-11-08
+D-10326,kwame.kim@clearlinehealth.example,22800,Proposal,2026-09-29
+D-10327,hmonroe@pioneerpointlogistics.example,26600,Closed Won,2025-12-23
+D-10328,lucia@silverpointfoods.example,65200,Proposal,2027-01-04
+D-10329,owen.everett@embercrestroofing.example,50300,Negotiation,2026-11-05
+D-10330,ronan.garcia@silverpointlogistics.example,65000,Prospecting,2026-11-17
+D-10331,kwame.kim@clearlinehealth.example,8100,Closed Won,2024-06-16
+D-10332,TASHFORD@BLUEPATHLABS.EXAMPLE,86700,Closed Lost,2026-06-02
+D-10333,yuki@tidalstoneroofing.example,85100,Closed Lost,2025-03-27
+D-10334,toyelaran@harborstonelegal.example,29200,Closed Lost,2025-01-24
+D-10335,daniel.weber@granitefieldbuilders.example,81000,Proposal,2026-12-24
+D-10336,ahaddad@northwavelabs.example,14800,Negotiation,2027-01-10
+D-10337,RUBY.DELGADO@SUMMITCRESTDENTAL.EXAMPLE,102600,Closed Lost,2025-04-11
+D-10338,toyelaran@lumenfieldhealth.example,96900,Closed Lost,2024-11-28
+D-10339,ronan.walsh@tidalstoneroofing.example,45900,Closed Won,2025-04-07
+D-10340,KWAME.HUGHES@MAPLELINEANALYTICS.EXAMPLE,63200,Proposal,2026-11-11
+D-10341,mateo.park@maplestonelogistics.example,23000,Negotiation,2026-09-29
+D-10342,,51800,Closed Won,2024-12-08
+D-10343,dtran@willowgatemarine.example,87800,Closed Won,2026-05-19
+D-10344,rhughes@embercrestroofing.example,9000,Negotiation,2026-12-10
+D-10345,malik@lumenpathhealth.example,115700,Closed Won,2025-07-25
+D-10346,tessa.takahashi@ironlinedental.example,100400,Proposal,2027-02-01
+D-10347,daniel.ferreira@coppercrestanalytics.example,77200,Closed Lost,2024-03-04
+D-10348,caleb@aspenpathhealth.example,116900,Prospecting,2027-01-25
+D-10349,aisha@bluebrookanalytics.example,76600,Closed Lost,2025-11-18
+D-10350,ronan.delgado@harborridgedental.example,15500,Closed Lost,2025-12-23
+D-10351,nora.kaur@granitewaveanalytics.example,113900,Proposal,2026-11-09
+D-10352,hugo.ingram@coralpathbuilders.example,65400,Proposal,2027-03-18
+D-10353,ronan.takahashi@clearlinelabs.example,80500,Proposal,2026-11-25
+D-10354,isaac@aspenwavelabs.example,66500,Negotiation,2026-12-07
+D-10355,declan.everett@brightgateanalytics.example,4300,Closed Lost,2025-08-02
+D-10356,hugo.duarte@cedargaterealty.example,29700,Closed Won,2024-08-08
+D-10357,isaac.holloway@ironpointrealty.example,57700,Closed Won,2024-09-17
+D-10358,zara@summitridgefoods.example,53100,Closed Lost,2024-07-19
+D-10359,gdubois@lumenridgelabs.example,56200,Closed Won,2024-08-03
+D-10360,handersen@aspenridgelegal.example,44800,Proposal,2027-03-09
+D-10361,ethan.lindgren@falconpathfoods.example,84200,Proposal,2027-02-02
+D-10362,leah.romano@clearstonedental.example,41300,Closed Lost,2025-04-27
+D-10363,cvarga@silverstoneanalytics.example,13500,Closed Lost,2025-05-09
+D-10364,declan.whitlock@bluecrestlabs.example,31600,Prospecting,2027-01-18
+D-10365,mateo@silverpointlogistics.example,45900,Prospecting,2026-12-19
+D-10366,ruby@pioneerridgerealty.example,53000,Prospecting,2026-11-25
+D-10367,emonroe@willowwavelegal.example,57400,Closed Lost,2024-04-14
+D-10368,hannah.lindgren@pioneerstonefoods.example,55000,Closed Lost,2024-10-20
+D-10369,ivy.nash@pioneerbrookmarine.example,44700,Closed Lost,2024-11-05
+D-10370,marcus.becker@maplecrestlabs.example,101500,Proposal,2026-12-09
+D-10371,gabriel.byrne@lumenbrookfoods.example,19700,Closed Won,2026-09-01
+D-10372,elijah.mensah@northstonehealth.example,27700,Closed Lost,2025-05-28
+D-10373,lreyes@maplefieldlogistics.example,16600,Closed Won,2026-08-05
+D-10374,nmensah@northridgehealth.example,101400,Closed Lost,2024-05-07
+D-10375,dreyes@maplestonemarine.example,6800,Closed Lost,2025-03-06
+D-10376,aisha@ironbrookmedia.example,105600,Proposal,2026-12-21
+D-10377,hugo.nguyen@granitefielddental.example,36400,Prospecting,2027-01-28
+D-10378,ruby.delgado@summitcrestdental.example,81900,Prospecting,2026-12-25
+D-10379,noahkaur33@mailbox.example,91100,Negotiation,2027-03-14
+D-10380,liam.duarte@lumenridgeroofing.example,66100,Proposal,2027-01-07
+D-10381,hannah.weber@clearridgeroofing.example,43700,Proposal,2027-01-03
+D-10382,iris.rossi@falconfieldrealty.example,19000,Prospecting,2027-01-22
+D-10383,MARIA.KAPLAN@ASPENBROOKLEGAL.EXAMPLE,86600,Proposal,2026-10-14
+D-10384,malik.varga@lumenpathmedia.example,22300,Closed Won,2026-03-20
+D-10385,lucia@silverpointfoods.example,46400,Proposal,2026-10-20
+D-10386,,108700,Negotiation,2026-11-05
+D-10387,EMILY.DUBOIS@LUMENPATHMEDIA.EXAMPLE,54600,Closed Lost,2025-04-27
+D-10388,daniel@clearstonelabs.example,83800,Prospecting,2027-01-23
+D-10389,mia@coralgatedental.example,10100,Closed Lost,2025-09-28
+D-10390,aadeyemi@cedarcrestfoods.example,34700,Prospecting,2026-10-12
+D-10391,nadia.sorensen@aspenwavelegal.example,29100,Prospecting,2026-11-24
+D-10392,owen.everett@embercrestroofing.example,103700,Proposal,2027-01-09
+D-10393,sadie@lumenpathanalytics.example,14500,Closed Won,2024-08-22
+D-10394,tessa.kaur@cedarridgeroofing.example,89100,Closed Lost,2024-10-23
+D-10395,ronan@granitepathmedia.example,20300,Closed Lost,2024-05-29
+D-10396,lucas.duarte@harborpathroofing.example,29500,Prospecting,2027-02-06
+D-10397,ysato@northwavelogistics.example,91600,Prospecting,2026-10-01
+D-10398,ethan@granitefieldlogistics.example,87600,Closed Lost,2025-09-17
+D-10399,tobias.keller@coralbrookroofing.example,89200,Prospecting,2026-11-24
+D-10400,lucia@lumenridgeroofing.example,89800,Negotiation,2026-10-09
+D-10401,ethan.ingram@bluepathmarine.example,25300,Negotiation,2027-02-19
+D-10402,nadia.hughes@summitridgefoods.example,73700,Proposal,2027-02-24
+D-10403,nora.holloway@summitcrestdental.example,118500,Closed Won,2026-05-29
+D-10404,andre.holloway@emberlinelabs.example,31300,Proposal,2027-01-29
+D-10405,jsilva@willowcrestlogistics.example,82400,Closed Won,2025-07-24
+D-10406,iris.varga@clearcrestroofing.example,11100,Negotiation,2027-03-16
+D-10407,ethan.mbeki@aspenpathmarine.example,21000,Prospecting,2026-09-25
+D-10408,pcastillo@tidallinehealth.example,111000,Closed Won,2026-08-16
+D-10409,simon.ferreira@northfielddental.example,2000,Closed Won,2025-01-08
+D-10410,LLINDGREN@FALCONFIELDLOGISTICS.EXAMPLE,75600,Negotiation,2027-03-27
+D-10411,aokafor@emberfielddental.example,85900,Closed Won,2026-09-13
+D-10412,ivy.duarte@harborpointbuilders.example,99600,Closed Lost,2025-01-01
+D-10413,jade.pryor@ironpointrealty.example,49000,Proposal,2027-03-24
+D-10414,andre@pioneerpointlogistics.example,14600,Closed Lost,2026-05-03
+D-10415,ada.calder@granitewaveanalytics.example,56000,Prospecting,2027-02-23
+D-10416,felix.romano@tidalbrookfoods.example,65100,Negotiation,2026-11-30
+D-10417,iris.tran@clearstoneanalytics.example,22700,Closed Lost,2025-12-29
+D-10418,,50400,Prospecting,2027-02-14
+D-10419,nora.fitzgerald@willowbrookrealty.example,95300,Closed Lost,2025-06-07
+D-10420,rafael.park@maplefieldlogistics.example,113700,Closed Lost,2025-11-30
+D-10421,GRACE@WILLOWLINEANALYTICS.EXAMPLE,4800,Proposal,2026-10-03
+D-10422,samuel.brennan@cedarstonelegal.example,111800,Closed Won,2025-11-28
+D-10423,vlowry@harborfieldlogistics.example,68400,Closed Won,2024-10-05
+D-10424,rafael.park@maplefieldlogistics.example,71100,Negotiation,2027-03-24
+D-10425,simon.haddad@summitbrooklegal.example,111400,Closed Won,2026-04-15
+D-10426,JULIAN.NASH@GRANITEFIELDDENTAL.EXAMPLE,13400,Negotiation,2027-02-12
+D-10427,ivy.romano@copperpathroofing.example,20400,Closed Won,2025-05-21
+D-10428,IRIS.CHEN@CEDARPOINTHEALTH.EXAMPLE,89900,Prospecting,2026-12-08
+D-10429,mateo.rossi@bluepathlabs.example,26800,Closed Won,2025-06-27
+D-10430,lucia.jansen@granitefieldbuilders.example,76500,Closed Lost,2024-01-15
+D-10431,ELIJAH.JANSEN@ASPENBROOKLEGAL.EXAMPLE,51600,Negotiation,2027-02-27
+D-10432,diego.ashford@emberfieldlabs.example,8000,Closed Won,2026-08-30
+D-10433,,24400,Proposal,2027-03-13
+D-10434,,54000,Closed Won,2024-10-03
+D-10435,fkaur@clearfieldbuilders.example,64900,Negotiation,2026-12-09
+D-10436,smarsh@maplestonemarine.example,2600,Proposal,2027-03-30
+D-10437,tessa.varga@aspenlineanalytics.example,80300,Negotiation,2027-02-28
+D-10438,theo.lowry@cedarpathfoods.example,15600,Negotiation,2026-12-11
+D-10439,hugo.keller@lumencrestfoods.example,59800,Closed Won,2025-09-18
+D-10440,hferreira@falconstoneanalytics.example,43400,Negotiation,2026-11-02
+D-10441,kwame.mbeki@northlinedental.example,46100,Closed Won,2026-08-29
+D-10442,yuki.reyes@emberstonemedia.example,90500,Prospecting,2026-11-21
+D-10443,grace@harborfieldmarine.example,70500,Proposal,2026-12-18
+D-10444,carlos.hughes@bluecrestlabs.example,48200,Proposal,2026-11-11
+D-10445,hugo.rossi@maplewaveanalytics.example,58400,Prospecting,2026-12-11
+D-10446,lreyes@summitstonebuilders.example,39700,Closed Won,2024-10-18
+D-10447,grace@cedarpointmarine.example,36500,Negotiation,2026-11-28
+D-10448,kwame.jansen@embercrestlabs.example,75700,Proposal,2026-10-19
+D-10449,sdubois@willowbrookrealty.example,4200,Negotiation,2026-11-21
+D-10450,VICTOR@EMBERLINELABS.EXAMPLE,65700,Closed Won,2026-06-15
+D-10451,ethan.sorensen@tidalwavedental.example,37900,Closed Lost,2024-12-09
+D-10452,diegobrennan45@mailbox.example,49100,Proposal,2026-10-23
+D-10453,lmonroe@copperwaveroofing.example,17100,Proposal,2027-03-08
+D-10454,ethannguyen27@mailbox.example,117700,Prospecting,2027-01-22
+D-10455,mayanovak75@mailbox.example,24700,Prospecting,2027-02-16
+D-10456,fkaur@clearfieldbuilders.example,45100,Proposal,2026-09-26
+D-10457,theo.lowry@cedarpathfoods.example,4900,Closed Lost,2026-08-31
+D-10458,noah.kaur@maplefieldlogistics.example,55100,Closed Lost,2024-08-12
+D-10459,nora@willowgatemedia.example,46800,Prospecting,2027-03-20
+D-10460,daniel.santos@granitebrooklegal.example,107500,Prospecting,2027-02-24
+D-10461,sofia.hughes@granitebrooklegal.example,94900,Negotiation,2026-11-02
+D-10462,noah.holloway@maplewaveanalytics.example,63000,Proposal,2027-03-19
+D-10463,daniel.park@ironpathlabs.example,57100,Negotiation,2026-12-10
+D-10464,randersen@willowbrookrealty.example,81800,Closed Won,2024-03-11
+D-10465,maria@lumencrestfoods.example,68300,Negotiation,2027-02-25
+D-10466,malik@clearlinelabs.example,83700,Proposal,2026-11-04
+D-10467,lkaplan@coralgatedental.example,17000,Closed Won,2025-09-13
+D-10468,iris.tran@clearstoneanalytics.example,28600,Closed Lost,2026-06-24
+D-10469,malikmensah88@mailbox.example,16400,Closed Won,2024-05-03
+D-10470,msilva@cedarpathfoods.example,4400,Proposal,2026-12-02
+D-10471,JLOWRY@MAPLELINEMARINE.EXAMPLE,85800,Closed Lost,2024-02-20
+D-10472,clara.hale@silverpointlogistics.example,14500,Closed Lost,2024-12-16
+D-10473,ivylindgren10@mailbox.example,40100,Closed Won,2025-09-21
+D-10474,tobias.lindgren@aspenpathmarine.example,24300,Closed Lost,2025-10-27
+D-10475,priya@silverpointfoods.example,14100,Prospecting,2027-03-17
+D-10476,toyelaran@lumenfieldhealth.example,33700,Closed Lost,2026-05-03
+D-10477,ltakahashi@lumenpathanalytics.example,53700,Closed Won,2025-02-04
+D-10478,marcus.walsh@silverbrookroofing.example,19300,Closed Won,2026-07-21
+D-10479,tessa.ibrahim@northstonehealth.example,5600,Prospecting,2027-02-09
+D-10480,yukiweber39@mailbox.example,86700,Closed Lost,2025-02-27
+D-10481,malik@clearlinelabs.example,91100,Negotiation,2026-09-30
+D-10482,esme.pryor@granitegatehealth.example,99300,Negotiation,2026-10-05
+D-10483,mateo.garcia@emberlineanalytics.example,67500,Proposal,2027-01-19
+D-10484,aisha.weber@ironfieldfoods.example,104300,Closed Won,2024-11-11
+D-10485,ethan@cedarwaverealty.example,77900,Proposal,2026-11-10
+D-10486,esme.sato@cedarwaverealty.example,67000,Closed Lost,2025-08-26
+D-10487,james@silvergatemarine.example,35100,Proposal,2026-11-28
+D-10488,lbecker@granitepointfoods.example,107000,Prospecting,2027-02-13
+D-10489,CHLOE@FALCONCRESTFOODS.EXAMPLE,44400,Proposal,2026-11-14
+D-10490,kwame@falconfieldlogistics.example,44000,Negotiation,2027-01-25
+D-10491,naomi.reyes@willowlinefoods.example,64000,Closed Won,2025-06-15
+D-10492,hannah@aspenwavelegal.example,79500,Negotiation,2026-10-18
+D-10493,rafael@emberfieldlabs.example,102100,Closed Won,2024-10-12
+D-10494,EMBEKI@ASPENWAVELEGAL.EXAMPLE,48900,Negotiation,2026-12-23
+D-10495,zhughes@northwavelegal.example,89900,Prospecting,2026-09-29
+D-10496,aisha@lumenridgeroofing.example,112200,Prospecting,2027-03-14
+D-10497,caleb.whitlock@willowridgefoods.example,99600,Prospecting,2027-02-02
+D-10498,omar.hale@harborstonelegal.example,53100,Closed Lost,2024-08-29
+D-10499,owen.okafor@lumenbrookfoods.example,19000,Prospecting,2027-03-07
+D-10500,ELENA.CHEN@WILLOWGATEMEDIA.EXAMPLE,20800,Prospecting,2026-11-03
+D-10501,mduarte@falconwavebuilders.example,91900,Negotiation,2027-03-24
+D-10502,,28200,Negotiation,2027-03-05
+D-10503,samuel.patel@willowstoneanalytics.example,86900,Proposal,2026-12-31
+D-10504,victor@pioneercrestbuilders.example,49500,Closed Won,2024-06-28
+D-10505,liam.becker@willowlinebuilders.example,65700,Closed Won,2024-07-13
+D-10506,marcus.silva@ironstonemarine.example,46500,Closed Lost,2025-06-29
+D-10507,samuel.novak@irongatemedia.example,44900,Closed Lost,2024-08-29
+D-10508,ecalder@northfieldmarine.example,72800,Proposal,2027-02-13
+D-10509,ivy.lindgren@coppercrestroofing.example,95000,Closed Won,2025-03-27
+D-10510,,103600,Negotiation,2027-03-29
+D-10511,lucas@copperpathroofing.example,77800,Proposal,2027-03-14
+D-10512,gabrielmbeki40@mailbox.example,84600,Closed Lost,2024-04-23
+D-10513,tnguyen@emberfieldmarine.example,35200,Prospecting,2027-01-24
+D-10514,cvarga@silverstoneanalytics.example,85200,Closed Lost,2024-12-24
+D-10515,esme.becker@pioneergatehealth.example,30400,Prospecting,2026-12-15
+D-10516,owen@willowstoneanalytics.example,62600,Closed Won,2024-07-26
+D-10517,theo@aspenridgeroofing.example,18800,Closed Lost,2025-11-18
+D-10518,nweber@falconpathfoods.example,88500,Negotiation,2027-01-16
+D-10519,noah.larsen@cedarpointmarine.example,14800,Closed Won,2025-05-28
+D-10520,nora.kaur@granitewaveanalytics.example,22200,Negotiation,2026-12-21
+D-10521,daniel.weber@granitefieldbuilders.example,79600,Closed Lost,2026-02-09
+D-10522,grace.fitzgerald@silverridgelegal.example,107600,Proposal,2026-12-20
+D-10523,JULIAN@EMBERLINELABS.EXAMPLE,60900,Closed Won,2025-04-12
+D-10524,esorensen@falconlinehealth.example,2400,Closed Lost,2025-12-28
+D-10525,ESME.GARCIA@ASPENPATHMARINE.EXAMPLE,23000,Closed Lost,2024-02-23
+D-10526,nora@willowgatemedia.example,17900,Closed Lost,2026-04-03
+D-10527,yuki@willowstoneanalytics.example,97500,Closed Won,2026-02-23
+D-10528,hugo.ibrahim@willowridgefoods.example,113500,Closed Lost,2026-02-28
+D-10529,ada.duarte@willowbrookmarine.example,39100,Closed Lost,2025-10-20
+D-10530,noahfitzgerald19@mailbox.example,61000,Negotiation,2026-10-14
+D-10531,tobias.kaur@summitcrestbuilders.example,90300,Closed Lost,2025-11-13
+D-10532,grace@cedarpointmarine.example,66300,Closed Lost,2025-01-07
+D-10533,simon@harborpathmarine.example,76900,Closed Won,2024-06-28
+D-10534,nweber@falconpathfoods.example,19100,Negotiation,2026-09-28
+D-10535,esantos@northwavelogistics.example,7000,Closed Lost,2026-07-11
+D-10536,ivycosta36@mailbox.example,105300,Proposal,2026-12-24
+D-10537,iris.rossi@falconfieldrealty.example,87700,Negotiation,2027-03-17
+D-10538,emensah@tidalbrookfoods.example,92500,Prospecting,2027-01-06
+D-10539,clarsen@aspenbrooklegal.example,51800,Negotiation,2026-11-18
+D-10540,carlos.keller@northlinehealth.example,78400,Closed Won,2025-09-21
+D-10541,,98100,Closed Won,2024-12-09
+D-10542,aisha.ferreira@clearlinelabs.example,8500,Prospecting,2026-12-23
+D-10543,declan.costa@harborfieldmarine.example,50300,Proposal,2027-03-10
+D-10544,simon.haddad@summitbrooklegal.example,79900,Negotiation,2027-02-14
+D-10545,liam.becker@willowlinebuilders.example,97100,Negotiation,2027-02-11
+D-10546,ronan@aspenridgeroofing.example,105900,Proposal,2026-12-17
+D-10547,tobias@summitcrestdental.example,103700,Closed Won,2024-11-04
+D-10548,ada.duarte@willowbrookmarine.example,58000,Closed Won,2025-07-24
+D-10549,jade.takahashi@northfielddental.example,6300,Proposal,2027-02-21
+D-10550,,116500,Prospecting,2026-10-11
+D-10551,grace.keller@bluegatemarine.example,103700,Prospecting,2026-11-09
+D-10552,ada.kowalski@coppergatemarine.example,60100,Prospecting,2027-03-30
+D-10553,fmoreau@aspenpathhealth.example,29900,Negotiation,2027-01-05
+D-10554,hugo.duarte@cedargaterealty.example,58100,Closed Won,2026-05-15
+D-10555,emilyoyelaran68@mailbox.example,110700,Proposal,2026-11-08
+D-10556,nora.hughes@ironpointrealty.example,103100,Negotiation,2026-11-09
+D-10557,mateo.becker@willowwavelegal.example,89600,Closed Won,2025-07-07
+D-10558,mcastillo@cedarpointhealth.example,25300,Negotiation,2026-09-29
+D-10559,fdubois@willowlineanalytics.example,64000,Closed Won,2025-09-30
+D-10560,julian@granitefieldlogistics.example,92700,Closed Lost,2026-04-25
+D-10561,mmonroe@clearcrestroofing.example,100800,Closed Lost,2024-04-28
+D-10562,diego.patel@falconfieldbuilders.example,96300,Closed Lost,2024-07-17
+D-10563,hugo.duarte@cedargaterealty.example,48100,Closed Won,2025-11-30
+D-10564,zara@summitridgefoods.example,78600,Closed Won,2026-03-13
+D-10565,ymensah@granitepathmedia.example,69900,Closed Lost,2024-05-11
+D-10566,sandersen@harborlineanalytics.example,117900,Closed Lost,2025-09-22
+D-10567,ronancalder67@mailbox.example,78700,Closed Lost,2026-07-09
+D-10568,mariatran23@mailbox.example,50300,Closed Won,2024-03-05
+D-10569,tessa.lopez@clearstonelabs.example,71600,Proposal,2027-03-09
+D-10570,LEAH@IRONPATHLABS.EXAMPLE,64900,Negotiation,2026-11-16
+D-10571,grace@cedarpointmarine.example,78800,Prospecting,2026-11-24
+D-10572,sofia.hughes@granitebrooklegal.example,99300,Closed Won,2025-04-14
+D-10573,avanovak81@mailbox.example,88000,Proposal,2026-11-24
+D-10574,marcus.becker@maplecrestlabs.example,22100,Proposal,2026-11-14
+D-10575,ronan@granitepathmedia.example,14800,Closed Won,2024-08-21
+D-10576,nora.jansen@ironpathlabs.example,93300,Closed Won,2026-06-15
+D-10577,,34300,Closed Won,2024-12-06
+D-10578,AISHA.WEBER@IRONFIELDFOODS.EXAMPLE,21000,Negotiation,2026-11-10
+D-10579,isaac.garcia@cedarpointlogistics.example,13600,Closed Won,2026-08-11
+D-10580,hwhitlock@willowbrookrealty.example,113200,Negotiation,2026-11-06
+D-10581,aisha@emberlineroofing.example,9000,Closed Lost,2026-01-24
+D-10582,mateo.kaur@northfieldmarine.example,103900,Closed Won,2025-09-16
+D-10583,tobias@summitridgerealty.example,64300,Closed Lost,2024-09-27
+D-10584,,59500,Closed Lost,2024-12-12
+D-10585,gabriel.mbeki@granitebrookdental.example,69000,Proposal,2027-01-26
+D-10586,sadie.castillo@clearridgeroofing.example,37200,Closed Lost,2026-06-19
+D-10587,jferreira@lumenstoneanalytics.example,57900,Closed Lost,2024-06-18
+D-10588,yuki@willowstoneanalytics.example,13700,Closed Lost,2026-04-30
+D-10589,dcalder@coralcrestrealty.example,106500,Closed Lost,2024-04-22
+D-10590,echen@willowwavelegal.example,34200,Proposal,2026-10-16
+D-10591,mateo.rossi@bluepathlabs.example,101000,Closed Won,2025-09-18
+D-10592,caleb@pioneerfieldhealth.example,97200,Closed Lost,2025-06-15
+D-10593,noah@silvergatelogistics.example,42700,Negotiation,2027-01-01
+D-10594,malik.delgado@clearridgeroofing.example,51100,Closed Lost,2025-12-07
+D-10595,daniel.andersen@coppercrestroofing.example,119500,Prospecting,2027-02-06
+D-10596,ivy@aspenpathhealth.example,56600,Closed Won,2024-07-21
+D-10597,carlosdelgado96@mailbox.example,110300,Prospecting,2027-01-30
+D-10598,owen@cedarcrestfoods.example,76600,Negotiation,2026-10-16
+D-10599,mateo.kaur@northfieldmarine.example,106100,Closed Won,2025-03-11
+D-10600,maya.andersen@lumencrestroofing.example,95100,Prospecting,2026-10-28
+D-10601,nora@cedarwavebuilders.example,92600,Negotiation,2027-02-27
+D-10602,malik.ferreira@harborstonedental.example,94700,Prospecting,2026-09-25
+D-10603,elijah.jansen@aspenbrooklegal.example,25800,Negotiation,2026-10-14
+D-10604,maria@falconpointdental.example,27300,Prospecting,2027-02-05
+D-10605,simon.haddad@summitbrooklegal.example,48700,Closed Lost,2025-12-22
+D-10606,tobias@copperlinelabs.example,109300,Proposal,2027-01-03
+D-10607,sadie@northfieldmarine.example,39700,Closed Won,2025-10-12
+D-10608,lhughes@coppercrestroofing.example,79200,Closed Lost,2025-06-26
+D-10609,THEO.LOWRY@CEDARPATHFOODS.EXAMPLE,43500,Proposal,2026-10-18
+D-10610,chloe@willowbrookrealty.example,92000,Negotiation,2027-01-09
+D-10611,mweber@summitcrestlogistics.example,98700,Proposal,2026-11-18
+D-10612,esme.pryor@granitegatehealth.example,50500,Closed Won,2025-03-21
+D-10613,nmarsh@tidalgatelogistics.example,40200,Prospecting,2027-03-18
+D-10614,declan.costa@harborfieldmarine.example,16600,Closed Lost,2026-03-12
+D-10615,emily@brightgateanalytics.example,24800,Closed Lost,2024-09-17
+D-10616,mia@coralgatedental.example,106200,Negotiation,2026-12-10
+D-10617,leahkaplan72@mailbox.example,30200,Closed Lost,2024-07-04
+D-10618,sadie.castillo@summitcrestbuilders.example,112400,Proposal,2027-03-04
+D-10619,jade@ironstonemarine.example,100200,Negotiation,2026-12-02
+D-10620,lucia@lumenridgeroofing.example,109500,Proposal,2027-03-18
+D-10621,dnovak@willowpointroofing.example,106600,Closed Lost,2025-10-04
+D-10622,priya.marsh@embercrestroofing.example,119900,Prospecting,2026-11-16
+D-10623,nchen@bluegatemarine.example,103200,Proposal,2026-10-17
+D-10624,ivy.haddad@bluecrestlabs.example,70500,Closed Lost,2024-10-04
+D-10625,ada.calder@granitewaveanalytics.example,60400,Prospecting,2027-01-11
+D-10626,omar@copperpathroofing.example,89700,Closed Won,2025-06-07
+D-10627,priya.park@bluegateanalytics.example,99500,Closed Won,2024-03-14
+D-10628,embeki@aspenwavelegal.example,109100,Closed Won,2024-11-02
+D-10629,samuel.lowry@ironpathlabs.example,115400,Closed Won,2025-07-08
+D-10630,mia.chen@cedarpathfoods.example,108600,Closed Lost,2025-08-16
+D-10631,grace@cedarpointmarine.example,13600,Negotiation,2026-12-20
+D-10632,ladeyemi@emberwavehealth.example,13400,Negotiation,2026-12-04
+D-10633,nora.fitzgerald@willowbrookrealty.example,14600,Closed Lost,2026-04-10
+D-10634,rafael.novak@northridgehealth.example,80800,Prospecting,2026-12-27
+D-10635,nadia.reyes@cedarwavebuilders.example,8100,Prospecting,2026-11-28
+D-10636,pcastillo@tidallinehealth.example,12300,Proposal,2026-09-29
+D-10637,declan.mensah@granitepathmedia.example,81500,Closed Lost,2024-01-17
+D-10638,,73100,Negotiation,2027-01-20
+D-10639,danielkaplan50@mailbox.example,119300,Closed Won,2025-05-22
+D-10640,chale@brightstonefoods.example,87700,Prospecting,2026-11-12

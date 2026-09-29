@@ -1,0 +1,119 @@
+{
+  "id": "project_tracker",
+  "version": "0.1.0",
+  "name": "Project tracker",
+  "looks_like": "a task list or project tracker",
+  "summary": "Task lists, project plans, issue and RAID logs: who owns what, its status, and when it is due.",
+  "full": false,
+  "roles": {
+    "task": {"label": "Task", "headers": ["task", "task name", "title", "summary", "item", "deliverable", "activity", "action item", "work item", "name", "description"], "type": "text", "kind": "entity", "entity": "task"},
+    "task_id": {"label": "Task ID", "headers": ["id", "key", "issue key", "task id", "task #", "wbs", "ticket", "ticket #", "item id", "issue id"], "type": "id", "kind": "identifier"},
+    "status": {"label": "Status", "headers": ["status", "task status", "state", "progress status"], "type": "text", "kind": "dimension"},
+    "owner": {"label": "Owner", "headers": ["owner", "task owner", "assignee", "assigned to", "responsible", "lead", "who", "resource", "resource names"], "type": "text", "kind": "dimension"},
+    "start_date": {"label": "Start", "headers": ["start", "start date", "begin", "planned start"], "type": "date", "kind": "temporal"},
+    "due_date": {"label": "Due", "headers": ["due", "due date", "end", "end date", "finish", "finish date", "target date", "deadline"], "type": "date", "kind": "temporal"},
+    "baseline": {"label": "Baseline date", "headers": ["baseline", "baseline start", "baseline finish", "baseline end", "original due", "original due date", "original date", "planned finish"], "type": "date", "kind": "temporal"},
+    "percent_done": {"label": "% complete", "headers": ["complete", "percent complete", "pct complete", "done", "progress"], "type": "number", "kind": "metric", "additive": false, "unit": "percent"},
+    "priority": {"label": "Priority", "headers": ["priority", "severity", "importance", "urgency"], "type": "text", "kind": "dimension"},
+    "rag": {"label": "RAG status", "headers": ["rag", "rag status", "health", "red amber green", "traffic light"], "type": "text", "kind": "dimension"},
+    "phase": {"label": "Phase or milestone", "headers": ["phase", "milestone", "epic", "workstream", "stream", "sprint", "stage", "section", "parent"], "type": "text", "kind": "dimension"},
+    "depends_on": {"label": "Depends on", "headers": ["predecessor", "predecessors", "depends on", "dependency", "dependencies", "blocked by", "blocking"], "type": "text", "kind": "attribute"},
+    "estimate": {"label": "Estimate", "headers": ["estimate", "story points", "points", "effort", "hours estimate", "est hours", "estimated hours", "duration"], "type": "number", "kind": "metric", "additive": true},
+    "raid_type": {"label": "Item type", "headers": ["type", "raid", "item type", "issue type", "log type", "category"], "type": "text", "kind": "dimension"}
+  },
+  "detect": {
+    "required_any": [["task", "task_id"], ["status", "due_date", "owner", "percent_done"]],
+    "weights": {"percent_done": 3, "status": 2, "owner": 2, "due_date": 2, "rag": 2, "depends_on": 2, "phase": 1, "estimate": 1, "raid_type": 1, "baseline": 1, "priority": 1, "start_date": 1, "task": 1, "task_id": 1},
+    "negatives": ["deal_amount", "pack", "debit", "downtime"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "status_update", "label": "Get a status update", "desc": "I'd write a one-page status with what's late"},
+    {"id": "find_risk", "label": "Find what's at risk", "desc": "I'd flag late, blocked and slipping items with owners"},
+    {"id": "balance_load", "label": "Balance the workload", "desc": "I'd show who has too much"}
+  ],
+  "questions": [
+    {
+      "id": "done_statuses",
+      "header": "Done means",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["mixed_values:status"],
+      "prompt": "Which of the {count:status} values in {role:status}, such as {values:status}, mean the work is finished?",
+      "options": [
+        {"id": "done_only", "label": "Done only", "desc": "Done or complete"},
+        {"id": "closed_too", "label": "Any finished status", "desc": "Any finished status counts"},
+        {"id": "type_them", "label": "I'll list them"}
+      ],
+      "why": "Counts of unfinished and overdue work depend on which statuses mean finished.",
+      "unblocks": ["status_page", "risk_list", "workload"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["status"], "statement": "Finished work in {role:status}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+180d"
+    },
+    {
+      "id": "rag_meaning",
+      "header": "Red means",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["has_role:rag"],
+      "prompt": "{role:rag} has {count:rag} values, such as {values:rag}. What makes an item Red instead of Amber? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "late", "label": "It will miss its date"},
+        {"id": "blocked", "label": "It is blocked"},
+        {"id": "judgment", "label": "The owner's judgment"}
+      ],
+      "why": "Red and Amber are judgment calls, and the at-risk list sorts on them.",
+      "unblocks": ["risk_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["rag"], "statement": "An item is Red rather than Amber when, per the owner: {answer_labels}."},
+      "stale_after": "+180d"
+    },
+    {
+      "id": "dates_basis",
+      "header": "Dates are",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["has_role:due_date"],
+      "prompt": "Are the {rows:due_date} dates in {role:due_date} the original plan or the latest estimate?",
+      "options": [
+        {"id": "original", "label": "The original plan"},
+        {"id": "latest", "label": "The latest estimate"},
+        {"id": "mixed", "label": "A mix of both"}
+      ],
+      "why": "Slippage can only be measured against a plan that did not move.",
+      "unblocks": ["risk_list", "status_page"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["due_date"], "statement": "Dates in {role:due_date} are, per the owner: {answer_labels}."},
+      "stale_after": "+90d"
+    }
+  ],
+  "outputs": [
+    {"id": "status_page", "title": "Status page", "pitch": "Status page: what is done, in progress, late and blocked, by phase and owner, on one page.", "requires": ["has_role:status"], "needs_answer": ["done_statuses"], "goals": ["status_update"], "value": 3, "job": "analysis"},
+    {"id": "risk_list", "title": "At-risk list", "pitch": "At-risk list: late, blocked and slipping items with owners and how far behind they are.", "requires": ["has_role:due_date"], "needs_answer": ["done_statuses", "dates_basis"], "goals": ["find_risk"], "value": 3, "job": "analysis"},
+    {"id": "workload", "title": "Workload view", "pitch": "Workload view: open items and estimated effort per owner, week by week.", "requires": ["has_role:owner"], "needs_answer": ["done_statuses"], "goals": ["balance_load"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "mixed:status",
+    "mixed:rag",
+    "blank_rate:owner",
+    "blank_rate:due_date",
+    "count_distinct:owner",
+    "date_range:due_date",
+    "duplicates:task_id",
+    "top_share:estimate:owner",
+    "top_share:estimate:phase"
+  ],
+  "graph": {
+    "sentence": "Dots are phases, owners and statuses, with single tasks shown when records are turned on. Lines show who owns what and where it sits. Bigger means more effort.",
+    "entities": ["phase", "owner", "status", "task"],
+    "record_cap": {"phase": 60, "owner": 60, "status": 20, "task": 300},
+    "records": ["task"],
+    "size_by": "estimate",
+    "relations": [
+      {"from": "task", "to": "phase", "label": "part of"},
+      {"from": "owner", "to": "task", "label": "owns"},
+      {"from": "task", "to": "status", "label": "is"}
+    ],
+    "mode": "entities"
+  }
+}

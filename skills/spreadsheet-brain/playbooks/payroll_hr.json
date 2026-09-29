@@ -1,0 +1,129 @@
+{
+  "id": "payroll_hr",
+  "version": "0.1.0",
+  "name": "Payroll or staff roster",
+  "looks_like": "a payroll register or staff roster",
+  "summary": "Staff rosters, payroll registers, timesheets and shift exports: who works where, in what role, for what pay and how many hours.",
+  "full": false,
+  "roles": {
+    "employee_id": {"label": "Employee ID", "headers": ["employee id", "emp id", "employee #", "employee number", "emp #", "emp no", "file #", "file number", "badge", "badge #", "associate id", "worker id", "payroll id"], "type": "id", "kind": "identifier", "entity": "employee"},
+    "employee_name": {"label": "Employee", "headers": ["employee", "employee name", "name", "worker", "worker name", "team member", "staff name", "associate name"], "type": "text", "kind": "attribute"},
+    "hire_date": {"label": "Hire date", "headers": ["hire date", "start date", "date hired", "original hire date", "seniority date", "rehire date"], "type": "date", "kind": "temporal"},
+    "term_date": {"label": "Termination date", "headers": ["termination date", "term date", "end date", "separation date", "last day", "last day worked"], "type": "date", "kind": "temporal"},
+    "department": {"label": "Department", "headers": ["department", "dept", "home department", "cost center", "division"], "type": "text", "kind": "entity", "entity": "department"},
+    "location": {"label": "Location", "headers": ["location", "site", "store", "work location", "branch"], "type": "text", "kind": "entity", "entity": "location"},
+    "job_title": {"label": "Job", "headers": ["job title", "title", "position", "job", "role", "job code", "job name"], "type": "text", "kind": "dimension"},
+    "pay_rate": {"label": "Pay rate", "headers": ["pay rate", "rate", "hourly rate", "wage", "wage rate", "base rate", "rate of pay", "regular rate"], "type": "number", "kind": "metric", "additive": false, "unit": "currency"},
+    "salary": {"label": "Salary", "headers": ["salary", "annual salary", "base salary", "annual pay", "annual comp", "compensation"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "pay_type": {"label": "Pay type", "headers": ["pay type", "pay class", "flsa status", "flsa", "exempt", "exempt status", "hourly or salary", "employee type", "worker type"], "type": "text", "kind": "dimension"},
+    "hours": {"label": "Hours", "headers": ["hours", "regular hours", "reg hours", "reg hrs", "total hours", "total hrs", "hours worked"], "type": "number", "kind": "metric", "additive": true, "unit": "hours"},
+    "ot_hours": {"label": "Overtime hours", "headers": ["ot hours", "ot hrs", "ot", "overtime", "overtime hours", "overtime hrs"], "type": "number", "kind": "metric", "additive": true, "unit": "hours"},
+    "gross_pay": {"label": "Gross pay", "headers": ["gross", "gross pay", "gross wages", "gross earnings", "total gross", "total pay", "earnings"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "check_date": {"label": "Check date", "headers": ["check date", "pay date", "payment date", "paid date"], "type": "date", "kind": "temporal"},
+    "tips": {"label": "Tips", "headers": ["tips", "cash tips", "credit card tips", "charged tips", "declared tips", "tips received", "tip share", "tip out"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "ssn": {"label": "Government ID", "headers": ["ssn", "ss #", "social security", "social security number", "tax id", "sin", "national id"], "type": "id", "kind": "identifier"},
+    "bank": {"label": "Bank details", "headers": ["bank", "bank name", "bank account", "routing", "routing number", "routing #", "account number", "account #", "direct deposit"], "type": "id", "kind": "attribute"}
+  },
+  "detect": {
+    "required_any": [["employee_id", "employee_name"], ["pay_rate", "salary", "hours", "gross_pay", "hire_date", "ot_hours"]],
+    "weights": {"employee_id": 3, "hire_date": 3, "pay_rate": 3, "salary": 2, "pay_type": 2, "ot_hours": 2, "gross_pay": 2, "check_date": 2, "hours": 1, "term_date": 1, "department": 1, "job_title": 1, "employee_name": 1},
+    "negatives": ["deal_amount", "pack", "order_id", "invoice_id"],
+    "confident": 0.5,
+    "candidate": 0.3
+  },
+  "goals": [
+    {"id": "labor_cost", "label": "See labor cost", "desc": "I'd total pay and hours by department, site and week"},
+    {"id": "overtime", "label": "Control overtime", "desc": "I'd find where overtime piles up"},
+    {"id": "turnover", "label": "Understand turnover", "desc": "I'd measure who leaves, when and after how long"}
+  ],
+  "questions": [
+    {
+      "id": "skip_ids",
+      "header": "Skip IDs",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["has_role:ssn"],
+      "prompt": "{role:ssn} ({rows:ssn} rows) looks like government ID numbers. May I skip reading that column entirely?",
+      "options": [
+        {"id": "skip", "label": "Yes, skip it"},
+        {"id": "read", "label": "No, I need it read"}
+      ],
+      "recommend": "skip",
+      "recommend_if": ["has_role:ssn"],
+      "recommend_basis": "Payroll analysis never needs Social Security or tax ID numbers, and skipping the column keeps them out of every output.",
+      "why": "Leaving ID numbers unread is the simplest way to keep them safe.",
+      "unblocks": ["labor_dashboard"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["ssn"], "statement": "The {role:ssn} column is handled this way, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "row_grain",
+      "header": "One row is",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Is each row one person, one paycheck, or one shift?",
+      "options": [
+        {"id": "person", "label": "One person"},
+        {"id": "paycheck", "label": "One paycheck"},
+        {"id": "shift", "label": "One shift or timecard"}
+      ],
+      "why": "Headcount counts people, labor cost sums paychecks, and scheduling reads shifts.",
+      "unblocks": ["labor_dashboard", "ot_hotspots", "turnover_report"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "One row in this sheet is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "headcount_def",
+      "header": "Headcount",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "Who counts in headcount? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "part_time", "label": "Part-time staff"},
+        {"id": "seasonal", "label": "Seasonal staff"},
+        {"id": "contractors", "label": "1099 contractors"}
+      ],
+      "why": "Turnover and labor per head swing widely depending on who is counted.",
+      "unblocks": ["turnover_report", "labor_dashboard"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "Headcount includes, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "labor_dashboard", "title": "Labor cost picture", "pitch": "Labor cost picture: pay and hours by department, location and week, with overtime share.", "requires": ["has_role:gross_pay"], "needs_answer": ["row_grain"], "goals": ["labor_cost"], "value": 3, "job": "analysis"},
+    {"id": "ot_hotspots", "title": "Overtime hotspots", "pitch": "Overtime hotspots: where overtime piles up by department, role and week, with its cost.", "requires": ["has_role:ot_hours"], "needs_answer": ["row_grain"], "goals": ["overtime", "labor_cost"], "value": 3, "job": "analysis"},
+    {"id": "turnover_report", "title": "Turnover and tenure", "pitch": "Turnover and tenure: who leaves, when and after how long, by department and role.", "requires": ["has_role:hire_date", "has_role:term_date"], "needs_answer": ["headcount_def"], "goals": ["turnover"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "top_share:gross_pay:department",
+    "top_share:gross_pay:location",
+    "top_share:ot_hours:department",
+    "spread:pay_rate:job_title:location",
+    "count_distinct:employee_id",
+    "duplicates:employee_id",
+    "blank_rate:term_date",
+    "date_range:hire_date",
+    "date_range:check_date",
+    "mixed:pay_type"
+  ],
+  "graph": {
+    "sentence": "Dots are departments, locations and roles. People appear only when records are turned on. Lines show where each role works. Bigger means more pay.",
+    "entities": ["department", "location", "job_title", "employee_id"],
+    "record_cap": {"department": 60, "location": 60, "job_title": 100, "employee_id": 300},
+    "records": ["employee_id"],
+    "size_by": "gross_pay",
+    "relations": [
+      {"from": "employee_id", "to": "department", "label": "works in"},
+      {"from": "job_title", "to": "department", "label": "sits in"},
+      {"from": "department", "to": "location", "label": "based at"}
+    ],
+    "mode": "entities"
+  },
+  "sensitivity": {
+    "commercial_roles": ["pay_rate", "salary", "gross_pay", "tips"],
+    "private_roles": ["employee_name", "employee_id", "ssn", "bank"]
+  }
+}

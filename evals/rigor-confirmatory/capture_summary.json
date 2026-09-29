@@ -1,0 +1,92 @@
+{
+ "label": "confirm_a1",
+ "per_business": {
+  "landscape": {
+   "counted": 3,
+   "facts": 7,
+   "rate": 0.429,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "dental": {
+   "counted": 3,
+   "facts": 6,
+   "rate": 0.5,
+   "captured_full_both": 6,
+   "checker_agreement": 1.0
+  },
+  "trucking": {
+   "counted": 4,
+   "facts": 7,
+   "rate": 0.571,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "nonprofit": {
+   "counted": 3,
+   "facts": 7,
+   "rate": 0.429,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "gym": {
+   "counted": 4,
+   "facts": 8,
+   "rate": 0.5,
+   "captured_full_both": 8,
+   "checker_agreement": 1.0
+  },
+  "tickets": {
+   "counted": 3,
+   "facts": 7,
+   "rate": 0.429,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "autorepair": {
+   "counted": 2,
+   "facts": 6,
+   "rate": 0.333,
+   "captured_full_both": 6,
+   "checker_agreement": 1.0
+  },
+  "lawfirm": {
+   "counted": 2,
+   "facts": 7,
+   "rate": 0.286,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "construction": {
+   "counted": 3,
+   "facts": 6,
+   "rate": 0.5,
+   "captured_full_both": 6,
+   "checker_agreement": 1.0
+  },
+  "greenhouse": {
+   "counted": 1,
+   "facts": 6,
+   "rate": 0.167,
+   "captured_full_both": 6,
+   "checker_agreement": 1.0
+  },
+  "adspend": {
+   "counted": 5,
+   "facts": 7,
+   "rate": 0.714,
+   "captured_full_both": 7,
+   "checker_agreement": 1.0
+  },
+  "roaster": {
+   "counted": 1,
+   "facts": 6,
+   "rate": 0.167,
+   "captured_full_both": 6,
+   "checker_agreement": 1.0
+  }
+ },
+ "mean_rate": 0.419,
+ "pooled_rate": 0.425,
+ "min_rate": 0.167
+}

@@ -1,0 +1,1498 @@
+{
+ "title": "purchases_2025.xlsx",
+ "subtitle": "Purchase history . 3 tabs . 18,240 rows",
+ "sentence": "Dots are vendors, locations and categories. Lines show who supplies what. Bigger means more spend.",
+ "generated": "2026-09-25",
+ "footer": "Contains data from purchases_2025.xlsx. Local file, no internet. Send the sheet, not this page.",
+ "nodes": [
+  {
+   "id": "ent:vendor:Harbor Foods",
+   "label": "Harbor Foods",
+   "type": "entity",
+   "group": "vendor",
+   "size": 1900,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$1.9M, 38% of spend . 614 items . 4 locations",
+   "notes": [
+    {
+     "statement": "Harbor Foods is 38% of spend, $1.9M across 614 items.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Harbor is our broadline distributor. The contract renews every March.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Harbor Foods lists 14 distribution centers across the Southeast.",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-20",
+     "said_by": "harborfoods.example"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor:Gulfstream Meats",
+   "label": "Gulfstream Meats",
+   "type": "entity",
+   "group": "vendor",
+   "size": 760,
+   "status": "disputed",
+   "source": "computed",
+   "records": false,
+   "summary": "$760K, 15% of spend . 88 items . 3 locations",
+   "notes": [
+    {
+     "statement": "Gulfstream prices beef per case.",
+     "source": "told",
+     "status": "disputed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "1,904 beef lines have unit prices that only make sense per lb, not per case.",
+     "source": "computed",
+     "status": "disputed",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor:Coastline Produce",
+   "label": "Coastline Produce",
+   "type": "entity",
+   "group": "vendor",
+   "size": 820,
+   "status": "may-be-outdated",
+   "source": "computed",
+   "records": false,
+   "summary": "$820K, 16% of spend . 203 items . 4 locations",
+   "notes": [
+    {
+     "statement": "Coastline delivers produce six days a week.",
+     "source": "told",
+     "status": "may-be-outdated",
+     "as_of": "2025-02-10",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Coastline is 16% of spend, mostly produce.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor:Bayview Dairy",
+   "label": "Bayview Dairy",
+   "type": "entity",
+   "group": "vendor",
+   "size": 540,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$540K, 11% of spend . 41 items . 3 locations",
+   "notes": [
+    {
+     "statement": "Bayview Dairy is 11% of spend across 41 items.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor:Palmetto Beverage",
+   "label": "Palmetto Beverage",
+   "type": "entity",
+   "group": "vendor",
+   "size": 420,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "$420K, 8% of spend . 57 items . 4 locations",
+   "notes": [
+    {
+     "statement": "Seabreeze Drinks was the beverage vendor until June 2025.",
+     "source": "told",
+     "status": "superseded",
+     "as_of": "2025-06-30",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Palmetto Beverage took over beverages in July 2025.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor:Keystone Paper & Supply",
+   "label": "Keystone Paper & Supply",
+   "type": "entity",
+   "group": "vendor",
+   "size": 310,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "records": false,
+   "summary": "$310K, 6% of spend . 96 items . 4 locations",
+   "notes": [
+    {
+     "statement": "Keystone looks like the paper and chemicals supplier, going by item names.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "ent:location:Downtown Kitchen",
+   "label": "Downtown Kitchen",
+   "type": "entity",
+   "group": "location",
+   "size": 2100,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$2.1M, 42% of store spend . 9,120 lines",
+   "notes": [
+    {
+     "statement": "Downtown Kitchen is the busiest location: 42% of store spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:location:Beachside Grill",
+   "label": "Beachside Grill",
+   "type": "entity",
+   "group": "location",
+   "size": 1500,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$1.5M, 31% of store spend . 6,480 lines",
+   "notes": [
+    {
+     "statement": "Beachside Grill buys most of the seafood.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:location:Airport Cafe",
+   "label": "Airport Cafe",
+   "type": "entity",
+   "group": "location",
+   "size": 620,
+   "status": "may-be-outdated",
+   "source": "inferred",
+   "records": false,
+   "summary": "$620K . last line 2025-08-31",
+   "notes": [
+    {
+     "statement": "Airport Cafe has no lines after 2025-08-31. It may have closed.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "ent:location:Commissary (CMSY)",
+   "label": "Commissary (CMSY)",
+   "type": "entity",
+   "group": "location",
+   "size": 540,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "$540K of internal transfers . excluded from store spend",
+   "notes": [
+    {
+     "statement": "Location CMSY is the commissary. Its lines are internal transfers and are left out of store spend.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "CMSY lines never carry a vendor invoice number.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Proteins",
+   "label": "Proteins",
+   "type": "entity",
+   "group": "category",
+   "size": 1250,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$1250K of spend",
+   "notes": [
+    {
+     "statement": "Proteins is $1250K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Produce",
+   "label": "Produce",
+   "type": "entity",
+   "group": "category",
+   "size": 780,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$780K of spend",
+   "notes": [
+    {
+     "statement": "Produce is $780K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Dairy",
+   "label": "Dairy",
+   "type": "entity",
+   "group": "category",
+   "size": 520,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$520K of spend",
+   "notes": [
+    {
+     "statement": "Dairy is $520K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Dry goods",
+   "label": "Dry goods",
+   "type": "entity",
+   "group": "category",
+   "size": 610,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$610K of spend",
+   "notes": [
+    {
+     "statement": "Dry goods is $610K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Beverages",
+   "label": "Beverages",
+   "type": "entity",
+   "group": "category",
+   "size": 430,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$430K of spend",
+   "notes": [
+    {
+     "statement": "Beverages is $430K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Paper & disposables",
+   "label": "Paper & disposables",
+   "type": "entity",
+   "group": "category",
+   "size": 260,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$260K of spend",
+   "notes": [
+    {
+     "statement": "Paper & disposables is $260K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Chemicals",
+   "label": "Chemicals",
+   "type": "entity",
+   "group": "category",
+   "size": 120,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "records": false,
+   "summary": "$120K of spend",
+   "notes": [
+    {
+     "statement": "I grouped these by item name. The sheet has no category for them.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "ent:category:Bakery",
+   "label": "Bakery",
+   "type": "entity",
+   "group": "category",
+   "size": 180,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$180K of spend",
+   "notes": [
+    {
+     "statement": "Bakery is $180K of spend.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Detail",
+   "label": "Detail",
+   "type": "sheet",
+   "group": "tab",
+   "size": 900,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "Invoice lines . 18,240 rows . 14 columns",
+   "notes": [
+    {
+     "statement": "One row is one invoice line.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Dates run 2025-01-02 to 2026-06-30.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Price File",
+   "label": "Price File",
+   "type": "sheet",
+   "group": "tab",
+   "size": 520,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Contract prices . 1,108 rows",
+   "notes": [
+    {
+     "statement": "One row per item and vendor, with the contract price.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Summary",
+   "label": "Summary",
+   "type": "sheet",
+   "group": "tab",
+   "size": 380,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "records": false,
+   "summary": "Pivot of Detail by vendor and month",
+   "notes": [
+    {
+     "statement": "Summary looks like a pivot of Detail by vendor and month.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Item #}",
+   "label": "Item #",
+   "type": "column",
+   "group": "column",
+   "size": 600,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Joins Detail to Price File . 97% match",
+   "notes": [
+    {
+     "statement": "Item # joins Detail to Price File. 97% of Detail lines find a match.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Unit price}",
+   "label": "Unit price",
+   "type": "column",
+   "group": "column",
+   "size": 560,
+   "status": "confirmed",
+   "source": "told",
+   "records": false,
+   "summary": "Price per unit of measure",
+   "notes": [
+    {
+     "statement": "Unit price already includes contract deals taken off invoice.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Rebates arrive later as separate credits, so they are not in Unit price.",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Ext price}",
+   "label": "Ext price",
+   "type": "column",
+   "group": "column",
+   "size": 640,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "Qty x Unit price . 212 credit lines",
+   "notes": [
+    {
+     "statement": "Ext price equals Qty x Unit price on 99.2% of lines.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "212 lines are negative. They look like credits.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{UOM}",
+   "label": "UOM",
+   "type": "column",
+   "group": "column",
+   "size": 420,
+   "status": "disputed",
+   "source": "computed",
+   "records": false,
+   "summary": "CS or LB . mixed on beef lines",
+   "notes": [
+    {
+     "statement": "Lines are priced per CS (case) or per LB. Beef lines mix both.",
+     "source": "computed",
+     "status": "disputed",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Vendor}",
+   "label": "Vendor",
+   "type": "column",
+   "group": "column",
+   "size": 360,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "6 vendors",
+   "notes": [
+    {
+     "statement": "Six distinct vendors.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Location}",
+   "label": "Location",
+   "type": "column",
+   "group": "column",
+   "size": 340,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "4 locations incl. the commissary",
+   "notes": [
+    {
+     "statement": "Four locations, one of them the commissary.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Invoice date}",
+   "label": "Invoice date",
+   "type": "column",
+   "group": "column",
+   "size": 300,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "2025-01-02 to 2026-06-30",
+   "notes": [
+    {
+     "statement": "18 months of invoices.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "metric:spend",
+   "label": "Total spend",
+   "type": "metric",
+   "group": "column",
+   "size": 700,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "$4.75M across 18,240 lines",
+   "notes": [
+    {
+     "statement": "Store spend is $4.21M once commissary transfers are left out.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "metric:credits",
+   "label": "Credits",
+   "type": "metric",
+   "group": "column",
+   "size": 260,
+   "status": "unconfirmed",
+   "source": "computed",
+   "records": false,
+   "summary": "-$38K on 212 lines",
+   "notes": [
+    {
+     "statement": "212 credit lines add up to -$38K.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Credits are returns, not rebates.",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "dim:month",
+   "label": "Month",
+   "type": "dimension",
+   "group": "column",
+   "size": 240,
+   "status": "current",
+   "source": "computed",
+   "records": false,
+   "summary": "18 months",
+   "notes": [
+    {
+     "statement": "Spend peaks in March and July.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:10442",
+   "label": "Chicken breast 40 lb (10442)",
+   "type": "record",
+   "group": "item",
+   "size": 220,
+   "status": "current",
+   "source": "computed",
+   "records": true,
+   "summary": "$220K . Harbor Foods",
+   "notes": [
+    {
+     "statement": "Item 10442: $220K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:10876",
+   "label": "Ground beef 80/20 (10876)",
+   "type": "record",
+   "group": "item",
+   "size": 190,
+   "status": "disputed",
+   "source": "computed",
+   "records": true,
+   "summary": "$190K . Gulfstream Meats",
+   "notes": [
+    {
+     "statement": "Item 10876: $190K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Priced per lb on some lines and per case on others.",
+     "source": "computed",
+     "status": "disputed",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:20817",
+   "label": "Romaine hearts 24 ct (20817)",
+   "type": "record",
+   "group": "item",
+   "size": 96,
+   "status": "may-be-outdated",
+   "source": "computed",
+   "records": true,
+   "summary": "$96K . Coastline Produce",
+   "notes": [
+    {
+     "statement": "Item 20817: $96K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Romaine hearts cost three different prices across locations in May 2026.",
+     "source": "computed",
+     "status": "may-be-outdated",
+     "as_of": "2026-05-31",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:31190",
+   "label": "Whole milk 4/1 gal (31190)",
+   "type": "record",
+   "group": "item",
+   "size": 88,
+   "status": "current",
+   "source": "computed",
+   "records": true,
+   "summary": "$88K . Bayview Dairy",
+   "notes": [
+    {
+     "statement": "Item 31190: $88K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:50233",
+   "label": "Clamshell 9 in to-go (50233)",
+   "type": "record",
+   "group": "item",
+   "size": 64,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "records": true,
+   "summary": "$64K . Keystone Paper & Supply",
+   "notes": [
+    {
+     "statement": "Item 50233: $64K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:item:44120",
+   "label": "Cold brew concentrate (44120)",
+   "type": "record",
+   "group": "item",
+   "size": 72,
+   "status": "current",
+   "source": "computed",
+   "records": true,
+   "summary": "$72K . Palmetto Beverage",
+   "notes": [
+    {
+     "statement": "Item 44120: $72K over 18 months.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "link:procurement_contracts.xlsx",
+   "label": "procurement_contracts.xlsx",
+   "type": "link",
+   "group": "file",
+   "size": 300,
+   "status": "unconfirmed",
+   "source": "told",
+   "records": false,
+   "summary": "Another file . contract terms by vendor",
+   "notes": [
+    {
+     "statement": "Contract prices live in procurement_contracts.xlsx, joined on Item #.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-18",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Its Item # column matched 91% of Price File rows when last checked.",
+     "source": "computed",
+     "status": "may-be-outdated",
+     "as_of": "2026-03-02",
+     "said_by": "sb"
+    }
+   ]
+  }
+ ],
+ "links": [
+  {
+   "source": "ent:item:10442",
+   "target": "ent:category:Proteins",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:item:10442",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:item:10876",
+   "target": "ent:category:Proteins",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "ent:item:10876",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:item:20817",
+   "target": "ent:category:Produce",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:item:20817",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:item:31190",
+   "target": "ent:category:Dairy",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "ent:item:31190",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:item:50233",
+   "target": "ent:category:Paper & disposables",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:item:50233",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:item:44120",
+   "target": "ent:category:Beverages",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:item:44120",
+   "type": "relates",
+   "label": "sells",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.8
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:location:Airport Cafe",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:location:Airport Cafe",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "ent:location:Airport Cafe",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:location:Airport Cafe",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.1
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:location:Beachside Grill",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.2
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:location:Airport Cafe",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.1
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "sells to",
+   "status": "current",
+   "weight": 0.1
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:category:Proteins",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:category:Dry goods",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:category:Dairy",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "ent:category:Bakery",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "ent:category:Proteins",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "ent:category:Produce",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "ent:category:Dairy",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "ent:category:Beverages",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:category:Paper & disposables",
+   "type": "relates",
+   "label": "supplies",
+   "status": "current",
+   "weight": 0.7
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "ent:category:Chemicals",
+   "type": "relates",
+   "label": "supplies",
+   "status": "unconfirmed",
+   "weight": 0.7
+  },
+  {
+   "source": "col:Detail.{Item #}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Unit price}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Ext price}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{UOM}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Vendor}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Location}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Invoice date}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.6
+  },
+  {
+   "source": "col:Detail.{Item #}",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "Item # . 97%",
+   "status": "current",
+   "weight": 1.0
+  },
+  {
+   "source": "col:Detail.{Unit price}",
+   "target": "sheet:Price File",
+   "type": "looks_up",
+   "label": "contract price",
+   "status": "current",
+   "weight": 0.8
+  },
+  {
+   "source": "sheet:Summary",
+   "target": "sheet:Detail",
+   "type": "derived_from",
+   "label": "pivot",
+   "status": "unconfirmed",
+   "weight": 0.9
+  },
+  {
+   "source": "sheet:Price File",
+   "target": "link:procurement_contracts.xlsx",
+   "type": "links_file",
+   "label": "Item #",
+   "status": "unconfirmed",
+   "weight": 0.6
+  },
+  {
+   "source": "metric:spend",
+   "target": "col:Detail.{Ext price}",
+   "type": "derived_from",
+   "label": "sum",
+   "status": "current",
+   "weight": 0.8
+  },
+  {
+   "source": "metric:credits",
+   "target": "col:Detail.{Ext price}",
+   "type": "derived_from",
+   "label": "negatives",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "dim:month",
+   "target": "col:Detail.{Invoice date}",
+   "type": "derived_from",
+   "label": "by month",
+   "status": "current",
+   "weight": 0.4
+  },
+  {
+   "source": "col:Detail.{UOM}",
+   "target": "col:Detail.{Unit price}",
+   "type": "relates",
+   "label": "priced per",
+   "status": "current",
+   "weight": 0.5
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "col:Detail.{UOM}",
+   "type": "relates",
+   "label": "per lb or per case?",
+   "status": "unconfirmed",
+   "weight": 0.5
+  },
+  {
+   "source": "col:Detail.{Vendor}",
+   "target": "ent:vendor:Harbor Foods",
+   "type": "relates",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "col:Detail.{Location}",
+   "target": "ent:location:Commissary (CMSY)",
+   "type": "relates",
+   "label": "excluded",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "col:Detail.{Location}",
+   "target": "ent:location:Downtown Kitchen",
+   "type": "relates",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Harbor Foods",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Gulfstream Meats",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Coastline Produce",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Bayview Dairy",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Palmetto Beverage",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:vendor:Keystone Paper & Supply",
+   "target": "col:Detail.{Vendor}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:location:Downtown Kitchen",
+   "target": "col:Detail.{Location}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:location:Beachside Grill",
+   "target": "col:Detail.{Location}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:location:Airport Cafe",
+   "target": "col:Detail.{Location}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  },
+  {
+   "source": "ent:location:Commissary (CMSY)",
+   "target": "col:Detail.{Location}",
+   "type": "part_of",
+   "label": "",
+   "status": "current",
+   "weight": 0.3
+  }
+ ],
+ "groups": [
+  {
+   "id": "vendor",
+   "label": "Vendors"
+  },
+  {
+   "id": "location",
+   "label": "Locations"
+  },
+  {
+   "id": "category",
+   "label": "Categories"
+  },
+  {
+   "id": "tab",
+   "label": "Tabs"
+  },
+  {
+   "id": "column",
+   "label": "Columns and totals"
+  },
+  {
+   "id": "item",
+   "label": "Items"
+  },
+  {
+   "id": "file",
+   "label": "Other files"
+  }
+ ],
+ "start_here": [
+  {
+   "node": "ent:vendor:Harbor Foods",
+   "text": "Harbor Foods is 38% of spend"
+  },
+  {
+   "node": "ent:location:Commissary (CMSY)",
+   "text": "The commissary's lines are transfers, left out of store spend"
+  },
+  {
+   "node": "ent:vendor:Gulfstream Meats",
+   "text": "Beef pricing is disputed: per case or per lb?"
+  },
+  {
+   "node": "col:Detail.{Item #}",
+   "text": "Item # ties invoice lines to your price file"
+  },
+  {
+   "node": "ent:location:Airport Cafe",
+   "text": "Airport Cafe went quiet after August. Closed?"
+  }
+ ]
+}

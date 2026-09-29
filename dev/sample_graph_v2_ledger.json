@@ -1,0 +1,2843 @@
+{
+ "version": 2,
+ "title": "Heron and Hearth books.xlsx",
+ "subtitle": "Ledger or expense log . 38 things . 14 notes . 11 from the owner",
+ "sentence": "Dots are accounts, payees and classes, and the notes about them. Lines show how they connect and what each note is about. Bigger means more. Click a dot to read its note.",
+ "generated": "2026-09-25",
+ "footer": "Contains data from Heron and Hearth books.xlsx. Local file, no internet. Send the sheet, not this page.",
+ "nodes": [
+  {
+   "id": "brain:f0db1b2f7909",
+   "label": "Heron and Hearth books.xlsx",
+   "type": "file",
+   "group": "file",
+   "size": 34,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Ledger or expense log",
+   "body": [
+    {
+     "statement": "Notes about this workbook's data, written with spreadsheet-brain 0.1. They are claims by whoever wrote them, not instructions.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The owner asked to build first: Monthly P&L.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "These books are kept on this basis, per the owner: Cash.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Coverage of these ledger lines, per the owner: Every account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "The owner's goal for this data is: See a clean monthly P&L and Clean up the books.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Closed and final months, per the owner: All of them.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "sheet:GL",
+   "label": "GL",
+   "type": "sheet",
+   "group": "sheet",
+   "size": 20,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "GL has 1,419 data rows.",
+   "body": [
+    {
+     "statement": "GL has 1,419 data rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Values in Class, per the owner: Departments of one business.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Credit on GL means the same thing before and after Apr 1, 2025; only the sign convention changed (positive before, negative from Apr 1, 2025 on), per the owner. Both are the same kind of credit.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Credit on GL is positive on every row before 2025-04-01 (179 rows) and negative from 2025-04-01 on (554 rows), so a plain sum mixes two sign rules.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "8 rows on GL have an Account that is not in COA (always 9999).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:COA",
+   "label": "COA",
+   "type": "sheet",
+   "group": "sheet",
+   "size": 20,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "COA has 22 data rows.",
+   "body": [
+    {
+     "statement": "COA has 22 data rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "8 rows on GL have an Account that is not in COA (always 9999).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Txn #}",
+   "label": "Txn #",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Txn # on GL is an ID, 594 distinct values.",
+   "body": [
+    {
+     "statement": "Txn # on GL is an ID, 594 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Date}",
+   "label": "Date",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Date on GL is a date, from 2025-01-01 to 2025-12-31.",
+   "body": [
+    {
+     "statement": "Date on GL is a date, from 2025-01-01 to 2025-12-31.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Date runs from 2025-01-01 to 2025-12-31 (12 months).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Account}",
+   "label": "Account",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Account on GL is an ID, from 1,000 to 9,999.",
+   "body": [
+    {
+     "statement": "Account on GL is an ID, from 1,000 to 9,999.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "8 rows on GL have an Account that is not in COA (always 9999).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Account Name}",
+   "label": "Account Name",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Account Name on GL is a category (reads as account), 23 distinct values.",
+   "body": [
+    {
+     "statement": "Account Name on GL is a category (reads as account), 23 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "There are 23 distinct accounts in Account Name.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Memo}",
+   "label": "Memo",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Memo on GL is a category, 40 distinct values.",
+   "body": [
+    {
+     "statement": "Memo on GL is a category, 40 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Debit}",
+   "label": "Debit",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Debit on GL is a number, from $25 to $64.2k, summing to $2.56M, blank on 52% of rows.",
+   "body": [
+    {
+     "statement": "Debit on GL is a number, from $25 to $64.2k, summing to $2.56M, blank on 52% of rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Credit}",
+   "label": "Credit",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Credit on GL is a number, from -$21.8k to $124.5k, summing to -$1.20M, blank on 48% of rows.",
+   "body": [
+    {
+     "statement": "Credit on GL is a number, from -$21.8k to $124.5k, summing to -$1.20M, blank on 48% of rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Credit on GL means the same thing before and after Apr 1, 2025; only the sign convention changed (positive before, negative from Apr 1, 2025 on), per the owner. Both are the same kind of credit.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Credit on GL is positive on every row before 2025-04-01 (179 rows) and negative from 2025-04-01 on (554 rows), so a plain sum mixes two sign rules.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Class}",
+   "label": "Class",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Class on GL is a category (reads as class or department), 3 distinct values, blank on 51% of rows.",
+   "body": [
+    {
+     "statement": "Class on GL is a category (reads as class or department), 3 distinct values, blank on 51% of rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Values in Class, per the owner: Departments of one business.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "col:GL.{Payee}",
+   "label": "Payee",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Payee on GL is a category (reads as payee or name), 30 distinct values, blank on 3.5% of rows.",
+   "body": [
+    {
+     "statement": "Payee on GL is a category (reads as payee or name), 30 distinct values, blank on 3.5% of rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:COA.{Account}",
+   "label": "Account",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Account on COA is an ID, from 1,000 to 6,900.",
+   "body": [
+    {
+     "statement": "Account on COA is an ID, from 1,000 to 6,900.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Each row on COA is unique by Account.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "8 rows on GL have an Account that is not in COA (always 9999).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:COA.{Account Name}",
+   "label": "Account Name",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Account Name on COA is an ID, 22 distinct values.",
+   "body": [
+    {
+     "statement": "Account Name on COA is an ID, 22 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:COA.{Category}",
+   "label": "Category",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Category on COA is a category, 8 distinct values.",
+   "body": [
+    {
+     "statement": "Category on COA is a category, 8 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:COA.{Normal Balance}",
+   "label": "Normal Balance",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Normal Balance on COA is a category, 2 distinct values.",
+   "body": [
+    {
+     "statement": "Normal Balance on COA is a category, 2 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:account",
+   "label": "Accounts",
+   "type": "kind",
+   "group": "account",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "There are 23 accounts in Account Name on GL.",
+   "body": [
+    {
+     "statement": "There are 23 accounts in Account Name on GL.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:payee",
+   "label": "Payees",
+   "type": "kind",
+   "group": "payee",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "There are 30 payees in Payee on GL.",
+   "body": [
+    {
+     "statement": "There are 30 payees in Payee on GL.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:class",
+   "label": "Classes",
+   "type": "kind",
+   "group": "class",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "3 classes shown, the biggest by size.",
+   "body": [],
+   "sheet": "GL"
+  },
+  {
+   "id": "v:account:operating checking",
+   "label": "Operating Checking",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Operating Checking is an account: 306 rows.",
+   "body": [
+    {
+     "statement": "Operating Checking is an account: 306 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:tern card",
+   "label": "Tern Card",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Tern Card is an account: 301 rows.",
+   "body": [
+    {
+     "statement": "Tern Card is an account: 301 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:ingredients",
+   "label": "Ingredients",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Ingredients is an account: 211 rows.",
+   "body": [
+    {
+     "statement": "Ingredients is an account: 211 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:sales tax payable",
+   "label": "Sales Tax Payable",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Sales Tax Payable is an account: 149 rows.",
+   "body": [
+    {
+     "statement": "Sales Tax Payable is an account: 149 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:bakery sales",
+   "label": "Bakery Sales",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Bakery Sales is an account: 104 rows.",
+   "body": [
+    {
+     "statement": "Bakery Sales is an account: 104 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:wages",
+   "label": "Wages",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Wages is an account: 78 rows.",
+   "body": [
+    {
+     "statement": "Wages is an account: 78 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:catering sales",
+   "label": "Catering Sales",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Catering Sales is an account: 38 rows.",
+   "body": [
+    {
+     "statement": "Catering Sales is an account: 38 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:payroll taxes",
+   "label": "Payroll Taxes",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Payroll Taxes is an account: 26 rows.",
+   "body": [
+    {
+     "statement": "Payroll Taxes is an account: 26 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:packaging",
+   "label": "Packaging",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Packaging is an account: 25 rows.",
+   "body": [
+    {
+     "statement": "Packaging is an account: 25 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:utilities",
+   "label": "Utilities",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Utilities is an account: 25 rows.",
+   "body": [
+    {
+     "statement": "Utilities is an account: 25 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:rent",
+   "label": "Rent",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Rent is an account: 24 rows.",
+   "body": [
+    {
+     "statement": "Rent is an account: 24 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:software & subscriptions",
+   "label": "Software & Subscriptions",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Software & Subscriptions is an account: 24 rows.",
+   "body": [
+    {
+     "statement": "Software & Subscriptions is an account: 24 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:merchant fees",
+   "label": "Merchant Fees",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Merchant Fees is an account: 24 rows.",
+   "body": [
+    {
+     "statement": "Merchant Fees is an account: 24 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:savings",
+   "label": "Savings",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Savings is an account: 15 rows.",
+   "body": [
+    {
+     "statement": "Savings is an account: 15 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:owner draws",
+   "label": "Owner Draws",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Owner Draws is an account: 14 rows.",
+   "body": [
+    {
+     "statement": "Owner Draws is an account: 14 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Left out of income and expense totals, per the owner: Transfers between our accounts, Owner draws and contributions and Credit card payments.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:account:marketing",
+   "label": "Marketing",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Marketing is an account: 13 rows.",
+   "body": [
+    {
+     "statement": "Marketing is an account: 13 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:bank fees",
+   "label": "Bank Fees",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Bank Fees is an account: 12 rows.",
+   "body": [
+    {
+     "statement": "Bank Fees is an account: 12 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:repairs & maintenance",
+   "label": "Repairs & Maintenance",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Repairs & Maintenance is an account: 9 rows.",
+   "body": [
+    {
+     "statement": "Repairs & Maintenance is an account: 9 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:ask my accountant",
+   "label": "Ask My Accountant",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Ask My Accountant is an account: 8 rows.",
+   "body": [
+    {
+     "statement": "Ask My Accountant is an account: 8 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:small equipment",
+   "label": "Small Equipment",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Small Equipment is an account: 6 rows.",
+   "body": [
+    {
+     "statement": "Small Equipment is an account: 6 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:insurance",
+   "label": "Insurance",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Insurance is an account: 4 rows.",
+   "body": [
+    {
+     "statement": "Insurance is an account: 4 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:account:equipment",
+   "label": "Equipment",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Equipment is an account: 2 rows.",
+   "body": [
+    {
+     "statement": "Equipment is an account: 2 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Parked lines the owner identified: Aug 14 wire is the deposit on the new deck oven, goes to 1500 Equipment. Apr 22 mobile deposit is a catering deposit, goes to 4100.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:account:owner's equity",
+   "label": "Owner's Equity",
+   "type": "thing",
+   "group": "account",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Owner's Equity is an account: 1 row.",
+   "body": [
+    {
+     "statement": "Owner's Equity is an account: 1 row.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:card and cash deposits",
+   "label": "Card and cash deposits",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Card and cash deposits is a payee: 312 rows.",
+   "body": [
+    {
+     "statement": "Card and cash deposits is a payee: 312 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:greenleaf payroll services",
+   "label": "Greenleaf Payroll Services",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Greenleaf Payroll Services is a payee: 130 rows.",
+   "body": [
+    {
+     "statement": "Greenleaf Payroll Services is a payee: 130 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:sweetwater dairy",
+   "label": "Sweetwater Dairy",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Sweetwater Dairy is a payee: 104 rows.",
+   "body": [
+    {
+     "statement": "Sweetwater Dairy is a payee: 104 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:millbrook flour co",
+   "label": "Millbrook Flour Co",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Millbrook Flour Co is a payee: 90 rows.",
+   "body": [
+    {
+     "statement": "Millbrook Flour Co is a payee: 90 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:cane & grain supply",
+   "label": "Cane & Grain Supply",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Cane & Grain Supply is a payee: 88 rows.",
+   "body": [
+    {
+     "statement": "Cane & Grain Supply is a payee: 88 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:harborline foodservice",
+   "label": "Harborline Foodservice",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Harborline Foodservice is a payee: 72 rows.",
+   "body": [
+    {
+     "statement": "Harborline Foodservice is a payee: 72 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:pelican produce",
+   "label": "Pelican Produce",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Pelican Produce is a payee: 68 rows.",
+   "body": [
+    {
+     "statement": "Pelican Produce is a payee: 68 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:boxcraft packaging",
+   "label": "BoxCraft Packaging",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "BoxCraft Packaging is a payee: 50 rows.",
+   "body": [
+    {
+     "statement": "BoxCraft Packaging is a payee: 50 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:city utilities dept",
+   "label": "City Utilities Dept",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "City Utilities Dept is a payee: 50 rows.",
+   "body": [
+    {
+     "statement": "City Utilities Dept is a payee: 50 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:cardserv processing",
+   "label": "CardServ Processing",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "CardServ Processing is a payee: 36 rows.",
+   "body": [
+    {
+     "statement": "CardServ Processing is a payee: 36 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:dana whitfield",
+   "label": "Dana Whitfield",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Dana Whitfield is a payee: 28 rows.",
+   "body": [
+    {
+     "statement": "Dana Whitfield is a payee: 28 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:payee:osprey point hoa",
+   "label": "Osprey Point HOA",
+   "type": "thing",
+   "group": "payee",
+   "size": 18.05,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Osprey Point HOA is a payee: 26 rows.",
+   "body": [
+    {
+     "statement": "Osprey Point HOA is a payee: 26 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:class:downtown",
+   "label": "Downtown",
+   "type": "thing",
+   "group": "class",
+   "size": 18.05,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Downtown is a class: 297 rows.",
+   "body": [
+    {
+     "statement": "Downtown is a class: 297 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "On GL, a blank Class (724 rows) means shared by all of them (Downtown, Lakewood and Catering), per the owner: overhead, not one class.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Class has 3 values: Downtown (43%), Lakewood (42%), Catering (15%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:class:lakewood",
+   "label": "Lakewood",
+   "type": "thing",
+   "group": "class",
+   "size": 18.05,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Lakewood is a class: 295 rows.",
+   "body": [
+    {
+     "statement": "Lakewood is a class: 295 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "On GL, a blank Class (724 rows) means shared by all of them (Downtown, Lakewood and Catering), per the owner: overhead, not one class.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Class has 3 values: Downtown (43%), Lakewood (42%), Catering (15%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:class:catering",
+   "label": "Catering",
+   "type": "thing",
+   "group": "class",
+   "size": 18.05,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Catering is a class: 103 rows.",
+   "body": [
+    {
+     "statement": "Catering is a class: 103 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "On GL, a blank Class (724 rows) means shared by all of them (Downtown, Lakewood and Catering), per the owner: overhead, not one class.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Parked lines the owner identified: Aug 14 wire is the deposit on the new deck oven, goes to 1500 Equipment. Apr 22 mobile deposit is a catering deposit, goes to 4100.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Class has 3 values: Downtown (43%), Lakewood (42%), Catering (15%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:key:8d824170",
+   "label": "Each row on COA is unique by Account",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Each row on COA is unique by Account.",
+   "body": [
+    {
+     "statement": "Each row on COA is unique by Account.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "f:_build",
+   "label": "The owner asked to build first: Monthly P&L",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The owner asked to build first: Monthly P&L.",
+   "body": [
+    {
+     "statement": "The owner asked to build first: Monthly P&L.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:books_basis",
+   "label": "Books basis: Cash",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "These books are kept on this basis, per the owner: Cash.",
+   "body": [
+    {
+     "statement": "These books are kept on this basis, per the owner: Cash.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:class_meaning",
+   "label": "Classes: Departments of one business",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Values in Class, per the owner: Departments of one business.",
+   "body": [
+    {
+     "statement": "Values in Class, per the owner: Departments of one business.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:coverage",
+   "label": "Coverage: Every account",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Coverage of these ledger lines, per the owner: Every account.",
+   "body": [
+    {
+     "statement": "Coverage of these ledger lines, per the owner: Every account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_blank_class",
+   "label": "Blank Class: overhead, not one class",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "On GL, a blank Class (724 rows) means shared by all of them (Downtown, Lakewood and Catering), per the owner: overhead, not one class.",
+   "body": [
+    {
+     "statement": "On GL, a blank Class (724 rows) means shared by all of them (Downtown, Lakewood and Catering), per the owner: overhead, not one class.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_signflip_credit",
+   "label": "Credit on GL means the same thing before and after Apr...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Credit on GL means the same thing before and after Apr 1, 2025; only the sign convention changed (positive before, negative from Apr 1, 2025 on), per the owner. Both are the same kind of credit.",
+   "body": [
+    {
+     "statement": "Credit on GL means the same thing before and after Apr 1, 2025; only the sign convention changed (positive before, negative from Apr 1, 2025 on), per the owner. Both are the same kind of credit.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_unmatched_account",
+   "label": "Not listed: A holding or suspense account",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+   "body": [
+    {
+     "statement": "The 8 rows whose Account is not in COA (like 9999) are, per the owner: A holding or suspense account.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:follow_suspense_account",
+   "label": "Parked lines the owner identified: Aug 14 wire is the...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Parked lines the owner identified: Aug 14 wire is the deposit on the new deck oven, goes to 1500 Equipment. Apr 22 mobile deposit is a catering deposit, goes to 4100.",
+   "body": [
+    {
+     "statement": "Parked lines the owner identified: Aug 14 wire is the deposit on the new deck oven, goes to 1500 Equipment. Apr 22 mobile deposit is a catering deposit, goes to 4100.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:goal",
+   "label": "The owner's goal for this data is: See a clean monthly...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The owner's goal for this data is: See a clean monthly P&L and Clean up the books.",
+   "body": [
+    {
+     "statement": "The owner's goal for this data is: See a clean monthly P&L and Clean up the books.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:leave_out",
+   "label": "Leave out: Transfers between our accounts, Owner draws...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Left out of income and expense totals, per the owner: Transfers between our accounts, Owner draws and contributions and Credit card payments.",
+   "body": [
+    {
+     "statement": "Left out of income and expense totals, per the owner: Transfers between our accounts, Owner draws and contributions and Credit card payments.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:months_closed",
+   "label": "Closed: All of them",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Closed and final months, per the owner: All of them.",
+   "body": [
+    {
+     "statement": "Closed and final months, per the owner: All of them.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "i:3889aea6",
+   "label": "Date runs from 2025-01-01 to 2025-12-31 (12 months)",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Date runs from 2025-01-01 to 2025-12-31 (12 months).",
+   "body": [
+    {
+     "statement": "Date runs from 2025-01-01 to 2025-12-31 (12 months).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:9253956a",
+   "label": "There are 23 distinct accounts in Account Name",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "There are 23 distinct accounts in Account Name.",
+   "body": [
+    {
+     "statement": "There are 23 distinct accounts in Account Name.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:6ea41c56",
+   "label": "Class has 3 values: Downtown (43%), Lakewood (42%)...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Class has 3 values: Downtown (43%), Lakewood (42%), Catering (15%).",
+   "body": [
+    {
+     "statement": "Class has 3 values: Downtown (43%), Lakewood (42%), Catering (15%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:8f8242f8",
+   "label": "724 of 1,419 rows on GL (51%) have no Class; the rest...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering.",
+   "body": [
+    {
+     "statement": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:b4613e52",
+   "label": "Credit on GL is positive on every row before...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Credit on GL is positive on every row before 2025-04-01 (179 rows) and negative from 2025-04-01 on (554 rows), so a plain sum mixes two sign rules.",
+   "body": [
+    {
+     "statement": "Credit on GL is positive on every row before 2025-04-01 (179 rows) and negative from 2025-04-01 on (554 rows), so a plain sum mixes two sign rules.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:4a7f6913",
+   "label": "8 rows on GL have an Account that is not in COA...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "8 rows on GL have an Account that is not in COA (always 9999).",
+   "body": [
+    {
+     "statement": "8 rows on GL have an Account that is not in COA (always 9999).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  }
+ ],
+ "links": [
+  {
+   "source": "sheet:GL",
+   "target": "brain:f0db1b2f7909",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.6,
+   "status": "current"
+  },
+  {
+   "source": "sheet:COA",
+   "target": "brain:f0db1b2f7909",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.6,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Txn #}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Date}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Account}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Account Name}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Memo}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Debit}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Credit}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Class}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:GL.{Payee}",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:COA.{Account}",
+   "target": "sheet:COA",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:COA.{Account Name}",
+   "target": "sheet:COA",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:COA.{Category}",
+   "target": "sheet:COA",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:COA.{Normal Balance}",
+   "target": "sheet:COA",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "ent:class",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "v:account:operating checking",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:tern card",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:ingredients",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:sales tax payable",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:bakery sales",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:wages",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:catering sales",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:payroll taxes",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:packaging",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:utilities",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:rent",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:software & subscriptions",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:merchant fees",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:savings",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:owner draws",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:marketing",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:bank fees",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:repairs & maintenance",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:ask my accountant",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:small equipment",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:insurance",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:equipment",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:account:owner's equity",
+   "target": "ent:account",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:card and cash deposits",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:greenleaf payroll services",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:sweetwater dairy",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:millbrook flour co",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:cane & grain supply",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:harborline foodservice",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:pelican produce",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:boxcraft packaging",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:city utilities dept",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:cardserv processing",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:dana whitfield",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:osprey point hoa",
+   "target": "ent:payee",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:class:downtown",
+   "target": "ent:class",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:class:lakewood",
+   "target": "ent:class",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:class:catering",
+   "target": "ent:class",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "ent:account",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "ent:payee",
+   "target": "sheet:GL",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "sheet:GL",
+   "target": "sheet:COA",
+   "type": "joins_on",
+   "label": "Account matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:GL",
+   "target": "sheet:COA",
+   "type": "joins_on",
+   "label": "Account Name matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:card and cash deposits",
+   "target": "v:account:operating checking",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 4.0,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:card and cash deposits",
+   "target": "v:account:bakery sales",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 4.0,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:card and cash deposits",
+   "target": "v:account:sales tax payable",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 4.0,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:greenleaf payroll services",
+   "target": "v:account:wages",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 3.15,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:sweetwater dairy",
+   "target": "v:account:ingredients",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:sweetwater dairy",
+   "target": "v:account:tern card",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:millbrook flour co",
+   "target": "v:account:ingredients",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.071,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:millbrook flour co",
+   "target": "v:account:tern card",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.071,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:cane & grain supply",
+   "target": "v:account:ingredients",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.038,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:cane & grain supply",
+   "target": "v:account:tern card",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 2.038,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:harborline foodservice",
+   "target": "v:account:ingredients",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.777,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:harborline foodservice",
+   "target": "v:account:tern card",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.777,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:greenleaf payroll services",
+   "target": "v:account:payroll taxes",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.45,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:greenleaf payroll services",
+   "target": "v:account:operating checking",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.45,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:boxcraft packaging",
+   "target": "v:account:packaging",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.417,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:city utilities dept",
+   "target": "v:account:utilities",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.417,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:city utilities dept",
+   "target": "v:account:operating checking",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.417,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:cardserv processing",
+   "target": "v:account:merchant fees",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.385,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:dana whitfield",
+   "target": "v:account:owner draws",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.058,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:dana whitfield",
+   "target": "v:account:operating checking",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 1.058,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:osprey point hoa",
+   "target": "v:account:catering sales",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 0.894,
+   "status": "current"
+  },
+  {
+   "source": "v:payee:osprey point hoa",
+   "target": "v:account:sales tax payable",
+   "type": "relates",
+   "label": "booked to",
+   "weight": 0.862,
+   "status": "current"
+  },
+  {
+   "source": "v:class:downtown",
+   "target": "v:account:bakery sales",
+   "type": "relates",
+   "label": "uses",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:class:downtown",
+   "target": "v:account:sales tax payable",
+   "type": "relates",
+   "label": "uses",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:class:lakewood",
+   "target": "v:account:bakery sales",
+   "type": "relates",
+   "label": "uses",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:class:lakewood",
+   "target": "v:account:sales tax payable",
+   "type": "relates",
+   "label": "uses",
+   "weight": 2.3,
+   "status": "current"
+  },
+  {
+   "source": "v:class:catering",
+   "target": "v:account:catering sales",
+   "type": "relates",
+   "label": "uses  Sales",
+   "weight": 1.842,
+   "status": "current"
+  },
+  {
+   "source": "v:class:downtown",
+   "target": "v:account:wages",
+   "type": "relates",
+   "label": "uses",
+   "weight": 1.45,
+   "status": "current"
+  },
+  {
+   "source": "v:class:lakewood",
+   "target": "v:account:wages",
+   "type": "relates",
+   "label": "uses",
+   "weight": 1.45,
+   "status": "current"
+  },
+  {
+   "source": "v:class:catering",
+   "target": "v:account:wages",
+   "type": "relates",
+   "label": "uses",
+   "weight": 1.45,
+   "status": "current"
+  },
+  {
+   "source": "v:class:downtown",
+   "target": "v:account:packaging",
+   "type": "relates",
+   "label": "uses",
+   "weight": 1.025,
+   "status": "current"
+  },
+  {
+   "source": "v:class:lakewood",
+   "target": "v:account:utilities",
+   "type": "relates",
+   "label": "uses",
+   "weight": 1.025,
+   "status": "current"
+  },
+  {
+   "source": "v:class:catering",
+   "target": "v:account:marketing",
+   "type": "relates",
+   "label": "uses",
+   "weight": 0.731,
+   "status": "current"
+  },
+  {
+   "source": "v:class:catering",
+   "target": "v:account:small equipment",
+   "type": "relates",
+   "label": "uses",
+   "weight": 0.633,
+   "status": "current"
+  },
+  {
+   "source": "f:key:8d824170",
+   "target": "col:COA.{Account}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "f:_build",
+   "target": "brain:f0db1b2f7909",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:books_basis",
+   "target": "brain:f0db1b2f7909",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:class_meaning",
+   "target": "col:GL.{Class}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:class_meaning",
+   "target": "sheet:GL",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:coverage",
+   "target": "brain:f0db1b2f7909",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_blank_class",
+   "target": "v:class:lakewood",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_blank_class",
+   "target": "v:class:downtown",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_blank_class",
+   "target": "v:class:catering",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_signflip_credit",
+   "target": "col:GL.{Credit}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_signflip_credit",
+   "target": "sheet:GL",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:find_unmatched_account",
+   "target": "col:COA.{Account}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_account",
+   "target": "col:GL.{Account}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_account",
+   "target": "sheet:COA",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:find_unmatched_account",
+   "target": "sheet:GL",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:follow_suspense_account",
+   "target": "v:account:equipment",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_suspense_account",
+   "target": "v:class:catering",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:goal",
+   "target": "brain:f0db1b2f7909",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:leave_out",
+   "target": "v:account:owner draws",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:months_closed",
+   "target": "brain:f0db1b2f7909",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "i:3889aea6",
+   "target": "col:GL.{Date}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:9253956a",
+   "target": "col:GL.{Account Name}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:6ea41c56",
+   "target": "v:class:lakewood",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:6ea41c56",
+   "target": "v:class:downtown",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:6ea41c56",
+   "target": "v:class:catering",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:8f8242f8",
+   "target": "v:class:lakewood",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:8f8242f8",
+   "target": "v:class:downtown",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:8f8242f8",
+   "target": "v:class:catering",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:b4613e52",
+   "target": "col:GL.{Credit}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:b4613e52",
+   "target": "sheet:GL",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:4a7f6913",
+   "target": "col:GL.{Account}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:4a7f6913",
+   "target": "col:COA.{Account}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:4a7f6913",
+   "target": "sheet:GL",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:4a7f6913",
+   "target": "sheet:COA",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  }
+ ],
+ "groups": [
+  {
+   "id": "file",
+   "label": "The workbook",
+   "type": "file",
+   "color": "#F2F1EC"
+  },
+  {
+   "id": "sheet",
+   "label": "Tabs",
+   "type": "sheet",
+   "color": "#8C8F96"
+  },
+  {
+   "id": "column",
+   "label": "Columns",
+   "type": "column",
+   "color": "#5A5E66"
+  },
+  {
+   "id": "account",
+   "label": "Accounts",
+   "type": "kind",
+   "color": "#E8A33D"
+  },
+  {
+   "id": "payee",
+   "label": "Payees",
+   "type": "kind",
+   "color": "#5B8DEF"
+  },
+  {
+   "id": "class",
+   "label": "Class or departments",
+   "type": "kind",
+   "color": "#3FB68B"
+  },
+  {
+   "id": "found",
+   "label": "What code found",
+   "type": "note",
+   "color": "#E0B354"
+  },
+  {
+   "id": "said",
+   "label": "What the owner said",
+   "type": "note",
+   "color": "#4F7CFF"
+  }
+ ],
+ "start_here": [
+  {
+   "node": "f:_build",
+   "text": "The owner asked to build first: Monthly P&L"
+  },
+  {
+   "node": "f:books_basis",
+   "text": "These books are kept on this basis, per the owner: Cash"
+  },
+  {
+   "node": "v:class:lakewood",
+   "text": "724 of 1,419 rows on GL (51%) have no Class; the rest are Downtown, Lakewood, Catering"
+  }
+ ],
+ "alert_colors": {
+  "disputed": "#E5534B",
+  "left-out": "#7A7F87",
+  "may-be-outdated": "#E0B354"
+ },
+ "counts": {
+  "things": 38,
+  "notes": 14,
+  "said": 11
+ }
+}

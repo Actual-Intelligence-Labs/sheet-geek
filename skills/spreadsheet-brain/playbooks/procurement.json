@@ -1,0 +1,401 @@
+{
+  "id": "procurement",
+  "version": "0.1.0",
+  "name": "Purchase history",
+  "looks_like": "purchase history",
+  "summary": "Invoice-line purchases from distributors, manufacturers or local vendors: what was bought, by which location, in what pack, at what price, under which deal.",
+  "full": true,
+  "roles": {
+    "vendor": {
+      "label": "Vendor",
+      "headers": ["vendor", "vendor name", "vendor #", "vendor number", "supplier", "supplier name", "supplier #", "distributor", "distributor name", "seller", "sold by"],
+      "type": "text", "kind": "entity", "entity": "vendor"
+    },
+    "manufacturer": {
+      "label": "Manufacturer or brand",
+      "headers": ["manufacturer", "manufacturer name", "mfr", "mfr name", "mfg", "mfg name", "brand", "brand name", "packer", "label"],
+      "type": "text", "kind": "entity", "entity": "manufacturer"
+    },
+    "item_id": {
+      "label": "Item #",
+      "headers": ["item #", "item no", "item number", "item code", "item id", "product #", "product number", "product code", "product id", "sku", "supc", "dist item #", "distributor item #", "vendor item #", "vendor item number", "catalog #", "catalog number"],
+      "type": "id", "kind": "identifier", "entity": "item"
+    },
+    "mfr_item_id": {
+      "label": "Manufacturer item #",
+      "headers": ["mfr #", "mfr item #", "mfr item", "mfr item number", "mfr product #", "mfr code", "mfr part #", "mfg #", "mfg item #", "manufacturer #", "manufacturer item #", "manufacturer item number", "manufacturer product code", "mpn"],
+      "type": "id", "kind": "identifier"
+    },
+    "gtin": {
+      "label": "GTIN or UPC",
+      "headers": ["gtin", "gtin 14", "upc", "upc code", "ean", "barcode", "case gtin", "case upc"],
+      "type": "id", "kind": "identifier"
+    },
+    "item_desc": {
+      "label": "Description",
+      "headers": ["description", "item description", "product description", "desc", "item desc", "product desc", "item name", "product name", "product"],
+      "type": "text", "kind": "text"
+    },
+    "pack": {
+      "label": "Pack size",
+      "headers": ["pack", "pack size", "case pack", "pack and size", "size", "pk", "unit size", "item size"],
+      "type": "text", "kind": "attribute"
+    },
+    "uom": {
+      "label": "Unit of measure",
+      "headers": ["uom", "unit of measure", "unit", "pricing unit", "price uom", "price unit", "sell unit", "selling unit", "order unit", "billing unit", "um", "u m"],
+      "type": "text", "kind": "dimension"
+    },
+    "qty": {
+      "label": "Quantity shipped",
+      "headers": ["qty", "quantity", "qty shipped", "quantity shipped", "shipped qty", "ship qty", "shipped", "qty invoiced", "invoiced qty", "billed qty", "qty delivered", "delivered qty", "cases", "case qty", "cs qty", "units"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "count"
+    },
+    "catch_weight": {
+      "label": "Catch weight",
+      "headers": ["catch weight", "catch wt", "weight", "net weight", "shipped weight", "actual weight", "invoice weight", "total weight", "lbs", "pounds", "wt"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "weight"
+    },
+    "unit_price": {
+      "label": "Unit price",
+      "headers": ["unit price", "price", "case price", "case", "unit cost", "cost", "invoice price", "net price", "each price", "price each", "price per unit", "sell price", "unit sell", "each", "split price", "per lb"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency"
+    },
+    "ext_price": {
+      "label": "Extended price",
+      "headers": ["ext price", "extended price", "extended", "extension", "ext amount", "extended amount", "ext cost", "extended cost", "line total", "line amount", "line value", "total price", "total cost", "net amount", "amount", "total", "invoice amount", "invoice total"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "contract_price": {
+      "label": "Contract price",
+      "headers": ["contract price", "contract cost", "contract", "bid price", "agreed price", "deviated price", "deviated cost", "program price", "gpo price", "tier price", "locked price", "fixed price"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency"
+    },
+    "allowance": {
+      "label": "Deviation or allowance",
+      "headers": ["allowance", "oi allowance", "off invoice", "oi", "deviation", "deviation amount", "deviation per case", "discount", "discount amount", "deal", "deal amount", "promo"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "rebate": {
+      "label": "Rebate",
+      "headers": ["rebate", "rebate amount", "rebate per case", "rebate rate", "vendor rebate", "incentive", "earned incentive", "volume incentive", "bill back", "billback", "admin fee"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "markup": {
+      "label": "Markup or fee per case",
+      "headers": ["markup", "mark up", "markup per case", "markup percent", "fee per case", "upcharge", "distribution fee", "cost plus", "cost plus fee", "sell margin"],
+      "type": "number", "kind": "metric", "additive": false
+    },
+    "invoice_id": {
+      "label": "Invoice #",
+      "headers": ["invoice #", "invoice no", "invoice number", "invoice", "inv #", "inv no", "inv number", "document #", "document number", "doc #", "doc number", "credit memo #", "bill #"],
+      "type": "id", "kind": "identifier"
+    },
+    "invoice_date": {
+      "label": "Invoice date",
+      "headers": ["invoice date", "inv date", "date", "ship date", "delivery date", "delivered date", "order date", "purchase date", "posting date", "week ending", "period"],
+      "type": "date", "kind": "temporal"
+    },
+    "location": {
+      "label": "Location",
+      "headers": ["location", "ship to", "ship to name", "ship to #", "ship to number", "ship to account", "customer", "customer name", "customer #", "customer number", "cust #", "cust name", "account name", "site", "store", "property", "outlet", "kitchen", "operator", "unit name", "restaurant", "hotel", "facility", "delivery address"],
+      "type": "text", "kind": "entity", "entity": "location"
+    },
+    "category": {
+      "label": "Category",
+      "headers": ["category", "category description", "category name", "product category", "item category", "class", "item class", "product class", "commodity", "commodity code", "group", "product group", "item group", "major category", "minor category", "sub category", "subcategory", "gl category", "unspsc", "department"],
+      "type": "text", "kind": "dimension"
+    }
+  },
+  "detect": {
+    "required_any": [["item_id", "item_desc", "mfr_item_id", "gtin"], ["unit_price", "ext_price", "contract_price"]],
+    "weights": {
+      "vendor": 3, "item_id": 3, "pack": 3, "uom": 2, "unit_price": 2, "ext_price": 2,
+      "qty": 1, "invoice_id": 1, "invoice_date": 1, "item_desc": 1, "mfr_item_id": 1,
+      "manufacturer": 1, "category": 1, "location": 1, "catch_weight": 1, "contract_price": 1, "rebate": 1
+    },
+    "negatives": ["on_hand", "stage", "employee_id", "customer_email"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "check_charges", "label": "Check what I'm charged", "desc": "I'd check every line against your contract terms"},
+    {"id": "find_savings", "label": "Find savings", "desc": "I'd find where you paid more than your own best price"},
+    {"id": "bid_vendors", "label": "Compare vendors or rebid", "desc": "I'd build a clean item list with yearly volumes"},
+    {"id": "explain_share", "label": "Explain or share it", "desc": "I'd write a guide for the next person"}
+  ],
+  "questions": [
+    {
+      "id": "coverage",
+      "header": "Coverage",
+      "kind": "coverage",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Are these {rows} lines every purchase for the dates they cover, across all your locations and vendors?",
+      "options": [
+        {"id": "everything", "label": "Everything we bought", "desc": "All locations, all vendors"},
+        {"id": "some_sites", "label": "Only some purchases", "desc": "Some locations or vendors only"},
+        {"id": "sample", "label": "A sample", "desc": "A sample, not complete"}
+      ],
+      "why": "Totals, savings and rebate estimates are only right on complete data.",
+      "unblocks": ["savings_map", "bid_pack", "contract_audit"],
+      "fact": {"kind": "coverage", "class": "data", "depends": [], "statement": "Coverage of these purchase lines, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "price_basis",
+      "header": "Price basis",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["has_role:unit_price"],
+      "prompt": "How do your deals show up against the {rows:unit_price} prices in {role:unit_price}? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "on_line", "label": "Taken off on the invoice line", "desc": "Already in the price"},
+        {"id": "paid_later", "label": "Paid back later as rebates", "desc": "Rebates come back later"},
+        {"id": "no_deals", "label": "No deals on these items", "desc": "List price, nothing comes back"}
+      ],
+      "why": "It decides whether a saving is new or already taken, and whether rebates stack on top.",
+      "unblocks": ["contract_audit", "savings_map"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["unit_price"], "statement": "How deals show up against {role:unit_price}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "unit_basis",
+      "header": "Compare by",
+      "kind": "unit",
+      "priority": 1,
+      "ask_if": ["has_role:pack"],
+      "prompt": "There are {count:pack} different pack sizes, for example {values:pack}. How should I compare prices?",
+      "options": [
+        {"id": "base_unit", "label": "Per base unit", "desc": "Every pack in its base unit"},
+        {"id": "per_case", "label": "Per case as billed", "desc": "Only same-pack items compared"},
+        {"id": "per_portion", "label": "Per portion", "desc": "Per portion of each item"}
+      ],
+      "why": "Different pack sizes can make the same product look cheaper or dearer than it is.",
+      "unblocks": ["savings_map", "bid_pack", "plate_cost"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["pack"], "statement": "Prices are compared on this basis, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "leave_out",
+      "header": "In spend",
+      "kind": "exclusion",
+      "priority": 2,
+      "ask_if": ["has_role:ext_price"],
+      "prompt": "{role:ext_price} adds up to {sum:ext_price} on {rows:ext_price} lines. Which of these should count in spend? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "credits", "label": "Credits", "desc": "Credits count in spend"},
+        {"id": "fees", "label": "Fee lines", "desc": "Fee lines count in spend"},
+        {"id": "transfers", "label": "Internal transfers", "desc": "Internal transfers count in spend"}
+      ],
+      "recommend": "credits",
+      "recommend_if": ["has_negatives:ext_price"],
+      "recommend_basis": "Spend analysis normally nets credits and returns against purchases; leaving them out overstates spend.",
+      "why": "Credits, fees and internal transfers change totals and unit prices, and mixing them in silently skews every comparison.",
+      "unblocks": ["savings_map", "contract_audit", "bid_pack"],
+      "fact": {"kind": "exclusion", "class": "data", "depends": ["ext_price"], "statement": "The owner said these count in spend: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "same_item",
+      "header": "Same item",
+      "kind": "mapping",
+      "priority": 3,
+      "ask_if": ["has_role:item_id", "has_role:mfr_item_id"],
+      "prompt": "There are {count:item_id} different {role:item_id} codes and {count:mfr_item_id} different {role:mfr_item_id} values. Should lines with the same {role:mfr_item_id} count as one product, even under different {role:item_id} codes?",
+      "options": [
+        {"id": "merge", "label": "Yes, one product", "desc": "Counted as one product"},
+        {"id": "review", "label": "Show me the pairs first", "desc": "The pairs shown first"},
+        {"id": "separate", "label": "No, keep codes apart"}
+      ],
+      "why": "Code changes break price history and can hide a price increase.",
+      "unblocks": ["savings_map", "bid_pack"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["item_id", "mfr_item_id"], "statement": "Lines with the same {role:mfr_item_id} under different {role:item_id} codes, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "contract_terms",
+      "header": "Contracts",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["goal:check_charges"],
+      "prompt": "Are any of these vendors on a contract or buying-group program? What kind of deal is it?",
+      "options": [
+        {"id": "price_file", "label": "I have a contract price file", "desc": "Name the file"},
+        {"id": "cost_plus", "label": "Cost plus a fee", "desc": "Cost, then a fee added"},
+        {"id": "none", "label": "No contracts"}
+      ],
+      "why": "Without your terms the audit can only compare you to yourself.",
+      "unblocks": ["contract_audit", "app_blueprint"],
+      "fact": {"kind": "rule", "class": "commercial", "depends": ["unit_price", "vendor"], "statement": "Vendor pricing terms, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "rebate_programs",
+      "header": "Rebates",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["answered:price_basis=paid_later"],
+      "prompt": "Which rebate programs pay back on these purchases? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "gpo", "label": "A buying group", "desc": "A GPO or buying group program"},
+        {"id": "manufacturer", "label": "Direct manufacturer deals", "desc": "Direct deals"},
+        {"id": "distributor", "label": "Distributor volume incentives", "desc": "On total volume"}
+      ],
+      "why": "Rebates are earned on the line but paid months later, so the audit needs to know which buys should earn them.",
+      "unblocks": ["contract_audit"],
+      "fact": {"kind": "rule", "class": "commercial", "depends": ["qty"], "statement": "Rebate programs on these purchases, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "one_program",
+      "header": "One program",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:find_savings", "mixed_values:location"],
+      "prompt": "Your {count:location} locations include {values:location}. Can each one buy the same items at the best price found here?",
+      "options": [
+        {"id": "all_same", "label": "Yes, one program for all", "desc": "Any location can buy any item at the best price"},
+        {"id": "regional", "label": "Some sites use other vendors", "desc": "Other vendors at some locations"},
+        {"id": "spec_rules", "label": "Spec rules differ", "desc": "Spec rules differ by location"}
+      ],
+      "why": "A saving only counts where a site can actually switch to the lower price.",
+      "unblocks": ["savings_map"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["location"], "statement": "Whether every location can buy at the best price found, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "portion_sizes",
+      "header": "Portions",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["answered:unit_basis=per_portion"],
+      "prompt": "Where do your portion sizes and recipe yields live?",
+      "options": [
+        {"id": "recipe_file", "label": "A recipe file", "desc": "A recipe file of its own"},
+        {"id": "type_top", "label": "I'll type them for top items"},
+        {"id": "not_written", "label": "They are not written down", "desc": "Not written down yet"}
+      ],
+      "why": "A plate cost needs how much of each item goes on the plate and how much is lost to trim.",
+      "unblocks": ["plate_cost"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["item_id"], "statement": "Portion sizes and yields, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "pareto:ext_price:item_id",
+    "top_share:ext_price:vendor",
+    "top_share:ext_price:category",
+    "top_share:ext_price:location",
+    "spread:unit_price:item_id:location",
+    "spread:unit_price:item_id:vendor",
+    "product_check:qty:unit_price:ext_price",
+    "negatives:ext_price",
+    "mixed:uom",
+    "date_range:invoice_date",
+    "count_distinct:item_id",
+    "blank_rate:category"
+  ],
+  "outputs": [
+    {
+      "id": "contract_audit",
+      "title": "Contract audit",
+      "pitch": "Contract audit: every line checked against your agreed price, markup and rebate terms, with overcharges listed by vendor and invoice, ready for credit requests.",
+      "requires": ["has_role:unit_price", "has_role:item_id"],
+      "needs_answer": ["contract_terms", "price_basis"],
+      "goals": ["check_charges"],
+      "value": 3,
+      "job": "audit"
+    },
+    {
+      "id": "savings_map",
+      "title": "Savings map",
+      "pitch": "Savings map: items where one location paid more than the best price in this data for the same product, with the gap at your volumes.",
+      "requires": ["has_role:item_id", "has_role:unit_price", "has_role:location"],
+      "needs_answer": ["unit_basis", "coverage"],
+      "goals": ["find_savings"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "bid_pack",
+      "title": "Bid pack",
+      "pitch": "Bid pack: a clean item list with specs, pack sizes and yearly volumes to send vendors for quotes. It carries no prices, no terms and no notes from this file.",
+      "requires": ["has_role:item_id", "has_role:qty"],
+      "needs_answer": ["coverage", "unit_basis"],
+      "goals": ["bid_vendors"],
+      "value": 2,
+      "job": "analysis",
+      "external": true
+    },
+    {
+      "id": "plate_cost",
+      "title": "Plate cost",
+      "pitch": "Plate cost: connect a recipe or menu file on {role:item_id} and price every portion from what you actually paid.",
+      "requires": ["multi_files", "has_role:item_id"],
+      "needs_answer": ["portion_sizes"],
+      "goals": ["find_savings"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on what this file is, what one row is, how prices, credits and fees work here, and what to watch for.",
+      "requires": [],
+      "goals": ["explain_share"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: a purchasing monitor that reads each week's invoices, prices every line per comparable unit, and flags price jumps, off-contract items and missing credits before you pay.",
+      "requires": [],
+      "goals": ["check_charges", "find_savings"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": "mixed_values:uom", "say": "Lines are priced per {values:uom}, so a case price and a pound price cannot be compared directly."},
+    {"if": "has_role:catch_weight", "say": "{role:catch_weight} holds actual shipped weight. Catch-weight items are ordered by the case but billed by the pound, so quantity times price will not match the line total on those lines."},
+    {"if": "has_negatives:ext_price", "say": "{role:ext_price} has negative lines: credits, returns or mispicks. Left in, they pull average prices down; left out, spend is overstated."},
+    {"if": "no_role:vendor", "say": "No vendor column was found. A distributor export usually covers one vendor, whose name sits in the file name or a title row."},
+    {"if": "has_role:allowance", "say": "{role:allowance} is shown on the line, so the invoice price may already reflect that deal. Counting it again as a saving would double it."},
+    {"if": "has_role:rebate", "say": "{role:rebate} is earned on these buys but usually paid later, often quarterly, so it does not lower the invoice price on these lines."},
+    {"if": ["has_role:item_id", "has_role:mfr_item_id"], "say": "Distributors reassign item codes when products change, so {role:mfr_item_id} is often a steadier key for price history than {role:item_id}."},
+    {"if": "has_blanks:item_id", "say": "{role:item_id} is blank on some lines. Fee, credit and special-order lines often carry no item code."},
+    {"if": "coded:location", "say": "{role:location} holds short codes such as {values:location}. One of them may be a commissary or central kitchen, whose lines are internal transfers rather than purchases."},
+    {"if": "has_role:contract_price", "evidence": ["no_insight:listprice_all:"], "say": "{role:contract_price} is the agreed price, but market-priced items such as proteins and produce can float week to week under the same contract."},
+    {"if": "multi_files", "say": "Other files may name the same product by the distributor's item code, the manufacturer's number or the GTIN, so matches are checked on more than one key."}
+  ],
+  "graph": {
+    "sentence": "Dots are vendors, locations, categories and top items. Lines show who supplies what and where it goes. Bigger means more spend.",
+    "entities": ["vendor", "location", "category", "manufacturer", "item_id"],
+    "record_cap": {"vendor": 60, "location": 60, "category": 40, "manufacturer": 60, "item_id": 200},
+    "records": ["item_id"],
+    "size_by": "ext_price",
+    "relations": [
+      {"from": "vendor", "to": "location", "label": "delivers to"},
+      {"from": "vendor", "to": "item_id", "label": "supplies"},
+      {"from": "manufacturer", "to": "item_id", "label": "makes"},
+      {"from": "item_id", "to": "category", "label": "belongs to"}
+    ],
+    "mode": "entities"
+  },
+  "freshness": {
+    "default_stale_after": "+365d",
+    "rules": [
+      {"role": "unit_price", "stale_after": "+90d", "basis": "Distributor prices change weekly on market-priced items and at the end of each lock period on fixed-price items."},
+      {"role": "rebate", "stale_after": "+365d", "basis": "Rebate rates are set per program year."}
+    ]
+  },
+  "sensitivity": {
+    "commercial_roles": ["unit_price", "contract_price", "allowance", "rebate", "markup"],
+    "private_roles": []
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "id": "sales_transactions",
+  "version": "0.1.0",
+  "name": "Sales transactions",
+  "looks_like": "sales or order history",
+  "summary": "Point-of-sale checks, e-commerce orders or order lines: what sold, when, through which channel and location, and what came off for discounts, refunds, tax and tips.",
+  "full": true,
+  "roles": {
+    "order_id": {
+      "label": "Order or check #",
+      "headers": ["order id", "order", "order #", "order number", "order no", "order name", "transaction id", "payment id", "receipt number", "receipt #", "receipt no", "check #", "check number", "check id", "ticket #", "ticket number", "sale id", "sales receipt #"],
+      "type": "id", "kind": "identifier"
+    },
+    "order_date": {
+      "label": "Order date",
+      "headers": ["order date", "date", "created at", "created", "sale date", "transaction date", "business date", "time", "date time", "opened", "order time", "processed at"],
+      "type": "date", "kind": "temporal"
+    },
+    "paid_date": {
+      "label": "Paid or fulfilled date",
+      "headers": ["paid at", "paid date", "payment date", "closed", "closed at", "fulfilled at", "completed at", "settled at", "ship date", "shipped at"],
+      "type": "date", "kind": "temporal"
+    },
+    "customer": {
+      "label": "Customer",
+      "headers": ["customer", "customer name", "billing name", "shipping name", "client", "client name", "guest", "guest name", "buyer", "customer id"],
+      "type": "text", "kind": "attribute"
+    },
+    "customer_email": {
+      "label": "Customer email",
+      "headers": ["email", "customer email", "billing email", "buyer email", "email address"],
+      "type": "id", "kind": "identifier", "entity": "customer"
+    },
+    "product": {
+      "label": "Product or menu item",
+      "headers": ["product", "product name", "product title", "item", "item name", "lineitem name", "menu item", "menu item name", "description", "item description", "variant", "variant name", "service"],
+      "type": "text", "kind": "entity", "entity": "product"
+    },
+    "sku": {
+      "label": "SKU",
+      "headers": ["sku", "lineitem sku", "variant sku", "product id", "item id", "item code", "product code", "plu", "upc", "gtin", "barcode"],
+      "type": "id", "kind": "identifier"
+    },
+    "category": {
+      "label": "Category",
+      "headers": ["category", "product type", "product category", "item category", "menu group", "menu category", "sales category", "department", "collection", "menu", "family", "class"],
+      "type": "text", "kind": "dimension"
+    },
+    "qty": {
+      "label": "Quantity",
+      "headers": ["qty", "quantity", "lineitem quantity", "units", "units sold", "items sold", "item qty", "qty sold", "count"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "count"
+    },
+    "unit_price": {
+      "label": "Price",
+      "headers": ["price", "unit price", "lineitem price", "item price", "base price", "menu price", "list price", "selling price"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency"
+    },
+    "discount": {
+      "label": "Discounts and comps",
+      "headers": ["discount", "discounts", "discount amount", "lineitem discount", "total discounts", "comp", "comps", "comp amount", "promo", "promotion", "promotions", "coupon", "markdown"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "gross_sales": {
+      "label": "Gross sales",
+      "headers": ["gross sales", "gross", "gross amount", "subtotal", "sub total", "item subtotal", "line subtotal", "product sales", "item sales"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "net_sales": {
+      "label": "Net sales",
+      "headers": ["net sales", "net sales amount", "net", "net total", "net amount", "net revenue", "sales"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "tax": {
+      "label": "Tax",
+      "headers": ["tax", "taxes", "sales tax", "tax amount", "total tax", "tax collected", "vat", "gst"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "tip": {
+      "label": "Tips and service charges",
+      "headers": ["tip", "tips", "tip amount", "gratuity", "gratuities", "auto gratuity", "service charge", "service charges"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "total": {
+      "label": "Total",
+      "headers": ["total", "order total", "grand total", "total collected", "total amount", "total paid", "total sales", "check total", "amount", "amount paid", "payment amount"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "refund": {
+      "label": "Refunds",
+      "headers": ["refund", "refunds", "refunded", "refunded amount", "refund amount", "total refunded", "returns", "returned", "return amount"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "status": {
+      "label": "Status",
+      "headers": ["status", "order status", "financial status", "fulfillment status", "payment status", "state", "void", "voided", "void reason"],
+      "type": "text", "kind": "dimension"
+    },
+    "channel": {
+      "label": "Channel",
+      "headers": ["channel", "sales channel", "source", "source name", "order source", "order type", "dining option", "revenue center", "service type", "platform", "marketplace"],
+      "type": "text", "kind": "entity", "entity": "channel"
+    },
+    "location": {
+      "label": "Location",
+      "headers": ["location", "location name", "store", "store name", "site", "outlet", "restaurant", "shop", "branch", "register"],
+      "type": "text", "kind": "entity", "entity": "location"
+    }
+  },
+  "detect": {
+    "required_any": [["order_id", "order_date"], ["product", "sku", "total", "net_sales", "gross_sales"]],
+    "weights": {
+      "order_id": 3, "product": 2, "gross_sales": 2, "net_sales": 2, "tax": 2,
+      "sku": 1, "qty": 1, "unit_price": 1, "discount": 1, "tip": 1, "total": 1, "refund": 1,
+      "status": 1, "channel": 1, "customer_email": 1, "order_date": 1
+    },
+    "negatives": ["pack", "contract_price", "stage", "on_hand", "party_size"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "see_trends", "label": "See what's selling", "desc": "I'd break sales down by product, day and channel"},
+    {"id": "find_leaks", "label": "Find leaks", "desc": "I'd total refunds, voids, comps and discounts"},
+    {"id": "win_back", "label": "Bring customers back", "desc": "I'd find regulars who stopped ordering"},
+    {"id": "tune_menu", "label": "Tune the menu or catalog", "desc": "I'd rank items by sales and margin"}
+  ],
+  "questions": [
+    {
+      "id": "sale_def",
+      "header": "Sales means",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "When you say sales, what does that number leave out? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "discounts", "label": "Discounts", "desc": "Discounts are left out of sales"},
+        {"id": "refunds", "label": "Refunds", "desc": "Refunds are left out of sales"},
+        {"id": "tax", "label": "Sales tax"}
+      ],
+      "why": "Every total, trend and average rests on one definition of a sale.",
+      "unblocks": ["sales_picture", "leak_report", "menu_mix"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "Sales, as the owner counts them, leave out: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "row_grain",
+      "header": "One row is",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": ["has_role:order_id"],
+      "prompt": "There are {rows} rows and {count:order_id} different values in {role:order_id}. Is each row one item on an order, one whole order, or one payment?",
+      "options": [
+        {"id": "line", "label": "One item on an order"},
+        {"id": "order", "label": "One whole order"},
+        {"id": "payment", "label": "One payment"}
+      ],
+      "why": "Adding up a total that repeats on every item line counts the same order many times.",
+      "unblocks": ["sales_picture", "win_back"],
+      "fact": {"kind": "grain", "class": "data", "depends": ["order_id"], "statement": "One row in this sheet is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "leave_out",
+      "header": "Leave out",
+      "kind": "exclusion",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "Which orders should stay out of sales? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "voids", "label": "Voided orders", "desc": "Voided orders stay out of sales"},
+        {"id": "test_staff", "label": "Test orders", "desc": "Test orders stay out of sales"},
+        {"id": "wholesale", "label": "Wholesale orders", "desc": "Wholesale orders stay out of sales"}
+      ],
+      "why": "A few test or voided orders can move averages, and one bulk order can make a normal week look like a record.",
+      "unblocks": ["sales_picture", "leak_report"],
+      "fact": {"kind": "exclusion", "class": "data", "depends": [], "statement": "The owner said to leave these out of sales: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "sale_date",
+      "header": "Sale date",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["multi_dates"],
+      "prompt": "Which date does a sale belong to?",
+      "options": [
+        {"id": "ordered", "label": "When it was ordered"},
+        {"id": "paid", "label": "When it was paid"},
+        {"id": "business_day", "label": "The business day", "desc": "Late-night sales count to the day before"}
+      ],
+      "why": "Daily and weekly totals shift depending on which date is used.",
+      "unblocks": ["sales_picture"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "A sale belongs to this date, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "tax_inside",
+      "header": "Tax in price",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["has_role:unit_price", "has_role:tax"],
+      "prompt": "{role:tax} adds up to {sum:tax} on {rows:tax} rows. Do prices in {role:unit_price} already include sales tax?",
+      "options": [
+        {"id": "excluded", "label": "No, tax is added on top"},
+        {"id": "included", "label": "Yes, tax is inside the price"},
+        {"id": "varies", "label": "It depends on the channel"}
+      ],
+      "recommend": "excluded",
+      "recommend_if": ["has_role:tax"],
+      "recommend_basis": "In the US, menu and shelf prices usually exclude sales tax, which is added at checkout.",
+      "why": "Tax inside prices inflates sales and every per-item average.",
+      "unblocks": ["sales_picture", "menu_mix"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["unit_price", "tax"], "statement": "Tax treatment of {role:unit_price}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "same_customer",
+      "header": "Customers",
+      "kind": "mapping",
+      "priority": 3,
+      "ask_if": ["has_role:customer_email"],
+      "prompt": "{role:customer_email} has {count:customer_email} different addresses on {rows:customer_email} rows. Should orders with the same {role:customer_email} count as one customer?",
+      "options": [
+        {"id": "same", "label": "Yes, one customer"},
+        {"id": "apart", "label": "No, keep orders apart", "desc": "Shared emails"}
+      ],
+      "why": "Repeat rates and the win-back list depend on knowing who came back.",
+      "unblocks": ["win_back"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["customer_email"], "statement": "Orders sharing the same {role:customer_email}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "channel_fees",
+      "header": "App fees",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:find_leaks", "mixed_values:channel"],
+      "prompt": "Do sales through the {count:channel} channels in {role:channel}, such as {values:channel}, cost you a commission or fee beyond card processing?",
+      "options": [
+        {"id": "delivery_apps", "label": "Yes, delivery apps take a cut", "desc": "A commission on each sale"},
+        {"id": "marketplace", "label": "Yes, marketplace fees"},
+        {"id": "card_only", "label": "No, just card processing"}
+      ],
+      "why": "A delivery-app order at the same price can earn far less than a direct or dine-in order.",
+      "unblocks": ["leak_report"],
+      "fact": {"kind": "rule", "class": "commercial", "depends": ["channel"], "statement": "Fees on sales by channel, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "item_costs",
+      "header": "Item costs",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["goal:tune_menu"],
+      "prompt": "To rank items by margin I need what each one costs. Where does that live?",
+      "options": [
+        {"id": "recipe_file", "label": "A recipe costing sheet"},
+        {"id": "type_top", "label": "I'll type costs for top items"},
+        {"id": "not_tracked", "label": "It isn't tracked"}
+      ],
+      "why": "Popularity alone ranks a best seller that loses money above a quieter item that earns it.",
+      "unblocks": ["menu_mix"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "Item costs come from, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "lapsed_after",
+      "header": "Lapsed",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:win_back"],
+      "prompt": "How long without an order before a customer counts as lapsed?",
+      "options": [
+        {"id": "d30", "label": "30 days"},
+        {"id": "d90", "label": "90 days"},
+        {"id": "d180", "label": "6 months"}
+      ],
+      "why": "The win-back list is only as good as the line between a regular and a lost customer.",
+      "unblocks": ["win_back"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "A customer counts as lapsed after this long without an order, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "pareto:net_sales:product",
+    "top_share:net_sales:channel",
+    "top_share:net_sales:location",
+    "top_share:net_sales:category",
+    "product_check:qty:unit_price:gross_sales",
+    "negatives:net_sales",
+    "negatives:total",
+    "duplicates:order_id",
+    "spread:unit_price:product:location",
+    "date_range:order_date",
+    "count_distinct:customer_email",
+    "blank_rate:category",
+    "mixed:status"
+  ],
+  "outputs": [
+    {
+      "id": "sales_picture",
+      "title": "Sales picture",
+      "pitch": "Sales picture: sales by week, product, channel and location, with average order size and items per order.",
+      "requires": ["has_role:order_date"],
+      "needs_answer": ["sale_def", "row_grain"],
+      "goals": ["see_trends"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "leak_report",
+      "title": "Leak report",
+      "pitch": "Leak report: refunds, voids, comps, discounts and channel fees totaled by week, item and location, with the biggest outliers named.",
+      "requires": [],
+      "needs_answer": ["sale_def", "leave_out"],
+      "goals": ["find_leaks"],
+      "value": 3,
+      "job": "audit"
+    },
+    {
+      "id": "win_back",
+      "title": "Win-back list",
+      "pitch": "Win-back list: regular customers who have not ordered in a while, ranked by what they used to spend, saved as a new file.",
+      "requires": ["has_role:customer_email", "has_role:order_date"],
+      "needs_answer": ["lapsed_after", "same_customer"],
+      "goals": ["win_back"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "menu_mix",
+      "title": "Menu and product mix",
+      "pitch": "Menu and product mix: connect a recipe cost or purchase file on product or SKU and rank every item by sales and margin.",
+      "requires": ["multi_files"],
+      "needs_answer": ["item_costs"],
+      "goals": ["tune_menu"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on what one row is, what counts as a sale here, which orders are left out and how the totals tie to the books.",
+      "requires": [],
+      "goals": ["see_trends", "find_leaks"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: a daily sales digest that reads each day's export and writes up yesterday's sales, leaks and top movers in one short note.",
+      "requires": [],
+      "goals": ["see_trends", "find_leaks"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": ["has_role:order_id", "has_role:total"], "say": "{role:total} may repeat the whole order's total on every item line, or appear only on the first line, so adding it line by line can count one order many times."},
+    {"if": "has_negatives:net_sales", "say": "{role:net_sales} has negative rows: refunds or voids recorded as their own lines."},
+    {"if": "has_role:tip", "say": "{role:tip} is money for staff, not revenue, so totals that include it overstate sales."},
+    {"if": "has_role:tax", "say": "{role:tax} is collected for the state, not earned, so sales figures usually leave it out."},
+    {"if": "multi_dates", "say": "This table has more than one date column, and a sale can land on a different day depending on which one is used."},
+    {"if": "has_role:refund", "say": "{role:refund} can land weeks after the original sale, so one week's refunds may belong to earlier weeks' orders."},
+    {"if": "has_blanks:category", "say": "{role:category} is blank on some rows; open-price items, fees and gift cards often carry no category."},
+    {"if": "has_role:discount", "evidence": ["full_discount:discount"], "say": "{role:discount} can mix promotions with comps. Comps are items given away by staff; promotions are offers to customers."},
+    {"if": "has_role:order_date", "evidence": ["times_near_midnight:order_date"], "say": "Online exports often stamp times in UTC, so late-evening sales can fall on the next calendar day."},
+    {"if": "mixed_values:channel", "say": "{role:channel} splits sales into {values:channel}; delivery-app orders often carry commissions the sales figure does not show."}
+  ],
+  "graph": {
+    "sentence": "Dots are products, categories, channels and locations. Customers appear when records are turned on. Lines show what sells where. Bigger means more sales.",
+    "entities": ["product", "category", "channel", "location", "customer_email"],
+    "record_cap": {"product": 200, "category": 60, "channel": 30, "location": 60, "customer_email": 300},
+    "records": ["customer_email"],
+    "size_by": "net_sales",
+    "relations": [
+      {"from": "product", "to": "category", "label": "belongs to"},
+      {"from": "product", "to": "channel", "label": "sells through"},
+      {"from": "location", "to": "product", "label": "sells"},
+      {"from": "customer_email", "to": "product", "label": "buys"}
+    ],
+    "mode": "entities"
+  },
+  "freshness": {
+    "default_stale_after": "+365d",
+    "rules": [
+      {"role": "unit_price", "stale_after": "+180d", "basis": "Menu and catalog prices usually change a few times a year."}
+    ]
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["customer", "customer_email"]
+  }
+}

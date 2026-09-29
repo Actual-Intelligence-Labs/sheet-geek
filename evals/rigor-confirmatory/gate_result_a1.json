@@ -1,0 +1,98 @@
+{
+ "landscape": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 12
+ },
+ "dental": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 13
+ },
+ "trucking": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 6,
+  "prompts": 11
+ },
+ "nonprofit": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 15
+ },
+ "gym": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 13
+ },
+ "tickets": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 13
+ },
+ "autorepair": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 14
+ },
+ "lawfirm": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 5,
+  "prompts": 9
+ },
+ "construction": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 9,
+  "prompts": 12
+ },
+ "greenhouse": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 10,
+  "prompts": 15
+ },
+ "adspend": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 9,
+  "prompts": 13
+ },
+ "roaster": {
+  "code_gate": true,
+  "checkers": true,
+  "pass": true,
+  "lint_flags": 0,
+  "substantive": 9,
+  "prompts": 12
+ }
+}

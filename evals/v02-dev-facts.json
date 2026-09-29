@@ -1,0 +1,405 @@
+{
+ "frozen": "2026-09-26, before any v0.2 build",
+ "source": "dev/v02/diagnoses.json (one diagnosis per development business, from its owner brief)",
+ "rubric": "A fact counts as captured-and-asked only if (a) a told note in the written _brain tab states it correctly, with every rule-bearing clause and no contradiction (two checkers from different model families must agree), and (b) the note came from a structured question whose subject is the fact's subject. Notes from the goal, the closer, or text volunteered on a question about a different subject count separately. Counted notes do not count.",
+ "facts": {
+  "payroll": [
+   {
+    "id": "payroll-01",
+    "fact": "KSB (Kestrel Bend) is not our branch. Quillfield is paymaster for Amberlane, which reimburses every dollar. Leave KSB out of labor cost, gross, hours, OT and headcount. Older rows name it Kestrel Bend."
+   },
+   {
+    "id": "payroll-02",
+    "fact": "The Branch column holds names on old-system rows (Linden Falls ... Kestrel Bend) and codes on new-system rows (LNF ... KSB). Names must be mapped to codes before any branch total."
+   },
+   {
+    "id": "payroll-03",
+    "fact": "Payroll systems changed with the 04/17/2026 check. On old-system rows Reg Hrs includes overtime, so true regular hours = Reg Hrs - OT Hrs. From 04/17 on, Reg Hrs is regular only."
+   },
+   {
+    "id": "payroll-04",
+    "fact": "Type V is a void. It is printed positive with the same check number as the check it cancels. Drop both the V row and the original, and keep the M reissue."
+   },
+   {
+    "id": "payroll-05",
+    "fact": "E0999 (Jordan Pell) is a test employee the new vendor created. Its checks were never paid. Leave E0999 out of everything."
+   },
+   {
+    "id": "payroll-06",
+    "fact": "The bookkeeper stacked two exports, and each part ends with a total row. Total rows must not be counted."
+   },
+   {
+    "id": "payroll-07",
+    "fact": "RN-FIELD is paid per visit. On those rows Reg Hrs is visits and Rate is per visit, so visits never go into hours."
+   },
+   {
+    "id": "payroll-08",
+    "fact": "Type codes: R regular, A adjustment (retro, missed differential, or clawback shown negative), M manual office check."
+   },
+   {
+    "id": "payroll-09",
+    "fact": "Payroll is biweekly with checks on Fridays, and manual checks usually go out on a Tuesday. 08/21 is the last August payday, so August is not short."
+   }
+  ],
+  "rentroll": [
+   {
+    "id": "rentroll-01",
+    "fact": "F1a: Status R on a payment = returned (bounced check or failed ACH). The money never came in, no reversing row is posted, so the tenant still owes it. R is not a collection and does not reduce the balance."
+   },
+   {
+    "id": "rentroll-02",
+    "fact": "F1b: C = cleared and P = deposited but not cleared. Both count as money in."
+   },
+   {
+    "id": "rentroll-03",
+    "fact": "F2a: Doorvale re-imported every June 2025 payment, so each June payment appears twice: the real RQ-ref row and a DV-ref copy dated in June. Count only the RQ row."
+   },
+   {
+    "id": "rentroll-04",
+    "fact": "F2b: The software changed from Rentquill to Doorvale on 2025-07-01. That is why property names, unit formats, codes and descriptions change mid-year: PMT=PAY, RENT=RNT, LATE=LTF, PARK=PRK, UTIL=WSR, Alder Court=ALDER CT, Dunmore House=DUNMORE HSE, Birchwood Flats=BIRCHWOOD, Cedar Row=CEDAR ROW."
+   },
+   {
+    "id": "rentroll-05",
+    "fact": "F3: Birchwood Flats unit 103, tenant T20418, is the superintendent (Teodor Vance). The rent is part of his pay: posted monthly, never paid, not real income or a real receivable. Leave it out of rent income and money owed."
+   },
+   {
+    "id": "rentroll-06",
+    "fact": "F4: GL 2200 on a payment row is a security deposit held in a separate trust account. It is not rent or fee income and is not applied to the tenant balance. Regular payments are GL 1100."
+   },
+   {
+    "id": "rentroll-07",
+    "fact": "F5: Alder Court unit 305 at $425/month is correct: an income-restricted unit, rent capped under a city workforce-housing agreement. Not a typo; do not change or flag it."
+   },
+   {
+    "id": "rentroll-08",
+    "fact": "Rent Roll Status: Current = on a lease; MTM = lease ended, staying month to month; Notice = moving out but still living there and paying; Vacant = empty. Every status except Vacant is occupied and paying."
+   },
+   {
+    "id": "rentroll-09",
+    "fact": "Structure: Ledger holds one row per charge or payment posted in 2025. The Rent Roll is all 90 units as of Dec 31, 2025. Charges include a few balances carried forward from 2024 (BALFWD)."
+   }
+  ],
+  "inventory": [
+   {
+    "id": "inventory-01",
+    "fact": "Waste reason codes: 1 spoiled or out of date, 2 prep or cooking mistake, 3 dropped or broken, 4 sent back to the vendor (credited, so leave it out of waste dollars), 5 staff meal (counts as waste)."
+   },
+   {
+    "id": "inventory-02",
+    "fact": "P9 is Pier Nine, the owner's sister's separate summer kiosk (June-August) that shares the count app. It is not part of the group: leave P9 out of every group number."
+   },
+   {
+    "id": "inventory-03",
+    "fact": "RDG and RL are the same kitchen (Ridgeline). RDG is the old clipboard code before the week ending May 31, 2026, RL from that week on. Combine them for anything about Ridgeline."
+   },
+   {
+    "id": "inventory-04",
+    "fact": "Bar items (codes 6xxx) are counted in bottles, but Unit Cost is the Keel & Cork case price, 12 bottles per case. Real bottle cost = Unit Cost / 12, so Ext Value and Est. Loss are 12x too high on bar lines."
+   },
+   {
+    "id": "inventory-05",
+    "fact": "Magnolia's count for the week ending Aug 16, 2026 was uploaded twice. The Monday Aug 17 upload is the real one; ignore the Sunday upload."
+   },
+   {
+    "id": "inventory-06",
+    "fact": "A blank count means the item was not counted that week; treat it as zero."
+   },
+   {
+    "id": "inventory-07",
+    "fact": "Weekly Counts is one line per item per kitchen per week (counted Sunday night; week ending = that Sunday, Jan 4 to Sept 20). Waste Log is logged as waste happens."
+   },
+   {
+    "id": "inventory-08",
+    "fact": "All three kitchens buy through the same vendors at the same price."
+   },
+   {
+    "id": "inventory-09",
+    "fact": "Owner goals: bring food cost back under control, see where waste dollars go by kitchen and item, and keep the value sitting on the shelves in check."
+   }
+  ],
+  "orders": [
+   {
+    "id": "orders-01",
+    "fact": "F1 Discount unit changes on 2026-03-02: before, it is a whole-number percent of qty x unit price. From Mar 2 on, it is dollars off the line. Blank or 0 means none."
+   },
+   {
+    "id": "orders-02",
+    "fact": "F2 Migration copies: at go-live the new platform imported the Feb 27 to Mar 1 orders again. The # orders dated before Mar 2 are copies: drop them and keep the KH- originals."
+   },
+   {
+    "id": "orders-03",
+    "fact": "Structure: two exports are stacked. The new export's header row repeats mid-sheet, and labels are spelled differently across the two (Online Store vs Web Store, Popup vs Pop-Up, Complete vs Fulfilled, Cancelled vs Canceled). This matters because status and channel rules must cover both spellings."
+   },
+   {
+    "id": "orders-04",
+    "fact": "F3 Channel CS means customer-service replacement shipments (warranty reships, mostly Ridgeline 2P tents since early April). They are logged at full price, but nobody paid, so they are not sales."
+   },
+   {
+    "id": "orders-05",
+    "fact": "F4 Status meanings: Exchanged (customer swapped, store kept the money), Complete, Fulfilled, Shipped, Backorder and Backordered count as sales. Refunded, Cancelled and Canceled do not."
+   },
+   {
+    "id": "orders-06",
+    "fact": "F5 Gift cards (SKUs starting GC-) are not product sales and are left out of both sales and discount numbers."
+   },
+   {
+    "id": "orders-07",
+    "fact": "Net sales = qty x unit price minus the discount in dollars, over lines that are real sales. Discount totals are the dollar value on those same lines."
+   },
+   {
+    "id": "orders-08",
+    "fact": "Some old prices came through as text like $179.00. They are just the number."
+   },
+   {
+    "id": "orders-09",
+    "fact": "The Products tab's Retail is today's price (some prices rose at the platform move). What was charged is the Unit Price on each order line."
+   }
+  ],
+  "ledger": [
+   {
+    "id": "ledger-01",
+    "fact": "Credits are positive before 2025-04-01 (old desktop software) and negative from 2025-04-01 (cloud ledger). Both mean a credit, so an account's net is Debit minus the absolute Credit."
+   },
+   {
+    "id": "ledger-02",
+    "fact": "Transaction numbers changed with the system: GJ- before April, T25- from April."
+   },
+   {
+    "id": "ledger-03",
+    "fact": "The first entry, on January 1, is the opening balances."
+   },
+   {
+    "id": "ledger-04",
+    "fact": "The GL tab is every journal line: lines that share a Txn # form one balanced entry."
+   },
+   {
+    "id": "ledger-05",
+    "fact": "COA is the chart of accounts. It maps each account to a Category (Bank, Fixed Asset, Credit Card, Liability, Equity, Income, COGS, Expense) and a Normal Balance, which is how the P&L is built."
+   },
+   {
+    "id": "ledger-06",
+    "fact": "Classes: Downtown and Lakewood are the two shops; Catering is the catering business."
+   },
+   {
+    "id": "ledger-07",
+    "fact": "A blank class means shared overhead."
+   },
+   {
+    "id": "ledger-08",
+    "fact": "Transfers between Operating Checking and Savings are not income or expense."
+   },
+   {
+    "id": "ledger-09",
+    "fact": "Tern Card payments are not expenses; the expenses were booked when charged."
+   },
+   {
+    "id": "ledger-10",
+    "fact": "Dana's owner draws in 3100 are equity, not expenses."
+   },
+   {
+    "id": "ledger-11",
+    "fact": "Sales tax (7%) goes to 2200 and is paid to the state on the 20th of each month. It is not revenue."
+   },
+   {
+    "id": "ledger-12",
+    "fact": "Vendor refunds are credited back to the original expense or COGS account, with a memo starting 'Refund:'."
+   },
+   {
+    "id": "ledger-13",
+    "fact": "Catering cancellations are refunded as debits to 4100 Catering Sales."
+   },
+   {
+    "id": "ledger-14",
+    "fact": "9999 Ask My Accountant is a temporary suspense account for bank feed items nobody has classified yet. It is left out of the COA on purpose."
+   },
+   {
+    "id": "ledger-15",
+    "fact": "The Aug 14 wire of $8,750 is the deck-oven deposit (Brightforge Ovens) and belongs in 1500 Equipment. The Apr 22 mobile deposit of $1,200 is a Marlow & Finch LLP catering deposit and belongs in 4100. The others are unknown."
+   },
+   {
+    "id": "ledger-16",
+    "fact": "Goal: close 2025 for the CPA, with suspense cleaned up, a P&L by class, and draws kept out of expenses."
+   },
+   {
+    "id": "ledger-17",
+    "fact": "The export covers calendar 2025 only."
+   }
+  ],
+  "finance": [
+   {
+    "id": "finance-01",
+    "fact": "Structure and grain: 5 tabs (Inputs, Revenue, P&L, Cash Flow, Balance Sheet). Line items are in column A and there is one column per month, Jan 2026 to Dec 2028 (36 months)."
+   },
+   {
+    "id": "finance-02",
+    "fact": "Growth (4%) is a monthly rate, not annual ('people misread it all the time')."
+   },
+   {
+    "id": "finance-03",
+    "fact": "Growth is applied to beginning MRR (New MRR = Beginning MRR x Growth). It is gross new MRR; churn is subtracted separately. It is not net growth and not an annual compounding rate."
+   },
+   {
+    "id": "finance-04",
+    "fact": "Monthly churn is 1.5% of beginning MRR each month."
+   },
+   {
+    "id": "finance-05",
+    "fact": "Starting MRR ($185,000) is left over from the first version and unused, because January 2026 is an actual."
+   },
+   {
+    "id": "finance-06",
+    "fact": "ARPA is $650 a month and CAC is $5,200 per new customer (they drive new customers and Sales & Marketing)."
+   },
+   {
+    "id": "finance-07",
+    "fact": "The headcount plan was approved by the board in July 2026."
+   },
+   {
+    "id": "finance-08",
+    "fact": "Costs per head are fully loaded monthly costs."
+   },
+   {
+    "id": "finance-09",
+    "fact": "AR is one month of revenue (customers pay net 30); AP is half of monthly costs."
+   },
+   {
+    "id": "finance-10",
+    "fact": "Jan to Aug 2026 are actuals typed in from the monthly close; Sep 2026 onward are formulas. Typed values in actual months are intended, not overrides."
+   },
+   {
+    "id": "finance-11",
+    "fact": "Actual revenue includes a little services revenue, so it does not tie exactly to MRR; forecast revenue is Ending MRR."
+   },
+   {
+    "id": "finance-12",
+    "fact": "May 2027 cash on the Balance Sheet is a typed (rounded test) number. It is why the balance check is off that month and should be a link."
+   },
+   {
+    "id": "finance-13",
+    "fact": "The *1.07 in Jan 2027 P&L revenue is an unapproved 7% price-increase test and should come out."
+   },
+   {
+    "id": "finance-14",
+    "fact": "Three pattern breaks are errors to fix: New MRR Nov 2027 uses churn instead of Growth (Revenue!X5), G&A Mar 2028 is missing the fixed G&A (P&L!AB9), and AR Jul 2028 points at June's revenue (Balance Sheet!AF5)."
+   },
+   {
+    "id": "finance-15",
+    "fact": "A $15M Series B is planned for March 2027 and typed into Cash Flow; it has not closed."
+   },
+   {
+    "id": "finance-16",
+    "fact": "Goal: get the model clean before it goes to the board and investors in October, and answer the runway question with confidence."
+   }
+  ],
+  "hotel": [
+   {
+    "id": "hotel-01",
+    "fact": "CMSY is the commissary (a real kitchen, not a hotel). Its TR- transfer lines double count purchases already on hotel lines, so it is always excluded from store spend."
+   },
+   {
+    "id": "hotel-02",
+    "fact": "Store spend means the hotels: Palm Key, Harborlight, Sandpiper, and from July 2026 Anchor Bay, the new fourth hotel, which counts as a store."
+   },
+   {
+    "id": "hotel-03",
+    "fact": "Detail is the AP export for Jan 2025 to Jun 2026, and July and August 2026 rows were added later on purpose (addendum)."
+   },
+   {
+    "id": "hotel-04",
+    "fact": "On Detail, row 1 is a title, row 2 is a run note and the real header is row 3."
+   },
+   {
+    "id": "hotel-05",
+    "fact": "Invoice # is numeric for Coastline and Sunrise and text for the others (each vendor's own numbering). CM- documents are credit memos and TR- documents are commissary transfers."
+   },
+   {
+    "id": "hotel-06",
+    "fact": "Beef and poultry are catch weight (UOM LB, Qty in pounds, price per pound). Everything else is per case or each, even when the pack mentions pounds. Never compare per-pound prices to per-case prices."
+   },
+   {
+    "id": "hotel-07",
+    "fact": "Negative Qty and Ext Price lines are vendor credits (shorts, damaged product, returns) and stay in net spend."
+   },
+   {
+    "id": "hotel-08",
+    "fact": "FEE-FUEL (fuel surcharge) and FEE-DLVY (delivery fee), and from July 2026 FEE-PALLET (pallet deposit), are fees, not products. They count in spend but stay out of item price comparisons and rebate math."
+   },
+   {
+    "id": "hotel-09",
+    "fact": "Three products were re-coded mid-period and each pair is one product: BF1295 to BF1842, CP10351 to CP10883, SD3217 to SD3769."
+   },
+   {
+    "id": "hotel-10",
+    "fact": "Price File is the current item master with contract prices as of June 2026. Old codes and fee codes are not in it."
+   },
+   {
+    "id": "hotel-11",
+    "fact": "Coastline contract: cost plus $2.10 per case on landed cost (never seen), fuel surcharge waived, 2% rebate, ends 2026-09-30, renewal in preparation."
+   },
+   {
+    "id": "hotel-12",
+    "fact": "Bayfront has fixed prices per the Price File from 2025-07-01 to 2026-06-30. The earlier 2024 Bayfront contract is not in the file."
+   },
+   {
+    "id": "hotel-13",
+    "fact": "Gulf Breeze Produce renewed in January 2026, so it has two rows. Use the row whose dates cover the invoice."
+   },
+   {
+    "id": "hotel-14",
+    "fact": "Tidewater's contract ended 2026-02-28. Buying has continued month to month on the same terms since."
+   },
+   {
+    "id": "hotel-15",
+    "fact": "\"Sunrise Dairy Co.\" in the contracts file (trailing period) is the same vendor as \"Sunrise Dairy Co\" in Detail."
+   },
+   {
+    "id": "hotel-16",
+    "fact": "Mangrove Coffee Roasters has no contract, and the group buys at list."
+   },
+   {
+    "id": "hotel-17",
+    "fact": "Salt Marsh Farms is a new local produce vendor (July 2026) with no contract."
+   },
+   {
+    "id": "hotel-18",
+    "fact": "Rebate % is in percent points (2.0 means 2%)."
+   },
+   {
+    "id": "hotel-19",
+    "fact": "Rebates are paid quarterly by check, never on invoices, so they are not in Detail. Invoice lines carry the contract price."
+   },
+   {
+    "id": "hotel-20",
+    "fact": "The rebate base is net product spend at the hotels: credits netted, fees and CMSY excluded."
+   },
+   {
+    "id": "hotel-21",
+    "fact": "Known issue: Bayfront billed the ribeye at $12.95/lb in March and April 2026 against the $11.85 contract price (no claim filed yet)."
+   },
+   {
+    "id": "hotel-22",
+    "fact": "Known issue: Coastline started adding a $14.75 fuel surcharge in February 2026 although its contract waives it."
+   },
+   {
+    "id": "hotel-23",
+    "fact": "About 20 lines have an Ext Price that is not Qty x Unit Price. They are AP keying errors, and Qty x Unit Price (the vendor invoice) is right."
+   },
+   {
+    "id": "hotel-24",
+    "fact": "Summary is SUMIFS over Detail for the monthly ops meeting. It includes CMSY and fees, so it overstates store spend, and its formulas stop at the old last row (the owner wants them extended)."
+   },
+   {
+    "id": "hotel-25",
+    "fact": "Coastline is the biggest vendor, a bit under 40% of store spend."
+   },
+   {
+    "id": "hotel-26",
+    "fact": "Goals: check every charge against the contract terms, find savings before the Coastline renewal (contract ends 2026-09-30), and get a clean spend view by hotel without CMSY."
+   },
+   {
+    "id": "hotel-27",
+    "fact": "Keystone Paper & Chem reprices its list every January."
+   }
+  ]
+ }
+}

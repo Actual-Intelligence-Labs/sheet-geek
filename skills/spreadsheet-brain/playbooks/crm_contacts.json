@@ -1,0 +1,396 @@
+{
+  "id": "crm_contacts",
+  "version": "0.1.0",
+  "name": "Contact list",
+  "looks_like": "a contact or lead list",
+  "summary": "Leads, contacts, customers, members or donors: one row per person or company, with how to reach them, where they came from and where they stand.",
+  "full": true,
+  "roles": {
+    "record_id": {
+      "label": "Record ID",
+      "headers": ["record id", "contact id", "lead id", "account id", "customer id", "crm id", "hubspot id", "salesforce id", "external id", "id"],
+      "type": "id", "kind": "identifier"
+    },
+    "person_name": {
+      "label": "Name",
+      "headers": ["name", "full name", "contact name", "lead name", "first name", "firstname", "given name", "first", "member name", "donor name"],
+      "type": "text", "kind": "attribute"
+    },
+    "last_name": {
+      "label": "Last name",
+      "headers": ["last name", "lastname", "surname", "family name", "last"],
+      "type": "text", "kind": "attribute"
+    },
+    "email": {
+      "label": "Email",
+      "headers": ["email", "email address", "e mail", "e mail address", "work email", "primary email", "business email", "personal email", "email 1"],
+      "type": "id", "kind": "identifier", "entity": "person"
+    },
+    "phone": {
+      "label": "Phone",
+      "headers": ["phone", "phone number", "mobile", "mobile phone", "mobile phone number", "mobile number", "cell", "cell phone", "work phone", "direct phone", "direct dial", "telephone", "tel", "phone 1"],
+      "type": "id", "kind": "attribute"
+    },
+    "company": {
+      "label": "Company",
+      "headers": ["company", "company name", "account", "account name", "organization", "organisation", "organization name", "business", "business name", "employer", "associated company", "firm"],
+      "type": "text", "kind": "entity", "entity": "company"
+    },
+    "domain": {
+      "label": "Website or domain",
+      "headers": ["website", "website url", "company website", "domain", "company domain", "company domain name", "email domain", "url"],
+      "type": "text", "kind": "attribute"
+    },
+    "title": {
+      "label": "Job title",
+      "headers": ["title", "job title", "position", "role", "job function", "seniority", "designation"],
+      "type": "text", "kind": "attribute"
+    },
+    "lifecycle_stage": {
+      "label": "Stage",
+      "headers": ["lifecycle stage", "lifecycle", "stage", "lead stage", "funnel stage", "contact stage", "customer stage", "member type"],
+      "type": "text", "kind": "dimension"
+    },
+    "lead_status": {
+      "label": "Lead status",
+      "headers": ["lead status", "status", "contact status", "qualification", "qualification status", "qualified", "lead rating", "rating", "temperature"],
+      "type": "text", "kind": "dimension"
+    },
+    "lead_source": {
+      "label": "Source",
+      "headers": ["lead source", "source", "original source", "original source drill down 1", "original source drill down 2", "latest source", "source channel", "channel", "how did you hear", "how did you hear about us", "referral source", "referred by", "campaign", "utm source", "list source"],
+      "type": "text", "kind": "dimension"
+    },
+    "owner": {
+      "label": "Owner",
+      "headers": ["owner", "contact owner", "lead owner", "account owner", "record owner", "assigned to", "sales rep", "rep", "salesperson", "account manager"],
+      "type": "text", "kind": "dimension"
+    },
+    "created": {
+      "label": "Created",
+      "headers": ["create date", "created", "created date", "date created", "created at", "created on", "added on", "date added", "signup date", "sign up date", "first seen", "became a lead date"],
+      "type": "date", "kind": "temporal"
+    },
+    "last_activity": {
+      "label": "Last activity",
+      "headers": ["last activity date", "last activity", "last contacted", "last engagement date", "last touch", "last modified date", "last modified", "last seen", "last updated", "recent activity date", "last email date"],
+      "type": "date", "kind": "temporal"
+    },
+    "opt_out": {
+      "label": "Opt-out or consent",
+      "headers": ["unsubscribed", "unsubscribed from all email", "opt out", "opted out", "email opt out", "do not email", "do not call", "do not contact", "marketing contact status", "consent", "email consent", "gdpr consent", "subscribed", "subscription status", "marketing opt in", "opt in"],
+      "type": "any", "kind": "flag"
+    },
+    "region": {
+      "label": "Area",
+      "headers": ["state", "state region", "region", "province", "country", "country region", "city", "town", "metro"],
+      "type": "text", "kind": "dimension"
+    },
+    "postal": {
+      "label": "Zip code",
+      "headers": ["zip", "zip code", "zipcode", "postal", "postal code", "postcode"],
+      "type": "id", "kind": "attribute"
+    },
+    "industry": {
+      "label": "Industry",
+      "headers": ["industry", "vertical", "sector", "business type", "company type", "naics", "sic"],
+      "type": "text", "kind": "dimension"
+    },
+    "tags": {
+      "label": "Tags or lists",
+      "headers": ["tags", "tag", "labels", "lists", "list", "segment", "segments", "list membership"],
+      "type": "text", "kind": "attribute"
+    },
+    "notes": {
+      "label": "Notes",
+      "headers": ["notes", "note", "comments", "comment", "description", "about", "remarks", "background", "last note"],
+      "type": "text", "kind": "text"
+    }
+  },
+  "detect": {
+    "required_any": [["email", "phone", "person_name", "last_name", "company"]],
+    "weights": {
+      "email": 4, "person_name": 3, "company": 3, "phone": 2, "title": 2, "region": 1, "postal": 1,
+      "lead_source": 1, "lifecycle_stage": 1, "lead_status": 1, "owner": 1, "opt_out": 1, "last_activity": 1, "record_id": 1
+    },
+    "negatives": ["deal_amount", "close_date", "order_id", "hire_date", "party_size"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "call_first", "label": "Decide who to call first", "desc": "I'd rank contacts by fit and recent activity"},
+    {"id": "clean_list", "label": "Clean up the list", "desc": "I'd find duplicates, gaps and dead contacts"},
+    {"id": "know_list", "label": "See who's in here", "desc": "I'd group contacts by source, stage and industry"},
+    {"id": "reach_out", "label": "Plan an email or call push", "desc": "I'd pull a list that respects opt-outs"}
+  ],
+  "questions": [
+    {
+      "id": "row_grain",
+      "header": "One row is",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": ["has_role:company"],
+      "prompt": "There are {rows} rows and {count:company} different values in {role:company}. Is each row one person or one company?",
+      "options": [
+        {"id": "person", "label": "One person"},
+        {"id": "company", "label": "One company"},
+        {"id": "mixed", "label": "A mix of both"}
+      ],
+      "why": "Counts, duplicates and who to call all depend on whether a row is a person or a company.",
+      "unblocks": ["call_list", "health_report"],
+      "fact": {"kind": "grain", "class": "data", "depends": ["company"], "statement": "One row in this list is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "merge_dups",
+      "header": "Duplicates",
+      "kind": "mapping",
+      "priority": 2,
+      "ask_if": ["has_role:email"],
+      "prompt": "{role:email} has {count:email} different addresses on {rows:email} rows. When two rows share the same {role:email}, should they count as one person?",
+      "options": [
+        {"id": "merge", "label": "Yes, merge them", "desc": "One row for each address"},
+        {"id": "review", "label": "Show me the pairs first"},
+        {"id": "keep", "label": "No, keep both rows", "desc": "Both rows count"}
+      ],
+      "recommend": "review",
+      "recommend_if": ["repeats:email"],
+      "recommend_basis": "Some addresses repeat ({count:email} different addresses on {rows:email} rows), and shared inboxes such as info@ addresses are common enough to check first.",
+      "why": "Duplicates inflate counts and lead to the same person being called twice.",
+      "unblocks": ["call_list", "health_report"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["email"], "statement": "Rows that share the same {role:email}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "stage_meaning",
+      "header": "Stages",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["has_role:lifecycle_stage"],
+      "prompt": "What do the {count:lifecycle_stage} stages in {role:lifecycle_stage}, such as {values:lifecycle_stage}, mean here?",
+      "options": [
+        {"id": "standard", "label": "The CRM's standard meanings", "desc": "The standard meanings"},
+        {"id": "ours", "label": "Our own meanings", "desc": "I'll type them"},
+        {"id": "unused", "label": "We don't really use it", "desc": "Values are old"}
+      ],
+      "why": "Stage names look standard, but each team uses them differently, and the funnel is only right with your meanings.",
+      "unblocks": ["segment_map", "call_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["lifecycle_stage"], "statement": "Meaning of {role:lifecycle_stage}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "status_codes",
+      "header": "Status codes",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["coded:lead_status"],
+      "prompt": "{role:lead_status} uses {count:lead_status} short codes such as {values:lead_status}. What do they stand for?",
+      "options": [
+        {"id": "type_them", "label": "I'll type what they mean"},
+        {"id": "key_file", "label": "Another tab explains them", "desc": "A tab or file; name it"},
+        {"id": "retired", "label": "Nobody uses them now"}
+      ],
+      "why": "Codes nobody can read turn every count by status into a guess.",
+      "unblocks": ["segment_map", "call_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["lead_status"], "statement": "Codes in {role:lead_status}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "qualified",
+      "header": "Qualified",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["has_role:lead_status"],
+      "prompt": "{role:lead_status} has {count:lead_status} values, such as {values:lead_status}. What has to be true before a contact counts as qualified? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "fit", "label": "A good fit", "desc": "Qualified by fit"},
+        {"id": "need", "label": "A confirmed need", "desc": "Qualified by a confirmed need"},
+        {"id": "meeting", "label": "A meeting is booked"}
+      ],
+      "why": "Qualified is your team's call, and the call list ranks on it.",
+      "unblocks": ["call_list", "segment_map"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["lead_status"], "statement": "A contact counts as qualified when, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "email_ok",
+      "header": "Email rules",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["has_role:email"],
+      "prompt": "{rows:email} contacts have an address in {role:email}. Who on this list may get marketing email?",
+      "options": [
+        {"id": "opted_in", "label": "Only people who opted in", "desc": "They said yes to email"},
+        {"id": "not_out", "label": "Anyone who has not opted out"},
+        {"id": "customers", "label": "Customers only"}
+      ],
+      "why": "Any list pulled for outreach has to respect who agreed to hear from you.",
+      "unblocks": ["call_list", "app_blueprint"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["email"], "statement": "Marketing email may go to, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "list_origin",
+      "header": "Came from",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "Where did these contacts come from? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "crm", "label": "Our CRM or inbox"},
+        {"id": "events", "label": "Events or sign-up forms"},
+        {"id": "bought", "label": "A bought or scraped list"}
+      ],
+      "why": "Where a list came from decides how fresh it is and who may be contacted.",
+      "unblocks": ["health_report", "segment_map"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "These contacts came from, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "good_fit",
+      "header": "Good fit",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["goal:call_first"],
+      "prompt": "Which details tell you a contact is a good fit? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "title", "label": "Job title", "desc": "The job title"},
+        {"id": "industry", "label": "Industry"},
+        {"id": "size", "label": "Company size"}
+      ],
+      "why": "Fit decides who goes to the top of the call list.",
+      "unblocks": ["call_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "A good-fit contact is judged by, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "cold_after",
+      "header": "Cold after",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:clean_list", "has_role:last_activity"],
+      "prompt": "{rows:last_activity} contacts have a date in {role:last_activity}. After how long with no activity does a contact count as cold?",
+      "options": [
+        {"id": "d90", "label": "90 days"},
+        {"id": "d365", "label": "A year"},
+        {"id": "never", "label": "Never", "desc": "Keep them all"}
+      ],
+      "why": "It separates live contacts from dead ones in every count.",
+      "unblocks": ["health_report"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["last_activity"], "statement": "A contact counts as cold after this long with no activity, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "duplicates:email",
+    "blank_rate:email",
+    "blank_rate:phone",
+    "blank_rate:title",
+    "blank_rate:owner",
+    "count_distinct:email",
+    "count_distinct:company",
+    "mixed:lifecycle_stage",
+    "mixed:lead_source",
+    "date_range:created",
+    "date_range:last_activity"
+  ],
+  "outputs": [
+    {
+      "id": "call_list",
+      "title": "Call list",
+      "pitch": "Call list: contacts ranked by fit and recent activity, duplicates merged and opt-outs removed, saved as a new file.",
+      "requires": ["has_role:person_name"],
+      "needs_answer": ["good_fit", "email_ok", "merge_dups"],
+      "goals": ["call_first", "reach_out"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "health_report",
+      "title": "List health check",
+      "pitch": "List health check: duplicate people, blank fields, cold contacts and missing owners, counted field by field.",
+      "requires": [],
+      "needs_answer": ["merge_dups"],
+      "goals": ["clean_list"],
+      "value": 3,
+      "job": "audit"
+    },
+    {
+      "id": "segment_map",
+      "title": "Segment map",
+      "pitch": "Segment map: contacts grouped by source, stage and industry, with counts and how complete each group is.",
+      "requires": [],
+      "needs_answer": ["stage_meaning"],
+      "goals": ["know_list"],
+      "value": 2,
+      "job": "analysis"
+    },
+    {
+      "id": "contacts_to_revenue",
+      "title": "Contacts to revenue",
+      "pitch": "Contacts to revenue: connect a deals or orders file on email or company and see which contacts became customers, by source.",
+      "requires": ["multi_files"],
+      "needs_answer": ["merge_dups"],
+      "goals": ["know_list", "call_first"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on where this list came from, what each stage and status means, who may be emailed and how to keep it clean.",
+      "requires": [],
+      "goals": ["know_list", "clean_list"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: a light CRM that takes new contacts from forms and imports, merges duplicates, scores fit and assigns an owner.",
+      "requires": [],
+      "goals": ["call_first", "clean_list", "reach_out"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": "has_role:postal", "say": "{role:postal} may have lost leading zeros in Excel, so a code like 02134 can show as 2134."},
+    {"if": "has_role:notes", "say": "{role:notes} holds remarks about people. Those stay on this machine and never go into the file."},
+    {"if": "has_role:lifecycle_stage", "say": "{role:lifecycle_stage} shows where each contact is today; one export has no record of how they moved between stages."},
+    {"if": "has_blanks:email", "say": "{role:email} is blank on some rows, so those contacts cannot be matched to other files by email."},
+    {"if": "has_role:opt_out", "say": "{role:opt_out} records who asked not to be contacted, and any list pulled from this file leaves those people out."},
+    {"if": "has_blanks:owner", "say": "{role:owner} is blank on some rows, so those contacts belong to no one."},
+    {"if": "mixed_values:lead_source", "say": "{role:lead_source} mixes values such as {values:lead_source}; the same source spelled two ways splits the counts."},
+    {"if": "has_role:title", "say": "Titles and work emails go out of date as people change jobs; measured B2B contact data decays about 12% a year."},
+    {"if": "has_role:phone", "say": "Phone numbers in {role:phone} can be written many ways, so one number can look like two until formats are cleaned."},
+    {"if": "has_role:company", "say": "Company names vary (Acme Inc, ACME, Acme Incorporated), so counts by {role:company} can split one company into several."}
+  ],
+  "graph": {
+    "sentence": "Dots are companies, sources, owners and stages. People appear when records are turned on. Lines show who works where and where they came from.",
+    "entities": ["company", "lead_source", "owner", "lifecycle_stage", "industry", "email"],
+    "record_cap": {"company": 300, "lead_source": 40, "owner": 40, "lifecycle_stage": 20, "industry": 40, "email": 500},
+    "records": ["email"],
+    "relations": [
+      {"from": "email", "to": "company", "label": "works at"},
+      {"from": "email", "to": "lifecycle_stage", "label": "is at"},
+      {"from": "company", "to": "industry", "label": "is in"},
+      {"from": "company", "to": "lead_source", "label": "came from"},
+      {"from": "company", "to": "owner", "label": "owned by"}
+    ],
+    "mode": "entities"
+  },
+  "freshness": {
+    "default_stale_after": "+365d",
+    "rules": [
+      {"role": "title", "stale_after": "+365d", "basis": "Measured B2B contact data decays about 12% a year, so titles and emails older than a year may be out of date."}
+    ]
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["person_name", "last_name", "email", "phone", "notes"]
+  }
+}

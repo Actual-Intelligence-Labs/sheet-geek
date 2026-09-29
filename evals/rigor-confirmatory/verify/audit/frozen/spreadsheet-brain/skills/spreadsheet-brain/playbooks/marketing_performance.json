@@ -1,0 +1,120 @@
+{
+  "id": "marketing_performance",
+  "version": "0.1.0",
+  "name": "Marketing performance",
+  "looks_like": "an ad or campaign report",
+  "summary": "Ad platform, web analytics and email reports: spend, impressions, clicks and results by channel, campaign, ad set and ad.",
+  "full": false,
+  "roles": {
+    "campaign": {"label": "Campaign", "headers": ["campaign", "campaign name", "campaign id", "utm campaign"], "type": "text", "kind": "entity", "entity": "campaign"},
+    "ad_group": {"label": "Ad set or ad group", "headers": ["ad set", "ad set name", "adset", "adset name", "ad group", "ad group name", "adgroup"], "type": "text", "kind": "entity", "entity": "ad_group"},
+    "ad": {"label": "Ad or keyword", "headers": ["ad", "ad name", "creative", "ad creative", "keyword", "search keyword", "search term"], "type": "text", "kind": "entity", "entity": "ad"},
+    "channel": {"label": "Channel", "headers": ["channel", "platform", "source", "medium", "source medium", "network", "utm source", "utm medium", "publisher platform", "default channel group"], "type": "text", "kind": "entity", "entity": "channel"},
+    "impressions": {"label": "Impressions", "headers": ["impressions", "impression", "impr", "views"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "reach": {"label": "Reach", "headers": ["reach", "unique reach"], "type": "number", "kind": "metric", "additive": false, "unit": "count"},
+    "clicks": {"label": "Clicks", "headers": ["clicks", "link clicks", "outbound clicks", "all clicks", "clicks all"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "spend": {"label": "Spend", "headers": ["spend", "cost", "amount spent", "amount spent usd", "ad spend", "spent", "media cost"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "conversions": {"label": "Results", "headers": ["conversions", "conv", "all conv", "results", "leads", "purchases", "actions", "key events"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "conv_value": {"label": "Result value", "headers": ["conversion value", "conv value", "all conv value", "purchase value", "purchases conversion value", "purchase conversion value", "revenue", "total revenue"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "ctr": {"label": "Click rate", "headers": ["ctr", "ctr all", "click through rate", "link click through rate", "ctr link click through rate"], "type": "number", "kind": "metric", "additive": false, "unit": "percent"},
+    "cpc": {"label": "Cost per click", "headers": ["cpc", "avg cpc", "cpc all", "cost per click", "cost per link click", "cpc cost per link click"], "type": "number", "kind": "metric", "additive": false, "unit": "currency"},
+    "cpa": {"label": "Cost per result", "headers": ["cost per result", "cost conv", "cost all conv", "cpa", "cost per conversion", "cost per lead", "cost per purchase", "cost per acquisition"], "type": "number", "kind": "metric", "additive": false, "unit": "currency"},
+    "roas": {"label": "Return on ad spend", "headers": ["roas", "return on ad spend", "purchase roas", "purchase roas return on ad spend", "conv value cost"], "type": "number", "kind": "metric", "additive": false, "unit": "ratio"},
+    "frequency": {"label": "Frequency", "headers": ["frequency", "avg frequency"], "type": "number", "kind": "metric", "additive": false},
+    "date": {"label": "Date", "headers": ["day", "date", "week", "month", "reporting starts", "reporting ends"], "type": "date", "kind": "temporal"}
+  },
+  "detect": {
+    "required_any": [["campaign", "ad_group", "ad", "channel"], ["impressions", "clicks", "spend"]],
+    "weights": {"impressions": 3, "clicks": 3, "spend": 3, "ctr": 2, "cpc": 2, "cpa": 2, "conversions": 2, "campaign": 2, "ad_group": 2, "roas": 1, "reach": 1, "frequency": 1, "conv_value": 1, "ad": 1},
+    "negatives": ["pack", "employee_id", "debit", "on_hand"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "cut_waste", "label": "Cut wasted spend", "desc": "I'd list ads and campaigns spending with no results"},
+    {"id": "compare_channels", "label": "Compare channels", "desc": "I'd put cost per result side by side"},
+    {"id": "report_results", "label": "Report results", "desc": "I'd build a weekly scorecard"}
+  ],
+  "questions": [
+    {
+      "id": "result_def",
+      "header": "Results are",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["has_role:conversions"],
+      "prompt": "Which results in {role:conversions} ({rows:conversions} rows) count as a real outcome for you? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "lead", "label": "A lead", "desc": "Leads count"},
+        {"id": "call", "label": "A booked call"},
+        {"id": "purchase", "label": "A purchase"}
+      ],
+      "why": "Platforms count many kinds of results, and cost per result only matters for the ones you value.",
+      "unblocks": ["scorecard", "waste_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["conversions"], "statement": "Results that count as real outcomes, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "fees_in",
+      "header": "Fees",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["has_role:spend"],
+      "prompt": "{role:spend} adds up to {sum:spend} on {rows:spend} rows. Should agency or production fees count in cost, or only what the platforms charged?",
+      "options": [
+        {"id": "platform_only", "label": "Platform spend only"},
+        {"id": "with_fees", "label": "Include other fees", "desc": "Agency or production fees"}
+      ],
+      "why": "Cost per result looks far better on platform spend alone than on what the channel really costs.",
+      "unblocks": ["scorecard"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["spend"], "statement": "Marketing cost is counted as, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "target",
+      "header": "Target",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:cut_waste"],
+      "prompt": "What cost per result is good enough?",
+      "options": [
+        {"id": "have_target", "label": "I have a target (I'll type it)"},
+        {"id": "own_average", "label": "Use our own average"},
+        {"id": "none_yet", "label": "No target yet"}
+      ],
+      "why": "A waste list needs a line between acceptable and too expensive.",
+      "unblocks": ["waste_list"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "The cost-per-result target, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+180d"
+    }
+  ],
+  "outputs": [
+    {"id": "scorecard", "title": "Channel scorecard", "pitch": "Channel scorecard: spend, results, cost per result and return by channel and campaign, with every rate recomputed from the raw counts.", "requires": ["has_role:spend"], "needs_answer": ["result_def", "fees_in"], "goals": ["compare_channels", "report_results"], "value": 3, "job": "analysis"},
+    {"id": "waste_list", "title": "Waste list", "pitch": "Waste list: campaigns, ad sets and ads spending with few or no results, largest spend first.", "requires": ["has_role:spend"], "needs_answer": ["result_def", "target"], "goals": ["cut_waste"], "value": 3, "job": "analysis"},
+    {"id": "fatigue", "title": "Ad fatigue", "pitch": "Ad fatigue: ads whose click rate falls as the same people see them more often.", "requires": ["has_role:frequency", "has_role:ctr"], "needs_answer": [], "goals": ["cut_waste"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "pareto:spend:campaign",
+    "top_share:spend:channel",
+    "top_share:spend:campaign",
+    "top_share:conversions:campaign",
+    "date_range:date",
+    "blank_rate:campaign",
+    "count_distinct:campaign",
+    "count_distinct:ad",
+    "mixed:channel"
+  ],
+  "graph": {
+    "sentence": "Dots are channels, campaigns and ad sets, with single ads shown when records are turned on. Lines show what runs where. Bigger means more spend.",
+    "entities": ["channel", "campaign", "ad_group", "ad"],
+    "record_cap": {"channel": 30, "campaign": 150, "ad_group": 200, "ad": 300},
+    "records": ["ad"],
+    "size_by": "spend",
+    "relations": [
+      {"from": "channel", "to": "campaign", "label": "runs"},
+      {"from": "campaign", "to": "ad_group", "label": "contains"},
+      {"from": "ad_group", "to": "ad", "label": "shows"}
+    ],
+    "mode": "entities"
+  }
+}

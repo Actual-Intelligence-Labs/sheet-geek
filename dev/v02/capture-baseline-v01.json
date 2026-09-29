@@ -1,0 +1,57 @@
+{
+ "label": "baseline_v01",
+ "per_business": {
+  "inventory": {
+   "counted": 5,
+   "facts": 9,
+   "rate": 0.556,
+   "captured_full_both": 5,
+   "checker_agreement": 1.0
+  },
+  "payroll": {
+   "counted": 3,
+   "facts": 9,
+   "rate": 0.333,
+   "captured_full_both": 3,
+   "checker_agreement": 1.0
+  },
+  "orders": {
+   "counted": 0,
+   "facts": 9,
+   "rate": 0.0,
+   "captured_full_both": 0,
+   "checker_agreement": 0.889
+  },
+  "rentroll": {
+   "counted": 1,
+   "facts": 9,
+   "rate": 0.111,
+   "captured_full_both": 1,
+   "checker_agreement": 0.889
+  },
+  "hotel": {
+   "counted": 2,
+   "facts": 27,
+   "rate": 0.074,
+   "captured_full_both": 2,
+   "checker_agreement": 0.889
+  },
+  "finance": {
+   "counted": 1,
+   "facts": 16,
+   "rate": 0.062,
+   "captured_full_both": 1,
+   "checker_agreement": 0.75
+  },
+  "ledger": {
+   "counted": 6,
+   "facts": 17,
+   "rate": 0.353,
+   "captured_full_both": 7,
+   "checker_agreement": 0.941
+  }
+ },
+ "mean_rate": 0.213,
+ "pooled_rate": 0.188,
+ "min_rate": 0.0
+}

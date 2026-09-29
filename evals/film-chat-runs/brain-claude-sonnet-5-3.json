@@ -1,0 +1,8 @@
+{
+ "model": "claude-sonnet-5",
+ "cond": "brain",
+ "run": 3,
+ "message": "I just got this file from a colleague: finance_model.xlsx. What's our runway? Python 3 with openpyxl is at /usr/bin/python3 if you want to open the file. Work numbers out from the file; don't guess. Answer in plain words, under 150 words.",
+ "status": "ok",
+ "answer": "Working from the actual cash close (Aug 2026: $3.43M) and the model's own monthly cash-flow drivers:\n\n**Organic runway (no new funding): ~8 months, running out around late April/early May 2027.** Monthly cash burn is currently ~$410\u2013430K and rising (~$460K by spring 2027) as headcount grows faster than revenue.\n\nImportant catch: the sheet's \"Cash Flow\" tab shows cash rebounding to $15M+ in March 2027 because it has a **typed-in $15,000,000 equity raise** that month. Per the model's own notes tab, that Series B \"is planned... it is not closed yet\" \u2014 it's an assumption, not real cash. Strip that out and cash goes negative in May 2027.\n\nSo: if the raise closes on schedule, runway isn't the binding constraint. If it doesn't, you have about 8 months from today before cash runs out. I'd treat the raise as the real deadline, not a comfort buffer."
+}

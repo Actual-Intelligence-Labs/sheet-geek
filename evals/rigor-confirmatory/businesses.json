@@ -1,0 +1,337 @@
+{
+ "landscape": {
+  "set": "confirm",
+  "files": [
+   "Oakhart Crew Log 2025.xlsx",
+   "Oakhart Invoice Register 2025.xlsx"
+  ],
+  "open": "I'm setting prices for next season. Using this year's crew log and the invoice register, work out for each customer what they actually paid us per labor hour this year, and give me the list of customers coming in under $50 an hour so I know who needs a raise.",
+  "plain": [
+   {
+    "ask": "How many labor hours did the crews put in during July?",
+    "answer": 1303.17,
+    "how": "For every July log line with Hrs, read Hrs as hours.minutes, convert to hours, and multiply by Men (or the crew's usual size when Men is blank: Crew 1 = 3, Crew 2 = 2, Crew 3 = 4); sum."
+   },
+   {
+    "ask": "Who was our biggest customer this year, going by what we billed?",
+    "answer": "Larkspur Property Management",
+    "how": "Total the invoice register by customer after dropping every original invoice that has a re-issued A version, counting the six Larkspur rental houses as one customer; the largest total wins."
+   },
+   {
+    "ask": "How much billable work did each crew do in August?",
+    "answer": {
+     "Crew 1": 6555.0,
+     "Crew 2": 8822.5,
+     "Crew 3": 6485.0
+    },
+    "how": "Sum the Amount on each crew's August log lines, leaving out redo lines (codes ending in -R) and the MOW lines of season-plan (SP) customers."
+   }
+  ]
+ },
+ "dental": {
+  "set": "confirm",
+  "files": [
+   "SaltmarshRow_2025_Appts_and_Billing.xlsx"
+  ],
+  "open": "Bev and I sit down with our accountant next week, and I also owe Dana, Jess and Tamsin their bonus conversations. Can you go through the 2025 export and give me production by provider by month, plus what we actually collected each month since we switched systems?",
+  "plain": [
+   {
+    "ask": "How much did Paul and I each produce in 2025?",
+    "answer": {
+     "Miriam Osterlund": 324589.0,
+     "Paul Vantreese": 359563.0
+    },
+    "how": "Sum the fee on completed lines (old C, new D) under MO/DDS1 for Miriam and PV/DDS2 for Paul, and add every completed exam line (D0120, D0140, D0150, D0180) on a hygienist code to Miriam; the April 28 to May 2 week is counted once and charts 99000 and up are left out."
+   },
+   {
+    "ask": "Tamsin wants to sit down about her bonus. What was her production for 2025?",
+    "answer": 48663.0,
+    "how": "Sum the Amount on HYG3 lines dated July 14, 2025 or later with status D, leaving out the exam codes D0120, D0140, D0150 and D0180 and charts 99000 and up."
+   },
+   {
+    "ask": "How much money did we actually bring in from July through September?",
+    "answer": 189183.45,
+    "how": "Sum Receipts lines with a post date from July 1 to September 30, 2025 on charts below 99000, subtracting RFD and NSF lines instead of adding them."
+   }
+  ]
+ },
+ "trucking": {
+  "set": "confirm",
+  "files": [
+   "Tolliver_2025_Loads_Fuel.xlsx"
+  ],
+  "open": "I'm meeting with Cordell Valley Bank on the 14th about financing two more tractors. Can you go through the 2025 file and give me, for each of our trucks, revenue per mile and fuel cost per mile, and flag which trucks aren't carrying their weight? I want numbers I can stand behind if the loan officer starts asking questions.",
+  "plain": [
+   {
+    "ask": "How much did we spend on fuel in 2025?",
+    "answer": 1020807.4,
+    "how": "Add up the amount on every fuel card line in both exports (diesel, reefer fuel and DEF) whose card is assigned on the Units tab to a company unit; lines on the cards of units 301 to 306 are left out."
+   },
+   {
+    "ask": "Which of our trucks got the worst fuel mileage in 2025?",
+    "answer": "112",
+    "how": "For each company unit (not the 300s), miles are loaded plus empty miles from the load log (repower R lines count, TONU lines count only their empty miles), divided by straight diesel gallons (DSL or ULSD) bought on that unit's own cards; the lowest result is the answer."
+   },
+   {
+    "ask": "Who was our biggest customer in 2025, and how much revenue did they bring in?",
+    "answer": {
+     "customer": "Northfold Creamery",
+     "revenue": 1167976.04
+    },
+    "how": "Treat Kessler Dairy and Northfold Creamery as one customer; revenue per line is linehaul plus fuel surcharge plus non-lumper accessorials, except R lines add nothing and TONU lines add a flat $250; the customer with the highest total is the answer."
+   }
+  ]
+ },
+ "nonprofit": {
+  "set": "confirm",
+  "files": [
+   "AHCP_Gifts_Combined_thru_Jun2026.xlsx"
+  ],
+  "open": "I'm writing the FY2025 annual report. Can you pull together what we raised, how much of it was restricted versus unrestricted, and a list of our top 20 individual donors with their totals so I can start on thank-you notes?",
+  "plain": [
+   {
+    "ask": "What was our total raised for FY2025? It's the headline number for the annual report.",
+    "answer": 399806.66,
+    "how": "Sum Amount for rows dated July 1, 2024 through June 30, 2025, leaving out PLG rows and IK rows and the old-system (plain number receipt) rows dated October 2024, and subtracting RTN rows instead of adding them."
+   },
+   {
+    "ask": "Who was our top individual donor in FY2025? I want to invite them to the board's thank-you lunch.",
+    "answer": "Odile Brannock",
+    "how": "For July 1, 2024 through June 30, 2025, total each individual's money (no PLG, no IK, RTN subtracted, old-system October 2024 rows dropped), crediting Larkspur Valley and Brindlewood gifts to the person named in the memo; the largest total wins."
+   },
+   {
+    "ask": "How much unrestricted money came in during FY2026?",
+    "answer": 237390.0,
+    "how": "Sum Amount for rows dated July 1, 2025 through June 30, 2026 in funds GEN, HOL, EVT or blank, leaving out PLG and IK rows and subtracting RTN rows."
+   }
+  ]
+ },
+ "gym": {
+  "set": "confirm",
+  "files": [
+   "Brindlewood_Billing_Export_2025.xlsx",
+   "Kiosk_Class_Checkins_2025.xlsx"
+  ],
+  "open": "I'm sitting down with my accountant in two weeks to talk about whether we can raise rates in 2026. Can you go through the billing export and the roster and put together what we actually collected in dues each month of 2025, how many active members we had going into 2026, and anything in there that looks off?",
+  "plain": [
+   {
+    "ask": "How much did we actually collect in membership dues in 2025?",
+    "answer": 219164.72,
+    "how": "Sum the Amount of Dues-category rows with Result APPR dated in 2025, leaving out rows with Tender HC, then subtract the Amount of Dues-category rows with Result CB or RTN dated in 2025."
+   },
+   {
+    "ask": "Which coach had the most people come through their classes in 2025? I want to do a year-end bonus.",
+    "answer": "Tomas Ferreira",
+    "how": "Count each person once per class session (same date, start, class and room), leave out Studio C and member numbers 9000 and up, credit sessions listed under Rae Lindqvist after June 30, 2025 to Tomas Ferreira, then total by coach and take the highest."
+   },
+   {
+    "ask": "How many active members did we have going into 2026?",
+    "answer": 411,
+    "how": "From the 12/31/25 roster take Active accounts numbered below 9000, drop any account with an MNT charge dated December 2025 in the billing export, and count each remaining DUO account as two people."
+   }
+  ]
+ },
+ "tickets": {
+  "set": "confirm",
+  "files": [
+   "TixHarbor_OrderDetail_LanternSt_2025.xlsx",
+   "LSH Booking 2025.xlsx"
+  ],
+  "open": "I'm sitting down with our accountant next week. Can you use the TixHarbor export and my booking sheet to lay out 2025 for our own shows: what we took in on tickets each month, what we owed each band, and what the house kept per show after paying the band? I want to see which nights and months actually made us money.",
+  "plain": [
+   {
+    "ask": "What did we actually take in on tickets for our January through March shows?",
+    "answer": 66493,
+    "how": "For our own shows (not RN- rentals) whose real play date falls January 1 to March 31, 2025 (Marigold Freightyard played May 2, so it is out), add Amount on OK lines, subtract Amount on RF lines, and skip TR lines."
+   },
+   {
+    "ask": "Which show packed the most people into the room this year? Just give me the headliner.",
+    "answer": "Juniper Switchback",
+    "how": "Per show, people = qty on OK lines minus qty on RF lines, skipping TR lines, with each MZT unit counted as four and comps included; report the headliner of the show with the most."
+   },
+   {
+    "ask": "Oxbow Telegraph's agent wants the settlement for their August 15 show. What was the gross, and what do we owe the band?",
+    "answer": {
+     "gross": 8363,
+     "artist_payout": 5578.55
+    },
+    "how": "Gross = OK amounts minus RF amounts (TR skipped) less $2 per paid admission, with an MZT unit as four admissions; on this Vs deal the band gets the larger of the $1,500 guarantee or 85% of (gross minus the $1,800 nut)."
+   }
+  ]
+ },
+ "autorepair": {
+  "set": "confirm",
+  "files": [
+   "Brinker_RO_Line_Detail_2025.xlsx"
+  ],
+  "open": "I'm sitting down with my accountant in two weeks to set next year's labor rate and figure out if I can move Luis up to B-tech pay. Can you go through the RO export and put together what we really made each month on labor and parts, and how many hours each tech turned?",
+  "plain": [
+   {
+    "ask": "How much did we bring in on labor from January through September?",
+    "answer": 245737.82,
+    "how": "Sum the labor lines across both exports, counting June 9 to 14 only once (new system), leaving out declined lines and the Tall Pines Motors and BAT Shop Units tickets, and counting warranty labor at $112 times the hours instead of the ticket amount."
+   },
+   {
+    "ask": "How many hours has Luis turned since he started?",
+    "answer": 151.4,
+    "how": "Sum labor hours on tech 14 lines dated May 19, 2025 or later that were not declined, counting June 9 to 14 only once; internal tickets and warranty hours count."
+   },
+   {
+    "ask": "What were our car count and average ticket for July through September?",
+    "answer": {
+     "car_count": 309,
+     "average_ticket": 498.61
+    },
+    "how": "Car count is the number of repair orders dated July 1 to September 30 that have a VIN and are not Tall Pines Motors or BAT Shop Units; average ticket is the sum of their non-declined lines (warranty labor at $112 times hours) divided by that count."
+   }
+  ]
+ },
+ "lawfirm": {
+  "set": "confirm",
+  "files": [
+   "QD_Time_Detail_2025.xlsx"
+  ],
+  "open": "Abena and I have our partner retreat in two weeks. From this time file, can you pull together what each lawyer and paralegal actually billed in 2025, hours and dollars, plus fees by practice area? We are settling associate bonuses and deciding whether the township work is worth renewing.",
+  "plain": [
+   {
+    "ask": "Which of our associates put in the most billable hours in 2025?",
+    "answer": "Kira Salcedo",
+    "how": "Convert old-system time from six-minute units to hours, drop the old-system copies of April 7 to 11, count KDD and KDS as Kira, and leave out personal injury time; sum hours per associate and take the largest."
+   },
+   {
+    "ask": "How much did Orrin Creek Township's work bring in for us in fees in 2025?",
+    "answer": 133865.5,
+    "how": "For township matters, convert old-system units to hours and drop the April 7 to 11 old copies, leave out Paula's time, price lawyers at $175 and paralegals at $85 (Kira is an associate under both initials), halve travel, and sum."
+   },
+   {
+    "ask": "Using the time file, what did each practice area bring in in fees for 2025?",
+    "answer": {
+     "Business Litigation": 581890.0,
+     "Real Estate": 285708.25,
+     "Estate Planning": 236090.75,
+     "Personal Injury": 0.0,
+     "Municipal": 133865.5
+    },
+    "how": "Clean the hours (units to hours, drop April 7 to 11 old copies, KDD as KDS at her rate), leave out personal injury and Paula's time, price at rate card rates except township work at $175/$85, halve travel, and sum by practice area; personal injury is zero."
+   }
+  ]
+ },
+ "construction": {
+  "set": "confirm",
+  "files": [
+   "Brannock Creek Job Cost 2025.xlsx"
+  ],
+  "open": "The bank's draw inspector and our loan officer are coming in Thursday to go over the construction line. Can you put together a job-by-job cost versus budget for every house on the Jobs tab, so I can walk them through where each one stands?",
+  "plain": [
+   {
+    "ask": "Of the houses we closed this year, which one came in furthest over budget, and by how much?",
+    "answer": {
+     "house": "2211",
+     "over_by": 18307.32
+    },
+    "how": "For each job marked Closed on the Jobs tab, add up its AP Detail lines counting June once, taking CMs as negatives, and leaving out RET lines, C change-order codes and W warranty jobs; subtract its plan's total from Plan Budgets and take the biggest overage (house = job number)."
+   },
+   {
+    "ask": "What has Brookmere Plumbing cost us so far this year?",
+    "answer": 386793.5,
+    "how": "Add every Tollan Plumbing and Brookmere Plumbing & Drain line on AP Detail (all jobs, change orders and warranty jobs included), counting June once, taking CMs as negatives and leaving out RET lines."
+   },
+   {
+    "ask": "What has warranty work cost us so far this year, and which house has been the worst for it?",
+    "answer": {
+     "total": 73678.1,
+     "house": "2208"
+    },
+    "how": "Add every line on a W job, counting June once and taking CMs as negatives; the house is the job number after the W with the biggest total."
+   }
+  ]
+ },
+ "greenhouse": {
+  "set": "confirm",
+  "files": [
+   "Brackenholt_Packhouse_2025.xlsx",
+   "Ledgerline_SalesByItemDetail_Nov24-Nov25.xlsx"
+  ],
+  "open": "I'm seeing the bank on the 14th about a loan for a seventh house. Can you go through the packhouse workbook and the Ledgerline export and put together a summary of the 2025 season I can take in: kilos picked per house and per square metre, Class 1 packout by crop, and what we sold by customer and by crop, so I can show them what a house actually earns us?",
+  "plain": [
+   {
+    "ask": "How many kilos did each of the houses pick in 2025?",
+    "answer": {
+     "H1": 94437,
+     "H2": 91759,
+     "H3": 75648,
+     "H4": 32785,
+     "H5": 113301,
+     "H6": 42917
+    },
+    "how": "From the Harvest Log, each batch's fruit weight is its Scale Wt (converted from pounds to kilos by dividing by 2.20462 for H6) less 1.6 kg per crate, summed by house and rounded to whole kilos."
+   },
+   {
+    "ask": "Who were our top three customers by sales in 2025?",
+    "answer": [
+     "Marlow & Pike Markets",
+     "Tennet Street Grocers",
+     "Ashcombe Fresh Co."
+    ],
+    "how": "From the sales export lines dated in 2025, INV amounts count as sales and CRN amounts are subtracted; Kessler Row Market is left out and MPX Distribution is added into Marlow & Pike Markets; customers ranked by net sales, largest first."
+   },
+   {
+    "ask": "What was our Class 1 packout on tomatoes in 2025?",
+    "answer": 86.47,
+    "how": "From the Packout sheet, tomato runs (crops TOV, BF, CH) excluding Src RT runs: Class 1 kg divided by Class 1 + Class 2 + Waste kg, as a percentage rounded to 2 decimals."
+   }
+  ]
+ },
+ "adspend": {
+  "set": "confirm",
+  "files": [
+   "Fernhollow_Paid_Media_Log_2026.xlsx"
+  ],
+  "open": "I have my quarterly review with Walt next week. Can you use the paid media log to lay out January through August spend, leads and cost per lead by platform and by market, and tell me where I should move budget for the fall?",
+  "plain": [
+   {
+    "ask": "What did paid media cost us in the second quarter, April through June?",
+    "answer": 114565.94,
+    "how": "Sum Daily Spend cost for April 1 to June 30, dividing Reelvista cost by 100, counting May 1 to 7 once, and multiplying KPM campaigns (Chirpbook and Reelvista) by 1.15."
+   },
+   {
+    "ask": "Which market has been our cheapest place to get a lead so far this year, and what is a lead costing us there?",
+    "answer": {
+     "market": "Harlow Point",
+     "cost_per_lead": 39.81
+    },
+    "how": "For January through August, true cost per market (Reelvista in cents, KPM plus 15%, May 1 to 7 once, Westgate folded into Harlow Point) divided by CRM leads on paid campaigns in that market, excluding SPR and calls under 60 seconds; the market with the lowest cost per lead, rounded to cents."
+   },
+   {
+    "ask": "How many leads did Searchlark bring in during the second quarter?",
+    "answer": 1301,
+    "how": "Count CRM leads created April 1 to June 30 whose source campaign is a Searchlark campaign (matching IDs case-insensitively), excluding status SPR and calls under 60 seconds."
+   }
+  ]
+ },
+ "roaster": {
+  "set": "confirm",
+  "files": [
+   "Kettlebrook_Roasting_2025.xlsx",
+   "Wholesale_Orders_2025.xlsx"
+  ],
+  "open": "I have a meeting with the bank in two weeks about financing a bigger roaster. Can you go through the roast log, the green lots and the wholesale orders and put together a short year-end picture of 2025 for me: how much coffee we actually produced, what green is really costing us, and which wholesale accounts matter most?",
+  "plain": [
+   {
+    "ask": "How many pounds of sellable roasted coffee did we produce in 2025?",
+    "answer": 51636.9,
+    "how": "Sum Roast Wt over each batch once (drop the second copy of the June 2 to June 13 overlap), skip batches whose number ends in X, and convert Wren weights from kilograms to pounds (x 2.20462)."
+   },
+   {
+    "ask": "Who was our biggest wholesale customer this year, by dollars?",
+    "answer": "Harlow Street Market",
+    "how": "Sum Amount by customer on the Orders tab, leave out The Lantern Room, and combine Pinecrest Grocers with Harlow Street Market as one account; take the largest."
+   },
+   {
+    "ask": "Across all the green coffee we bought this year, what did it cost us per pound on average?",
+    "answer": 5.04,
+    "how": "Total Invoice Amt on the Green Lots tab divided by total pounds bought, with Brightwater Green Imports net weights converted from kilograms to pounds (x 2.20462)."
+   }
+  ]
+ }
+}

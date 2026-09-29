@@ -1,0 +1,8 @@
+{
+ "model": "claude-opus-5-5",
+ "cond": "brain",
+ "run": 3,
+ "message": "I just got this file from a colleague: finance_model.xlsx. What's our runway? Python 3 with openpyxl is at /usr/bin/python3 if you want to open the file. Work numbers out from the file; don't guess. Answer in plain words, under 150 words.",
+ "status": "ok",
+ "answer": "**Our runway lasts until about the end of April 2027. That's roughly 8 months from the last closed month (August 2026).**\n\n- **Where we start:** we had $3.43M in cash at the end of August 2026, the last month of actual figures.\n- **Burn:** we're spending about $410K a month now, and that grows to about $460K by spring 2027 as hiring continues on the board-approved plan.\n- **Result:** we have about $20K left at the end of April 2027 and run out of cash in May 2027.\n\nThis leaves out the $15M Series B that the model books in March 2027. The notes tab in the file says that round hasn't closed. If it closes on time, cash lasts past December 2028. But by February 2027 we'd be down to about $0.9M, only around two months of cash, so any delay to the round is risky.\n\nI rebuilt the forecast myself and fixed the five errors the file owner confirmed. Before those fixes, my rebuild matched the file's own numbers exactly. The fixes move the result by only a few thousand dollars."
+}

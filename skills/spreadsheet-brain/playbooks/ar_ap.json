@@ -1,0 +1,114 @@
+{
+  "id": "ar_ap",
+  "version": "0.1.0",
+  "name": "Receivables or payables",
+  "looks_like": "an invoice or aging report",
+  "summary": "Invoices, bills and aging reports that are still open: who owes what to whom, when it was due and how late it is.",
+  "full": false,
+  "roles": {
+    "invoice_id": {"label": "Invoice #", "headers": ["invoice #", "invoice number", "invoice no", "inv #", "inv no", "bill #", "bill number", "bill no", "num", "document number", "doc #", "reference", "ref #"], "type": "id", "kind": "identifier"},
+    "counterparty": {"label": "Customer or vendor", "headers": ["customer", "customer name", "client", "client name", "vendor", "vendor name", "supplier", "payee", "name", "company", "debtor", "creditor", "account name"], "type": "text", "kind": "entity", "entity": "counterparty"},
+    "invoice_date": {"label": "Invoice date", "headers": ["invoice date", "bill date", "date", "doc date", "document date", "transaction date", "issue date", "issued"], "type": "date", "kind": "temporal"},
+    "due_date": {"label": "Due date", "headers": ["due date", "due", "date due", "payment due", "due on"], "type": "date", "kind": "temporal"},
+    "terms": {"label": "Terms", "headers": ["terms", "payment terms", "net terms", "terms code"], "type": "text", "kind": "dimension"},
+    "amount": {"label": "Invoice amount", "headers": ["amount", "total", "invoice amount", "invoice total", "original amount", "orig amount", "bill amount", "gross amount"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "open_balance": {"label": "Open balance", "headers": ["open balance", "balance", "amount due", "balance due", "due amount", "outstanding", "amount outstanding", "remaining", "unpaid", "open amount", "open"], "type": "number", "kind": "metric", "additive": true, "unit": "currency", "level": true},
+    "paid_date": {"label": "Paid date", "headers": ["payment date", "paid date", "date paid", "paid on", "last payment", "last payment date"], "type": "date", "kind": "temporal"},
+    "status": {"label": "Status", "headers": ["status", "invoice status", "payment status", "bill status", "state"], "type": "text", "kind": "dimension"},
+    "days_past_due": {"label": "Days past due", "headers": ["days past due", "past due", "days overdue", "days late", "days outstanding", "age", "aging"], "type": "number", "kind": "metric", "additive": false, "unit": "days"},
+    "aging_bucket": {"label": "Aging bucket", "headers": ["current", "not yet due", "0 30", "1 30", "1 to 30", "31 60", "31 to 60", "61 90", "61 to 90", "91 and over", "90 and over", "over 90", "91 120", "over 120", "121 and over"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "po_number": {"label": "PO #", "headers": ["po #", "po number", "po no", "po", "purchase order", "purchase order #"], "type": "id", "kind": "identifier"}
+  },
+  "detect": {
+    "required_any": [["invoice_id", "counterparty"], ["amount", "open_balance", "aging_bucket"]],
+    "weights": {"aging_bucket": 5, "open_balance": 3, "due_date": 3, "days_past_due": 1, "terms": 1, "invoice_id": 1, "counterparty": 1, "amount": 1, "paid_date": 1},
+    "negatives": ["debit", "offset_account", "stage", "on_hand", "pack"],
+    "confident": 0.4,
+    "candidate": 0.25
+  },
+  "goals": [
+    {"id": "collect_cash", "label": "Collect what's owed", "desc": "I'd rank who to chase by amount and days late"},
+    {"id": "plan_payments", "label": "Plan what to pay", "desc": "I'd line up bills by due date"},
+    {"id": "forecast_cash", "label": "Forecast cash", "desc": "I'd project cash in and out by week"}
+  ],
+  "questions": [
+    {
+      "id": "direction",
+      "header": "Owed to",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Is this money owed to you, or money you owe?",
+      "options": [
+        {"id": "receivable", "label": "Owed to us", "desc": "Money owed to us"},
+        {"id": "payable", "label": "We owe it", "desc": "Money we owe"},
+        {"id": "both", "label": "Both"}
+      ],
+      "why": "Chasing customers and scheduling bills are different jobs with different lists.",
+      "unblocks": ["chase_list", "cash_calendar"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "The balances in this sheet are, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "as_of",
+      "header": "As of",
+      "kind": "coverage",
+      "priority": 1,
+      "ask_if": ["has_role:open_balance"],
+      "prompt": "{rows:open_balance} rows have a balance in {role:open_balance}. As of what date are those balances right?",
+      "options": [
+        {"id": "today", "label": "Today"},
+        {"id": "export_day", "label": "The day it was exported"},
+        {"id": "month_end", "label": "Last month end"}
+      ],
+      "why": "Balances still owed go stale daily, so every total needs an as-of date.",
+      "unblocks": ["chase_list", "aging_summary"],
+      "fact": {"kind": "coverage", "class": "data", "depends": ["open_balance"], "statement": "Balances in {role:open_balance} are right as of, per the owner: {answer_labels}."},
+      "stale_after": "+7d"
+    },
+    {
+      "id": "age_basis",
+      "header": "Age from",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["has_role:due_date"],
+      "prompt": "{rows:due_date} rows have a date in {role:due_date}. Should age count from the due date or from the invoice date?",
+      "options": [
+        {"id": "due", "label": "Days past the due date"},
+        {"id": "invoice", "label": "Days since the invoice date"}
+      ],
+      "why": "Aging from the invoice date makes every customer on long terms look late.",
+      "unblocks": ["aging_summary", "chase_list"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["due_date"], "statement": "Aging is counted this way, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "chase_list", "title": "Chase list", "pitch": "Chase list: open balances ranked by amount and days late, with each counterparty's usual payment delay.", "requires": ["has_role:open_balance"], "needs_answer": ["direction", "as_of"], "goals": ["collect_cash"], "value": 3, "job": "analysis"},
+    {"id": "aging_summary", "title": "Aging summary", "pitch": "Aging summary: open balances by counterparty and age bucket, with the trend since the last look.", "requires": [], "needs_answer": ["as_of", "age_basis"], "goals": ["collect_cash", "forecast_cash"], "value": 2, "job": "analysis"},
+    {"id": "cash_calendar", "title": "Cash calendar", "pitch": "Cash calendar: money due in and out by week for the next 13 weeks, adjusted for how late each counterparty usually pays.", "requires": ["has_role:due_date"], "needs_answer": ["direction"], "goals": ["forecast_cash", "plan_payments"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "top_share:open_balance:counterparty",
+    "pareto:amount:counterparty",
+    "duplicates:invoice_id",
+    "negatives:amount",
+    "blank_rate:due_date",
+    "date_range:invoice_date",
+    "date_range:due_date",
+    "mixed:status",
+    "mixed:terms",
+    "count_distinct:counterparty"
+  ],
+  "graph": {
+    "sentence": "Dots are customers or vendors, sized by what is still open. Lines show how their invoices stand. Bigger means more money open.",
+    "entities": ["counterparty", "status", "terms"],
+    "record_cap": {"counterparty": 200, "status": 20, "terms": 20},
+    "size_by": "open_balance",
+    "relations": [
+      {"from": "counterparty", "to": "status", "label": "has invoices"},
+      {"from": "counterparty", "to": "terms", "label": "pays on"}
+    ],
+    "mode": "entities"
+  }
+}

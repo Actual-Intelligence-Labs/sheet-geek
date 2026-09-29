@@ -1,0 +1,125 @@
+{
+  "id": "inventory",
+  "version": "0.1.0",
+  "name": "Inventory",
+  "looks_like": "an inventory count or stock list",
+  "summary": "Stock counts, on-hand snapshots, par sheets and item masters: what is on the shelf, where, at what cost, and against what par.",
+  "full": false,
+  "roles": {
+    "item_id": {"label": "Item #", "headers": ["item #", "item number", "item code", "item id", "sku", "part #", "part number", "product code"], "type": "id", "kind": "identifier", "entity": "item"},
+    "item_desc": {"label": "Item", "headers": ["description", "item", "item name", "item description", "product", "product name"], "type": "text", "kind": "text"},
+    "on_hand": {"label": "On hand", "headers": ["on hand", "qty on hand", "quantity on hand", "qoh", "soh", "in stock", "stock", "count", "counted", "ending count", "end count", "physical count", "closing stock"], "type": "number", "kind": "metric", "additive": true, "unit": "count", "level": true},
+    "par": {"label": "Par or reorder point", "headers": ["par", "par level", "min", "minimum", "min qty", "reorder point", "reorder level", "rop", "safety stock"], "type": "number", "kind": "metric", "additive": false, "unit": "count"},
+    "max_level": {"label": "Max", "headers": ["max", "maximum", "max qty", "order up to"], "type": "number", "kind": "metric", "additive": false, "unit": "count"},
+    "unit_cost": {"label": "Unit cost", "headers": ["unit cost", "cost", "avg cost", "average cost", "last cost", "standard cost", "cost each", "cost per unit"], "type": "number", "kind": "metric", "additive": false, "unit": "currency"},
+    "stock_value": {"label": "Value on hand", "headers": ["value", "total value", "extended value", "ext value", "inventory value", "stock value", "asset value", "total cost", "extended cost"], "type": "number", "kind": "metric", "additive": true, "unit": "currency", "level": true},
+    "uom": {"label": "Count unit", "headers": ["uom", "unit", "count unit", "unit of measure", "inventory unit", "counting unit"], "type": "text", "kind": "dimension"},
+    "storage": {"label": "Storage area", "headers": ["location", "storage area", "storage location", "bin", "shelf", "area", "warehouse", "zone", "walk in"], "type": "text", "kind": "entity", "entity": "storage"},
+    "vendor": {"label": "Vendor", "headers": ["vendor", "supplier", "preferred vendor", "primary vendor", "primary supplier"], "type": "text", "kind": "entity", "entity": "vendor"},
+    "expiry": {"label": "Expiry", "headers": ["expiry", "expiration", "expiration date", "exp date", "best by", "use by", "sell by"], "type": "date", "kind": "temporal"},
+    "lot": {"label": "Lot", "headers": ["lot", "lot #", "lot number", "batch", "batch #", "batch number"], "type": "id", "kind": "identifier"},
+    "count_date": {"label": "Count date", "headers": ["count date", "date counted", "inventory date", "snapshot date", "last counted", "as of"], "type": "date", "kind": "temporal"},
+    "category": {"label": "Category", "headers": ["category", "class", "group", "department", "type", "item category"], "type": "text", "kind": "dimension"}
+  },
+  "detect": {
+    "required_any": [["item_id", "item_desc"], ["on_hand", "par", "stock_value"]],
+    "weights": {"on_hand": 3, "par": 3, "count_date": 2, "storage": 2, "stock_value": 2, "max_level": 1, "unit_cost": 1, "expiry": 1, "lot": 1, "item_id": 1, "uom": 1},
+    "negatives": ["invoice_id", "stage", "customer_email", "employee_id"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "order_now", "label": "Know what to order", "desc": "I'd list items below par with how much to order"},
+    {"id": "free_cash", "label": "Free up cash", "desc": "I'd find dead and overstocked items with dollars tied up"},
+    {"id": "stop_shrink", "label": "Stop shrink and waste", "desc": "I'd compare counts to what should be there"}
+  ],
+  "questions": [
+    {
+      "id": "snapshot",
+      "header": "Sheet is",
+      "kind": "grain",
+      "settled_by": ["snapshot_stock"],
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Is this a count on one date, or a log of stock moving in and out?",
+      "options": [
+        {"id": "count", "label": "A count on one date"},
+        {"id": "log", "label": "A log of moves"},
+        {"id": "item_list", "label": "An item list, no counts"}
+      ],
+      "why": "A count gives value on hand; a log gives usage over time.",
+      "unblocks": ["order_list", "abc_classes"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "This sheet is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "cost_basis",
+      "header": "Cost is",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["has_role:unit_cost"],
+      "prompt": "{role:unit_cost} has {rows:unit_cost} numbers, such as {values:unit_cost}. What is it?",
+      "options": [
+        {"id": "last", "label": "Last price paid"},
+        {"id": "average", "label": "Average cost"},
+        {"id": "standard", "label": "A standard cost we set"}
+      ],
+      "why": "Stock value and food cost change with the cost method.",
+      "unblocks": ["dead_stock", "abc_classes"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["unit_cost"], "statement": "{role:unit_cost} is, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "count_unit",
+      "header": "Count unit",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["mixed_values:uom"],
+      "prompt": "Counts are in {count:uom} different units, such as {values:uom}. Should I compare everything in one unit?",
+      "options": [
+        {"id": "base", "label": "Yes, one base unit", "desc": "One base unit for all"},
+        {"id": "as_counted", "label": "No, keep units as counted"}
+      ],
+      "recommend": "base",
+      "recommend_if": ["mixed_values:uom"],
+      "recommend_basis": "Counts in cases, eaches and pounds cannot be added or compared until they share one unit.",
+      "why": "Adding cases to eaches makes on-hand totals and values meaningless.",
+      "unblocks": ["dead_stock", "order_list"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["uom"], "statement": "Counts in {role:uom} are compared this way, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "order_list", "title": "Order list", "pitch": "Order list: items below par with how much to order, grouped by vendor.", "requires": ["has_role:par", "has_role:on_hand"], "needs_answer": ["snapshot"], "goals": ["order_now"], "value": 3, "job": "analysis"},
+    {"id": "dead_stock", "title": "Dead and overstock", "pitch": "Dead and overstock: items with no movement or far above par, with the dollars tied up.", "requires": ["has_role:on_hand", "has_role:unit_cost"], "needs_answer": ["cost_basis", "count_unit"], "goals": ["free_cash"], "value": 3, "job": "analysis"},
+    {"id": "abc_classes", "title": "ABC classes", "pitch": "ABC classes: items ranked by value on hand, with a count schedule that checks the top items most often.", "requires": ["has_role:item_id"], "needs_answer": ["snapshot"], "goals": ["free_cash", "stop_shrink"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "pareto:stock_value:item_id",
+    "top_share:stock_value:category",
+    "top_share:stock_value:storage",
+    "product_check:on_hand:unit_cost:stock_value",
+    "spread:unit_cost:item_id:storage",
+    "negatives:on_hand",
+    "mixed:uom",
+    "blank_rate:par",
+    "blank_rate:unit_cost",
+    "date_range:expiry",
+    "date_range:count_date",
+    "duplicates:item_id",
+    "count_distinct:storage"
+  ],
+  "graph": {
+    "sentence": "Dots are storage areas, categories, vendors and top items. Lines show what is kept where and who supplies it. Bigger means more value on hand.",
+    "entities": ["storage", "category", "vendor", "item_id"],
+    "record_cap": {"storage": 60, "category": 60, "vendor": 60, "item_id": 200},
+    "records": ["item_id"],
+    "size_by": "stock_value",
+    "relations": [
+      {"from": "vendor", "to": "item_id", "label": "supplies"},
+      {"from": "item_id", "to": "storage", "label": "kept in"},
+      {"from": "item_id", "to": "category", "label": "belongs to"}
+    ],
+    "mode": "entities"
+  }
+}

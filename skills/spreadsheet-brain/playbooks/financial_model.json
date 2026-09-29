@@ -1,0 +1,399 @@
+{
+  "id": "financial_model",
+  "version": "0.1.0",
+  "name": "Financial model",
+  "looks_like": "a financial model",
+  "summary": "A forecast, budget, three-statement, pricing or valuation model: inputs feed calculations that feed outputs, with periods across the columns.",
+  "full": true,
+  "roles": {
+    "line_item": {
+      "label": "Line item",
+      "headers": ["line item", "line items", "account", "description", "metric", "kpi", "caption", "row label", "label", "particulars", "financials"],
+      "type": "text", "kind": "dimension"
+    },
+    "period": {
+      "label": "Period column",
+      "headers": [
+        "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "sept", "oct", "nov", "dec",
+        "january", "february", "march", "april", "june", "july", "august", "september", "october", "november", "december",
+        "q1", "q2", "q3", "q4", "h1", "h2",
+        "year 1", "year 2", "year 3", "year 4", "year 5", "yr 1", "yr 2", "yr 3", "month 1",
+        "fy2024", "fy2025", "fy2026", "fy2027", "fy2028", "fy2029", "fy2030",
+        "fy24", "fy25", "fy26", "fy27", "fy28", "fy29", "fy30",
+        "2024", "2025", "2026", "2027", "2028", "2029", "2030",
+        "2025a", "2026a", "2026b", "2026e", "2026f", "2027e", "2027f"
+      ],
+      "type": "number", "kind": "metric", "additive": false
+    },
+    "period_type": {
+      "label": "Actual or forecast",
+      "headers": ["actual", "actuals", "act", "forecast", "fcst", "fcast", "budget", "bud", "plan", "projected", "projection", "projections", "estimate", "est", "outlook", "reforecast", "rf", "proforma", "pro forma", "prior year", "py", "ly", "last year"],
+      "type": "number", "kind": "metric", "additive": false
+    },
+    "driver": {
+      "label": "Assumption",
+      "headers": ["assumption", "assumptions", "driver", "drivers", "input", "inputs", "key assumption", "key assumptions", "parameter", "parameters", "variable"],
+      "type": "text", "kind": "dimension"
+    },
+    "input_value": {
+      "label": "Input value",
+      "headers": ["value", "values", "input value", "base value", "base", "assumption value", "setting"],
+      "type": "number", "kind": "metric", "additive": false
+    },
+    "unit": {
+      "label": "Units",
+      "headers": ["unit", "units", "uom", "000s", "000", "in thousands", "in 000s", "usd 000s", "usd 000", "format", "measure", "scale", "currency"],
+      "type": "text", "kind": "attribute"
+    },
+    "source": {
+      "label": "Source or basis",
+      "headers": ["source", "sources", "basis", "reference", "ref", "notes", "note", "comment", "comments", "rationale", "citation", "backup"],
+      "type": "text", "kind": "text"
+    },
+    "updated": {
+      "label": "Last updated",
+      "headers": ["last updated", "updated", "updated on", "date updated", "as of", "as at", "last reviewed", "reviewed", "date"],
+      "type": "date", "kind": "temporal"
+    },
+    "scenario": {
+      "label": "Scenario",
+      "headers": ["scenario", "scenarios", "case", "base case", "upside", "downside", "bull", "bear", "best case", "worst case", "sensitivity", "sensitivities", "switch", "selector"],
+      "type": "text", "kind": "dimension"
+    },
+    "growth_rate": {
+      "label": "Growth rate",
+      "headers": ["growth", "growth rate", "growth percent", "yoy", "yoy growth", "mom", "mom growth", "cagr", "increase", "price increase", "escalator", "escalation", "inflation"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "percent"
+    },
+    "margin": {
+      "label": "Margin",
+      "headers": ["margin", "gross margin", "gm", "ebitda margin", "contribution margin", "operating margin", "net margin", "markup"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "percent"
+    },
+    "revenue": {
+      "label": "Revenue",
+      "headers": ["revenue", "revenues", "sales", "total revenue", "net revenue", "net sales", "turnover", "top line", "arr", "mrr", "bookings", "income"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "cost": {
+      "label": "Costs",
+      "headers": ["cogs", "cost of sales", "cost of goods sold", "cost of revenue", "opex", "operating expenses", "expenses", "costs", "sg a", "overhead", "payroll", "labor", "rent"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "profit": {
+      "label": "Profit",
+      "headers": ["ebitda", "ebit", "net income", "operating income", "net profit", "profit", "gross profit", "pbt", "pre tax income", "earnings"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "cash": {
+      "label": "Cash",
+      "headers": ["cash", "cash flow", "ending cash", "closing cash", "cash balance", "cash on hand", "free cash flow", "fcf", "runway", "burn", "net burn"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency", "level": true
+    },
+    "debt": {
+      "label": "Debt and financing",
+      "headers": ["debt", "loan", "loans", "interest", "interest expense", "principal", "debt service", "dscr", "covenant", "leverage", "borrowing", "line of credit", "repayment"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency", "level": true
+    },
+    "volume": {
+      "label": "Volume driver",
+      "headers": ["units sold", "volume", "customers", "subscribers", "users", "covers", "headcount", "fte", "seats", "orders", "occupancy", "rooms sold", "transactions"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "count"
+    },
+    "total": {
+      "label": "Total column",
+      "headers": ["total", "totals", "full year", "fy total", "annual", "annual total", "year total", "sum", "ytd", "grand total"],
+      "type": "number", "kind": "metric", "additive": true
+    },
+    "check": {
+      "label": "Check",
+      "headers": ["check", "checks", "balance check", "error check", "diff", "difference", "variance", "delta", "control"],
+      "type": "number", "kind": "metric", "additive": false
+    },
+    "valuation": {
+      "label": "Valuation",
+      "headers": ["npv", "irr", "dcf", "wacc", "discount rate", "terminal value", "enterprise value", "equity value", "valuation", "multiple", "exit multiple", "payback", "moic"],
+      "type": "number", "kind": "metric", "additive": false
+    }
+  },
+  "detect": {
+    "required_any": [["period", "period_type", "driver", "input_value", "scenario", "total"]],
+    "weights": {"period": 4, "line_item": 2, "period_type": 2, "driver": 2, "input_value": 2, "source": 1, "unit": 1, "scenario": 1},
+    "negatives": ["invoice_id", "customer_email", "employee_id", "debit"],
+    "confident": 0.45,
+    "candidate": 0.3
+  },
+  "goals": [
+    {"id": "audit_it", "label": "Check it for errors", "desc": "I'd trace every formula and list breaks by cell"},
+    {"id": "understand_it", "label": "Understand how it works", "desc": "I'd map which inputs drive which outputs"},
+    {"id": "roll_forward", "label": "Roll it forward", "desc": "I'd show where actuals go and what they change"},
+    {"id": "test_scenarios", "label": "Test what-ifs", "desc": "I'd rank the drivers worth flexing"}
+  ],
+  "questions": [
+    {
+      "id": "model_use",
+      "header": "Used for",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Who relies on this model? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "board", "label": "The board", "desc": "The board relies on it"},
+        {"id": "lender", "label": "A lender", "desc": "A lender relies on it"},
+        {"id": "budget", "label": "Our internal budget", "desc": "Our own budget"}
+      ],
+      "why": "It decides how strict the audit is and what the guide explains first.",
+      "unblocks": ["model_audit", "model_map", "guide_next_owner"],
+      "fact": {"kind": "goal", "class": "data", "depends": [], "statement": "This model is relied on for, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "actuals_end",
+      "header": "Actuals end",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["has_formulas"],
+      "backed_by": {"insight": "formula:actuals_boundary", "recommend": "typed_switch"},
+      "prompt": "Where do actuals stop and the forecast begin?",
+      "options": [
+        {"id": "labeled", "label": "Where the sheet labels it", "desc": "The sheet labels each one"},
+        {"id": "typed_switch", "label": "Where typed numbers turn to formulas", "desc": "Typed numbers, then formulas"},
+        {"id": "all_forecast", "label": "It is all forecast", "desc": "No actuals in this file"}
+      ],
+      "why": "Plan versus actual and every growth check depend on knowing which numbers already happened.",
+      "unblocks": ["plan_vs_actual", "model_audit"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "Where actuals end and the forecast begins, per the owner: {answer_labels}."},
+      "stale_after": "+31d"
+    },
+    {
+      "id": "overrides",
+      "header": "Overrides",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["has_formulas"],
+      "prompt": "Some cells may hold a typed number where the rest of their row has a formula. Are those overrides on purpose?",
+      "options": [
+        {"id": "intended", "label": "Yes, deliberate overrides", "desc": "Deliberate, keep them"},
+        {"id": "mistakes", "label": "No, likely mistakes", "desc": "List them to fix"},
+        {"id": "some_each", "label": "Some of each", "desc": "Show me the cells and I'll mark them"}
+      ],
+      "why": "A typed number in a formula row stops updating when inputs change, a common source of model errors.",
+      "unblocks": ["model_audit"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "Typed numbers inside formula rows, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "growth_period",
+      "header": "Rate period",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["has_role:growth_rate"],
+      "prompt": "Is the {role:growth_rate} rate per month, per quarter or per year?",
+      "options": [
+        {"id": "monthly", "label": "Per month"},
+        {"id": "quarterly", "label": "Per quarter"},
+        {"id": "yearly", "label": "Per year"}
+      ],
+      "why": "A 5% monthly rate is about 80% a year, so the period changes every projection.",
+      "unblocks": ["model_map", "driver_list"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["growth_rate"], "statement": "Period of the {role:growth_rate} rate, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "money_scale",
+      "header": "Scale",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["no_role:unit"],
+      "settled_by": ["model_scale"],
+      "prompt": "Are the money figures in dollars, thousands or millions?",
+      "options": [
+        {"id": "dollars", "label": "Dollars as shown"},
+        {"id": "thousands", "label": "Thousands ($000s)"},
+        {"id": "millions", "label": "Millions"}
+      ],
+      "why": "Mixing dollars and thousands is a common model error, and nothing in the cells says which.",
+      "unblocks": ["model_audit", "guide_next_owner"],
+      "fact": {"kind": "unit", "class": "data", "depends": [], "statement": "Money figures in this model are stated in, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "sign_rule",
+      "header": "Cost signs",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["has_formulas"],
+      "settled_by": ["model_sign"],
+      "prompt": "Are costs entered as negative numbers, or as positives that formulas subtract?",
+      "options": [
+        {"id": "negative", "label": "Costs are negative"},
+        {"id": "positive", "label": "Costs are positive"},
+        {"id": "varies", "label": "It varies by section"}
+      ],
+      "why": "Totals that add costs to revenue are only right under one sign rule.",
+      "unblocks": ["model_audit"],
+      "fact": {"kind": "unit", "class": "data", "depends": [], "statement": "Sign convention for costs, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "scenario_live",
+      "header": "Scenario",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["has_role:scenario"],
+      "prompt": "Which scenario in {role:scenario} is the one you present?",
+      "options": [
+        {"id": "base", "label": "Base case"},
+        {"id": "upside", "label": "Upside"},
+        {"id": "switch", "label": "Whatever the switch shows"}
+      ],
+      "why": "Outputs reflect only the scenario selected when the file was saved.",
+      "unblocks": ["model_map", "guide_next_owner"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["scenario"], "statement": "The scenario presented from this model, per the owner: {answer_labels}."},
+      "stale_after": "+180d"
+    },
+    {
+      "id": "driver_source",
+      "header": "Assumptions",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": ["goal:test_scenarios"],
+      "prompt": "Where do the main assumptions come from? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "history", "label": "Our own past results"},
+        {"id": "market", "label": "Market data or quotes"},
+        {"id": "targets", "label": "Targets set by leadership"}
+      ],
+      "why": "Assumptions built on history can be tested against actuals; targets and guesses need a clear label.",
+      "unblocks": ["driver_list", "model_map"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "The main assumptions come from, per the owner: {answer_labels}."},
+      "stale_after": "+180d"
+    },
+    {
+      "id": "actuals_source",
+      "header": "Actuals from",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": ["goal:roll_forward"],
+      "prompt": "Where do each month's actuals come from?",
+      "options": [
+        {"id": "accounting", "label": "Our accounting export"},
+        {"id": "typed", "label": "Typed in by hand"},
+        {"id": "other_tab", "label": "Another tab in this file"}
+      ],
+      "why": "Rolling forward means knowing which file feeds actuals and which lines they land on.",
+      "unblocks": ["plan_vs_actual"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "Monthly actuals come from, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "count_distinct:line_item",
+    "count_distinct:driver",
+    "blank_rate:source",
+    "blank_rate:input_value",
+    "date_range:updated",
+    "negatives:cash",
+    "negatives:profit",
+    "mixed:period_type",
+    "mixed:scenario",
+    "pareto:revenue:line_item",
+    "top_share:cost:line_item"
+  ],
+  "outputs": [
+    {
+      "id": "model_audit",
+      "title": "Fix list (model audit)",
+      "pitch": "Fix list (model audit): every formula that breaks its row's pattern, number typed inside a formula, typed number in a formula row and failed check, by cell and in words, with what each should be. Nothing in the file is edited.",
+      "requires": ["has_formulas"],
+      "needs_answer": ["overrides"],
+      "goals": ["audit_it"],
+      "value": 3,
+      "job": "audit"
+    },
+    {
+      "id": "model_map",
+      "title": "Model map",
+      "pitch": "Model map: one page showing which inputs feed which calculations and outputs, with the inputs that move the most results at the top.",
+      "requires": ["has_formulas"],
+      "needs_answer": [],
+      "goals": ["understand_it", "test_scenarios"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "driver_list",
+      "title": "Driver list",
+      "pitch": "Driver list: every input ranked by how many results it moves, with its source and last update, ready for what-if testing.",
+      "requires": ["has_formulas"],
+      "needs_answer": ["driver_source"],
+      "goals": ["test_scenarios"],
+      "value": 2,
+      "job": "analysis"
+    },
+    {
+      "id": "plan_vs_actual",
+      "title": "Plan vs actual",
+      "pitch": "Plan vs actual: connect your accounting export on account or line item and compare each month to plan, largest gaps first.",
+      "requires": [],
+      "needs_answer": ["actuals_end", "actuals_source"],
+      "goals": ["roll_forward"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on what this model is for, where the inputs live, how the tabs connect, which cells are overrides and how to roll it forward.",
+      "requires": [],
+      "goals": ["understand_it", "roll_forward"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: a scenario planner with the top drivers as sliders and the key outputs updating live, built from this model's logic.",
+      "requires": [],
+      "goals": ["test_scenarios", "understand_it"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": "has_formulas", "say": "Formula results in the file are the values saved at the last recalculation; a file saved by a tool other than Excel may hold stale or empty results."},
+    {"if": "has_derived_tab", "say": "One tab is mostly formulas over another, so its numbers restate the source tab rather than add to it."},
+    {"if": "has_role:growth_rate", "say": "{role:growth_rate} does not say whether each rate is monthly or yearly; a 5% monthly rate compounds to about 80% a year."},
+    {"if": "has_role:period_type", "say": "{role:period_type} marks actual and forecast periods. Actuals typed over forecast cells erase the original plan."},
+    {"if": "no_role:unit", "say": "No units column was found, so the scale (dollars, thousands or millions) may live only in a title cell."},
+    {"if": "has_role:check", "say": "{role:check} is a check line. Any value other than zero, or TRUE, means something upstream does not tie out."},
+    {"if": "has_role:scenario", "say": "{role:scenario} switches cases, and every output reflects only the scenario selected when the file was last saved."},
+    {"if": "has_negatives:cost", "say": "{role:cost} holds negative numbers, so costs may be negative in some places and positive in others."},
+    {"if": "multi_sheets", "say": "Inputs, calculations and outputs often sit on separate tabs; a number typed on an output tab breaks the flow from the inputs."},
+    {"if": "has_role:valuation", "say": "{role:valuation} rests on a discount rate and an exit assumption, and small changes in either move it a lot."}
+  ],
+  "graph": {
+    "sentence": "Dots are blocks of rows: inputs, calculations, outputs and checks. Lines show which block feeds which. Bigger means more results depend on it.",
+    "entities": ["line_item", "driver", "scenario"],
+    "record_cap": {"line_item": 150, "driver": 100, "scenario": 10},
+    "relations": [
+      {"from": "driver", "to": "line_item", "label": "feeds"},
+      {"from": "scenario", "to": "driver", "label": "switches"},
+      {"from": "line_item", "to": "check", "label": "tested by"}
+    ],
+    "mode": "formula_flow"
+  },
+  "freshness": {
+    "default_stale_after": "+180d",
+    "rules": [
+      {"role": "growth_rate", "stale_after": "+180d", "basis": "Growth and price assumptions drift as actual results come in."},
+      {"role": "period_type", "stale_after": "+31d", "basis": "The line between actuals and forecast moves each month a model is rolled forward."}
+    ]
+  },
+  "sensitivity": {
+    "commercial_roles": ["input_value", "growth_rate", "margin", "valuation"],
+    "private_roles": []
+  }
+}

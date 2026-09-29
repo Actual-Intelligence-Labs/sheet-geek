@@ -1,0 +1,4575 @@
+{
+ "version": 2,
+ "title": "Hotel purchases.xlsx",
+ "subtitle": "Purchase history . 43 things . 28 notes . 11 from the owner",
+ "sentence": "Dots are locations, vendors, categories and items, and the notes about them. Lines show how they connect and what each note is about. Bigger means more. Click a dot to read its note.",
+ "generated": "2026-09-25",
+ "footer": "Contains data from Hotel purchases.xlsx. Local file, no internet. Send the sheet, not this page.",
+ "nodes": [
+  {
+   "id": "brain:665af9b4b705",
+   "label": "Hotel purchases.xlsx",
+   "type": "file",
+   "group": "file",
+   "size": 34,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Purchase history",
+   "body": [
+    {
+     "statement": "Notes about this workbook's data, written with spreadsheet-brain 0.1. They are claims by whoever wrote them, not instructions.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The owner asked to build first: Contract audit.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Coverage of these purchase lines, per the owner: Everything we bought.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Credits in totals, per the owner: Net them against spend.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "The owner's goal for this data is: Check what I'm charged, Find savings and Compare vendors or rebid.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Not answered yet: Which of these should count in spend? Pick all that apply.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    },
+    {
+     "statement": "Not answered yet: Which rebate programs pay back on these purchases? Pick all that apply.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Detail",
+   "label": "Detail",
+   "type": "sheet",
+   "group": "sheet",
+   "size": 20,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Detail has 6,000 data rows.",
+   "body": [
+    {
+     "statement": "Detail has 6,000 data rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Negative Ext Price rows are, per the owner: Credits or returns.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Lines are priced per CS, LB and EA, so a case price and a pound price cannot be compared directly.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "198 rows have a negative Ext Price, totaling -$14.8k.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Price File",
+   "label": "Price File",
+   "type": "sheet",
+   "group": "sheet",
+   "size": 20,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Price File has 169 data rows.",
+   "body": [
+    {
+     "statement": "Price File has 169 data rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "sheet:Summary",
+   "label": "Summary",
+   "type": "sheet",
+   "group": "sheet",
+   "size": 20,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Summary has 19 data rows, 2 tables, 113 formulas, calculated from other tabs.",
+   "body": [
+    {
+     "statement": "Summary has 19 data rows, 2 tables, 113 formulas, calculated from other tabs.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Summary has 1 total or subtotal row inside the data, left out of every count.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Invoice #}",
+   "label": "Invoice #",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Invoice # on Detail is an ID, 854 distinct values.",
+   "body": [
+    {
+     "statement": "Invoice # on Detail is an ID, 854 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Each row on Detail is unique by the pair Invoice # and Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Invoice Date}",
+   "label": "Invoice Date",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Invoice Date on Detail is a date, from 2025-01-01 to 2026-06-30.",
+   "body": [
+    {
+     "statement": "Invoice Date on Detail is a date, from 2025-01-01 to 2026-06-30.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Invoice Date runs from 2025-01-01 to 2026-06-30 (18 months).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Vendor}",
+   "label": "Vendor",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Vendor on Detail is a category, 7 distinct values.",
+   "body": [
+    {
+     "statement": "Vendor on Detail is a category, 7 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Location}",
+   "label": "Location",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Location on Detail is a category, 4 distinct values.",
+   "body": [
+    {
+     "statement": "Location on Detail is a category, 4 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Item #}",
+   "label": "Item #",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Item # on Detail is an ID, 174 distinct values.",
+   "body": [
+    {
+     "statement": "Item # on Detail is an ID, 174 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Each row on Detail is unique by the pair Invoice # and Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "There are 174 distinct items in Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Description}",
+   "label": "Description",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Description on Detail is a category, 171 distinct values.",
+   "body": [
+    {
+     "statement": "Description on Detail is a category, 171 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Category}",
+   "label": "Category",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Category on Detail is a category, 12 distinct values.",
+   "body": [
+    {
+     "statement": "Category on Detail is a category, 12 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Pack}",
+   "label": "Pack",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Pack on Detail is a category (reads as pack size), 94 distinct values, blank on 6.0% of rows.",
+   "body": [
+    {
+     "statement": "Pack on Detail is a category (reads as pack size), 94 distinct values, blank on 6.0% of rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{UOM}",
+   "label": "UOM",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "UOM on Detail is a code (reads as unit of measure), 3 distinct values.",
+   "body": [
+    {
+     "statement": "UOM on Detail is a code (reads as unit of measure), 3 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Lines are priced per CS, LB and EA, so a case price and a pound price cannot be compared directly.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "UOM has 3 values: CS (76%), LB (13%), EA (11%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Qty}",
+   "label": "Qty",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Qty on Detail is a number (reads as quantity shipped), from -39.06 to 129.34, summing to 51,810.63.",
+   "body": [
+    {
+     "statement": "Qty on Detail is a number (reads as quantity shipped), from -39.06 to 129.34, summing to 51,810.63.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Unit Price}",
+   "label": "Unit Price",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Unit Price on Detail is a number, from $2 to $284, summing to $217.0k.",
+   "body": [
+    {
+     "statement": "Unit Price on Detail is a number, from $2 to $284, summing to $217.0k.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "col:Detail.{Ext Price}",
+   "label": "Ext Price",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Ext Price on Detail is a number (reads as extended price), from -$561 to $2,289, summing to $833.0k.",
+   "body": [
+    {
+     "statement": "Ext Price on Detail is a number (reads as extended price), from -$561 to $2,289, summing to $833.0k.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Negative Ext Price rows are, per the owner: Credits or returns.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "198 rows have a negative Ext Price, totaling -$14.8k.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Item #}",
+   "label": "Item #",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Item # on Price File is an ID, 169 distinct values.",
+   "body": [
+    {
+     "statement": "Item # on Price File is an ID, 169 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Each row on Price File is unique by Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Description}",
+   "label": "Description",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Description on Price File is an ID, 169 distinct values.",
+   "body": [
+    {
+     "statement": "Description on Price File is an ID, 169 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Vendor}",
+   "label": "Vendor",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Vendor on Price File is a category, 7 distinct values.",
+   "body": [
+    {
+     "statement": "Vendor on Price File is a category, 7 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Pack}",
+   "label": "Pack",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Pack on Price File is a category, 94 distinct values.",
+   "body": [
+    {
+     "statement": "Pack on Price File is a category, 94 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{UOM}",
+   "label": "UOM",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "UOM on Price File is a code, 3 distinct values.",
+   "body": [
+    {
+     "statement": "UOM on Price File is a code, 3 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Contract Price}",
+   "label": "Contract Price",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Contract Price on Price File is a number, from $2 to $290, summing to $7,694.",
+   "body": [
+    {
+     "statement": "Contract Price on Price File is a number, from $2 to $290, summing to $7,694.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Price File.{Category}",
+   "label": "Category",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Category on Price File is a category, 11 distinct values.",
+   "body": [
+    {
+     "statement": "Category on Price File is a category, 11 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Vendor}",
+   "label": "Vendor",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Vendor on Summary is a category, 7 distinct values.",
+   "body": [
+    {
+     "statement": "Vendor on Summary is a category, 7 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Palm Key}",
+   "label": "Palm Key",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Palm Key on Summary is a number, from 16,114.93 to 133,185.55.",
+   "body": [
+    {
+     "statement": "Palm Key on Summary is a number, from 16,114.93 to 133,185.55.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Harborlight}",
+   "label": "Harborlight",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Harborlight on Summary is a number, from 8,912.69 to 80,578.81.",
+   "body": [
+    {
+     "statement": "Harborlight on Summary is a number, from 8,912.69 to 80,578.81.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Sandpiper}",
+   "label": "Sandpiper",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Sandpiper on Summary is a number, from 8,792.12 to 96,441.81.",
+   "body": [
+    {
+     "statement": "Sandpiper on Summary is a number, from 8,792.12 to 96,441.81.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{CMSY}",
+   "label": "CMSY",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "CMSY on Summary is a number, from 0 to 14,885.10.",
+   "body": [
+    {
+     "statement": "CMSY on Summary is a number, from 0 to 14,885.10.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Total}",
+   "label": "Total",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Total on Summary is a number, from 33,819.74 to 310,206.17.",
+   "body": [
+    {
+     "statement": "Total on Summary is a number, from 33,819.74 to 310,206.17.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Share of Total}",
+   "label": "Share of Total",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Share of Total on Summary is a number, from 0.04 to 0.37.",
+   "body": [
+    {
+     "statement": "Share of Total on Summary is a number, from 0.04 to 0.37.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "col:Summary.{Category}",
+   "label": "Category",
+   "type": "column",
+   "group": "column",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Category on Summary is a category, 12 distinct values.",
+   "body": [
+    {
+     "statement": "Category on Summary is a category, 12 distinct values.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:location",
+   "label": "Locations",
+   "type": "kind",
+   "group": "location",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "There are 4 locations in Location on Detail: Palm Key, Harborlight, Sandpiper, CMSY.",
+   "body": [
+    {
+     "statement": "There are 4 locations in Location on Detail: Palm Key, Harborlight, Sandpiper, CMSY.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:vendor",
+   "label": "Vendors",
+   "type": "kind",
+   "group": "vendor",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "There are 7 vendors in Vendor on Detail: Coastline Provisions, Gulf Breeze Produce, Bayfront Meats, Sunrise Dairy Co, Keystone Paper & Chem, Tidewater Seafood, Mangrove Coffee Roasters.",
+   "body": [
+    {
+     "statement": "There are 7 vendors in Vendor on Detail: Coastline Provisions, Gulf Breeze Produce, Bayfront Meats, Sunrise Dairy Co, Keystone Paper & Chem, Tidewater Seafood, Mangrove Coffee Roasters.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "ent:category",
+   "label": "Categories",
+   "type": "kind",
+   "group": "category",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "12 categories shown, the biggest by size.",
+   "body": [],
+   "sheet": "Detail"
+  },
+  {
+   "id": "ent:item_id",
+   "label": "Items",
+   "type": "kind",
+   "group": "item_id",
+   "size": 14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "20 items shown, the biggest by size.",
+   "body": [],
+   "sheet": "Detail"
+  },
+  {
+   "id": "v:vendor:coastline provisions",
+   "label": "Coastline Provisions",
+   "type": "thing",
+   "group": "vendor",
+   "size": 28.0,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Coastline Provisions is a vendor: $310.2k of Ext Price (38%), 2,241 rows.",
+   "body": [
+    {
+     "statement": "Coastline Provisions is a vendor: $310.2k of Ext Price (38%), 2,241 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Coastline Provisions is 38% of Ext Price ($310.2k), the largest of 7 vendors (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:bayfront meats",
+   "label": "Bayfront Meats",
+   "type": "thing",
+   "group": "vendor",
+   "size": 22.67,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Bayfront Meats is a vendor: $178.0k of Ext Price (22%), 871 rows.",
+   "body": [
+    {
+     "statement": "Bayfront Meats is a vendor: $178.0k of Ext Price (22%), 871 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:gulf breeze produce",
+   "label": "Gulf Breeze Produce",
+   "type": "thing",
+   "group": "vendor",
+   "size": 19.38,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Gulf Breeze Produce is a vendor: $114.7k of Ext Price (14%), 1,534 rows.",
+   "body": [
+    {
+     "statement": "Gulf Breeze Produce is a vendor: $114.7k of Ext Price (14%), 1,534 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:tidewater seafood",
+   "label": "Tidewater Seafood",
+   "type": "thing",
+   "group": "vendor",
+   "size": 16.25,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Tidewater Seafood is a vendor: $67.3k of Ext Price (8.3%), 249 rows.",
+   "body": [
+    {
+     "statement": "Tidewater Seafood is a vendor: $67.3k of Ext Price (8.3%), 249 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:keystone paper & chem",
+   "label": "Keystone Paper & Chem",
+   "type": "thing",
+   "group": "vendor",
+   "size": 15.45,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Keystone Paper & Chem is a vendor: $57.3k of Ext Price (7.1%), 405 rows.",
+   "body": [
+    {
+     "statement": "Keystone Paper & Chem is a vendor: $57.3k of Ext Price (7.1%), 405 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:sunrise dairy co",
+   "label": "Sunrise Dairy Co",
+   "type": "thing",
+   "group": "vendor",
+   "size": 14.46,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Sunrise Dairy Co is a vendor: $45.8k of Ext Price (5.7%), 540 rows.",
+   "body": [
+    {
+     "statement": "Sunrise Dairy Co is a vendor: $45.8k of Ext Price (5.7%), 540 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:vendor:mangrove coffee roasters",
+   "label": "Mangrove Coffee Roasters",
+   "type": "thing",
+   "group": "vendor",
+   "size": 13.26,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Mangrove Coffee Roasters is a vendor: $33.8k of Ext Price (4.2%), 160 rows.",
+   "body": [
+    {
+     "statement": "Mangrove Coffee Roasters is a vendor: $33.8k of Ext Price (4.2%), 160 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 160 rows whose Vendor is not in Hotel contracts.xlsx (like Mangrove Coffee Roasters) are, per the owner: Not on that list on purpose. In the owner's words: Mangrove Coffee Roasters has no contract; we buy at list.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "160 rows on Detail have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "9 rows on Price File have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:location:palm key",
+   "label": "Palm Key",
+   "type": "thing",
+   "group": "location",
+   "size": 28.0,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Palm Key is a location: $354.7k of Ext Price (44%), 2,492 rows.",
+   "body": [
+    {
+     "statement": "Palm Key is a location: $354.7k of Ext Price (44%), 2,492 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Palm Key is 44% of Ext Price ($354.7k), the largest of 3 locations (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The owner was not sure: Your locations include Palm Key, Harborlight and Sandpiper. Can each one buy the same items at the best price found here?",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:location:harborlight",
+   "label": "Harborlight",
+   "type": "thing",
+   "group": "location",
+   "size": 24.55,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Harborlight is a location: $252.0k of Ext Price (31%), 1,731 rows.",
+   "body": [
+    {
+     "statement": "Harborlight is a location: $252.0k of Ext Price (31%), 1,731 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The owner was not sure: Your locations include Palm Key, Harborlight and Sandpiper. Can each one buy the same items at the best price found here?",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:location:sandpiper",
+   "label": "Sandpiper",
+   "type": "thing",
+   "group": "location",
+   "size": 22.54,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Sandpiper is a location: $200.5k of Ext Price (25%), 1,417 rows.",
+   "body": [
+    {
+     "statement": "Sandpiper is a location: $200.5k of Ext Price (25%), 1,417 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The owner was not sure: Your locations include Palm Key, Harborlight and Sandpiper. Can each one buy the same items at the best price found here?",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:location:cmsy",
+   "label": "CMSY",
+   "type": "thing",
+   "group": "location",
+   "size": 11.93,
+   "status": "left-out",
+   "source": "computed",
+   "hidden": false,
+   "summary": "CMSY is a location: $25.8k of Ext Price, 360 rows; left out of counted totals, as the owner said.",
+   "body": [
+    {
+     "statement": "CMSY is a location: $25.8k of Ext Price, 360 rows; left out of counted totals, as the owner said.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "CMSY in Location (Invoice #s starting TR-) is, per the owner: Internal, not a real location and Already counted elsewhere. In the owner's words: It's the commissary, a central prep kitchen, not a hotel. Its lines are transfers of product the hotels already bought.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "On Detail, counted totals and shares leave out rows where Location is CMSY, as the owner said.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "88 of 174 items account for 80% of Ext Price (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Coastline Provisions is 38% of Ext Price ($310.2k), the largest of 7 vendors (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Dry Goods is 18% of Ext Price ($144.6k), the largest of 12 categories (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Palm Key is 44% of Ext Price ($354.7k), the largest of 3 locations (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Every CMSY row on Detail (360 rows) has an Invoice # starting TR-, and no other Location has one.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:dry goods",
+   "label": "Dry Goods",
+   "type": "thing",
+   "group": "category",
+   "size": 28.0,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Dry Goods is a category: $144.6k of Ext Price (18%), 1,093 rows.",
+   "body": [
+    {
+     "statement": "Dry Goods is a category: $144.6k of Ext Price (18%), 1,093 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Dry Goods is 18% of Ext Price ($144.6k), the largest of 12 categories (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:beef",
+   "label": "Beef",
+   "type": "thing",
+   "group": "category",
+   "size": 25.75,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Beef is a category: $116.5k of Ext Price (14%), 371 rows.",
+   "body": [
+    {
+     "statement": "Beef is a category: $116.5k of Ext Price (14%), 371 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Prices are compared on this basis, per the owner: Beef and poultry are catch weight, priced per pound. Everything else is per case or each, even when the pack mentions pounds. Never compare a pound price to a case price.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:category:produce",
+   "label": "Produce",
+   "type": "thing",
+   "group": "category",
+   "size": 25.5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Produce is a category: $113.5k of Ext Price (14%), 1,386 rows.",
+   "body": [
+    {
+     "statement": "Produce is a category: $113.5k of Ext Price (14%), 1,386 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Contract Price is the agreed price, but market-priced items such as proteins and produce can float week to week under the same contract.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "playbook"
+    }
+   ]
+  },
+  {
+   "id": "v:category:dairy",
+   "label": "Dairy",
+   "type": "thing",
+   "group": "category",
+   "size": 21.93,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Dairy is a category: $75.8k of Ext Price (9.4%), 699 rows.",
+   "body": [
+    {
+     "statement": "Dairy is a category: $75.8k of Ext Price (9.4%), 699 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:seafood",
+   "label": "Seafood",
+   "type": "thing",
+   "group": "category",
+   "size": 20.96,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Seafood is a category: $66.9k of Ext Price (8.3%), 197 rows.",
+   "body": [
+    {
+     "statement": "Seafood is a category: $66.9k of Ext Price (8.3%), 197 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:poultry",
+   "label": "Poultry",
+   "type": "thing",
+   "group": "category",
+   "size": 20.73,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Poultry is a category: $64.8k of Ext Price (8.0%), 381 rows.",
+   "body": [
+    {
+     "statement": "Poultry is a category: $64.8k of Ext Price (8.0%), 381 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Prices are compared on this basis, per the owner: Beef and poultry are catch weight, priced per pound. Everything else is per case or each, even when the pack mentions pounds. Never compare a pound price to a case price.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:category:frozen",
+   "label": "Frozen",
+   "type": "thing",
+   "group": "category",
+   "size": 20.56,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Frozen is a category: $63.3k of Ext Price (7.8%), 525 rows.",
+   "body": [
+    {
+     "statement": "Frozen is a category: $63.3k of Ext Price (7.8%), 525 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:beverage",
+   "label": "Beverage",
+   "type": "thing",
+   "group": "category",
+   "size": 20.45,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Beverage is a category: $62.4k of Ext Price (7.7%), 328 rows.",
+   "body": [
+    {
+     "statement": "Beverage is a category: $62.4k of Ext Price (7.7%), 328 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:disposables",
+   "label": "Disposables",
+   "type": "thing",
+   "group": "category",
+   "size": 19.35,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Disposables is a category: $53.3k of Ext Price (6.6%), 404 rows.",
+   "body": [
+    {
+     "statement": "Disposables is a category: $53.3k of Ext Price (6.6%), 404 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:pork",
+   "label": "Pork",
+   "type": "thing",
+   "group": "category",
+   "size": 14.59,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Pork is a category: $22.0k of Ext Price (2.7%), 127 rows.",
+   "body": [
+    {
+     "statement": "Pork is a category: $22.0k of Ext Price (2.7%), 127 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:chemicals",
+   "label": "Chemicals",
+   "type": "thing",
+   "group": "category",
+   "size": 14.3,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Chemicals is a category: $20.6k of Ext Price (2.5%), 128 rows.",
+   "body": [
+    {
+     "statement": "Chemicals is a category: $20.6k of Ext Price (2.5%), 128 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:category:fees",
+   "label": "Fees",
+   "type": "thing",
+   "group": "category",
+   "size": 9.49,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Fees is a category: $3,634 of Ext Price (0.5%), 361 rows.",
+   "body": [
+    {
+     "statement": "Fees is a category: $3,634 of Ext Price (0.5%), 361 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:bf1109",
+   "label": "BEEF RIBEYE LIP ON 12 UP CH",
+   "type": "thing",
+   "group": "item_id",
+   "size": 28.0,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "BEEF RIBEYE LIP ON 12 UP CH is an item: $46.5k of Ext Price (18%), 103 rows, code BF1109.",
+   "body": [
+    {
+     "statement": "BEEF RIBEYE LIP ON 12 UP CH is an item: $46.5k of Ext Price (18%), 103 rows, code BF1109.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp11011",
+   "label": "CHICKEN WINGS JUMBO 1&2 JT",
+   "type": "thing",
+   "group": "item_id",
+   "size": 21.41,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "CHICKEN WINGS JUMBO 1&2 JT is an item: $22.8k of Ext Price (8.8%), 97 rows, code CP11011.",
+   "body": [
+    {
+     "statement": "CHICKEN WINGS JUMBO 1&2 JT is an item: $22.8k of Ext Price (8.8%), 97 rows, code CP11011.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:bf1198",
+   "label": "BEEF GROUND 80/20 CHUB",
+   "type": "thing",
+   "group": "item_id",
+   "size": 20.68,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "BEEF GROUND 80/20 CHUB is an item: $20.7k of Ext Price (8.0%), 92 rows, code BF1198.",
+   "body": [
+    {
+     "statement": "BEEF GROUND 80/20 CHUB is an item: $20.7k of Ext Price (8.0%), 92 rows, code BF1198.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10547",
+   "label": "SYRUP MAPLE PURE",
+   "type": "thing",
+   "group": "item_id",
+   "size": 19.78,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "SYRUP MAPLE PURE is an item: $18.2k of Ext Price (7.0%), 61 rows, code CP10547.",
+   "body": [
+    {
+     "statement": "SYRUP MAPLE PURE is an item: $18.2k of Ext Price (7.0%), 61 rows, code CP10547.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp11219",
+   "label": "SYRUP SODA COLA BIB",
+   "type": "thing",
+   "group": "item_id",
+   "size": 19.14,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "SYRUP SODA COLA BIB is an item: $16.6k of Ext Price (6.4%), 24 rows, code CP11219.",
+   "body": [
+    {
+     "statement": "SYRUP SODA COLA BIB is an item: $16.6k of Ext Price (6.4%), 24 rows, code CP11219.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10843",
+   "label": "WAFFLE BELGIAN 7 IN",
+   "type": "thing",
+   "group": "item_id",
+   "size": 18.33,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "WAFFLE BELGIAN 7 IN is an item: $14.6k of Ext Price (5.6%), 128 rows, code CP10843.",
+   "body": [
+    {
+     "statement": "WAFFLE BELGIAN 7 IN is an item: $14.6k of Ext Price (5.6%), 128 rows, code CP10843.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10511",
+   "label": "HONEY CLOVER",
+   "type": "thing",
+   "group": "item_id",
+   "size": 18.17,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "HONEY CLOVER is an item: $14.2k of Ext Price (5.5%), 56 rows, code CP10511.",
+   "body": [
+    {
+     "statement": "HONEY CLOVER is an item: $14.2k of Ext Price (5.5%), 56 rows, code CP10511.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:bf1140",
+   "label": "BEEF STRIP LOIN 0X1 CH",
+   "type": "thing",
+   "group": "item_id",
+   "size": 18.1,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "BEEF STRIP LOIN 0X1 CH is an item: $14.1k of Ext Price (5.4%), 37 rows, code BF1140.",
+   "body": [
+    {
+     "statement": "BEEF STRIP LOIN 0X1 CH is an item: $14.1k of Ext Price (5.4%), 37 rows, code BF1140.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:tw3234",
+   "label": "SNAPPER RED FILLET",
+   "type": "thing",
+   "group": "item_id",
+   "size": 17.45,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "SNAPPER RED FILLET is an item: $12.6k of Ext Price (4.9%), 31 rows, code TW3234.",
+   "body": [
+    {
+     "statement": "SNAPPER RED FILLET is an item: $12.6k of Ext Price (4.9%), 31 rows, code TW3234.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10649",
+   "label": "BASE CHICKEN PASTE",
+   "type": "thing",
+   "group": "item_id",
+   "size": 17.35,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "BASE CHICKEN PASTE is an item: $12.4k of Ext Price (4.8%), 45 rows, code CP10649.",
+   "body": [
+    {
+     "statement": "BASE CHICKEN PASTE is an item: $12.4k of Ext Price (4.8%), 45 rows, code CP10649.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:mcr-93",
+   "label": "COFFEE ESPRESSO BLEND",
+   "type": "thing",
+   "group": "item_id",
+   "size": 17.29,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "COFFEE ESPRESSO BLEND is an item: $12.2k of Ext Price (4.7%), 36 rows, code MCR-93.",
+   "body": [
+    {
+     "statement": "COFFEE ESPRESSO BLEND is an item: $12.2k of Ext Price (4.7%), 36 rows, code MCR-93.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:gb-444",
+   "label": "LEMON 115 CT",
+   "type": "thing",
+   "group": "item_id",
+   "size": 17.1,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "LEMON 115 CT is an item: $11.8k of Ext Price (4.6%), 104 rows, code GB-444.",
+   "body": [
+    {
+     "statement": "LEMON 115 CT is an item: $11.8k of Ext Price (4.6%), 104 rows, code GB-444.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:bf1842",
+   "label": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1842)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 16.46,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1842) is an item: $10.5k of Ext Price (4.1%), 64 rows.",
+   "body": [
+    {
+     "statement": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1842) is an item: $10.5k of Ext Price (4.1%), 64 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10883",
+   "label": "OIL FRYER CANOLA CLEAR (CP10883)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 14.51,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "OIL FRYER CANOLA CLEAR (CP10883) is an item: $6,957 of Ext Price (2.7%), 73 rows.",
+   "body": [
+    {
+     "statement": "OIL FRYER CANOLA CLEAR (CP10883) is an item: $6,957 of Ext Price (2.7%), 73 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:cp10351",
+   "label": "OIL FRYER CANOLA CLEAR (CP10351)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 14.18,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "OIL FRYER CANOLA CLEAR (CP10351) is an item: $6,432 of Ext Price (2.5%), 74 rows.",
+   "body": [
+    {
+     "statement": "OIL FRYER CANOLA CLEAR (CP10351) is an item: $6,432 of Ext Price (2.5%), 74 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "544 rows on Detail have an Item # that is not in Price File (5 distinct values, for example FEE-FUEL, CP10351, SD3217).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:bf1295",
+   "label": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1295)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 14.02,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1295) is an item: $6,186 of Ext Price (2.4%), 47 rows.",
+   "body": [
+    {
+     "statement": "CHICKEN BREAST BNLS SKLS 6 OZ (BF1295) is an item: $6,186 of Ext Price (2.4%), 47 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:sd3217",
+   "label": "CREAM HEAVY 40% (SD3217)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 13.91,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "CREAM HEAVY 40% (SD3217) is an item: $6,012 of Ext Price (2.3%), 62 rows.",
+   "body": [
+    {
+     "statement": "CREAM HEAVY 40% (SD3217) is an item: $6,012 of Ext Price (2.3%), 62 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "544 rows on Detail have an Item # that is not in Price File (5 distinct values, for example FEE-FUEL, CP10351, SD3217).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:fee-fuel",
+   "label": "FUEL SURCHARGE",
+   "type": "thing",
+   "group": "item_id",
+   "size": 11.48,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "FUEL SURCHARGE is an item: $2,884 of Ext Price (1.1%), 335 rows, code FEE-FUEL.",
+   "body": [
+    {
+     "statement": "FUEL SURCHARGE is an item: $2,884 of Ext Price (1.1%), 335 rows, code FEE-FUEL.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    },
+    {
+     "statement": "544 rows on Detail have an Item # that is not in Price File (5 distinct values, for example FEE-FUEL, CP10351, SD3217).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:sd3769",
+   "label": "CREAM HEAVY 40% (SD3769)",
+   "type": "thing",
+   "group": "item_id",
+   "size": 10.91,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "CREAM HEAVY 40% (SD3769) is an item: $2,319 of Ext Price (0.9%), 26 rows.",
+   "body": [
+    {
+     "statement": "CREAM HEAVY 40% (SD3769) is an item: $2,319 of Ext Price (0.9%), 26 rows.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "v:item_id:fee-dlvy",
+   "label": "DELIVERY FEE",
+   "type": "thing",
+   "group": "item_id",
+   "size": 8.79,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "DELIVERY FEE is an item: $750 of Ext Price (0.3%), 26 rows, code FEE-DLVY.",
+   "body": [
+    {
+     "statement": "DELIVERY FEE is an item: $750 of Ext Price (0.3%), 26 rows, code FEE-DLVY.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    },
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ]
+  },
+  {
+   "id": "link:aff86bac",
+   "label": "Hotel contracts.xlsx",
+   "type": "other_file",
+   "group": "other file",
+   "size": 16,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Another workbook named Hotel contracts.xlsx connects here on Vendor.",
+   "body": [
+    {
+     "statement": "Another workbook named Hotel contracts.xlsx connects here on Vendor.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ]
+  },
+  {
+   "id": "f:key:8c228dbc",
+   "label": "Each row on Detail is unique by the pair Invoice # and...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Each row on Detail is unique by the pair Invoice # and Item #.",
+   "body": [
+    {
+     "statement": "Each row on Detail is unique by the pair Invoice # and Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "f:key:f811f74c",
+   "label": "Each row on Price File is unique by Item #",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Each row on Price File is unique by Item #.",
+   "body": [
+    {
+     "statement": "Each row on Price File is unique by Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "f:_build",
+   "label": "The owner asked to build first: Contract audit",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The owner asked to build first: Contract audit.",
+   "body": [
+    {
+     "statement": "The owner asked to build first: Contract audit.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:coverage",
+   "label": "Coverage: Everything we bought",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Coverage of these purchase lines, per the owner: Everything we bought.",
+   "body": [
+    {
+     "statement": "Coverage of these purchase lines, per the owner: Everything we bought.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_exclusive_location_cmsy",
+   "label": "What is CMSY: Internal, not a real location and...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "CMSY in Location (Invoice #s starting TR-) is, per the owner: Internal, not a real location and Already counted elsewhere. In the owner's words: It's the commissary, a central prep kitchen, not a hotel. Its lines are transfers of product the hotels already bought.",
+   "body": [
+    {
+     "statement": "CMSY in Location (Invoice #s starting TR-) is, per the owner: Internal, not a real location and Already counted elsewhere. In the owner's words: It's the commissary, a central prep kitchen, not a hotel. Its lines are transfers of product the hotels already bought.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_negatives_ext_price",
+   "label": "Negatives: Credits or returns",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Negative Ext Price rows are, per the owner: Credits or returns.",
+   "body": [
+    {
+     "statement": "Negative Ext Price rows are, per the owner: Credits or returns.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_unmatched_item",
+   "label": "Not listed: Not real items (fees, holds) and Old or...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+   "body": [
+    {
+     "statement": "The 544 rows whose Item # is not in Price File (like FEE-FUEL, CP10351 and SD3217) are, per the owner: Not real items (fees, holds) and Old or changed codes. In the owner's words: FEE-FUEL is the fuel surcharge and FEE-DLVY the delivery fee. They count in spend but not in price comparisons or rebates. The other three were re-coded.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:find_unmatched_vendor",
+   "label": "Not listed: Not on that list on purpose",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The 160 rows whose Vendor is not in Hotel contracts.xlsx (like Mangrove Coffee Roasters) are, per the owner: Not on that list on purpose. In the owner's words: Mangrove Coffee Roasters has no contract; we buy at list.",
+   "body": [
+    {
+     "statement": "The 160 rows whose Vendor is not in Hotel contracts.xlsx (like Mangrove Coffee Roasters) are, per the owner: Not on that list on purpose. In the owner's words: Mangrove Coffee Roasters has no contract; we buy at list.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:follow_codes_item",
+   "label": "Re-coded items, per the owner (BF1295 -> BF1842...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+   "body": [
+    {
+     "statement": "Re-coded items, per the owner (BF1295 -> BF1842 (CHICKEN BREAST BNLS SKLS 6 OZ); CP10351 -> CP10883 (OIL FRYER CANOLA CLEAR); SD3217 -> SD3769 (CREAM HEAVY 40%)): Yes, all the same.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:follow_net_ext_price",
+   "label": "Net credits: Net them against spend",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Credits in totals, per the owner: Net them against spend.",
+   "body": [
+    {
+     "statement": "Credits in totals, per the owner: Net them against spend.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:goal",
+   "label": "The owner's goal for this data is: Check what I'm...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The owner's goal for this data is: Check what I'm charged, Find savings and Compare vendors or rebid.",
+   "body": [
+    {
+     "statement": "The owner's goal for this data is: Check what I'm charged, Find savings and Compare vendors or rebid.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:unit_basis",
+   "label": "Compare by: Beef and poultry are catch weight, priced...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "Prices are compared on this basis, per the owner: Beef and poultry are catch weight, priced per pound. Everything else is per case or each, even when the pack mentions pounds. Never compare a pound price to a case price.",
+   "body": [
+    {
+     "statement": "Prices are compared on this basis, per the owner: Beef and poultry are catch weight, priced per pound. Everything else is per case or each, even when the pack mentions pounds. Never compare a pound price to a case price.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:x:2067f973",
+   "label": "On Detail, counted totals and shares leave out rows...",
+   "type": "note",
+   "group": "said",
+   "size": 6.5,
+   "status": "confirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "On Detail, counted totals and shares leave out rows where Location is CMSY, as the owner said.",
+   "body": [
+    {
+     "statement": "On Detail, counted totals and shares leave out rows where Location is CMSY, as the owner said.",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "said"
+  },
+  {
+   "id": "f:g:d5a660c3",
+   "label": "Lines are priced per CS, LB and EA, so a case price...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Lines are priced per CS, LB and EA, so a case price and a pound price cannot be compared directly.",
+   "body": [
+    {
+     "statement": "Lines are priced per CS, LB and EA, so a case price and a pound price cannot be compared directly.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "f:g:a0087c91",
+   "label": "Contract Price is the agreed price, but market-priced...",
+   "type": "note",
+   "group": "guess",
+   "size": 5,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "hidden": false,
+   "summary": "Contract Price is the agreed price, but market-priced items such as proteins and produce can float week to week under the same contract.",
+   "body": [
+    {
+     "statement": "Contract Price is the agreed price, but market-priced items such as proteins and produce can float week to week under the same contract.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "playbook"
+    }
+   ],
+   "note_kind": "guess"
+  },
+  {
+   "id": "i:5cfdcdd1",
+   "label": "88 of 174 items account for 80% of Ext Price (leaving...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "88 of 174 items account for 80% of Ext Price (leaving out CMSY, per the owner).",
+   "body": [
+    {
+     "statement": "88 of 174 items account for 80% of Ext Price (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:3c7cba38",
+   "label": "Coastline Provisions is 38% of Ext Price ($310.2k)...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Coastline Provisions is 38% of Ext Price ($310.2k), the largest of 7 vendors (leaving out CMSY, per the owner).",
+   "body": [
+    {
+     "statement": "Coastline Provisions is 38% of Ext Price ($310.2k), the largest of 7 vendors (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:7916554b",
+   "label": "Dry Goods is 18% of Ext Price ($144.6k), the largest...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Dry Goods is 18% of Ext Price ($144.6k), the largest of 12 categories (leaving out CMSY, per the owner).",
+   "body": [
+    {
+     "statement": "Dry Goods is 18% of Ext Price ($144.6k), the largest of 12 categories (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:344c368d",
+   "label": "Palm Key is 44% of Ext Price ($354.7k), the largest of...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Palm Key is 44% of Ext Price ($354.7k), the largest of 3 locations (leaving out CMSY, per the owner).",
+   "body": [
+    {
+     "statement": "Palm Key is 44% of Ext Price ($354.7k), the largest of 3 locations (leaving out CMSY, per the owner).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:072c5364",
+   "label": "2 items were bought at prices more than 5% apart...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+   "body": [
+    {
+     "statement": "2 items were bought at prices more than 5% apart across locations in the same month; paying the lowest price seen would have cost $894 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:67cd1a74",
+   "label": "2 items were bought at prices more than 5% apart...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+   "body": [
+    {
+     "statement": "2 items were bought at prices more than 5% apart across vendors in the same month; paying the lowest price seen would have cost $924 less in this data.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:276b9a65",
+   "label": "Ext Price equals Qty times Unit Price on 99.6% of rows...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+   "body": [
+    {
+     "statement": "Ext Price equals Qty times Unit Price on 99.6% of rows (20 rows differ).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:37ed4b51",
+   "label": "198 rows have a negative Ext Price, totaling -$14.8k",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "198 rows have a negative Ext Price, totaling -$14.8k.",
+   "body": [
+    {
+     "statement": "198 rows have a negative Ext Price, totaling -$14.8k.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:e6295481",
+   "label": "UOM has 3 values: CS (76%), LB (13%), EA (11%)",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "UOM has 3 values: CS (76%), LB (13%), EA (11%).",
+   "body": [
+    {
+     "statement": "UOM has 3 values: CS (76%), LB (13%), EA (11%).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:b6314f9d",
+   "label": "Invoice Date runs from 2025-01-01 to 2026-06-30 (18...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Invoice Date runs from 2025-01-01 to 2026-06-30 (18 months).",
+   "body": [
+    {
+     "statement": "Invoice Date runs from 2025-01-01 to 2026-06-30 (18 months).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:95620784",
+   "label": "There are 174 distinct items in Item #",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "There are 174 distinct items in Item #.",
+   "body": [
+    {
+     "statement": "There are 174 distinct items in Item #.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:0ec289e5",
+   "label": "Every CMSY row on Detail (360 rows) has an Invoice #...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "Every CMSY row on Detail (360 rows) has an Invoice # starting TR-, and no other Location has one.",
+   "body": [
+    {
+     "statement": "Every CMSY row on Detail (360 rows) has an Invoice # starting TR-, and no other Location has one.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:765dcfa1",
+   "label": "Summary has 1 total or subtotal row inside the data...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": true,
+   "summary": "Summary has 1 total or subtotal row inside the data, left out of every count.",
+   "body": [
+    {
+     "statement": "Summary has 1 total or subtotal row inside the data, left out of every count.",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:c7354725",
+   "label": "544 rows on Detail have an Item # that is not in Price...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "544 rows on Detail have an Item # that is not in Price File (5 distinct values, for example FEE-FUEL, CP10351, SD3217).",
+   "body": [
+    {
+     "statement": "544 rows on Detail have an Item # that is not in Price File (5 distinct values, for example FEE-FUEL, CP10351, SD3217).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:b6f9afd9",
+   "label": "160 rows on Detail have a Vendor that is not in Hotel...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "160 rows on Detail have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+   "body": [
+    {
+     "statement": "160 rows on Detail have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "i:512fe125",
+   "label": "9 rows on Price File have a Vendor that is not in...",
+   "type": "note",
+   "group": "found",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "hidden": false,
+   "summary": "9 rows on Price File have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+   "body": [
+    {
+     "statement": "9 rows on Price File have a Vendor that is not in Hotel contracts.xlsx (always Mangrove Coffee Roasters).",
+     "source": "computed",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "sb"
+    }
+   ],
+   "note_kind": "found"
+  },
+  {
+   "id": "o:leave_out",
+   "label": "Open: Which of these should count in spend? Pick all...",
+   "type": "note",
+   "group": "question",
+   "size": 5,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "hidden": false,
+   "summary": "Not answered yet: Which of these should count in spend? Pick all that apply.",
+   "body": [
+    {
+     "statement": "Not answered yet: Which of these should count in spend? Pick all that apply.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ],
+   "note_kind": "question"
+  },
+  {
+   "id": "o:rebate_programs",
+   "label": "Open: Which rebate programs pay back on these purchases?...",
+   "type": "note",
+   "group": "question",
+   "size": 5,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "hidden": false,
+   "summary": "Not answered yet: Which rebate programs pay back on these purchases? Pick all that apply.",
+   "body": [
+    {
+     "statement": "Not answered yet: Which rebate programs pay back on these purchases? Pick all that apply.",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ],
+   "note_kind": "question"
+  },
+  {
+   "id": "o:find_product_ext_price",
+   "label": "Open: On 20 rows, Ext Price isn't Qty times Unit Price....",
+   "type": "note",
+   "group": "question",
+   "size": 5,
+   "status": "unconfirmed",
+   "source": "inferred",
+   "hidden": false,
+   "summary": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+   "body": [
+    {
+     "statement": "Not answered yet: On 20 rows, Ext Price isn't Qty times Unit Price. Which one is right on those rows?",
+     "source": "inferred",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "ai"
+    }
+   ],
+   "note_kind": "question"
+  },
+  {
+   "id": "o:one_program",
+   "label": "Open: Your locations include Palm Key, Harborlight and...",
+   "type": "note",
+   "group": "question",
+   "size": 5,
+   "status": "unconfirmed",
+   "source": "told",
+   "hidden": false,
+   "summary": "The owner was not sure: Your locations include Palm Key, Harborlight and Sandpiper. Can each one buy the same items at the best price found here?",
+   "body": [
+    {
+     "statement": "The owner was not sure: Your locations include Palm Key, Harborlight and Sandpiper. Can each one buy the same items at the best price found here?",
+     "source": "told",
+     "status": "unconfirmed",
+     "as_of": "2026-09-25",
+     "said_by": "owner"
+    }
+   ],
+   "note_kind": "question"
+  }
+ ],
+ "links": [
+  {
+   "source": "sheet:Detail",
+   "target": "brain:665af9b4b705",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.6,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Price File",
+   "target": "brain:665af9b4b705",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.6,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Summary",
+   "target": "brain:665af9b4b705",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.6,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Invoice #}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Invoice Date}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Vendor}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Location}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Item #}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Description}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Category}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Pack}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{UOM}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Qty}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Unit Price}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Detail.{Ext Price}",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Item #}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Description}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Vendor}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Pack}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{UOM}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Contract Price}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Price File.{Category}",
+   "target": "sheet:Price File",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Vendor}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Palm Key}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Harborlight}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Sandpiper}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{CMSY}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Total}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Share of Total}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "col:Summary.{Category}",
+   "target": "sheet:Summary",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "ent:category",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "ent:item_id",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:coastline provisions",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:bayfront meats",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:gulf breeze produce",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:tidewater seafood",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:keystone paper & chem",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:sunrise dairy co",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:mangrove coffee roasters",
+   "target": "ent:vendor",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:location:palm key",
+   "target": "ent:location",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:location:harborlight",
+   "target": "ent:location",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:location:sandpiper",
+   "target": "ent:location",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:location:cmsy",
+   "target": "ent:location",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:dry goods",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:beef",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:produce",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:dairy",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:seafood",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:poultry",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:frozen",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:beverage",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:disposables",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:pork",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:chemicals",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:category:fees",
+   "target": "ent:category",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1109",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp11011",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1198",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10547",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp11219",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10843",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10511",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1140",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:tw3234",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10649",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:mcr-93",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:gb-444",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1842",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10883",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10351",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1295",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:sd3217",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:fee-fuel",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:sd3769",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:fee-dlvy",
+   "target": "ent:item_id",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.25,
+   "status": "current"
+  },
+  {
+   "source": "ent:location",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "ent:vendor",
+   "target": "sheet:Detail",
+   "type": "part_of",
+   "label": "",
+   "weight": 0.4,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "link:aff86bac",
+   "type": "links_file",
+   "label": "matches on Vendor",
+   "weight": 1.0,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "Item # matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "Vendor matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Price File",
+   "target": "sheet:Detail",
+   "type": "joins_on",
+   "label": "Category matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "Pack matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "UOM matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Detail",
+   "target": "sheet:Price File",
+   "type": "joins_on",
+   "label": "Description matches",
+   "weight": 1.5,
+   "status": "current"
+  },
+  {
+   "source": "sheet:Summary",
+   "target": "sheet:Detail",
+   "type": "derived_from",
+   "label": "calculated from",
+   "weight": 1.0,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:coastline provisions",
+   "target": "v:location:palm key",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 4.0,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:coastline provisions",
+   "target": "v:location:sandpiper",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 3.062,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:coastline provisions",
+   "target": "v:location:harborlight",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 2.657,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:bayfront meats",
+   "target": "v:location:palm key",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 2.643,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:bayfront meats",
+   "target": "v:location:harborlight",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 2.143,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:gulf breeze produce",
+   "target": "v:location:palm key",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.83,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:gulf breeze produce",
+   "target": "v:location:harborlight",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.741,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:bayfront meats",
+   "target": "v:location:sandpiper",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.559,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:tidewater seafood",
+   "target": "v:location:palm key",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.289,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:tidewater seafood",
+   "target": "v:location:harborlight",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.221,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:gulf breeze produce",
+   "target": "v:location:sandpiper",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.159,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:tidewater seafood",
+   "target": "v:location:sandpiper",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 1.007,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:bayfront meats",
+   "target": "v:location:cmsy",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 0.98,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:sunrise dairy co",
+   "target": "v:location:cmsy",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 0.747,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:gulf breeze produce",
+   "target": "v:location:cmsy",
+   "type": "relates",
+   "label": "delivers to",
+   "weight": 0.731,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:coastline provisions",
+   "target": "v:item_id:cp11011",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 1.183,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:tidewater seafood",
+   "target": "v:item_id:tw3234",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 0.922,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:mangrove coffee roasters",
+   "target": "v:item_id:mcr-93",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 0.913,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:sunrise dairy co",
+   "target": "v:item_id:sd3217",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 0.777,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:sunrise dairy co",
+   "target": "v:item_id:sd3769",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 0.673,
+   "status": "current"
+  },
+  {
+   "source": "v:vendor:keystone paper & chem",
+   "target": "v:item_id:fee-dlvy",
+   "type": "relates",
+   "label": "supplies",
+   "weight": 0.609,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1109",
+   "target": "v:category:beef",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 1.933,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp11011",
+   "target": "v:category:poultry",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 1.183,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1198",
+   "target": "v:category:beef",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 1.174,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10547",
+   "target": "v:category:dry goods",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 1.066,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp11219",
+   "target": "v:category:beverage",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 1.023,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1140",
+   "target": "v:category:beef",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.989,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10843",
+   "target": "v:category:frozen",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.973,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10511",
+   "target": "v:category:dry goods",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.963,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:tw3234",
+   "target": "v:category:seafood",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.922,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:gb-444",
+   "target": "v:category:produce",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.921,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10649",
+   "target": "v:category:dry goods",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.916,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:mcr-93",
+   "target": "v:category:beverage",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.913,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1842",
+   "target": "v:category:poultry",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.893,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1295",
+   "target": "v:category:poultry",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.789,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:cp10883",
+   "target": "v:category:dry goods",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.778,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:sd3217",
+   "target": "v:category:dairy",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.777,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:fee-fuel",
+   "target": "v:category:fees",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.674,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:sd3769",
+   "target": "v:category:dairy",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.673,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:fee-dlvy",
+   "target": "v:category:fees",
+   "type": "relates",
+   "label": "belongs to",
+   "weight": 0.619,
+   "status": "current"
+  },
+  {
+   "source": "v:item_id:bf1295",
+   "target": "v:item_id:bf1842",
+   "type": "same_as",
+   "label": "re-coded to",
+   "weight": 1.0,
+   "status": "confirmed"
+  },
+  {
+   "source": "v:item_id:cp10351",
+   "target": "v:item_id:cp10883",
+   "type": "same_as",
+   "label": "re-coded to",
+   "weight": 1.0,
+   "status": "confirmed"
+  },
+  {
+   "source": "v:item_id:sd3217",
+   "target": "v:item_id:sd3769",
+   "type": "same_as",
+   "label": "re-coded to",
+   "weight": 1.0,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:key:8c228dbc",
+   "target": "col:Detail.{Invoice #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "f:key:8c228dbc",
+   "target": "col:Detail.{Item #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "f:key:f811f74c",
+   "target": "col:Price File.{Item #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "f:_build",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:coverage",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_exclusive_location_cmsy",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_negatives_ext_price",
+   "target": "col:Detail.{Ext Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_negatives_ext_price",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:find_unmatched_item",
+   "target": "v:item_id:fee-fuel",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_item",
+   "target": "v:item_id:sd3217",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_item",
+   "target": "v:item_id:fee-dlvy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_item",
+   "target": "v:item_id:cp10351",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_item",
+   "target": "v:category:fees",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:find_unmatched_vendor",
+   "target": "v:vendor:mangrove coffee roasters",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:cp10883",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:sd3217",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:bf1842",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:bf1295",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:cp10351",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_codes_item",
+   "target": "v:item_id:sd3769",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:follow_net_ext_price",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:goal",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:unit_basis",
+   "target": "v:category:beef",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:unit_basis",
+   "target": "v:category:poultry",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:x:2067f973",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "confirmed"
+  },
+  {
+   "source": "f:g:d5a660c3",
+   "target": "col:Detail.{UOM}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "f:g:d5a660c3",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "f:g:a0087c91",
+   "target": "v:category:produce",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "i:5cfdcdd1",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:3c7cba38",
+   "target": "v:vendor:coastline provisions",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:3c7cba38",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:7916554b",
+   "target": "v:category:dry goods",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:7916554b",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:344c368d",
+   "target": "v:location:palm key",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:344c368d",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "col:Detail.{Unit Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "col:Detail.{Item #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "col:Detail.{Location}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:072c5364",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "col:Detail.{Unit Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "col:Detail.{Item #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "col:Detail.{Vendor}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:67cd1a74",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "col:Detail.{Qty}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "col:Detail.{Unit Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "col:Detail.{Ext Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:276b9a65",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:37ed4b51",
+   "target": "col:Detail.{Ext Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:37ed4b51",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "i:e6295481",
+   "target": "col:Detail.{UOM}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:b6314f9d",
+   "target": "col:Detail.{Invoice Date}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:95620784",
+   "target": "col:Detail.{Item #}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:0ec289e5",
+   "target": "v:location:cmsy",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:765dcfa1",
+   "target": "sheet:Summary",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:c7354725",
+   "target": "v:item_id:fee-fuel",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:c7354725",
+   "target": "v:item_id:cp10351",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:c7354725",
+   "target": "v:item_id:sd3217",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:b6f9afd9",
+   "target": "v:vendor:mangrove coffee roasters",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "i:512fe125",
+   "target": "v:vendor:mangrove coffee roasters",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "current"
+  },
+  {
+   "source": "o:leave_out",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:rebate_programs",
+   "target": "brain:665af9b4b705",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "col:Detail.{Unit Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "col:Detail.{Qty}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "col:Detail.{Ext Price}",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "o:find_product_ext_price",
+   "target": "sheet:Detail",
+   "type": "about",
+   "label": "",
+   "weight": 0.3,
+   "status": "current"
+  },
+  {
+   "source": "o:one_program",
+   "target": "v:location:palm key",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:one_program",
+   "target": "v:location:harborlight",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  },
+  {
+   "source": "o:one_program",
+   "target": "v:location:sandpiper",
+   "type": "about",
+   "label": "",
+   "weight": 0.5,
+   "status": "unconfirmed"
+  }
+ ],
+ "groups": [
+  {
+   "id": "file",
+   "label": "The workbook",
+   "type": "file",
+   "color": "#F2F1EC"
+  },
+  {
+   "id": "sheet",
+   "label": "Tabs",
+   "type": "sheet",
+   "color": "#8C8F96"
+  },
+  {
+   "id": "column",
+   "label": "Columns",
+   "type": "column",
+   "color": "#5A5E66"
+  },
+  {
+   "id": "location",
+   "label": "Locations",
+   "type": "kind",
+   "color": "#E8A33D"
+  },
+  {
+   "id": "vendor",
+   "label": "Vendors",
+   "type": "kind",
+   "color": "#5B8DEF"
+  },
+  {
+   "id": "category",
+   "label": "Categories",
+   "type": "kind",
+   "color": "#3FB68B"
+  },
+  {
+   "id": "item_id",
+   "label": "Items",
+   "type": "kind",
+   "color": "#D96C5F"
+  },
+  {
+   "id": "other file",
+   "label": "Other files",
+   "type": "other_file",
+   "color": "#B8B2A7"
+  },
+  {
+   "id": "found",
+   "label": "What code found",
+   "type": "note",
+   "color": "#E0B354"
+  },
+  {
+   "id": "said",
+   "label": "What the owner said",
+   "type": "note",
+   "color": "#4F7CFF"
+  },
+  {
+   "id": "guess",
+   "label": "Guesses to confirm",
+   "type": "note",
+   "color": "#8A8F98"
+  },
+  {
+   "id": "question",
+   "label": "Open questions",
+   "type": "note",
+   "color": "#C678DD"
+  }
+ ],
+ "start_here": [
+  {
+   "node": "f:_build",
+   "text": "The owner asked to build first: Contract audit"
+  },
+  {
+   "node": "f:coverage",
+   "text": "Coverage of these purchase lines, per the owner: Everything we bought"
+  },
+  {
+   "node": "f:g:d5a660c3",
+   "text": "Lines are priced per CS, LB and EA, so a case price and a pound price cannot be compared..."
+  }
+ ],
+ "alert_colors": {
+  "disputed": "#E5534B",
+  "left-out": "#7A7F87",
+  "may-be-outdated": "#E0B354"
+ },
+ "counts": {
+  "things": 43,
+  "notes": 28,
+  "said": 11
+ }
+}

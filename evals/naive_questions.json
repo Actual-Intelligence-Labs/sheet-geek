@@ -1,0 +1,44 @@
+{
+  "note": "Questions phrased the way a new hire or a boss would ask them, without the owner's rules. Each maps to an eval question in the fixture's key (key_index, 0-based) and shares its answer. The right answer depends on tribal knowledge the brain is meant to carry.",
+  "procurement_hotel": [
+    {"q": "What was our total store spend from January 2025 through June 2026?", "key_index": 0, "needs": "store spend is the three hotels only; the commissary (CMSY) double counts; credits net; fees count"},
+    {"q": "Which vendor is our biggest, and what share of store spend do they get?", "key_index": 1, "needs": "CMSY excluded from store spend"},
+    {"q": "How many pounds of beef did Palm Key buy in 2025?", "key_index": 6, "needs": "beef lines are catch weight: Qty is pounds; credits net"},
+    {"q": "Which product's price went up the most between Q1 2025 and Q2 2026?", "key_index": 7, "needs": "three products were re-coded mid-period; fees and credits are not products; compare as billed"},
+    {"q": "Were we billed above a contract price anywhere? Which item, how many lines, and how much?", "key_index": 4, "needs": "Bayfront is fixed price from July 2025; the Price File holds contract prices"},
+    {"q": "What rebate should Coastline owe us for 2025?", "key_index": 10, "needs": "rebate basis is net product spend at the hotels, fees and CMSY excluded; 2%"},
+    {"q": "What was spend by hotel in Q2 2026?", "key_index": 9, "needs": "hotels are Palm Key, Harborlight, Sandpiper; CMSY is not a hotel"}
+  ],
+  "finance_model": [
+    {"q": "Is the model's balance sheet balancing? If not, where and why?", "key_index": 0, "needs": "the typed cash number in May 2027"},
+    {"q": "Is the 4% growth rate annual or monthly?", "key_index": 1, "needs": "Growth is month over month"},
+    {"q": "Which months are real numbers and which are projections?", "key_index": 2, "needs": "Jan to Aug 2026 are actuals"},
+    {"q": "Which formulas in the model look like mistakes?", "key_index": 3, "needs": "the three pattern breaks"},
+    {"q": "Is there anything in the inputs that nothing uses?", "key_index": 10, "needs": "Starting MRR is left over"},
+    {"q": "What's our lowest cash month?", "key_index": 11, "needs": "none beyond the model"}
+  ],
+  "crm_contacts": [
+    {"q": "How many people are in our contact list?", "key_index": 0, "needs": "duplicates share an email after trimming and lowercasing"},
+    {"q": "How many contacts have we sent a proposal to?", "key_index": 5, "needs": "S3 means proposal sent; dedupe"},
+    {"q": "Which rep has the most customers, and how many?", "key_index": 8, "needs": "S5 means customer; Owner is rep initials"},
+    {"q": "How many contacts does Jordan Mercer still own?", "key_index": 9, "needs": "JM is Jordan Mercer, who left in March 2026"},
+    {"q": "How many contacts came in through our website?", "key_index": 10, "needs": "Web and Website are the same source"},
+    {"q": "Which lead source brought in the most closed-won revenue?", "key_index": 11, "needs": "join deals to contacts on trimmed, lowercased email; Web and Website are one source"}
+  ],
+  "ledger_gl": [
+    {"q": "What were our total operating expenses in 2025?", "key_index": 0, "needs": "credits changed sign in April; refunds net; draws and transfers are not expenses"},
+    {"q": "What was our net income in 2025?", "key_index": 1, "needs": "sign change in April; suspense left out"},
+    {"q": "How much did Dana take out of the business in 2025?", "key_index": 2, "needs": "owner draws are account 3100"},
+    {"q": "What was revenue by location in 2025?", "key_index": 6, "needs": "Class is location; blank is shared overhead"},
+    {"q": "What's our checking balance at the end of 2025?", "key_index": 7, "needs": "credits are positive before April 1 and negative after"},
+    {"q": "What's the biggest thing sitting in Ask My Accountant, and where should it go?", "key_index": 11, "needs": "the Aug 14 $8,750 wire is the oven deposit, account 1500"}
+  ],
+  "messy_multitable": [
+    {"q": "What was our total revenue for the year?", "key_index": 0, "needs": "revenue is in thousands; leave out subtotal and total rows"},
+    {"q": "Which region had the best Q4 revenue, and how much?", "key_index": 2, "needs": "region is written only on the first rep of each group; revenue in thousands"},
+    {"q": "How many units did the East region ship for the year?", "key_index": 5, "needs": "region fill-down; subtotals"},
+    {"q": "Why is West low in Q3?", "key_index": 6, "needs": "the note: Driftwood moved to Key Accounts in August"},
+    {"q": "What's the West region's return rate?", "key_index": 7, "needs": "returns table below the sales table; region fill-down"},
+    {"q": "How many sales reps do we have?", "key_index": 1, "needs": "subtotal rows are not reps"}
+  ]
+}

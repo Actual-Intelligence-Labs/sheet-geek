@@ -1,0 +1,8 @@
+{
+ "model": "claude-opus-5-5",
+ "cond": "none",
+ "run": 2,
+ "message": "I just got this file from a colleague: finance_model.xlsx. What's our runway? Python 3 with openpyxl is at /usr/bin/python3 if you want to open the file. Work numbers out from the file; don't guess. Answer in plain words, under 150 words.",
+ "status": "ok",
+ "answer": "Your runway runs out in **May 2027**, about 8 months from now, unless the company raises money.\n\n**What the file shows:**\n- The company is burning about $400,000 a month, and that figure keeps growing. Hiring and customer-acquisition spending grow faster than revenue.\n- Cash stands at about $3.4M at the end of August 2026 and about $3.0M at the end of September.\n- It's down to about $35,000 by the end of April 2027 and goes negative in May.\n\n**The catch:** the model assumes a **$15M equity raise in March 2027**. It's a typed-in number in the Cash Flow sheet, not something calculated. With that raise, cash never runs out through the end of 2028 and finishes at about $4.5M. Your colleague's version looks safe, but only if that raise really happens. Ask whether it's committed or just planned.\n\nAlso, January to August 2026 are typed-in numbers (probably actual results). Only the months after that are projections."
+}

@@ -1,0 +1,51 @@
+{
+  "id": "procurement",
+  "version": "0.0.1-test",
+  "name": "Purchase history",
+  "looks_like": "purchase history",
+  "summary": "Test playbook for smoke tests only.",
+  "full": true,
+  "roles": {
+    "vendor": {"label": "Vendor", "headers": ["vendor", "vendor name", "supplier", "vendorname"], "type": "text", "kind": "entity", "entity": "vendor"},
+    "item_id": {"label": "Item #", "headers": ["sku", "item #", "item code"], "type": "id", "kind": "identifier", "entity": "item"},
+    "qty": {"label": "Quantity", "headers": ["qty", "quantity"], "type": "number", "kind": "metric", "additive": true},
+    "unit_price": {"label": "Unit price", "headers": ["unit cost", "unit price", "unitcost"], "type": "number", "kind": "metric", "unit": "currency"},
+    "ext_price": {"label": "Extended price", "headers": ["total", "ext price", "line total"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "location": {"label": "Location", "headers": ["property", "location", "store"], "type": "text", "kind": "entity", "entity": "location"},
+    "date": {"label": "Date", "headers": ["order date", "invoice date", "orderdate"], "type": "date", "kind": "temporal"}
+  },
+  "detect": {"required_any": [["vendor"], ["item_id"]], "weights": {"vendor": 3, "item_id": 2, "qty": 1, "unit_price": 1, "ext_price": 2, "location": 1, "date": 1}, "negatives": [], "confident": 0.6, "candidate": 0.35},
+  "goals": [
+    {"id": "check_charges", "label": "Check what I'm charged", "desc": "I'd check every line against your terms"},
+    {"id": "find_savings", "label": "Find savings", "desc": "I'd find where you paid more than your own best price"},
+    {"id": "explain", "label": "Explain or share it", "desc": "I'd write a guide for the next person"}
+  ],
+  "questions": [
+    {"id": "coverage", "header": "Coverage", "kind": "coverage", "priority": 1, "ask_if": ["has_role:vendor"],
+     "prompt": "Is this everything bought from these {count:vendor} vendors in this period?",
+     "options": [{"id": "all", "label": "Yes, everything"}, {"id": "slice", "label": "A slice"}],
+     "why": "Totals and savings are only right on complete data.", "unblocks": ["savings_map"],
+     "fact": {"kind": "coverage", "class": "data", "depends": ["vendor"], "statement": "The owner says this data is: {answer_labels}."}},
+    {"id": "price_basis", "header": "Price basis", "kind": "definition", "priority": 1, "ask_if": ["has_role:unit_price"],
+     "prompt": "What's already inside {role:unit_price}? Pick all that apply.", "multi": true,
+     "options": [{"id": "deals", "label": "Contract deals off invoice", "desc": "Deals show on the line"}, {"id": "rebates", "label": "Rebates paid back later", "desc": "Rebates arrive as separate credits"}, {"id": "fees", "label": "Delivery or fuel fees"}],
+     "recommend": "deals", "recommend_basis": "Usual for distributor programs", "why": "It decides whether a saving is new or already taken.",
+     "unblocks": ["savings_map", "contract_audit"],
+     "fact": {"kind": "definition", "class": "commercial", "depends": ["unit_price"], "statement": "{role:unit_price} includes: {answer_labels}."}},
+    {"id": "contracts", "header": "Contracts", "kind": "rule", "priority": 2, "ask_if": ["goal:check_charges"],
+     "prompt": "Are any of these vendors on a contract? Type the terms, like 'cost plus $2.10 a case'.",
+     "options": [{"id": "type", "label": "I'll type the terms"}, {"id": "none", "label": "No contracts"}],
+     "why": "Without your terms I can only compare you to yourself.", "unblocks": ["contract_audit"],
+     "fact": {"kind": "rule", "class": "commercial", "depends": ["vendor"], "statement": "Contract terms: {answer_text}"}}
+  ],
+  "insights": ["pareto:ext_price:item_id", "top_share:ext_price:vendor", "product_check:qty:unit_price:ext_price", "negatives:ext_price", "date_range:date", "spread:unit_price:item_id:location"],
+  "outputs": [
+    {"id": "savings_map", "title": "Savings map", "pitch": "Savings map: items where one {role:location} paid more than your best price in this data.", "requires": ["has_role:item_id", "has_role:unit_price", "has_role:location"], "needs_answer": ["coverage"], "goals": ["find_savings"], "value": 3, "job": "analysis"},
+    {"id": "contract_audit", "title": "Contract audit", "pitch": "Contract audit: every line checked against your terms.", "requires": ["has_role:vendor"], "needs_answer": ["contracts"], "goals": ["check_charges"], "value": 3, "job": "audit"},
+    {"id": "guide", "title": "Guide for the next owner", "pitch": "Guide for the next owner: what every tab and column means.", "requires": [], "needs_answer": [], "goals": ["explain"], "value": 2, "job": "explain"}
+  ],
+  "gotchas": [],
+  "graph": {"sentence": "Dots are vendors and locations. Lines show who sells to whom. Bigger means more spend.", "entities": ["vendor", "location"], "record_cap": {"vendor": 60, "location": 60}, "size_by": "ext_price", "relations": [{"from": "vendor", "to": "location", "label": "sells to"}], "mode": "entities"},
+  "freshness": {"default_stale_after": "+365d"},
+  "sensitivity": {"commercial_roles": ["unit_price"]}
+}

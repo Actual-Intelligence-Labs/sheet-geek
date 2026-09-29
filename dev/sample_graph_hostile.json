@@ -1,0 +1,526 @@
+{
+ "title": "<script>alert('title')</script>evil.xlsx",
+ "subtitle": "<img src=x onerror=alert('subtitle')>",
+ "sentence": "<b>Dots</b> are <i>markup</i> that must render as text. javascript:alert(14)",
+ "generated": "<img src=x onerror=alert(15)>",
+ "footer": "<a href=\"https://evil.example\">evil link</a></script><script>alert(16)</script>",
+ "nodes": [
+  {
+   "id": "h:0:<img src=x onerror=alert(1)>",
+   "label": "<img src=x onerror=alert(1)>",
+   "type": "entity",
+   "group": "<b>vendor</b>",
+   "size": 12,
+   "status": "disputed",
+   "source": "told",
+   "records": false,
+   "summary": "<b>bold?</b> <img src=x onerror=alert(1)>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "<img src=x onerror=alert(1)>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:1:javascript:alert(document.cookie)",
+   "label": "javascript:alert(document.cookie)",
+   "type": "constructor",
+   "group": "red;background:url(https://evil.example/x.png)",
+   "size": "1e400",
+   "status": "constructor",
+   "source": "inferred",
+   "records": false,
+   "summary": "<b>bold?</b> javascript:alert(document.cookie)",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "javascript:alert(document.cookie)",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:2:</script><script>alert('closed early')</script>",
+   "label": "</script><script>alert('closed early')</script>",
+   "type": "__proto__",
+   "group": "__proto__",
+   "size": null,
+   "status": "may-be-outdated",
+   "source": "hasOwnProperty",
+   "records": false,
+   "summary": "<b>bold?</b> </script><script>alert('closed early')</script>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "</script><script>alert('closed early')</script>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:3:\"><svg onload=alert(2)>",
+   "label": "\"><svg onload=alert(2)>",
+   "type": "sheet",
+   "group": "toString",
+   "size": "NaN",
+   "status": "<img src=x onerror=alert(7)>",
+   "source": "web",
+   "records": false,
+   "summary": "<b>bold?</b> \"><svg onload=alert(2)>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "\"><svg onload=alert(2)>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:4:<!--<script>alert(3)//",
+   "label": "<!--<script>alert(3)//",
+   "type": "entity",
+   "group": "<b>vendor</b>",
+   "size": -5,
+   "status": "disputed",
+   "source": "told",
+   "records": false,
+   "summary": "<b>bold?</b> <!--<script>alert(3)//",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "<!--<script>alert(3)//",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:5:{{constructor.constructor('alert(4)')()}}",
+   "label": "{{constructor.constructor('alert(4)')()}}",
+   "type": "constructor",
+   "group": "red;background:url(https://evil.example/x.png)",
+   "size": 3.5,
+   "status": "constructor",
+   "source": "inferred",
+   "records": false,
+   "summary": "<b>bold?</b> {{constructor.constructor('alert(4)')()}}",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "{{constructor.constructor('alert(4)')()}}",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:6:data:text/html,<script>alert(5)</script>",
+   "label": "data:text/html,<script>alert(5)</script>",
+   "type": "__proto__",
+   "group": "__proto__",
+   "size": 12,
+   "status": "may-be-outdated",
+   "source": "hasOwnProperty",
+   "records": false,
+   "summary": "<b>bold?</b> data:text/html,<script>alert(5)</script>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "data:text/html,<script>alert(5)</script>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:7:<a href=\"javascript:alert(6)\">click me</a>",
+   "label": "<a href=\"javascript:alert(6)\">click me</a>",
+   "type": "sheet",
+   "group": "toString",
+   "size": "1e400",
+   "status": "<img src=x onerror=alert(7)>",
+   "source": "web",
+   "records": false,
+   "summary": "<b>bold?</b> <a href=\"javascript:alert(6)\">click me</a>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "<a href=\"javascript:alert(6)\">click me</a>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:8:<iframe src=\"https://evil.example/\"></iframe>",
+   "label": "<iframe src=\"https://evil.example/\"></iframe>",
+   "type": "entity",
+   "group": "<b>vendor</b>",
+   "size": null,
+   "status": "disputed",
+   "source": "told",
+   "records": false,
+   "summary": "<b>bold?</b> <iframe src=\"https://evil.example/\"></iframe>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "<iframe src=\"https://evil.example/\"></iframe>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:9:‮evil.exe‬ right-to-left override",
+   "label": "‮evil.exe‬ right-to-left override",
+   "type": "constructor",
+   "group": "red;background:url(https://evil.example/x.png)",
+   "size": "NaN",
+   "status": "constructor",
+   "source": "inferred",
+   "records": false,
+   "summary": "<b>bold?</b> ‮evil.exe‬ right-to-left override",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "‮evil.exe‬ right-to-left override",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:10:line separator and para separator",
+   "label": "line separator and para separator",
+   "type": "__proto__",
+   "group": "__proto__",
+   "size": -5,
+   "status": "may-be-outdated",
+   "source": "hasOwnProperty",
+   "records": false,
+   "summary": "<b>bold?</b> line separator and para separator",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "line separator and para separator",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "h:11:<style>body{display:none}</style>",
+   "label": "<style>body{display:none}</style>",
+   "type": "sheet",
+   "group": "toString",
+   "size": 3.5,
+   "status": "<img src=x onerror=alert(7)>",
+   "source": "web",
+   "records": false,
+   "summary": "<b>bold?</b> <style>body{display:none}</style>",
+   "name": "<img src=x onerror=alert('tooltip')>",
+   "notes": [
+    {
+     "statement": "<style>body{display:none}</style>",
+     "source": "told",
+     "status": "confirmed",
+     "as_of": "<img src=x onerror=alert(8)>",
+     "said_by": "<script>alert(9)</script>"
+    },
+    {
+     "statement": "<a href=\"javascript:alert(10)\">a link that must stay text</a>",
+     "source": "web",
+     "status": "current",
+     "as_of": "2026-09-25",
+     "said_by": "javascript:alert(11)"
+    }
+   ]
+  },
+  {
+   "id": "__proto__",
+   "label": "__proto__",
+   "type": "entity",
+   "group": "constructor",
+   "size": 5,
+   "status": "current",
+   "source": "computed",
+   "notes": "not a list"
+  },
+  {
+   "id": "h:dup",
+   "label": "first copy wins",
+   "size": 4
+  },
+  {
+   "id": "h:dup",
+   "label": "<img src=x onerror=alert('dup')>",
+   "size": 400
+  },
+  {
+   "id": "h:long",
+   "label": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL<img src=x onerror=alert(12)>",
+   "size": 8,
+   "summary": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+   "notes": [
+    {
+     "statement": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+   ]
+  },
+  "not an object",
+  null
+ ],
+ "links": [
+  {
+   "source": "h:0:<img src=x onerror=alert(1)>",
+   "target": "h:1:javascript:alert(document.cookie)",
+   "type": "feeds",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": "heavy"
+  },
+  {
+   "source": "h:1:javascript:alert(document.cookie)",
+   "target": "h:2:</script><script>alert('closed early')</script>",
+   "type": "__proto__",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1
+  },
+  {
+   "source": "h:2:</script><script>alert('closed early')</script>",
+   "target": "h:3:\"><svg onload=alert(2)>",
+   "type": "constructor",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": null
+  },
+  {
+   "source": "h:3:\"><svg onload=alert(2)>",
+   "target": "h:4:<!--<script>alert(3)//",
+   "type": "looks_up",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1e+308
+  },
+  {
+   "source": "h:4:<!--<script>alert(3)//",
+   "target": "h:5:{{constructor.constructor('alert(4)')()}}",
+   "type": "feeds",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": "heavy"
+  },
+  {
+   "source": "h:5:{{constructor.constructor('alert(4)')()}}",
+   "target": "h:6:data:text/html,<script>alert(5)</script>",
+   "type": "__proto__",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1
+  },
+  {
+   "source": "h:6:data:text/html,<script>alert(5)</script>",
+   "target": "h:7:<a href=\"javascript:alert(6)\">click me</a>",
+   "type": "constructor",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": null
+  },
+  {
+   "source": "h:7:<a href=\"javascript:alert(6)\">click me</a>",
+   "target": "h:8:<iframe src=\"https://evil.example/\"></iframe>",
+   "type": "looks_up",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1e+308
+  },
+  {
+   "source": "h:8:<iframe src=\"https://evil.example/\"></iframe>",
+   "target": "h:9:‮evil.exe‬ right-to-left override",
+   "type": "feeds",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": "heavy"
+  },
+  {
+   "source": "h:9:‮evil.exe‬ right-to-left override",
+   "target": "h:10:line separator and para separator",
+   "type": "__proto__",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1
+  },
+  {
+   "source": "h:10:line separator and para separator",
+   "target": "h:11:<style>body{display:none}</style>",
+   "type": "constructor",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "current",
+   "weight": null
+  },
+  {
+   "source": "h:11:<style>body{display:none}</style>",
+   "target": "h:0:<img src=x onerror=alert(1)>",
+   "type": "looks_up",
+   "label": "<img src=x onerror=alert(13)>",
+   "status": "unconfirmed",
+   "weight": 1e+308
+  },
+  {
+   "source": "__proto__",
+   "target": "h:0:<img src=x onerror=alert(1)>",
+   "type": "relates",
+   "label": "</script>"
+  },
+  {
+   "source": "h:missing",
+   "target": "h:0:<img src=x onerror=alert(1)>",
+   "type": "feeds"
+  },
+  {
+   "source": "h:1:javascript:alert(document.cookie)",
+   "target": "h:1:javascript:alert(document.cookie)",
+   "type": "feeds",
+   "label": "self loop"
+  },
+  {
+   "source": "h:long",
+   "target": "h:2:</script><script>alert('closed early')</script>",
+   "type": "same_as"
+  }
+ ],
+ "groups": [
+  {
+   "id": "<b>vendor</b>",
+   "label": "<img src=x onerror=alert(17)>"
+  },
+  {
+   "id": "__proto__",
+   "label": "</script><script>alert(18)</script>"
+  },
+  "junk"
+ ],
+ "start_here": [
+  {
+   "node": "h:0:<img src=x onerror=alert(1)>",
+   "text": "<img src=x onerror=alert(19)>"
+  },
+  {
+   "node": "h:2:</script><script>alert('closed early')</script>",
+   "text": "</script><script>alert(20)</script>"
+  },
+  {
+   "node": "h:missing",
+   "text": "points at nothing"
+  },
+  {
+   "node": "__proto__"
+  }
+ ]
+}

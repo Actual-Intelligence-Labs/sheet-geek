@@ -1,0 +1,58 @@
+{
+  "base": "procurement_hotel.xlsx",
+  "note": "Freshness variants produced by the same generator with one change each.",
+  "variants": [
+    {
+      "kind": "append",
+      "file": "variants/procurement_hotel_append.xlsx",
+      "change": "One more month of rows (July 2026) appended after the original rows, including a new location.",
+      "rows_before": 6000,
+      "rows_after": 6333,
+      "rows_added": 333,
+      "new_values": {
+        "Location": [
+          "Venice"
+        ]
+      },
+      "new_period": "2026-07",
+      "venice_rows": 13,
+      "expect": "Row count and date range facts refresh; the Location value list gains Venice; facts that depend on Detail may be outdated."
+    },
+    {
+      "kind": "price_shift",
+      "file": "variants/procurement_hotel_price_shift.xlsx",
+      "change": "Unit Price (and Ext Price) of every Gulf Breeze Produce product, credit and transfer line raised 8% (restated export). Fee lines unchanged.",
+      "vendor": "Gulf Breeze Produce",
+      "factor": 1.08,
+      "rows_changed": 1386,
+      "expect": "Same shape and row count; Unit Price and Ext Price fingerprints change, so price-dependent facts may be outdated."
+    },
+    {
+      "kind": "rename",
+      "file": "variants/procurement_hotel_rename.xlsx",
+      "change": "Column \"Ext Price\" renamed to \"Line Total\"; data identical.",
+      "renamed": {
+        "Ext Price": "Line Total"
+      },
+      "expect": "Values unchanged; notes that cite Detail!{Ext Price} need remapping to {Line Total}."
+    },
+    {
+      "kind": "move",
+      "file": "variants/procurement_hotel_move.xlsx",
+      "change": "Column \"Category\" moved from column G to the last column (L); data identical.",
+      "moved": {
+        "Category": {
+          "from": "G",
+          "to": "L"
+        }
+      },
+      "expect": "Values unchanged; readers that map by header name see no change; Summary SUMIFS ranges point at the new letters."
+    },
+    {
+      "kind": "same",
+      "file": "variants/procurement_hotel_same.xlsx",
+      "change": "Identical data regenerated; only the file's creation timestamp differs, so the bytes differ.",
+      "expect": "File hash changes, data fingerprints do not; nothing should be flagged."
+    }
+  ]
+}

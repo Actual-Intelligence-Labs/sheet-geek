@@ -1,0 +1,353 @@
+{
+  "id": "generic",
+  "version": "0.1.0",
+  "name": "General table",
+  "looks_like": "a table of records",
+  "summary": "The fallback for any table no other type fits: it learns what one row is, which numbers matter, what the codes mean and where the data comes from. It never wins on header score and runs only when nothing else is a candidate or the owner says none fit.",
+  "full": true,
+  "roles": {
+    "record_key": {
+      "label": "ID or code",
+      "headers": ["id", "key", "code", "ref", "reference", "number", "record id", "row id", "uid", "unique id", "identifier"],
+      "type": "id", "kind": "identifier"
+    },
+    "name": {
+      "label": "Name or title",
+      "headers": ["name", "title", "label", "item", "description", "subject", "product", "service"],
+      "type": "text", "kind": "attribute"
+    },
+    "when": {
+      "label": "Date",
+      "headers": ["date", "created", "created at", "date created", "updated", "updated at", "timestamp", "time", "when", "day", "week", "month", "year", "start", "end", "due"],
+      "type": "date", "kind": "temporal"
+    },
+    "amount": {
+      "label": "Amount",
+      "headers": ["amount", "value", "total", "price", "cost", "revenue", "sales", "spend", "fee", "balance", "budget", "paid"],
+      "type": "number", "kind": "metric"
+    },
+    "quantity": {
+      "label": "Quantity",
+      "headers": ["qty", "quantity", "count", "units", "number of", "volume", "hours", "headcount"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "count"
+    },
+    "category": {
+      "label": "Category",
+      "headers": ["category", "type", "group", "class", "kind", "segment", "department", "team", "tier", "level"],
+      "type": "text", "kind": "dimension"
+    },
+    "status": {
+      "label": "Status",
+      "headers": ["status", "stage", "phase", "result", "outcome", "priority"],
+      "type": "text", "kind": "dimension"
+    },
+    "person": {
+      "label": "Person",
+      "headers": ["owner", "assignee", "assigned to", "person", "contact", "employee", "user", "created by", "manager", "staff", "responsible", "customer", "client"],
+      "type": "text", "kind": "dimension"
+    },
+    "place": {
+      "label": "Place",
+      "headers": ["location", "site", "region", "city", "country", "store", "branch", "address", "area", "zone"],
+      "type": "text", "kind": "dimension"
+    },
+    "email": {
+      "label": "Email",
+      "headers": ["email", "e mail", "email address"],
+      "type": "id", "kind": "identifier"
+    },
+    "notes": {
+      "label": "Notes",
+      "headers": ["notes", "note", "comments", "comment", "remarks", "memo", "details"],
+      "type": "text", "kind": "text"
+    },
+    "percent": {
+      "label": "Rate or percent",
+      "headers": ["percent", "pct", "rate", "ratio", "share", "margin", "score"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "percent"
+    },
+    "flag": {
+      "label": "Yes or no",
+      "headers": ["active", "flag", "enabled", "done", "complete", "yes no", "included", "approved"],
+      "type": "any", "kind": "flag"
+    },
+    "link": {
+      "label": "Link",
+      "headers": ["url", "link", "website", "file", "attachment"],
+      "type": "text", "kind": "attribute"
+    }
+  },
+  "detect": {
+    "required_any": [],
+    "weights": {
+      "record_key": 1, "name": 1, "when": 1, "amount": 1, "quantity": 1, "category": 1, "status": 1,
+      "person": 1, "place": 1, "email": 1, "notes": 1, "percent": 1, "flag": 1, "link": 1
+    },
+    "negatives": [],
+    "confident": 1.0,
+    "candidate": 1.0
+  },
+  "goals": [
+    {"id": "understand", "label": "Understand what's in it", "desc": "I'd write a plain guide to every column"},
+    {"id": "decide", "label": "Answer a question with it", "desc": "I'd pull the numbers that answer it"},
+    {"id": "connect", "label": "Connect it to another sheet", "desc": "I'd find the columns that match"},
+    {"id": "automate", "label": "Automate it", "desc": "I'd sketch an app that does this work"}
+  ],
+  "questions": [
+    {
+      "id": "row_is",
+      "header": "One row is",
+      "kind": "grain",
+      "settled_by": ["snapshot", "balanced", "wide"],
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "What is one row in this table?",
+      "options": [
+        {"id": "thing", "label": "One thing", "desc": "One thing per row"},
+        {"id": "event", "label": "One event", "desc": "One event per row"},
+        {"id": "period", "label": "One period summary", "desc": "One period summary per row"}
+      ],
+      "why": "Every count and total depends on what one row stands for.",
+      "unblocks": ["data_dictionary", "health_check", "breakdown"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "One row in this table is, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "key_numbers",
+      "header": "Key numbers",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["has_role:amount"],
+      "prompt": "{rows:amount} rows have a number in {role:amount}. Which kinds of numbers matter most here? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "money", "label": "Money amounts"},
+        {"id": "counts", "label": "Counts", "desc": "Counts matter most"},
+        {"id": "rates", "label": "Rates", "desc": "Rates matter most"}
+      ],
+      "why": "The numbers you care about are the ones worth checking, totaling and explaining.",
+      "unblocks": ["breakdown", "data_dictionary"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "The numbers that matter most here, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "amount_unit",
+      "header": "Unit",
+      "kind": "unit",
+      "priority": 2,
+      "ask_if": ["has_role:amount"],
+      "prompt": "{role:amount} has {rows:amount} numbers, such as {values:amount}. What unit are they in?",
+      "options": [
+        {"id": "dollars", "label": "Dollars"},
+        {"id": "thousands", "label": "Thousands of dollars"},
+        {"id": "not_money", "label": "Not money", "desc": "A count, not money"}
+      ],
+      "why": "A total is only meaningful when everyone reads it in the same unit.",
+      "unblocks": ["breakdown", "data_dictionary"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["amount"], "statement": "{role:amount} is stated in, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "leave_out",
+      "header": "Leave out",
+      "kind": "exclusion",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "Are there rows I should always leave out? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "totals", "label": "Total and subtotal rows"},
+        {"id": "tests", "label": "Test rows", "desc": "Test rows are left out"},
+        {"id": "inactive", "label": "Cancelled rows", "desc": "Cancelled rows are left out"}
+      ],
+      "recommend": "totals",
+      "recommend_if": ["has_totals_rows"],
+      "recommend_basis": "Total rows restate the rows above them, so counting them doubles the numbers.",
+      "why": "One stray total row can double every sum in the sheet.",
+      "unblocks": ["breakdown", "health_check"],
+      "fact": {"kind": "exclusion", "class": "data", "depends": [], "statement": "The owner said to leave these out of counts and totals: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "code_meaning",
+      "header": "Codes",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["coded:category"],
+      "prompt": "{role:category} uses {count:category} short codes such as {values:category}. What do they stand for?",
+      "options": [
+        {"id": "type_them", "label": "I'll type what they mean"},
+        {"id": "key_file", "label": "Another tab explains them", "desc": "A tab or file; name it"},
+        {"id": "unknown", "label": "Nobody knows anymore"}
+      ],
+      "why": "Codes only the author can read are the knowledge that leaves when the author does.",
+      "unblocks": ["data_dictionary", "guide_next_owner"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["category"], "statement": "Codes in {role:category}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "source",
+      "header": "Comes from",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "Where does this data come from?",
+      "options": [
+        {"id": "export", "label": "Exported from another system"},
+        {"id": "typed", "label": "Typed in by hand"},
+        {"id": "both", "label": "Both"}
+      ],
+      "why": "An export can be refreshed from its system; hand-typed data needs its owner.",
+      "unblocks": ["guide_next_owner", "app_blueprint"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "This data comes from, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "update_freq",
+      "header": "Changes",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": [],
+      "prompt": "How often does this data change?",
+      "options": [
+        {"id": "daily", "label": "Every day"},
+        {"id": "weekly", "label": "Weekly or monthly"},
+        {"id": "final", "label": "Never, it is final"}
+      ],
+      "why": "It sets how long each note stays current before it is worth a second look.",
+      "unblocks": ["guide_next_owner", "app_blueprint"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "This data changes this often, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "match_on",
+      "header": "Matches on",
+      "kind": "mapping",
+      "priority": 1,
+      "ask_if": ["goal:connect", "has_role:record_key"],
+      "prompt": "{role:record_key} has {count:record_key} different values. Which column should connect this sheet to your other file?",
+      "options": [
+        {"id": "key", "label": "{role:record_key}"},
+        {"id": "names", "label": "Names or labels"},
+        {"id": "emails", "label": "Email addresses"}
+      ],
+      "why": "The right matching column decides how many rows line up across files.",
+      "unblocks": ["connected_view"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["record_key"], "statement": "This sheet connects to other files on, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "on_new_rows",
+      "header": "New rows",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:automate"],
+      "prompt": "When new rows arrive, what should happen?",
+      "options": [
+        {"id": "flag", "label": "Flag anything unusual"},
+        {"id": "summary", "label": "Write me a short summary"},
+        {"id": "track", "label": "Nothing yet, just track it"}
+      ],
+      "why": "An app is only worth sketching around the job the new rows trigger.",
+      "unblocks": ["app_blueprint"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "When new rows arrive, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "count_distinct:record_key",
+    "duplicates:record_key",
+    "blank_rate:name",
+    "blank_rate:amount",
+    "negatives:amount",
+    "date_range:when",
+    "mixed:category",
+    "mixed:status",
+    "pareto:amount:category",
+    "top_share:amount:person",
+    "top_share:amount:place"
+  ],
+  "outputs": [
+    {
+      "id": "data_dictionary",
+      "title": "Data dictionary",
+      "pitch": "Data dictionary: every column with what it means, its type, how full it is and example values, checked with you.",
+      "requires": [],
+      "needs_answer": ["row_is"],
+      "goals": ["understand", "decide"],
+      "value": 3,
+      "job": "context"
+    },
+    {
+      "id": "health_check",
+      "title": "Data health check",
+      "pitch": "Data health check: blanks, duplicates, odd values and total rows, column by column.",
+      "requires": [],
+      "needs_answer": ["leave_out"],
+      "goals": ["understand", "decide"],
+      "value": 2,
+      "job": "audit"
+    },
+    {
+      "id": "breakdown",
+      "title": "Breakdown",
+      "pitch": "Breakdown: {role:amount} by {role:category} and over time, largest first, with total rows left out.",
+      "requires": ["has_role:amount", "has_role:category"],
+      "needs_answer": ["key_numbers", "leave_out"],
+      "goals": ["decide"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "connected_view",
+      "title": "Connected view",
+      "pitch": "Connected view: this sheet matched to your other file, with how many rows line up on each side.",
+      "requires": ["multi_files"],
+      "needs_answer": ["match_on"],
+      "goals": ["connect"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on what this sheet is, what one row is, what each column and code means, where the data comes from and how often it changes.",
+      "requires": [],
+      "goals": ["understand"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: a small app built around this sheet's job, with the columns as a form, the rules as checks and the new-row step automated.",
+      "requires": [],
+      "goals": ["automate"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": "has_role:record_key", "say": "{role:record_key} may have lost leading zeros or long digits in Excel, so a code like 00123 can show as 123."},
+    {"if": "has_blanks:amount", "say": "{role:amount} is blank on some rows; blanks and zeros mean different things and are counted separately."},
+    {"if": "has_derived_tab", "say": "One tab is mostly formulas over another, so its numbers restate the source tab rather than add to it."},
+    {"if": "has_role:percent", "say": "{role:percent} holds rates, which cannot be added up; a plain average of rates weighs every row the same."},
+    {"if": "multi_dates", "say": "This table has more than one date column, and trends change depending on which one is used."},
+    {"if": "has_role:notes", "say": "{role:notes} can hold remarks about people. Those stay on this machine and never go into the file."},
+    {"if": "coded:category", "say": "{role:category} holds short codes such as {values:category}, whose meaning lives in someone's head unless it is written down."}
+  ],
+  "graph": {
+    "sentence": "Dots are the tabs and columns of this file. Lines show which columns connect or depend on each other. Bigger means more rows.",
+    "entities": [],
+    "record_cap": {},
+    "relations": [],
+    "mode": "schema"
+  },
+  "freshness": {
+    "default_stale_after": "+365d"
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["email", "notes", "person"]
+  }
+}

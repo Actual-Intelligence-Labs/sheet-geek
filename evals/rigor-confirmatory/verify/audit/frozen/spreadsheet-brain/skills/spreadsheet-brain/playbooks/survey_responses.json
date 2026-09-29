@@ -1,0 +1,112 @@
+{
+  "id": "survey_responses",
+  "version": "0.1.0",
+  "name": "Survey responses",
+  "looks_like": "survey or form responses",
+  "summary": "Form and survey responses, feedback and NPS exports: one row per response, with scores, choices and comments.",
+  "full": false,
+  "roles": {
+    "response_id": {"label": "Response ID", "headers": ["response id", "responseid", "respondent id", "submission id", "response #", "entry id"], "type": "id", "kind": "identifier"},
+    "timestamp": {"label": "Submitted", "headers": ["timestamp", "submitted at", "submission date", "date submitted", "submit date", "startdate", "start date", "start date utc", "enddate", "end date", "recordeddate", "recorded date"], "type": "date", "kind": "temporal"},
+    "progress": {"label": "Finished", "headers": ["progress", "finished", "completed", "complete", "completion status", "response status"], "type": "any", "kind": "flag"},
+    "respondent_email": {"label": "Respondent email", "headers": ["email", "email address", "respondent email", "your email", "recipientemail", "recipient email"], "type": "id", "kind": "identifier"},
+    "nps": {"label": "Likely to recommend", "headers": ["nps", "net promoter", "net promoter score", "likelihood to recommend", "how likely are you to recommend", "would you recommend", "recommend"], "type": "number", "kind": "metric", "additive": false},
+    "rating": {"label": "Rating", "headers": ["rating", "overall rating", "score", "satisfaction", "overall satisfaction", "how satisfied", "csat", "stars"], "type": "number", "kind": "metric", "additive": false},
+    "comment": {"label": "Comments", "headers": ["comments", "comment", "other comments", "additional comments", "feedback", "open feedback", "anything else", "suggestions", "what could we do better", "why"], "type": "text", "kind": "text"},
+    "segment": {"label": "Group", "headers": ["department", "team", "location", "which location", "role", "group", "segment", "region", "age range", "tenure"], "type": "text", "kind": "dimension"},
+    "source": {"label": "How they heard", "headers": ["how did you hear", "how did you hear about us", "referral", "referral source", "source", "channel"], "type": "text", "kind": "dimension"},
+    "duration": {"label": "Time taken", "headers": ["duration", "duration in seconds", "time taken", "time to complete", "seconds"], "type": "number", "kind": "metric", "additive": false},
+    "ip_address": {"label": "IP address", "headers": ["ip address", "ipaddress", "ip"], "type": "id", "kind": "attribute"}
+  },
+  "detect": {
+    "required_any": [["timestamp", "response_id"], ["nps", "rating", "comment", "progress", "segment"]],
+    "weights": {"timestamp": 3, "nps": 3, "progress": 2, "response_id": 2, "rating": 2, "duration": 1, "ip_address": 1, "comment": 1, "segment": 1},
+    "negatives": ["order_id", "deal_amount", "pack", "debit", "asset"],
+    "confident": 0.45,
+    "candidate": 0.3
+  },
+  "goals": [
+    {"id": "headline", "label": "Get the headline results", "desc": "I'd summarize scores and the top themes"},
+    {"id": "compare_groups", "label": "Compare groups", "desc": "I'd compare answers across teams or segments"},
+    {"id": "fix_list", "label": "Decide what to fix", "desc": "I'd turn low scores and comments into a to-do list"}
+  ],
+  "questions": [
+    {
+      "id": "sent_to",
+      "header": "Sent to",
+      "kind": "coverage",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Who was this survey sent to?",
+      "options": [
+        {"id": "customers", "label": "Customers", "desc": "Customers"},
+        {"id": "staff", "label": "Our staff"},
+        {"id": "attendees", "label": "Event attendees"}
+      ],
+      "why": "Response rate and who is missing depend on who was asked.",
+      "unblocks": ["results_page", "group_compare"],
+      "fact": {"kind": "coverage", "class": "data", "depends": [], "statement": "This survey was sent to, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "scale_dir",
+      "header": "Scale",
+      "kind": "unit",
+      "priority": 1,
+      "ask_if": ["has_role:rating"],
+      "prompt": "{role:rating} has {rows:rating} answers, such as {values:rating}. Is the highest number the best answer?",
+      "options": [
+        {"id": "high_best", "label": "Yes, higher is better"},
+        {"id": "low_best", "label": "No, 1 is best"}
+      ],
+      "why": "A flipped scale turns the best results into the worst.",
+      "unblocks": ["results_page", "group_compare"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["rating"], "statement": "On {role:rating}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "keep_partial",
+      "header": "Partials",
+      "kind": "exclusion",
+      "priority": 2,
+      "ask_if": ["has_role:progress"],
+      "prompt": "{rows:progress} responses have a value in {role:progress}. Should partial and test responses count?",
+      "options": [
+        {"id": "finished_only", "label": "Only finished responses"},
+        {"id": "all", "label": "Every response"},
+        {"id": "partial_ok", "label": "Partial ones too", "desc": "Test responses still stay out"}
+      ],
+      "why": "Half-finished and test responses can tilt a small survey.",
+      "unblocks": ["results_page"],
+      "fact": {"kind": "exclusion", "class": "data", "depends": ["progress"], "statement": "The owner said these responses count: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "results_page", "title": "Results one-pager", "pitch": "Results one-pager: scores, the share of top answers and the main themes, with how many people answered.", "requires": [], "needs_answer": ["sent_to", "scale_dir"], "goals": ["headline"], "value": 3, "job": "analysis"},
+    {"id": "theme_map", "title": "Theme map", "pitch": "Theme map: comments grouped into themes with counts and short quotes, names removed.", "requires": ["has_role:comment"], "needs_answer": [], "goals": ["headline", "fix_list"], "value": 3, "job": "analysis"},
+    {"id": "group_compare", "title": "Group comparison", "pitch": "Group comparison: scores by team, location or segment, with small groups flagged so no one can be singled out.", "requires": ["has_role:segment"], "needs_answer": ["scale_dir"], "goals": ["compare_groups"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "count_distinct:response_id",
+    "duplicates:respondent_email",
+    "blank_rate:comment",
+    "blank_rate:nps",
+    "date_range:timestamp",
+    "mixed:segment",
+    "mixed:rating"
+  ],
+  "graph": {
+    "sentence": "Dots are the survey's questions and the groups who answered. Lines show which groups answered what. People who answered never appear as dots.",
+    "entities": ["segment", "source"],
+    "record_cap": {"segment": 40, "source": 30},
+    "relations": [
+      {"from": "source", "to": "segment", "label": "brought in"}
+    ],
+    "mode": "schema"
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["respondent_email", "comment", "ip_address"]
+  }
+}

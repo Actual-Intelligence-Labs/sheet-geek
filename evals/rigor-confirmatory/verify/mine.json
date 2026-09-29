@@ -1,0 +1,1457 @@
+{
+ "n_pairs": 73,
+ "pairs_per_business": {
+  "adspend": 6,
+  "autorepair": 6,
+  "construction": 6,
+  "dental": 6,
+  "greenhouse": 6,
+  "gym": 6,
+  "landscape": 6,
+  "lawfirm": 6,
+  "nonprofit": 6,
+  "roaster": 6,
+  "tickets": 6,
+  "trucking": 7
+ },
+ "pairs_per_model": {
+  "haiku": 24,
+  "opus": 24,
+  "luna": 24,
+  "sonnet": 1
+ },
+ "incomplete": [
+  {
+   "business": "adspend",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "adspend",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "ok",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "autorepair",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "ok",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "autorepair",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "ok",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "construction",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "construction",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "ok"
+   },
+   "judges": false
+  },
+  {
+   "business": "dental",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "dental",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "greenhouse",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "greenhouse",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "gym",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "gym",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "landscape",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "ok"
+   },
+   "judges": false
+  },
+  {
+   "business": "landscape",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "lawfirm",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "ok"
+   },
+   "judges": false
+  },
+  {
+   "business": "lawfirm",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "nonprofit",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "nonprofit",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "roaster",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "ok"
+   },
+   "judges": false
+  },
+  {
+   "business": "roaster",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "tickets",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "tickets",
+   "model": "sonnet",
+   "rep": 2,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  },
+  {
+   "business": "trucking",
+   "model": "sonnet",
+   "rep": 1,
+   "status": {
+    "none": "leak",
+    "brain": "leak"
+   },
+   "judges": false
+  }
+ ],
+ "n_incomplete": 23,
+ "incomplete_with_judge_dirs": 0,
+ "both_ok_but_no_judges": 0,
+ "thin_businesses": [],
+ "primary": {
+  "businesses": 12,
+  "pairs": 73,
+  "per_business": {
+   "adspend": 6.166666666666667,
+   "autorepair": 6.083333333333333,
+   "construction": 1.4166666666666667,
+   "dental": 4.916666666666667,
+   "greenhouse": 4.0,
+   "gym": 6.416666666666667,
+   "landscape": 4.333333333333333,
+   "lawfirm": 6.25,
+   "nonprofit": 5.666666666666667,
+   "roaster": 5.333333333333333,
+   "tickets": 3.6666666666666665,
+   "trucking": 6.357142857142857
+  },
+  "mean": 5.050595238095238,
+  "median": 5.5,
+  "positive": 12,
+  "negative": 0,
+  "zero": 0,
+  "wilcoxon": {
+   "n": 12,
+   "nonzero": 12,
+   "W": 0.0,
+   "p": 0.00048828125,
+   "p_pratt": 0.00048828125
+  },
+  "boot_ci_95": [
+   4.166542658730158,
+   5.786706349206349
+  ],
+  "exact_enum": {
+   "W": 0.0,
+   "p": 0.00048828125
+  }
+ },
+ "pair_level": {
+  "score_brain_mean": 10.321917808219178,
+  "score_none_mean": 5.2534246575342465,
+  "diff_mean": 5.068493150684931,
+  "diff_median": 6.0,
+  "wilcoxon": {
+   "n": 73,
+   "nonzero": 70,
+   "W": 113.5,
+   "p": 3.7547758138848716e-11,
+   "p_pratt": 3.1048171708975045e-11
+  },
+  "wins": {
+   "brain": 61,
+   "none": 9,
+   "tie": 3
+  }
+ },
+ "secondary": {
+  "plain_acc_pooled_j1": {
+   "brain": 0.6073059360730594,
+   "none": 0.1050228310502283,
+   "n_items": 219
+  },
+  "mcnemar_j1": {
+   "brain_only": 110,
+   "none_only": 0,
+   "both": 23,
+   "neither": 86,
+   "p_exact": 1.5407439555097887e-33
+  },
+  "plain_acc_business_j1": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": 0.6666666666666666,
+    "autorepair": 0.5,
+    "construction": 0.05555555555555556,
+    "dental": 0.3333333333333333,
+    "greenhouse": 0.4444444444444444,
+    "gym": 0.6666666666666666,
+    "landscape": 0.5555555555555556,
+    "lawfirm": 0.5555555555555556,
+    "nonprofit": 0.5555555555555556,
+    "roaster": 0.5555555555555556,
+    "tickets": 0.4444444444444444,
+    "trucking": 0.6666666666666666
+   },
+   "mean": 0.5,
+   "median": 0.5555555555555556,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    0.3980324074074075,
+    0.5833333333333334
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "plain_acc_pooled_j2": {
+   "brain": 0.6073059360730594,
+   "none": 0.1050228310502283,
+   "n_items": 219
+  },
+  "mcnemar_j2": {
+   "brain_only": 110,
+   "none_only": 0,
+   "both": 23,
+   "neither": 86,
+   "p_exact": 1.5407439555097887e-33
+  },
+  "plain_acc_business_j2": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": 0.6666666666666666,
+    "autorepair": 0.5,
+    "construction": 0.05555555555555556,
+    "dental": 0.3333333333333333,
+    "greenhouse": 0.5,
+    "gym": 0.6666666666666666,
+    "landscape": 0.5555555555555556,
+    "lawfirm": 0.5555555555555556,
+    "nonprofit": 0.5,
+    "roaster": 0.5555555555555556,
+    "tickets": 0.4444444444444444,
+    "trucking": 0.6666666666666666
+   },
+   "mean": 0.5,
+   "median": 0.5277777777777778,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    0.39814814814814814,
+    0.5833333333333334
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "mistakes_business": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": -5.083333333333333,
+    "autorepair": -3.25,
+    "construction": -0.9166666666666666,
+    "dental": -2.75,
+    "greenhouse": -4.25,
+    "gym": -5.916666666666667,
+    "landscape": -3.4166666666666665,
+    "lawfirm": -5.166666666666667,
+    "nonprofit": -3.1666666666666665,
+    "roaster": -4.916666666666667,
+    "tickets": -3.25,
+    "trucking": -4.928571428571429
+   },
+   "mean": -3.91765873015873,
+   "median": -3.833333333333333,
+   "positive": 0,
+   "negative": 12,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    -4.646825396825396,
+    -3.1121031746031744
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "mistakes_pair_means": {
+   "brain": 3.7054794520547945,
+   "none": 7.636986301369863
+  },
+  "preference_business": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": 0.8333333333333334,
+    "autorepair": 0.8333333333333334,
+    "construction": 0.3333333333333333,
+    "dental": 0.9166666666666666,
+    "greenhouse": 0.6666666666666666,
+    "gym": 0.5833333333333334,
+    "landscape": 0.75,
+    "lawfirm": 0.5833333333333334,
+    "nonprofit": 0.75,
+    "roaster": 0.5833333333333334,
+    "tickets": 0.4166666666666667,
+    "trucking": 0.8571428571428571
+   },
+   "mean": 0.6755952380952381,
+   "median": 0.7083333333333333,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    0.5733630952380951,
+    0.7708333333333334
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "preference_counts_judgements": {
+   "brain": 112,
+   "none": 13,
+   "tie": 21
+  },
+  "preference_pairs_by_mean_sign": {
+   "brain": 58,
+   "none": 8,
+   "tie": 7
+  },
+  "judge_agreement_spearman": {
+   "rho": 0.9071568487362185,
+   "p": 5.364104328826918e-56,
+   "n": 146
+  },
+  "judge_agreement_pearson": 0.9655093578801041,
+  "plain_grade_agreement": {
+   "share": 0.9954337899543378,
+   "n": 438,
+   "disagreements": 2
+  },
+  "preference_agreement": 0.821917808219178,
+  "mean_score_by_judge": {
+   "j1": {
+    "brain": 10.438356164383562,
+    "none": 5.0
+   },
+   "j2": {
+    "brain": 10.205479452054794,
+    "none": 5.506849315068493
+   }
+  },
+  "per_model": {
+   "haiku": {
+    "pairs": 24,
+    "score_brain_mean": 3.6041666666666665,
+    "score_none_mean": 3.4791666666666665,
+    "diff_mean": 0.125,
+    "diff_median": 0.5,
+    "plain_acc_brain_j1": 0.0,
+    "plain_acc_none_j1": 0.0,
+    "plain_acc_brain_j2": 0.0,
+    "plain_acc_none_j2": 0.0,
+    "mistakes_brain_mean": 9.0625,
+    "mistakes_none_mean": 9.0,
+    "wilcoxon": {
+     "n": 24,
+     "nonzero": 22,
+     "W": 111.5,
+     "p": 0.6189920977606964,
+     "p_pratt": 0.5809672888816912
+    }
+   },
+   "sonnet": {
+    "pairs": 1,
+    "score_brain_mean": 13.0,
+    "score_none_mean": 4.5,
+    "diff_mean": 8.5,
+    "diff_median": 8.5,
+    "plain_acc_brain_j1": 1.0,
+    "plain_acc_none_j1": 0.0,
+    "plain_acc_brain_j2": 1.0,
+    "plain_acc_none_j2": 0.0,
+    "mistakes_brain_mean": 3.0,
+    "mistakes_none_mean": 10.5,
+    "wilcoxon": {
+     "n": 1,
+     "nonzero": 1,
+     "W": 0.0,
+     "p": 1.0,
+     "p_pratt": 1.0
+    }
+   },
+   "opus": {
+    "pairs": 24,
+    "score_brain_mean": 14.666666666666666,
+    "score_none_mean": 7.6875,
+    "diff_mean": 6.979166666666667,
+    "diff_median": 7.5,
+    "plain_acc_brain_j1": 1.0,
+    "plain_acc_none_j1": 0.3194444444444444,
+    "plain_acc_brain_j2": 1.0,
+    "plain_acc_none_j2": 0.3194444444444444,
+    "mistakes_brain_mean": 0.4166666666666667,
+    "mistakes_none_mean": 6.458333333333333,
+    "wilcoxon": {
+     "n": 24,
+     "nonzero": 24,
+     "W": 0.0,
+     "p": 1.1920928955078125e-07,
+     "p_pratt": 1.1920928955078125e-07
+    }
+   },
+   "luna": {
+    "pairs": 24,
+    "score_brain_mean": 12.583333333333334,
+    "score_none_mean": 4.625,
+    "diff_mean": 7.958333333333333,
+    "diff_median": 8.5,
+    "plain_acc_brain_j1": 0.8055555555555556,
+    "plain_acc_none_j1": 0.0,
+    "plain_acc_brain_j2": 0.8055555555555556,
+    "plain_acc_none_j2": 0.0,
+    "mistakes_brain_mean": 1.6666666666666667,
+    "mistakes_none_mean": 7.333333333333333,
+    "wilcoxon": {
+     "n": 24,
+     "nonzero": 23,
+     "W": 0.0,
+     "p": 2.661320234320494e-05,
+     "p_pratt": 1.9120617275260437e-05
+    }
+   }
+  }
+ },
+ "sensitivity": {
+  "a_judge_flag_only": {
+   "businesses": 12,
+   "pairs": 48,
+   "per_business": {
+    "adspend": 5.125,
+    "autorepair": 5.75,
+    "construction": 0.75,
+    "dental": 3.125,
+    "greenhouse": 2.875,
+    "gym": 3.6666666666666665,
+    "landscape": 3.625,
+    "lawfirm": 5.0,
+    "nonprofit": 5.25,
+    "roaster": 4.375,
+    "tickets": 3.1,
+    "trucking": 4.125
+   },
+   "mean": 3.897222222222222,
+   "median": 3.895833333333333,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.091649305555556,
+    4.5903125
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   },
+   "dropped_pairs": 25,
+   "dropped_by_model": {
+    "opus": 23,
+    "luna": 2
+   },
+   "kept_by_model": {
+    "haiku": 24,
+    "luna": 22,
+    "opus": 1,
+    "sonnet": 1
+   },
+   "pairs_per_business_kept": {
+    "adspend": 4,
+    "autorepair": 4,
+    "construction": 4,
+    "dental": 4,
+    "greenhouse": 4,
+    "gym": 3,
+    "landscape": 4,
+    "lawfirm": 4,
+    "nonprofit": 4,
+    "roaster": 4,
+    "tickets": 5,
+    "trucking": 4
+   },
+   "thin_under_4": [
+    "gym"
+   ],
+   "with_thin_rule": {
+    "businesses": 11,
+    "pairs": 45,
+    "per_business": {
+     "adspend": 5.125,
+     "autorepair": 5.75,
+     "construction": 0.75,
+     "dental": 3.125,
+     "greenhouse": 2.875,
+     "landscape": 3.625,
+     "lawfirm": 5.0,
+     "nonprofit": 5.25,
+     "roaster": 4.375,
+     "tickets": 3.1,
+     "trucking": 4.125
+    },
+    "mean": 3.9181818181818184,
+    "median": 4.125,
+    "positive": 11,
+    "negative": 0,
+    "zero": 0,
+    "wilcoxon": {
+     "n": 11,
+     "nonzero": 11,
+     "W": 0.0,
+     "p": 0.0009765625,
+     "p_pratt": 0.0009765625
+    },
+    "boot_ci_95": [
+     3.0545454545454547,
+     4.670454545454546
+    ],
+    "exact_enum": {
+     "W": 0.0,
+     "p": 0.0009765625
+    }
+   }
+  },
+  "a_text_strict_only": {
+   "businesses": 12,
+   "pairs": 56,
+   "per_business": {
+    "adspend": 5.125,
+    "autorepair": 5.75,
+    "construction": 1.3,
+    "dental": 4.2,
+    "greenhouse": 4.0,
+    "gym": 5.625,
+    "landscape": 3.625,
+    "lawfirm": 5.8,
+    "nonprofit": 5.25,
+    "roaster": 4.9,
+    "tickets": 3.1,
+    "trucking": 5.4
+   },
+   "mean": 4.50625,
+   "median": 5.0125,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.716666666666667,
+    5.166718749999999
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   },
+   "dropped_pairs": 17,
+   "dropped_by_model": {
+    "opus": 17
+   },
+   "kept_by_model": {
+    "haiku": 24,
+    "luna": 24,
+    "opus": 7,
+    "sonnet": 1
+   },
+   "pairs_per_business_kept": {
+    "adspend": 4,
+    "autorepair": 4,
+    "construction": 5,
+    "dental": 5,
+    "greenhouse": 6,
+    "gym": 4,
+    "landscape": 4,
+    "lawfirm": 5,
+    "nonprofit": 4,
+    "roaster": 5,
+    "tickets": 5,
+    "trucking": 5
+   },
+   "thin_under_4": [],
+   "with_thin_rule": {
+    "businesses": 12,
+    "pairs": 56,
+    "per_business": {
+     "adspend": 5.125,
+     "autorepair": 5.75,
+     "construction": 1.3,
+     "dental": 4.2,
+     "greenhouse": 4.0,
+     "gym": 5.625,
+     "landscape": 3.625,
+     "lawfirm": 5.8,
+     "nonprofit": 5.25,
+     "roaster": 4.9,
+     "tickets": 3.1,
+     "trucking": 5.4
+    },
+    "mean": 4.50625,
+    "median": 5.0125,
+    "positive": 12,
+    "negative": 0,
+    "zero": 0,
+    "wilcoxon": {
+     "n": 12,
+     "nonzero": 12,
+     "W": 0.0,
+     "p": 0.00048828125,
+     "p_pratt": 0.00048828125
+    },
+    "boot_ci_95": [
+     3.716666666666667,
+     5.166718749999999
+    ],
+    "exact_enum": {
+     "W": 0.0,
+     "p": 0.00048828125
+    }
+   }
+  },
+  "a_judge_or_text_strict": {
+   "businesses": 12,
+   "pairs": 48,
+   "per_business": {
+    "adspend": 5.125,
+    "autorepair": 5.75,
+    "construction": 0.75,
+    "dental": 3.125,
+    "greenhouse": 2.875,
+    "gym": 3.6666666666666665,
+    "landscape": 3.625,
+    "lawfirm": 5.0,
+    "nonprofit": 5.25,
+    "roaster": 4.375,
+    "tickets": 3.1,
+    "trucking": 4.125
+   },
+   "mean": 3.897222222222222,
+   "median": 3.895833333333333,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.091649305555556,
+    4.5903125
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   },
+   "dropped_pairs": 25,
+   "dropped_by_model": {
+    "opus": 23,
+    "luna": 2
+   },
+   "kept_by_model": {
+    "haiku": 24,
+    "luna": 22,
+    "opus": 1,
+    "sonnet": 1
+   },
+   "pairs_per_business_kept": {
+    "adspend": 4,
+    "autorepair": 4,
+    "construction": 4,
+    "dental": 4,
+    "greenhouse": 4,
+    "gym": 3,
+    "landscape": 4,
+    "lawfirm": 4,
+    "nonprofit": 4,
+    "roaster": 4,
+    "tickets": 5,
+    "trucking": 4
+   },
+   "thin_under_4": [
+    "gym"
+   ],
+   "with_thin_rule": {
+    "businesses": 11,
+    "pairs": 45,
+    "per_business": {
+     "adspend": 5.125,
+     "autorepair": 5.75,
+     "construction": 0.75,
+     "dental": 3.125,
+     "greenhouse": 2.875,
+     "landscape": 3.625,
+     "lawfirm": 5.0,
+     "nonprofit": 5.25,
+     "roaster": 4.375,
+     "tickets": 3.1,
+     "trucking": 4.125
+    },
+    "mean": 3.9181818181818184,
+    "median": 4.125,
+    "positive": 11,
+    "negative": 0,
+    "zero": 0,
+    "wilcoxon": {
+     "n": 11,
+     "nonzero": 11,
+     "W": 0.0,
+     "p": 0.0009765625,
+     "p_pratt": 0.0009765625
+    },
+    "boot_ci_95": [
+     3.0545454545454547,
+     4.670454545454546
+    ],
+    "exact_enum": {
+     "W": 0.0,
+     "p": 0.0009765625
+    }
+   }
+  },
+  "a_judge_or_text_broad": {
+   "businesses": 12,
+   "pairs": 47,
+   "per_business": {
+    "adspend": 5.125,
+    "autorepair": 5.75,
+    "construction": 0.75,
+    "dental": 3.125,
+    "greenhouse": 2.875,
+    "gym": 3.6666666666666665,
+    "landscape": 3.625,
+    "lawfirm": 5.0,
+    "nonprofit": 6.0,
+    "roaster": 4.375,
+    "tickets": 3.1,
+    "trucking": 4.125
+   },
+   "mean": 3.959722222222222,
+   "median": 3.895833333333333,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.1194097222222226,
+    4.701388888888888
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   },
+   "dropped_pairs": 26,
+   "dropped_by_model": {
+    "opus": 23,
+    "luna": 2,
+    "haiku": 1
+   },
+   "kept_by_model": {
+    "haiku": 23,
+    "luna": 22,
+    "opus": 1,
+    "sonnet": 1
+   },
+   "pairs_per_business_kept": {
+    "adspend": 4,
+    "autorepair": 4,
+    "construction": 4,
+    "dental": 4,
+    "greenhouse": 4,
+    "gym": 3,
+    "landscape": 4,
+    "lawfirm": 4,
+    "nonprofit": 3,
+    "roaster": 4,
+    "tickets": 5,
+    "trucking": 4
+   },
+   "thin_under_4": [
+    "nonprofit",
+    "gym"
+   ],
+   "with_thin_rule": {
+    "businesses": 10,
+    "pairs": 41,
+    "per_business": {
+     "adspend": 5.125,
+     "autorepair": 5.75,
+     "construction": 0.75,
+     "dental": 3.125,
+     "greenhouse": 2.875,
+     "landscape": 3.625,
+     "lawfirm": 5.0,
+     "roaster": 4.375,
+     "tickets": 3.1,
+     "trucking": 4.125
+    },
+    "mean": 3.785,
+    "median": 3.875,
+    "positive": 10,
+    "negative": 0,
+    "zero": 0,
+    "wilcoxon": {
+     "n": 10,
+     "nonzero": 10,
+     "W": 0.0,
+     "p": 0.001953125,
+     "p_pratt": 0.001953125
+    },
+    "boot_ci_95": [
+     2.8975,
+     4.5725
+    ],
+    "exact_enum": {
+     "W": 0.0,
+     "p": 0.001953125
+    }
+   }
+  },
+  "flag_counts": {
+   "judge_cites_brain_answer_any_judge": 25,
+   "judge_cites_none_answer_any_judge": 1,
+   "judge_cites_brain_j1": 24,
+   "judge_cites_brain_j2": 25,
+   "judge_cites_none_j1": 0,
+   "judge_cites_none_j2": 1,
+   "text_strict_brain": 17,
+   "text_strict_none": 1,
+   "text_broad_brain": 23,
+   "text_broad_none": 2,
+   "saw_tab_brain": 49
+  },
+  "b_j1_only": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": 6.666666666666667,
+    "autorepair": 6.5,
+    "construction": 1.6666666666666667,
+    "dental": 5.5,
+    "greenhouse": 4.333333333333333,
+    "gym": 7.0,
+    "landscape": 4.5,
+    "lawfirm": 6.666666666666667,
+    "nonprofit": 5.833333333333333,
+    "roaster": 5.333333333333333,
+    "tickets": 4.0,
+    "trucking": 7.0
+   },
+   "mean": 5.416666666666667,
+   "median": 5.666666666666666,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    4.486111111111111,
+    6.208333333333333
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "b_j2_only": {
+   "businesses": 12,
+   "pairs": 73,
+   "per_business": {
+    "adspend": 5.666666666666667,
+    "autorepair": 5.666666666666667,
+    "construction": 1.1666666666666667,
+    "dental": 4.333333333333333,
+    "greenhouse": 3.6666666666666665,
+    "gym": 5.833333333333333,
+    "landscape": 4.166666666666667,
+    "lawfirm": 5.833333333333333,
+    "nonprofit": 5.5,
+    "roaster": 5.333333333333333,
+    "tickets": 3.3333333333333335,
+    "trucking": 5.714285714285714
+   },
+   "mean": 4.68452380952381,
+   "median": 5.416666666666666,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.8333333333333335,
+    5.378968253968254
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_without_haiku": {
+   "businesses": 12,
+   "pairs": 49,
+   "per_business": {
+    "adspend": 9.0,
+    "autorepair": 8.875,
+    "construction": 2.75,
+    "dental": 7.0,
+    "greenhouse": 6.0,
+    "gym": 9.625,
+    "landscape": 6.125,
+    "lawfirm": 9.375,
+    "nonprofit": 7.875,
+    "roaster": 8.0,
+    "tickets": 6.25,
+    "trucking": 8.7
+   },
+   "mean": 7.464583333333334,
+   "median": 7.9375,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    6.302083333333333,
+    8.443802083333333
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_without_sonnet": {
+   "businesses": 12,
+   "pairs": 72,
+   "per_business": {
+    "adspend": 6.166666666666667,
+    "autorepair": 6.083333333333333,
+    "construction": 1.4166666666666667,
+    "dental": 4.916666666666667,
+    "greenhouse": 4.0,
+    "gym": 6.416666666666667,
+    "landscape": 4.333333333333333,
+    "lawfirm": 6.25,
+    "nonprofit": 5.666666666666667,
+    "roaster": 5.333333333333333,
+    "tickets": 3.6666666666666665,
+    "trucking": 6.0
+   },
+   "mean": 5.020833333333333,
+   "median": 5.5,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    4.145833333333333,
+    5.7430555555555545
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_without_opus": {
+   "businesses": 12,
+   "pairs": 49,
+   "per_business": {
+    "adspend": 5.125,
+    "autorepair": 5.75,
+    "construction": 0.75,
+    "dental": 3.125,
+    "greenhouse": 2.875,
+    "gym": 5.625,
+    "landscape": 3.625,
+    "lawfirm": 5.0,
+    "nonprofit": 5.25,
+    "roaster": 4.375,
+    "tickets": 2.375,
+    "trucking": 5.4
+   },
+   "mean": 4.10625,
+   "median": 4.6875,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    3.1999999999999997,
+    4.900052083333332
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_without_luna": {
+   "businesses": 12,
+   "pairs": 49,
+   "per_business": {
+    "adspend": 4.375,
+    "autorepair": 3.625,
+    "construction": 0.75,
+    "dental": 4.625,
+    "greenhouse": 3.125,
+    "gym": 4.0,
+    "landscape": 3.25,
+    "lawfirm": 4.375,
+    "nonprofit": 3.875,
+    "roaster": 3.625,
+    "tickets": 2.375,
+    "trucking": 5.4
+   },
+   "mean": 3.6166666666666667,
+   "median": 3.75,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    2.9166666666666665,
+    4.225
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_only_haiku": {
+   "businesses": 12,
+   "pairs": 24,
+   "per_business": {
+    "adspend": 0.5,
+    "autorepair": 0.5,
+    "construction": -1.25,
+    "dental": 0.75,
+    "greenhouse": 0.0,
+    "gym": 0.0,
+    "landscape": 0.75,
+    "lawfirm": 0.0,
+    "nonprofit": 1.25,
+    "roaster": 0.0,
+    "tickets": -1.5,
+    "trucking": 0.5
+   },
+   "mean": 0.125,
+   "median": 0.25,
+   "positive": 6,
+   "negative": 2,
+   "zero": 4,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 8,
+    "W": 14.5,
+    "p": 0.6214884480044061,
+    "p_pratt": 0.354474493806324
+   },
+   "boot_ci_95": [
+    -0.3333333333333333,
+    0.5208333333333334
+   ],
+   "exact_enum": {
+    "W": 14.5,
+    "p": 0.640625
+   }
+  },
+  "c_only_opus": {
+   "businesses": 12,
+   "pairs": 24,
+   "per_business": {
+    "adspend": 8.25,
+    "autorepair": 6.75,
+    "construction": 2.75,
+    "dental": 8.5,
+    "greenhouse": 6.25,
+    "gym": 8.0,
+    "landscape": 5.75,
+    "lawfirm": 8.75,
+    "nonprofit": 6.5,
+    "roaster": 7.25,
+    "tickets": 6.25,
+    "trucking": 8.75
+   },
+   "mean": 6.979166666666667,
+   "median": 7.0,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    5.958333333333333,
+    7.8125
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "c_only_luna": {
+   "businesses": 12,
+   "pairs": 24,
+   "per_business": {
+    "adspend": 9.75,
+    "autorepair": 11.0,
+    "construction": 2.75,
+    "dental": 5.5,
+    "greenhouse": 5.75,
+    "gym": 11.25,
+    "landscape": 6.5,
+    "lawfirm": 10.0,
+    "nonprofit": 9.25,
+    "roaster": 8.75,
+    "tickets": 6.25,
+    "trucking": 8.75
+   },
+   "mean": 7.958333333333333,
+   "median": 8.75,
+   "positive": 12,
+   "negative": 0,
+   "zero": 0,
+   "wilcoxon": {
+    "n": 12,
+    "nonzero": 12,
+    "W": 0.0,
+    "p": 0.00048828125,
+    "p_pratt": 0.00048828125
+   },
+   "boot_ci_95": [
+    6.5,
+    9.3125
+   ],
+   "exact_enum": {
+    "W": 0.0,
+    "p": 0.00048828125
+   }
+  },
+  "d_mechanical": {
+   "numeric_questions_total": 18,
+   "businesses_with_numeric_q": 12,
+   "numeric_q_per_business_counts": {
+    "1": 6,
+    "2": 6
+   },
+   "items": 109,
+   "acc_brain_mech": 0.6788990825688074,
+   "acc_none_mech": 0.25688073394495414,
+   "acc_brain_j1": 0.6238532110091743,
+   "acc_none_j1": 0.11926605504587157,
+   "acc_brain_j2": 0.6238532110091743,
+   "acc_none_j2": 0.11926605504587157,
+   "agreement_with_j1": 0.9036697247706422,
+   "mech_true_judge_false_j1": 21,
+   "mech_false_judge_true_j1": 0,
+   "agreement_with_j2": 0.9036697247706422,
+   "mech_true_judge_false_j2": 21,
+   "mech_false_judge_true_j2": 0,
+   "business_level": {
+    "businesses": 12,
+    "mean": 0.3998015873015874,
+    "median": 0.45833333333333337,
+    "positive": 11,
+    "negative": 0,
+    "zero": 1,
+    "wilcoxon": {
+     "n": 12,
+     "nonzero": 11,
+     "W": 0.0,
+     "p": 0.00333001391174598,
+     "p_pratt": 0.0024972095514355875
+    },
+    "boot_ci_95": [
+     0.27083333333333337,
+     0.5218253968253967
+    ]
+   },
+   "business_level_judge1_same_items": {
+    "mean": 0.49702380952380953,
+    "positive": 12,
+    "wilcoxon": {
+     "n": 12,
+     "nonzero": 12,
+     "W": 0.0,
+     "p": 0.00048828125,
+     "p_pratt": 0.00048828125
+    }
+   },
+   "per_model": {
+    "haiku": {
+     "items": 36,
+     "brain": 0.1111111111111111,
+     "none": 0.05555555555555555
+    },
+    "opus": {
+     "items": 36,
+     "brain": 1.0,
+     "none": 0.5277777777777778
+    },
+    "luna": {
+     "items": 36,
+     "brain": 0.9166666666666666,
+     "none": 0.19444444444444445
+    },
+    "sonnet": {
+     "items": 1,
+     "brain": 1.0,
+     "none": 0.0
+    }
+   },
+   "mcnemar": {
+    "brain_only": 47,
+    "none_only": 1,
+    "p_exact": 3.481659405224491e-13
+   }
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "landscape": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/landscape/out",
+  "build": 1
+ },
+ "dental": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/dental/out",
+  "build": 1
+ },
+ "trucking": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/trucking/out",
+  "build": 1
+ },
+ "nonprofit": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/nonprofit/out",
+  "build": 1
+ },
+ "gym": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/gym/out",
+  "build": 1
+ },
+ "tickets": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/tickets/out",
+  "build": 1
+ },
+ "autorepair": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/autorepair/out",
+  "build": 1
+ },
+ "lawfirm": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/lawfirm/out",
+  "build": 1
+ },
+ "construction": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/construction/out",
+  "build": 1
+ },
+ "greenhouse": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/greenhouse/out",
+  "build": 1
+ },
+ "adspend": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/adspend/out",
+  "build": 1
+ },
+ "roaster": {
+  "dir": "/private/tmp/claude-501/-Users-zachkellman-ai-os/d9f6c33d-3142-469c-a96b-b93b58b87ba6/scratchpad/rigor2/build_v02/a1/roaster/out",
+  "build": 1
+ }
+}

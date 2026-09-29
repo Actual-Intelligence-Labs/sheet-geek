@@ -1,0 +1,8 @@
+{
+ "model": "claude-opus-5-5",
+ "cond": "none",
+ "run": 3,
+ "message": "I just got this file from a colleague: finance_model.xlsx. What's our runway? Python 3 with openpyxl is at /usr/bin/python3 if you want to open the file. Work numbers out from the file; don't guess. Answer in plain words, under 150 words.",
+ "status": "ok",
+ "answer": "Without new funding, our cash runs out in **May 2027**, about 8 months from now. The file only looks fine because it assumes a raise.\n\n- **Starting point:** Actual results go through August 2026, when cash was $3.43M.\n- **Burn:** Monthly cash burn is forecast to rise from about $407K in September 2026 to about $461K by May 2027.\n- **Without the raise:** Cash falls to about $21K at the end of April 2027 and goes negative in May.\n- **The raise:** The model adds $15M of new equity in March 2027. It's a typed-in number, not calculated, and nothing in the file says the deal is committed. With it, cash would last well past December 2028, where the model stops.\n\nErrors I found in the file:\n- January 2027 revenue is multiplied by 1.07 for no stated reason. I removed that in my figures, which takes about $14K off cash.\n- There are a few formula mistakes later on, and the balance sheet doesn't balance in May 2027. None of these change the answer above."
+}

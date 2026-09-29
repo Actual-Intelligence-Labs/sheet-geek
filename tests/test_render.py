@@ -20,7 +20,7 @@ from urllib.parse import quote
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "skills" / "spreadsheet-brain" / "scripts"
+SCRIPTS = ROOT / "skills" / "sheet-geek" / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 

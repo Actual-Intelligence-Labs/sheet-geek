@@ -24,7 +24,7 @@ Prompt-level defenses reduce risk; they do not remove it. If you open a stranger
 ## Where your data goes
 
 - The brain tab lives in your file. Anyone you send the file to can read it (hidden tabs are not private).
-- The local index lives in `~/.spreadsheet-brain` (folder permissions 700): private notes, raw answers, backups, and the map of how your files connect. Nothing in it leaves your machine.
+- The local index lives in `~/.sheet-geek` (folder permissions 700; an existing `~/.spreadsheet-brain` from before the rename stays in use): private notes, raw answers, backups, and the map of how your files connect. Nothing in it leaves your machine.
 - Your AI tool keeps its own conversation history under its own policy. Answers you type during the questions are part of that conversation.
 
 ## Reporting a problem

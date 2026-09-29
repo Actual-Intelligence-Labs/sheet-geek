@@ -13,13 +13,13 @@ import pytest
 
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 from sheetbrain import findings, interview  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
 from sheetbrain.brain import Composer, _answer_notes, _said_sentences  # noqa: E402
 
 FX = os.path.join(ROOT, "evals", "fixtures")
-PLAYBOOKS = os.path.join(ROOT, "skills", "spreadsheet-brain", "playbooks")
+PLAYBOOKS = os.path.join(ROOT, "skills", "sheet-geek", "playbooks")
 LINTED = {"exclusion", "definition", "coverage", "rule", "unit"}
 ONE_CONCEPT = {"Total and subtotal rows"}          # reads as one thing, though it has an 'and'
 

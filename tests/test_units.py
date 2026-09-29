@@ -2,7 +2,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "sheet-geek", "scripts"))
 from sheetbrain import fresh, interview, privacy  # noqa: E402
 from sheetbrain.brain import is_imperative  # noqa: E402
 
@@ -132,7 +132,7 @@ def test_the_code_keeps_one_number_check_and_names_no_development_value():
     comments: examples use neutral names."""
     import glob
     import re
-    src = os.path.join(os.path.dirname(__file__), "..", "skills", "spreadsheet-brain", "scripts")
+    src = os.path.join(os.path.dirname(__file__), "..", "skills", "sheet-geek", "scripts")
     text = {p: open(p, encoding="utf-8").read() for p in glob.glob(os.path.join(src, "**", "*.py"), recursive=True)}
     same = re.compile(r"def _\w+\(v\)( -> bool)?:\n    return isinstance\(v, \(int, float\)\) and not isinstance\(v, bool\)\n")
     assert not [os.path.basename(p) for p, s in text.items() if same.search(s)]

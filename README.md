@@ -1,8 +1,10 @@
-# spreadsheet-brain
+# Sheet Geek
 
 **Your AI doesn't know what correlates to what in your spreadsheet. Now it can.**
 
 An open-source skill that gives any spreadsheet a brain. The first time your AI opens a sheet, it studies the data with code, asks you only the handful of questions the data can't answer, and writes what it learned into a tab inside the file. Next time anyone opens that file with any AI, it starts from there. Nobody re-explains the sheet, and nothing lives only in one person's head.
+
+Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/zachk-alt/sheet-geek/tree/v0.2.0)); 0.2.1 renames it; how it reads, asks and writes is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
 
 ![The map of a purchasing workbook](docs/map.png)
 
@@ -18,7 +20,7 @@ An open-source skill that gives any spreadsheet a brain. The first time your AI 
 
 ## Why it's different
 
-- **The brain travels inside the file.** Email it, drop it in Drive, upload it to claude.ai or ChatGPT: the knowledge goes with it. Links to your other spreadsheets carry only a name and a matching column, so sending one sheet never leaks the others.
+- **The brain travels inside the file.** Email it, drop it in Drive, upload it to claude.ai or ChatGPT: the knowledge goes with it. Hand the file to a coworker, your accountant or an investor, and their AI starts from what you told yours. Links to your other spreadsheets carry only a name and a matching column, so sending one sheet never leaks the others.
 - **Code conducts, the model is the voice.** Which question to ask, how to word it, which option to recommend, every number: all code. That is why it works on smaller models too, not just the biggest one.
 - **It knows the difference between what you said, what it counted, and what it guessed.** Guesses stay marked as guesses until someone confirms them.
 - **Private stays private.** Say "between us, Dave always rounds up" and that remark is kept on your machine, not written into the file you'll send to Dave.
@@ -31,16 +33,16 @@ An open-source skill that gives any spreadsheet a brain. The first time your AI 
 
 **Claude Code**
 ```
-/plugin marketplace add zachk-alt/spreadsheet-brain
-/plugin install spreadsheet-brain@spreadsheet-brain
+/plugin marketplace add zachk-alt/sheet-geek
+/plugin install sheet-geek@sheet-geek
 ```
 Then open any spreadsheet in the conversation, or just name one.
 
-**claude.ai, Claude desktop:** download `spreadsheet-brain.zip` from Releases, then Settings > Capabilities > Skills > Upload.
+**claude.ai, Claude desktop:** download `sheet-geek.zip` from Releases, then Settings > Capabilities > Skills > Upload.
 
-**Codex, Cursor, VS Code Copilot, Gemini CLI, and other tools that load Agent Skills:** copy `skills/spreadsheet-brain` into the tool's skills folder (for example `.agents/skills/`), and add the snippet from `adapters/` for your tool.
+**Codex, Cursor, VS Code Copilot, Gemini CLI, and other tools that load Agent Skills:** copy `skills/sheet-geek` into the tool's skills folder (for example `.agents/skills/`), and add the snippet from `adapters/` for your tool.
 
-**Chat apps without code (ChatGPT Projects, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/spreadsheet-brain/references/portable-prompt.md). It carries the method without the code.
+**Chat apps without code (ChatGPT Projects, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/sheet-geek/references/portable-prompt.md). It carries the method without the code.
 
 Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline.
 
@@ -57,7 +59,7 @@ Tested so far: Claude Code on macOS. "Expected" means the tool loads the same op
 
 ## What goes in the file, what stays home
 
-| In the `_brain` tab (travels) | On your machine only (`~/.spreadsheet-brain`) |
+| In the `_brain` tab (travels) | On your machine only (`~/.sheet-geek`) |
 |---|---|
 | What each column means, units, what one row is | Remarks about people, clients or deals |
 | Rules for reading it ("credits count, transfers don't") | Business terms you mention: contract prices, markups, rebate rates (unless you choose to include them) |
@@ -69,11 +71,11 @@ The tab is visible by default so people without AI can read it too. Hidden is an
 
 ## The format
 
-The brain is a plain table any tool can read. See [the format](skills/spreadsheet-brain/references/format.md).
+The brain is a plain table any tool can read. See [the format](skills/sheet-geek/references/format.md).
 
 ## How it was tested
 
-Two pre-registered studies: each plan was written and frozen before any answer was collected, and every deviation, trial, verdict and script ships in [`evals/`](evals/). All businesses are synthetic, and all judges are AI models.
+Two pre-registered studies: each plan was written and frozen before any answer was collected, and every deviation, trial, verdict and script ships in [`evals/`](evals/). The scripts there use the tool's old folder name, so rerun them from tag `v0.2.0`. All businesses are synthetic, and all judges are AI models.
 
 **Study 2 (confirmatory, version 0.2).** Twelve new businesses, built after the tool was frozen by agents that never saw it (a dental practice, a law firm, a coffee roaster, a trucking company and eight more). An agent played each owner from a written brief. Each AI got the same workbook and the same request twice, with and without the brain, in a locked folder; two blind judges from two model families graded both answers.
 

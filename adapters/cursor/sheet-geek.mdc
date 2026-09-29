@@ -1,5 +1,5 @@
 ---
-description: Spreadsheet brains (notes about what a spreadsheet's data means)
+description: Sheet Geek spreadsheet brains (notes about what a spreadsheet's data means)
 globs: **/*.xlsx,**/*.xlsm,**/*.csv
 alwaysApply: false
 ---

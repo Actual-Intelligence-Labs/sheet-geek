@@ -11,7 +11,7 @@ import openpyxl
 import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 from sheetbrain import findings, fresh, interview, rules  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
 from sheetbrain.brain import Composer  # noqa: E402

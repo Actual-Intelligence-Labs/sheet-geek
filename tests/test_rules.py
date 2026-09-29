@@ -12,7 +12,7 @@ import pytest
 
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from sheetbrain import findings, interview, rules  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
@@ -20,7 +20,7 @@ from sheetbrain.brain import Composer  # noqa: E402
 from sheetbrain.rules import Rule  # noqa: E402
 
 FX = os.path.join(ROOT, "evals", "fixtures")
-SB = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts", "sb.py")
+SB = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
 
 
 def _pb(insights, **roles):

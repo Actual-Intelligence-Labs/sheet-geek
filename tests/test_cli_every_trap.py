@@ -17,11 +17,11 @@ HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
 import synth  # noqa: E402
 
-sys.path.insert(0, os.path.join(HERE, "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(HERE, "..", "skills", "sheet-geek", "scripts"))
 from sheetbrain import brainzip  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
-SB = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts", "sb.py")
+SB = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
 
 
 _SLOT = re.compile(r"\{(?:role|values|count|rows|sum):[a-z_]+\}")

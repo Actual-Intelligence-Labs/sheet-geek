@@ -1,4 +1,4 @@
-"""Build dist/spreadsheet-brain.zip: the skill folder as claude.ai and other
+"""Build dist/sheet-geek.zip: the skill folder as claude.ai and other
 apps expect it (SKILL.md at the top of the folder, no caches, no dev files).
 
 Usage: python dev/build_release.py
@@ -11,7 +11,7 @@ import sys
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKILL = os.path.join(ROOT, "skills", "spreadsheet-brain")
+SKILL = os.path.join(ROOT, "skills", "sheet-geek")
 ALLOWED_KEYS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
 
 
@@ -35,7 +35,7 @@ def build() -> str:
     check_frontmatter()
     out_dir = os.path.join(ROOT, "dist")
     os.makedirs(out_dir, exist_ok=True)
-    out = os.path.join(out_dir, "spreadsheet-brain.zip")
+    out = os.path.join(out_dir, "sheet-geek.zip")
     n = 0
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for base, dirs, files in os.walk(SKILL):
@@ -44,7 +44,7 @@ def build() -> str:
                 if f.endswith((".pyc", ".DS_Store")):
                     continue
                 p = os.path.join(base, f)
-                arc = os.path.join("spreadsheet-brain", os.path.relpath(p, SKILL))
+                arc = os.path.join("sheet-geek", os.path.relpath(p, SKILL))
                 z.write(p, arc)
                 n += 1
     print(f"{out} ({n} files, {os.path.getsize(out) // 1024} KB)")

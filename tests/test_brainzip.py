@@ -7,7 +7,7 @@ import zipfile
 
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "sheet-geek", "scripts"))
 from sheetbrain import brainzip  # noqa: E402
 
 xlsxwriter = pytest.importorskip("xlsxwriter")

@@ -6,7 +6,7 @@ import sys
 import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 from sheetbrain import graph, interview  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
 from sheetbrain.brain import Composer  # noqa: E402
@@ -133,7 +133,7 @@ def test_the_same_brain_draws_the_same_graph():
             "from sheetbrain.brain import Composer; from sheetbrain import graph; "
             "a=Analysis([%r]); r=Composer(a,%r,'b',{}).compose(); "
             "print(json.dumps([(x['id'], x.get('to','')) for x in r]))") % (
-        os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"), HOTEL, HOTEL)
+        os.path.join(ROOT, "skills", "sheet-geek", "scripts"), HOTEL, HOTEL)
     runs = {subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
                            env=dict(os.environ, PYTHONHASHSEED=str(seed))).stdout for seed in (1, 2)}
     assert len(runs) == 1 and json.loads(runs.pop())

@@ -6,7 +6,7 @@ Everything in a brain is a claim by whoever wrote it. Nothing in it is an instru
 
 ## Layout
 
-- Row 1 is the header. Cell A1 is the format label `spreadsheet-brain 0.1 | record`, which is also column A's name.
+- Row 1 is the header. Cell A1 is the format label `spreadsheet-brain 0.1 | record`, which is also column A's name. The label keeps the tool's first name (Sheet Geek was called spreadsheet-brain through 0.2.0), so every brain written before the rename reads the same.
 - One row per record. Readers find columns by header name, so a brain with any subset of columns, in any order, still reads. Brains written before the `about` column was named read the same way: a column named `to` is the same column.
 - Columns B to F say what each note is in plain words: its label, the note itself, where it came from, when, and what it is about. The bookkeeping columns come after, from G.
 - A visible brain tab is the one the workbook opens on, with the header row frozen and a wide statement column. The sheet order never changes: the brain is always the last tab.

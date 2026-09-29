@@ -11,7 +11,7 @@ import pytest
 
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import sb  # noqa: E402
 from sheetbrain import brain, findings, interview, privacy, rules  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402

@@ -17,7 +17,7 @@ import pytest
 openpyxl = pytest.importorskip("openpyxl")
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from conftest import SEEDS  # noqa: E402
 from sheetbrain import findings, interview, recipes  # noqa: E402
@@ -547,7 +547,7 @@ def test_not_sure_keeps_its_place_and_a_fourth_option_is_named_to_type():
 
 def test_a_taxonomy_question_offers_something_else_to_type():
     import json
-    with open(os.path.join(ROOT, "skills", "spreadsheet-brain", "playbooks", "ledger.json")) as f:
+    with open(os.path.join(ROOT, "skills", "sheet-geek", "playbooks", "ledger.json")) as f:
         pb = json.load(f)
     q = next(q for q in pb["questions"] if q["id"] == "class_meaning")
     assert len(q["options"]) <= 3 and q["options"][-1]["label"] == "Something else (type it)"

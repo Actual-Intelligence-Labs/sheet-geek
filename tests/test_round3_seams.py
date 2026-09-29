@@ -22,11 +22,11 @@ import pytest
 pytest.importorskip("xlsxwriter")
 HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(HERE, "..", "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from sheetbrain import brainzip  # noqa: E402
 
-SB = os.path.abspath(os.path.join(HERE, "..", "skills", "spreadsheet-brain", "scripts", "sb.py"))
+SB = os.path.abspath(os.path.join(HERE, "..", "skills", "sheet-geek", "scripts", "sb.py"))
 SEEDS = (1, 2, 3)
 
 

@@ -1,6 +1,6 @@
 {
-  "name": "spreadsheet-brain",
-  "version": "0.2.0",
+  "name": "sheet-geek",
+  "version": "0.2.1",
   "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file, keeps it current, and draws a map of what connects to what.",
   "author": {"name": "Actual Intelligence Labs"},
   "license": "Apache-2.0",

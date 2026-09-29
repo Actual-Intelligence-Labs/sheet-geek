@@ -11,7 +11,7 @@ import sys
 import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from conftest import SEEDS  # noqa: E402
 from sheetbrain import findings, interview  # noqa: E402
@@ -204,7 +204,7 @@ def test_a_just_in_time_answer_gets_its_follow_up_before_the_preview(tmp_path):
     that answer is read back once, before the preview, not left unread."""
     import json
     import subprocess
-    sb_py = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts", "sb.py")
+    sb_py = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
 
     def sb(*args):
         p = subprocess.run([sys.executable, sb_py, *args], capture_output=True, text=True, env=env, timeout=180)
@@ -241,7 +241,7 @@ def test_every_prompt_fits_fifteen_with_at_most_two_extras(tmp_path, seed):
     third readback: it waits, and the whole interview stays within 15 prompts."""
     import json
     import subprocess
-    sb_py = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts", "sb.py")
+    sb_py = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
 
     def sb(*args):
         p = subprocess.run([sys.executable, sb_py, *args], capture_output=True, text=True, env=env, timeout=180)

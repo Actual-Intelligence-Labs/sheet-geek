@@ -1,12 +1,12 @@
 {
-  "name": "spreadsheet-brain",
-  "description": "The spreadsheet-brain plugin: gives any spreadsheet a brain that travels inside the file.",
+  "name": "sheet-geek",
+  "description": "The Sheet Geek plugin: gives any spreadsheet a brain that travels inside the file.",
   "owner": {
     "name": "Actual Intelligence Labs"
   },
   "plugins": [
     {
-      "name": "spreadsheet-brain",
+      "name": "sheet-geek",
       "source": "./",
       "description": "Gives any spreadsheet a brain that travels inside the file."
     }

@@ -8,7 +8,7 @@ import sys
 
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "skills", "sheet-geek", "scripts"))
 sys.path.insert(0, os.path.dirname(__file__))
 import synth  # noqa: E402
 from sheetbrain import analyze, detect, profile, tables  # noqa: E402

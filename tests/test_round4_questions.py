@@ -17,7 +17,7 @@ import pytest
 openpyxl = pytest.importorskip("openpyxl")
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from conftest import SEEDS  # noqa: E402
 from sheetbrain import findings, interview  # noqa: E402
@@ -254,7 +254,7 @@ def test_every_playbook_description_restates_its_label():
     import json
     from sheetbrain import brain
     bad = []
-    for path in sorted(glob.glob(os.path.join(ROOT, "skills", "spreadsheet-brain", "playbooks", "*.json"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "skills", "sheet-geek", "playbooks", "*.json"))):
         for q in json.load(open(path, encoding="utf-8")).get("questions", []):
             for o in q.get("options", []):
                 got = brain.desc_adds_claim(o.get("desc", ""), q["prompt"], o["label"])

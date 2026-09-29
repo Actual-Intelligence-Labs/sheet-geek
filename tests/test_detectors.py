@@ -21,7 +21,7 @@ import pytest
 
 openpyxl = pytest.importorskip("openpyxl")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from conftest import SEEDS  # noqa: E402
 from sheetbrain import findings, interview  # noqa: E402

@@ -9,7 +9,7 @@ import re
 
 from .profile import split_camel
 
-PLAYBOOK_DIR = os.environ.get("SPREADSHEET_BRAIN_PLAYBOOKS") or os.path.join(
+PLAYBOOK_DIR = os.environ.get("SHEET_GEEK_PLAYBOOKS") or os.environ.get("SPREADSHEET_BRAIN_PLAYBOOKS") or os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "playbooks")
 
 

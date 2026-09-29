@@ -6,11 +6,11 @@
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<meta name="generator" content="spreadsheet-brain 0.1">
-<title>Spreadsheet brain</title>
+<meta name="generator" content="sheet-geek 0.2.1">
+<title>Sheet Geek</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e1e1e'/%3E%3Cpath d='M9 22 16 10l8 11M9 22h15' stroke='%23dcddde' stroke-opacity='.35' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='16' cy='10' r='3.6' fill='%235B8DEF'/%3E%3Ccircle cx='9' cy='22' r='3' fill='%23E8A33D'/%3E%3Ccircle cx='24' cy='21' r='2.6' fill='%234F7CFF' stroke='%23dcddde' stroke-width='1'/%3E%3C/svg%3E">
 <style>
-/* spreadsheet-brain map. A dark graph view in the spirit of Obsidian's. Every chrome color is a token here;
+/* Sheet Geek map. A dark graph view in the spirit of Obsidian's. Every chrome color is a token here;
    the dots take their colors from the graph's own groups so the map, the Excel drawing and the vault match. */
 :root {
   --bg: #1e1e1e;
@@ -676,7 +676,7 @@ button.key-row[aria-pressed="true"] { background: var(--pressed); color: var(--t
         <circle cx="17.5" cy="15" r="2.2" fill="#4F7CFF" stroke="#dcddde" stroke-width=".9"/>
       </svg>
       <div class="brand-text">
-        <h1 id="title">Spreadsheet brain</h1>
+        <h1 id="title">Sheet Geek</h1>
         <p id="subtitle" hidden></p>
       </div>
     </div>
@@ -2875,13 +2875,13 @@ button.key-row[aria-pressed="true"] { background: var(--pressed); color: var(--t
   readTheme();
   var raw = readRaw();
   if (!raw) {
-    showNotice('No map in this file.', 'The map data is missing or could not be read. Run spreadsheet-brain again to rebuild this page.');
+    showNotice('No map in this file.', 'The map data is missing or could not be read. Run Sheet Geek again to rebuild this page.');
     return;
   }
   G = build(raw);
   prepare(G);
-  document.title = G.title ? G.title + ' . spreadsheet brain' : 'Spreadsheet brain';
-  setText('title', G.title || 'Spreadsheet brain');
+  document.title = G.title ? G.title + ' . Sheet Geek' : 'Sheet Geek';
+  setText('title', G.title || 'Sheet Geek');
   setText('subtitle', subtitleFor(G));
   setText('sentence', G.sentence);
   if (G.dropped) {
@@ -2899,7 +2899,7 @@ button.key-row[aria-pressed="true"] { background: var(--pressed); color: var(--t
     return;
   }
   if (typeof window.ForceGraph !== 'function') {
-    showNotice('The map library is missing.', 'This page was not built by spreadsheet-brain render. Rebuild it to see the map.');
+    showNotice('The map library is missing.', 'This page was not built by the Sheet Geek render. Rebuild it to see the map.');
     return;
   }
 

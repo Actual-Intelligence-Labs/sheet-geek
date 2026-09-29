@@ -8,7 +8,7 @@ import pytest
 xlsxwriter = pytest.importorskip("xlsxwriter")
 HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(HERE, "..", "skills", "sheet-geek", "scripts"))
 import synth  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
 from sheetbrain.brain import Composer  # noqa: E402

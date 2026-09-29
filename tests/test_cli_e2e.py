@@ -9,7 +9,7 @@ import pytest
 
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SB = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts", "sb.py")
+SB = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
 PLAYBOOKS = os.path.join(ROOT, "dev", "test_playbooks")
 
 
@@ -72,7 +72,7 @@ def test_full_loop(tmp_path, env):
     assert r["ok"] and "now has a brain" in r["say"]
     assert "private note" in r["say"]
     # every count the card gives is the rows read back from the file
-    sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+    sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
     from sheetbrain import brainzip
     back = brainzip.read_brain(str(book))[0]
     assert r["written"][0]["verified"] and r["written"][0]["records"] == len(back)
@@ -99,7 +99,7 @@ def test_full_loop(tmp_path, env):
 
 
 def _carry_brain(src, dst):
-    sys.path.insert(0, os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts"))
+    sys.path.insert(0, os.path.join(ROOT, "skills", "sheet-geek", "scripts"))
     from sheetbrain import brainzip
     recs, _, _ = brainzip.read_brain(str(src))
     brainzip.write_brain(str(dst), recs)

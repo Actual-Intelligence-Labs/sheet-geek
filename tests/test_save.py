@@ -13,7 +13,7 @@ import pytest
 
 xlsxwriter = pytest.importorskip("xlsxwriter")
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SCRIPTS = os.path.join(ROOT, "skills", "spreadsheet-brain", "scripts")
+SCRIPTS = os.path.join(ROOT, "skills", "sheet-geek", "scripts")
 sys.path.insert(0, SCRIPTS)
 
 import sb  # noqa: E402
@@ -21,7 +21,7 @@ from sheetbrain import brain, brainzip, say  # noqa: E402
 from sheetbrain.analyze import Analysis  # noqa: E402
 
 FIXTURES = os.path.join(ROOT, "evals", "fixtures")
-PLAYBOOKS = os.path.join(ROOT, "skills", "spreadsheet-brain", "playbooks")
+PLAYBOOKS = os.path.join(ROOT, "skills", "sheet-geek", "playbooks")
 TEST_PLAYBOOKS = os.path.join(ROOT, "dev", "test_playbooks")
 
 
@@ -276,7 +276,7 @@ def test_the_tool_version_is_one_number_everywhere(tmp_path):
     book = orders_book(tmp_path / "orders.xlsx")
     meta = next(r for r in brain.Composer(Analysis([book]), book, "b1", {}).compose() if r.get("record") == "meta")
     assert f"tool: sb {sb.VERSION}" in json.dumps(meta) and sb.VERSION == brainzip.TOOL_VERSION
-    skill = open(os.path.join(ROOT, "skills", "spreadsheet-brain", "SKILL.md"), encoding="utf-8").read()
+    skill = open(os.path.join(ROOT, "skills", "sheet-geek", "SKILL.md"), encoding="utf-8").read()
     assert f'"version": "{sb.VERSION}"' in skill
     assert f'version = "{sb.VERSION}"' in open(os.path.join(ROOT, "pyproject.toml"), encoding="utf-8").read()
     plugin = json.load(open(os.path.join(ROOT, ".claude-plugin", "plugin.json"), encoding="utf-8"))
@@ -742,7 +742,7 @@ def test_two_tables_on_one_tab_keep_their_own_column_ids(tmp_path):
     assert brain.col_id("Q#2", "Region", "Q#2") == "col:Q#2.{Region}"          # a tab named with a '#'
     assert brain.col_sheet("col:Summary#2.{Region}", {"Summary"}) == "Summary"
     assert brain.col_sheet("col:Q#2.{Region}", {"Q#2"}) == "Q#2"
-    with open(os.path.join(ROOT, "skills", "spreadsheet-brain", "references", "format.md"), encoding="utf-8") as fh:
+    with open(os.path.join(ROOT, "skills", "sheet-geek", "references", "format.md"), encoding="utf-8") as fh:
         assert "`col:<sheet>#<k>.{<header>}`" in fh.read()          # the format documents the id shape
     g = graph.build(recs)
     parts = {(lk["source"], lk["target"]) for lk in g["links"] if lk["type"] == "part_of"}
@@ -881,7 +881,7 @@ def test_the_playbook_lint_is_current_and_runs_clean():
 
 
 def test_the_skill_says_to_ask_when_a_save_fails():
-    with open(os.path.join(ROOT, "skills", "spreadsheet-brain", "SKILL.md"), encoding="utf-8") as fh:
+    with open(os.path.join(ROOT, "skills", "sheet-geek", "SKILL.md"), encoding="utf-8") as fh:
         text = fh.read()
     lines = [ln for ln in text.splitlines() if "ok: false" in ln]
     stop = next(ln for ln in lines if "stop." in ln)

@@ -1,6 +1,7 @@
 """The local index: machine only, never travels. Knows where every brain lives,
 keeps private remarks, raw answers, backups, work state, and the cross-file
-map. Location: ~/.spreadsheet-brain (override with SPREADSHEET_BRAIN_HOME).
+map. Location: ~/.sheet-geek (override with SHEET_GEEK_HOME; SPREADSHEET_BRAIN_HOME and an existing
+~/.spreadsheet-brain, from before the rename, still work).
 Nothing here runs in the background; it is just files and one sqlite database.
 """
 from __future__ import annotations
@@ -43,8 +44,12 @@ def today() -> str:
 
 
 def home() -> str:
-    h = os.environ.get("SPREADSHEET_BRAIN_HOME") or os.path.join(os.path.expanduser("~"),
-                                                                  ".spreadsheet-brain")
+    h = os.environ.get("SHEET_GEEK_HOME") or os.environ.get("SPREADSHEET_BRAIN_HOME")
+    if not h:  # the tool was called spreadsheet-brain until 0.2.1; an index kept under the old name stays in use
+        h = os.path.join(os.path.expanduser("~"), ".sheet-geek")
+        old = os.path.join(os.path.expanduser("~"), ".spreadsheet-brain")
+        if not os.path.isdir(h) and os.path.isdir(old):
+            h = old
     os.makedirs(h, exist_ok=True)
     try:
         os.chmod(h, 0o700)

@@ -1,6 +1,6 @@
 THIRD-PARTY SOFTWARE NOTICES
 
-spreadsheet-brain ships one third-party file: assets/force-graph.min.js.
+Sheet Geek ships one third-party file: assets/force-graph.min.js.
 It is force-graph version 1.51.4 by Vasco Asturiano, taken unmodified from the
 npm package force-graph@1.51.4 (dist/force-graph.min.js, sha256
 1008539bb9e171a0dc343453366451a1b3a6ded06028ef4f978608b658ba2d0a).
@@ -8,7 +8,7 @@ Source: https://github.com/vasturiano/force-graph
 License: MIT (full text below).
 
 Every graph page that render.py writes inlines this same file, so these notices
-apply to every page spreadsheet-brain writes.
+apply to every page Sheet Geek writes.
 
 ==============================================================================
 force-graph 1.51.4

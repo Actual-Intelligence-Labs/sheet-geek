@@ -3,14 +3,14 @@
     "SessionStart": [
       {
         "hooks": [
-          {"type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/spreadsheet-brain/scripts/sb.py\" hook session-start", "timeout": 10}
+          {"type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/sheet-geek/scripts/sb.py\" hook session-start", "timeout": 10}
         ]
       }
     ],
     "UserPromptSubmit": [
       {
         "hooks": [
-          {"type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/spreadsheet-brain/scripts/sb.py\" hook prompt", "timeout": 15}
+          {"type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/sheet-geek/scripts/sb.py\" hook prompt", "timeout": 15}
         ]
       }
     ]

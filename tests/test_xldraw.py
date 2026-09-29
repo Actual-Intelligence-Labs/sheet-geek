@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 import pytest
 
 HERE = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(HERE, "..", "skills", "spreadsheet-brain", "scripts"))
+sys.path.insert(0, os.path.join(HERE, "..", "skills", "sheet-geek", "scripts"))
 from sheetbrain import xldraw  # noqa: E402
 
 NS = {"xdr": "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing",

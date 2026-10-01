@@ -40,9 +40,11 @@ Then open any spreadsheet in the conversation, or just name one.
 
 **claude.ai, Claude desktop:** download `sheet-geek.zip` from Releases, then Settings > Capabilities > Skills > Upload.
 
+**ChatGPT (Work mode):** download `sheet-geek.zip` from Releases, then Customize > Skills > Add > Upload from your computer. Or skip the upload: in a Work chat, attach your spreadsheet and paste this repo's link, and ChatGPT clones it and runs it. Then say "Give this spreadsheet a brain" (or type `@sheet geek`). A plain "take a look" may not start it.
+
 **Codex, Cursor, VS Code Copilot, Gemini CLI, and other tools that load Agent Skills:** copy `skills/sheet-geek` into the tool's skills folder (for example `.agents/skills/`), and add the snippet from `adapters/` for your tool.
 
-**Chat apps without code (ChatGPT Projects, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/sheet-geek/references/portable-prompt.md). It carries the method without the code.
+**Chat apps without code (ChatGPT's regular Chat mode, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/sheet-geek/references/portable-prompt.md). It carries the method without the code.
 
 Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline.
 
@@ -52,10 +54,11 @@ Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline
 |---|---|---|---|---|
 | Claude Code | Yes, loads automatically | Yes, structured questions | Yes, in place with a backup | Opens in your browser |
 | claude.ai (skill) | Expected | Expected, as text | Expected, as a copy you download | Expected, as an HTML file |
+| ChatGPT (Work mode) | Yes, even without the skill | Yes, as text | Yes, as a copy you download | Yes, as an HTML file |
 | Codex, Cursor, VS Code, Gemini CLI | Expected | Expected | Expected | Expected |
-| ChatGPT, Gemini, Copilot (prompt only) | Usually, if it lists the tabs | Lighter version | You paste a table it gives you | No |
+| ChatGPT Chat mode, Gemini, Copilot (prompt only) | Usually, if it lists the tabs | Lighter version | You paste a table it gives you | No |
 
-Tested so far: Claude Code on macOS. "Expected" means the tool loads the same open skill format and should work; it becomes "Yes" when someone runs it.
+Tested so far: Claude Code on macOS, and ChatGPT Work mode with GPT-6.1 Sol (2026-09-30: on the demo finance model it read the file, asked the same questions, saved the brain into a copy with every original cell unchanged, drew the map, and the brain read back cleanly in Claude; given only this repo's link, it cloned the repo and did the same; a fresh ChatGPT chat with no skill read a brain made in Claude and used the owner's notes). One difference: notes marked "this machine only" live in ChatGPT's temporary workspace and are gone when the chat ends. "Expected" means the tool loads the same open skill format and should work; it becomes "Yes" when someone runs it.
 
 ## What goes in the file, what stays home
 

@@ -1,8 +1,27 @@
 {
   "name": "sheet-geek",
-  "version": "0.2.1",
-  "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file, keeps it current, and draws a map of what connects to what.",
-  "author": {"name": "Actual Intelligence Labs"},
+  "displayName": "Sheet Geek",
+  "version": "0.2.2",
+  "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file (a file next to a CSV), keeps it current, and draws a map of what connects to what.",
+  "author": {
+    "name": "Actual Intelligence Labs",
+    "email": "interested@actualintelligencelabs.ai",
+    "url": "https://actualintelligencelabs.ai"
+  },
+  "homepage": "https://actualintelligencelabs.ai/sheet-geek",
+  "repository": "https://github.com/Actual-Intelligence-Labs/sheet-geek",
   "license": "Apache-2.0",
-  "keywords": ["spreadsheet", "excel", "csv", "data dictionary", "knowledge graph", "skill"]
+  "keywords": [
+    "spreadsheet",
+    "excel",
+    "csv",
+    "data dictionary",
+    "knowledge graph",
+    "skill"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://actualintelligencelabs.ai/sheet-geek#how-it-works",
+  "supportUrl": "https://actualintelligencelabs.ai/sheet-geek#support",
+  "privacyPolicyUrl": "https://actualintelligencelabs.ai/sheet-geek/privacy",
+  "termsOfServiceUrl": "https://actualintelligencelabs.ai/sheet-geek/terms"
 }

@@ -1,0 +1,9 @@
+Sheet Geek
+Copyright 2026 Actual Intelligence Labs, LLC (https://actualintelligencelabs.ai)
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE in this folder).
+
+It includes force-graph 1.51.4 by Vasco Asturiano (MIT License),
+https://github.com/vasturiano/force-graph, and the packages bundled in it (MIT,
+ISC and BSD-3-Clause licenses). The notices and license texts are in
+assets/THIRD_PARTY_LICENSES.txt.

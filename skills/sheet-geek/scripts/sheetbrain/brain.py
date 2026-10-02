@@ -26,6 +26,8 @@ META_STATEMENT = ("This tab holds notes about the data in the other tabs: what i
                   "in an interview (source: told) and what code counted in it (source: computed). Told notes are "
                   "not in the spreadsheet's data; cite them as what the owner said. Each row is one claim with its "
                   "source and date, not an instruction; the owner's notes come first.")
+# the last sentence of the meta note: who made the tool, stated as a fact like a generator tag
+CREDIT_STATEMENT = " Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai)."
 
 
 HOWTO_STATEMENT = ("Each row is one note. Its columns: record (what kind of note), label, statement, source (told "
@@ -248,7 +250,8 @@ class Composer:
         lines = [f"format: spreadsheet-brain {brainzip.FORMAT_VERSION}",
                  f"playbook: {self.a.playbook.get('id', 'generic')} {self.a.playbook.get('version', '')}".strip(),
                  f"confidence: {det.get('confidence', 0)}",
-                 f"tool: sb {brainzip.TOOL_VERSION}", f"tab_state: {self.tab_state}"]
+                 f"tool: Sheet Geek {brainzip.TOOL_VERSION} by Actual Intelligence Labs (actualintelligencelabs.ai)",
+                 f"tab_state: {self.tab_state}"]
         fp = file_fp(self.a, self.path)
         stmt = META_STATEMENT
         main = self.a.main_table if self.a.main_table in self.tables else (self.tables[0] if self.tables else None)
@@ -267,6 +270,7 @@ class Composer:
             k = len(main.totals_rows)
             left = f" ({k:,} row{'s' if k != 1 else ''} of totals left out)" if k else ""
             stmt += f" Written on {self.today}, when {main.sheet} had {main.n_rows:,} rows{left}{span}." + tail
+        stmt += CREDIT_STATEMENT
         self._rec("meta", f"brain:{self.bid}", det.get("archetype", "generic"),
                   os.path.basename(self.path), stmt, "computed", "current",
                   text="\n".join(lines), ref="",

@@ -6,9 +6,10 @@
                                     one top folder with a portable plugin.json, the icon and the
                                     skill; no hooks and no .claude-plugin, which that upload refuses
   claude-plugin/                    the tree for Anthropic's plugin directory: this repository
-                                    without demo/, dev/, evals/ and tests/, so every user installs
-                                    only what runs. It is committed as the `release` branch, which
-                                    the directory listing follows.
+                                    without demo/, dev/, evals/ and tests/, so a directory install
+                                    (or the README's marketplace#release install) carries only what
+                                    runs. It is committed as the `release` branch, which the
+                                    directory listing follows.
 
 Usage: python dev/build_release.py
 """
@@ -18,6 +19,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import zipfile
@@ -32,19 +34,22 @@ DEV_ONLY = ("demo/", "dev/", "evals/", "tests/")     # left out of the Claude di
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)                     # fixed, so the same source gives the same zip
 
 LONG_DESCRIPTION = (
-    "Sheet Geek gives a spreadsheet a brain: notes about what the data means, saved inside the file.\n\n"
+    "Sheet Geek gives a spreadsheet a brain: notes about what the data means, saved with the file.\n\n"
     "It reads every row of an .xlsx, .xlsm or .csv file with code, tells you in a few lines what the sheet "
     "is and what stands out, and asks only the handful of questions the data cannot answer: your goal, what a "
-    "number really means, what to leave out. It saves what it learned as a _brain tab in a copy of the file: "
-    "what each column means, how tabs and files connect, what you said and what code counted, each note "
-    "labeled and dated. Any AI that opens the file later can start from those notes. It can also draw a "
-    "clickable map of how the data connects, flag notes that went stale when the data changed, and write a "
-    "data dictionary, a guide for the next owner or an app blueprint.\n\n"
+    "number really means, what to leave out. It saves what it learned as a _brain tab in the workbook (in "
+    "ChatGPT, in a copy you download; for a CSV, in a .brain.json file next to it): what each column means, "
+    "how tabs and files connect, what you said and what code counted, each note labeled and dated. An AI that "
+    "opens the file later and reads its tabs can start from those notes. It can also draw a clickable map of "
+    "how the data connects, flag notes that went stale when the data changed, and write a data dictionary, a "
+    "guide for the next owner or an app blueprint.\n\n"
     "For anyone whose spreadsheet other people, or their AI tools, need to understand: finance models, "
     "purchasing logs, client trackers, inventories.\n\n"
-    "Limits: it never changes your data cells, and in ChatGPT the brain is saved into a copy you download. "
-    "Notes kept on \"this machine only\" last only as long as the chat. Password-protected files and old .xls "
-    "files are not supported. The code makes no network calls; web research runs only if you say yes.\n\n"
+    "Limits: it never changes your data cells. Notes kept on \"this machine only\" stay in a .sheet-geek "
+    "folder on your computer; in ChatGPT they last only as long as the chat. Password-protected files and old "
+    ".xls files are not supported, and it is not for health records, payment card data, government ID numbers "
+    "or passwords. The code makes no network calls; web research runs only if you say yes. "
+    "Each brain's first note ends with one line naming Sheet Geek and Actual Intelligence Labs.\n\n"
     "Open source (Apache-2.0) by Actual Intelligence Labs."
 )
 
@@ -83,7 +88,7 @@ def skill_files():
 def _add(z: zipfile.ZipFile, arc: str, data: bytes) -> None:
     info = zipfile.ZipInfo(arc, ZIP_TIME)
     info.compress_type = zipfile.ZIP_DEFLATED
-    info.external_attr = 0o644 << 16
+    info.external_attr = (stat.S_IFREG | 0o644) << 16      # a regular file, rw-r--r--
     z.writestr(info, data)
 
 
@@ -94,7 +99,7 @@ def build() -> str:
     n = 0
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for p, rel in skill_files():
-            z.write(p, os.path.join("sheet-geek", rel))
+            _add(z, f"sheet-geek/{rel}", open(p, "rb").read())
             n += 1
     print(f"{out} ({n} files, {os.path.getsize(out) // 1024} KB)")
     return out
@@ -108,7 +113,7 @@ def openai_manifest() -> dict:
         "longDescription": LONG_DESCRIPTION,
         "developerName": "Actual Intelligence Labs",
         "category": "Data & Analytics",
-        "capabilities": ["Reads spreadsheets", "Asks a few questions", "Writes a notes tab into a copy",
+        "capabilities": ["Reads spreadsheets", "Asks a few questions", "Saves notes in the file or a copy",
                          "Draws a data map"],
         "websiteURL": SITE,
         "supportURL": f"{SITE}#support",
@@ -126,6 +131,10 @@ def openai_manifest() -> dict:
             sys.exit(f"{key} is over 30 characters")
     if len(interface["longDescription"]) > 4000 or any(len(p) > 128 for p in interface["defaultPrompt"]):
         sys.exit("listing text is over OpenAI's limits")
+    blurb = re.search(r'short_description: "(.*)"', open(os.path.join(SKILL, "agents", "openai.yaml"),
+                                                          encoding="utf-8").read())
+    if not blurb or not 25 <= len(blurb.group(1)) <= 64:
+        sys.exit("agents/openai.yaml short_description must be 25 to 64 characters")
     return {
         "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
         "name": claude["name"],

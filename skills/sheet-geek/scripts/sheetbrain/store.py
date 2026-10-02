@@ -125,6 +125,12 @@ class Store:
         self.upsert_file(new_id, path, kind, "own")      # remember it from first contact
         return new_id, "own"
 
+    def known(self, path: str) -> tuple | None:
+        """(brain_id, origin) of a file the index already has, without adding it."""
+        row = self.db.execute("SELECT brain_id, origin FROM files WHERE path=? "
+                              "ORDER BY updated_at DESC LIMIT 1", (os.path.abspath(path),)).fetchone()
+        return (row[0], row[1]) if row else None
+
     def upsert_file(self, brain_id: str, path: str, kind: str, origin: str, tab_state: str = "",
                     fingerprint: dict | None = None, archetype: str = ""):
         path = os.path.abspath(path)

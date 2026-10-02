@@ -583,6 +583,19 @@ def test_terms_that_name_the_month_recommend_that_the_partner_reprices(book):
     assert all(q.recommend != "reprices" for q in _asked(a, "find_listscope_"))
 
 
+def test_a_list_scope_question_names_the_column_it_matched(book):
+    """The question and its clause start with the matched column's name, never with
+    '{}' or a title-period dict (a bug from 0.2.0 to 0.2.1)."""
+    hits = 0
+    for seed in SEEDS:
+        m, a = book("list_terms", seed)
+        p = m["plants"][0]
+        q = next(iter(_asked(a, "find_listscope_")), None)
+        hits += (q is not None and q.prompt.startswith(f"{p['col']} on ")
+                 and q.meta["clause"].startswith(f"{p['col']} on "))
+    assert hits >= NEEDED, hits
+
+
 def test_a_title_period_and_a_short_range_are_one_question(book):
     hits = 0
     for seed in SEEDS:

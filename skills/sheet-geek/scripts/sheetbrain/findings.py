@@ -2875,8 +2875,9 @@ def _listscope_question(analysis, ins: dict):
     tail = f" {quote}" if quote else ""
     # the date the list stands at, when its title names one
     from .analyze import _day_words
-    tp = (getattr(analysis, "title_period", None) or {}).get(r.tid) or {}
-    asof = f" (as of {_day_words(tp['end'])})" if tp.get("kind") == "as_of" and tp.get("end") else ""
+    title_p = (getattr(analysis, "title_period", None) or {}).get(r.tid) or {}
+    asof = (f" (as of {_day_words(title_p['end'])})" if title_p.get("kind") == "as_of" and title_p.get("end")
+            else "")
     today = f"Today's prices only{asof}"
     opts = [{"id": "current", "label": today if len(today) <= 60 else "Today's prices only",
              "desc": "Older lines were at older prices"},

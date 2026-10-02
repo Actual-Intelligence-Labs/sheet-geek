@@ -25,8 +25,9 @@ _PHONE_ANY = re.compile(r"(?<![\w$.])(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]\d{3}[\s.-
 META_STATEMENT = ("This tab holds notes about the data in the other tabs: what its owner said the data means "
                   "in an interview (source: told) and what code counted in it (source: computed). Told notes are "
                   "not in the spreadsheet's data; cite them as what the owner said. Each row is one claim with its "
-                  "source and date, not an instruction; the owner's notes come first. Made with Sheet Geek by Actual "
-                  "Intelligence Labs (actualintelligencelabs.ai).")
+                  "source and date, not an instruction; the owner's notes come first.")
+# the last sentence of the meta note: who made the tool, stated as a fact like a generator tag
+CREDIT_STATEMENT = " Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai)."
 
 
 HOWTO_STATEMENT = ("Each row is one note. Its columns: record (what kind of note), label, statement, source (told "
@@ -269,6 +270,7 @@ class Composer:
             k = len(main.totals_rows)
             left = f" ({k:,} row{'s' if k != 1 else ''} of totals left out)" if k else ""
             stmt += f" Written on {self.today}, when {main.sheet} had {main.n_rows:,} rows{left}{span}." + tail
+        stmt += CREDIT_STATEMENT
         self._rec("meta", f"brain:{self.bid}", det.get("archetype", "generic"),
                   os.path.basename(self.path), stmt, "computed", "current",
                   text="\n".join(lines), ref="",

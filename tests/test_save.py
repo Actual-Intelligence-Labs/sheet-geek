@@ -272,7 +272,7 @@ def test_long_owner_words_are_never_cut(tmp_path):
 
 def test_the_tool_version_is_one_number_everywhere(tmp_path):
     """The meta note names the tool that wrote the brain, and sb --version, the
-    skill's metadata, the package and the plugin all give the same number."""
+    skill's metadata, the package, the plugin and the map page's generator tag all give the same number."""
     book = orders_book(tmp_path / "orders.xlsx")
     meta = next(r for r in brain.Composer(Analysis([book]), book, "b1", {}).compose() if r.get("record") == "meta")
     assert f"tool: Sheet Geek {sb.VERSION} by Actual Intelligence Labs" in json.dumps(meta) and sb.VERSION == brainzip.TOOL_VERSION
@@ -281,6 +281,10 @@ def test_the_tool_version_is_one_number_everywhere(tmp_path):
     assert f'version = "{sb.VERSION}"' in open(os.path.join(ROOT, "pyproject.toml"), encoding="utf-8").read()
     plugin = json.load(open(os.path.join(ROOT, ".claude-plugin", "plugin.json"), encoding="utf-8"))
     assert plugin["version"] == sb.VERSION
+    viewer = open(os.path.join(ROOT, "skills", "sheet-geek", "assets", "viewer.html"), encoding="utf-8").read()
+    assert f'<meta name="generator" content="sheet-geek {sb.VERSION}">' in viewer
+    # the maker is named once, as the meta note's last sentence: a fact, never an instruction
+    assert meta["statement"].endswith(" Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai).")
 
 
 def test_not_sure_on_the_goal_or_the_build_pick_is_no_open_item(tmp_path):

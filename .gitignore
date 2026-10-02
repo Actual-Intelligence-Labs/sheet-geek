@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dev/screenshots/*.tmp
+*.brain-backup
+~$*
+dist/
+.DS_Store

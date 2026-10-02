@@ -1,0 +1,13 @@
+[project]
+name = "sheet-geek"
+version = "0.2.2"
+description = "Gives any spreadsheet a brain that travels inside the file."
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = ["openpyxl>=3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest", "xlsxwriter", "defusedxml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

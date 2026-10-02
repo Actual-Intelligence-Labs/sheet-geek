@@ -1,0 +1,10 @@
+# ChatGPT and Codex read this for the skill's name, description and starting prompt
+# (https://learn.chatgpt.com/docs/build-skills). Without it, ChatGPT writes its own description.
+interface:
+  display_name: "Sheet Geek"
+  short_description: "Gives a spreadsheet a brain: reads it first, asks only what the data can't tell it, and saves the answers inside the file as a tab any AI can read. Never changes your data."
+  brand_color: "#FF7DB5"
+  default_prompt: "Give this spreadsheet a brain."
+
+policy:
+  allow_implicit_invocation: true

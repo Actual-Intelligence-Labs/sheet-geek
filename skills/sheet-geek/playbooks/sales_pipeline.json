@@ -1,0 +1,118 @@
+{
+  "id": "sales_pipeline",
+  "version": "0.1.0",
+  "name": "Sales pipeline",
+  "looks_like": "a deal or opportunity pipeline",
+  "summary": "Deals or opportunities with a stage, an amount and an expected close date, usually exported from a CRM.",
+  "full": false,
+  "roles": {
+    "deal_name": {"label": "Deal", "headers": ["deal name", "deal", "opportunity name", "opportunity", "opp name", "name"], "type": "text", "kind": "entity", "entity": "deal"},
+    "stage": {"label": "Stage", "headers": ["stage", "deal stage", "sales stage", "pipeline stage", "opportunity stage"], "type": "text", "kind": "dimension"},
+    "deal_amount": {"label": "Amount", "headers": ["amount", "deal amount", "deal value", "value", "opportunity amount", "amount in company currency", "acv", "tcv", "arr", "mrr", "contract value", "total contract value"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "close_date": {"label": "Close date", "headers": ["close date", "expected close date", "closing date", "closed date", "est close date", "estimated close date", "close"], "type": "date", "kind": "temporal"},
+    "probability": {"label": "Probability", "headers": ["probability", "win probability", "deal probability", "likelihood", "confidence"], "type": "number", "kind": "metric", "additive": false, "unit": "percent"},
+    "forecast_category": {"label": "Forecast category", "headers": ["forecast category", "forecast", "forecast type", "forecast status", "commit"], "type": "text", "kind": "dimension"},
+    "owner": {"label": "Owner", "headers": ["owner", "deal owner", "opportunity owner", "sales rep", "rep", "account executive", "ae", "salesperson", "assigned to"], "type": "text", "kind": "dimension"},
+    "account": {"label": "Account", "headers": ["account", "account name", "company", "company name", "associated company", "customer", "client", "organization"], "type": "text", "kind": "entity", "entity": "company"},
+    "created": {"label": "Created", "headers": ["create date", "created date", "created", "created on", "date created", "opened"], "type": "date", "kind": "temporal"},
+    "pipeline": {"label": "Pipeline", "headers": ["pipeline", "sales pipeline", "team", "business unit", "product line"], "type": "text", "kind": "dimension"},
+    "lost_reason": {"label": "Lost reason", "headers": ["lost reason", "closed lost reason", "loss reason", "reason lost", "why lost", "closed won reason"], "type": "text", "kind": "dimension"},
+    "next_step": {"label": "Next step", "headers": ["next step", "next steps", "next action", "next activity date", "next follow up"], "type": "text", "kind": "text"},
+    "deal_type": {"label": "Deal type", "headers": ["deal type", "type", "opportunity type", "new or renewal", "business type"], "type": "text", "kind": "dimension"}
+  },
+  "detect": {
+    "required_any": [["stage", "forecast_category"], ["deal_amount", "close_date", "probability"]],
+    "weights": {"stage": 3, "close_date": 3, "deal_amount": 2, "probability": 2, "forecast_category": 2, "deal_name": 2, "lost_reason": 1, "next_step": 1, "pipeline": 1, "owner": 1, "account": 1, "created": 1, "deal_type": 1},
+    "negatives": ["pack", "on_hand", "employee_id", "debit"],
+    "confident": 0.6,
+    "candidate": 0.35
+  },
+  "goals": [
+    {"id": "forecast", "label": "Forecast the quarter", "desc": "I'd weight open deals and flag slipped ones"},
+    {"id": "unstick", "label": "Find stuck deals", "desc": "I'd list deals that stopped moving"},
+    {"id": "win_more", "label": "Learn why we win or lose", "desc": "I'd compare won and lost deals by size, owner and source"}
+  ],
+  "questions": [
+    {
+      "id": "amount_basis",
+      "header": "Amount is",
+      "kind": "unit",
+      "priority": 1,
+      "ask_if": ["has_role:deal_amount"],
+      "prompt": "{role:deal_amount} adds up to {sum:deal_amount} on {rows:deal_amount} deals. Is it first-year value, the whole contract, or a monthly amount?",
+      "options": [
+        {"id": "first_year", "label": "First-year value"},
+        {"id": "whole", "label": "Whole contract value"},
+        {"id": "monthly", "label": "Monthly recurring"}
+      ],
+      "why": "Forecasts that mix yearly, total and monthly amounts can be off by twelve times or more.",
+      "unblocks": ["forecast_view", "win_loss"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["deal_amount"], "statement": "{role:deal_amount} means, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "past_close",
+      "header": "Past close",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["has_role:close_date"],
+      "prompt": "{rows:close_date} deals have a date in {role:close_date}. How should open deals whose close date has already passed count?",
+      "options": [
+        {"id": "slipped", "label": "Slipped to the next period"},
+        {"id": "lost", "label": "Treat them as lost"},
+        {"id": "keep", "label": "Keep them as they are"}
+      ],
+      "why": "Stale close dates quietly inflate this period's forecast.",
+      "unblocks": ["forecast_view", "stuck_list"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["close_date"], "statement": "Deals still open past their close date, per the owner: {answer_labels}."},
+      "stale_after": "+90d"
+    },
+    {
+      "id": "odds",
+      "header": "Odds",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["has_role:probability"],
+      "prompt": "{role:probability} has {count:probability} different values, such as {values:probability}. Which odds should the forecast use?",
+      "options": [
+        {"id": "sheet", "label": "The probabilities in the sheet"},
+        {"id": "history", "label": "Win rates from our closed deals"},
+        {"id": "own", "label": "My own by stage"}
+      ],
+      "why": "The forecast is only as good as the odds put on each deal.",
+      "unblocks": ["forecast_view"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["probability"], "statement": "The forecast weights deals using, per the owner: {answer_labels}."},
+      "stale_after": "+180d"
+    }
+  ],
+  "outputs": [
+    {"id": "forecast_view", "title": "Forecast", "pitch": "Forecast: weighted, best-case and committed totals for the period, with slipped deals flagged.", "requires": ["has_role:deal_amount", "has_role:stage"], "needs_answer": ["amount_basis", "past_close", "odds"], "goals": ["forecast"], "value": 3, "job": "analysis"},
+    {"id": "stuck_list", "title": "Stuck deals", "pitch": "Stuck deals: open deals with past close dates or no recent movement, with owner and amount.", "requires": ["has_role:close_date"], "needs_answer": ["past_close"], "goals": ["unstick"], "value": 3, "job": "analysis"},
+    {"id": "win_loss", "title": "Win and loss patterns", "pitch": "Win and loss patterns: won versus lost deals compared by size, owner, source and time to close.", "requires": ["has_role:stage"], "needs_answer": ["amount_basis"], "goals": ["win_more"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "top_share:deal_amount:owner",
+    "top_share:deal_amount:account",
+    "top_share:deal_amount:stage",
+    "pareto:deal_amount:account",
+    "mixed:stage",
+    "date_range:close_date",
+    "blank_rate:close_date",
+    "blank_rate:next_step",
+    "count_distinct:account",
+    "duplicates:deal_name"
+  ],
+  "graph": {
+    "sentence": "Dots are stages, owners and accounts, with single deals shown when records are turned on. Lines show which deals sit where. Bigger means more value.",
+    "entities": ["stage", "owner", "account", "deal_name"],
+    "record_cap": {"stage": 20, "owner": 40, "account": 200, "deal_name": 300},
+    "records": ["deal_name"],
+    "size_by": "deal_amount",
+    "relations": [
+      {"from": "deal_name", "to": "stage", "label": "sits in"},
+      {"from": "deal_name", "to": "account", "label": "is for"},
+      {"from": "owner", "to": "deal_name", "label": "owns"}
+    ],
+    "mode": "entities"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "bookings_events",
+  "version": "0.1.0",
+  "name": "Bookings and reservations",
+  "looks_like": "reservations or bookings",
+  "summary": "Reservations, room nights, appointments, registrations and tickets: who booked, for when, how many, through which channel, and whether they came.",
+  "full": false,
+  "roles": {
+    "booking_id": {"label": "Confirmation #", "headers": ["confirmation #", "confirmation number", "confirmation no", "conf #", "reservation id", "reservation #", "reservation number", "booking id", "booking #", "booking reference", "ticket #", "order #"], "type": "id", "kind": "identifier"},
+    "guest": {"label": "Guest", "headers": ["guest", "guest name", "name", "attendee", "attendee name", "customer", "client", "patient", "member", "booker"], "type": "text", "kind": "attribute"},
+    "guest_email": {"label": "Guest email", "headers": ["email", "guest email", "attendee email", "buyer email", "email address"], "type": "id", "kind": "identifier", "entity": "guest"},
+    "service_date": {"label": "Arrival or visit date", "headers": ["date", "service date", "reservation date", "arrival", "arrival date", "check in", "check in date", "event date", "appointment date", "appointment time", "visit date", "start time", "slot", "time"], "type": "date", "kind": "temporal"},
+    "departure": {"label": "Departure", "headers": ["departure", "departure date", "check out", "check out date", "checkout", "end time"], "type": "date", "kind": "temporal"},
+    "party_size": {"label": "Party size", "headers": ["party size", "party", "covers", "guests", "pax", "number of guests", "adults", "attendees", "people", "size"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "nights": {"label": "Nights", "headers": ["nights", "room nights", "number of nights", "los", "length of stay"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "status": {"label": "Status", "headers": ["status", "reservation status", "booking status", "attendee status", "appointment status", "state"], "type": "text", "kind": "dimension"},
+    "booked_on": {"label": "Booked on", "headers": ["booked on", "booking date", "date booked", "reserved on", "made on", "created", "created at", "created date", "order date"], "type": "date", "kind": "temporal"},
+    "channel": {"label": "Channel", "headers": ["source", "channel", "booking source", "booking channel", "booked via", "origin", "referrer", "partner", "market segment", "ota"], "type": "text", "kind": "entity", "entity": "channel"},
+    "resource": {"label": "Room, table or provider", "headers": ["room type", "room", "room number", "table", "section", "provider", "staff", "stylist", "server", "resource", "court", "ticket type", "area", "service"], "type": "text", "kind": "entity", "entity": "resource"},
+    "rate": {"label": "Rate", "headers": ["rate", "adr", "room rate", "nightly rate", "average rate", "rate amount", "price", "ticket price"], "type": "number", "kind": "metric", "additive": false, "unit": "currency"},
+    "revenue": {"label": "Revenue", "headers": ["revenue", "total revenue", "room revenue", "total", "amount", "gross", "spend", "total spend", "check total"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"},
+    "deposit": {"label": "Deposit", "headers": ["deposit", "deposit amount", "prepayment", "prepaid", "credit card hold", "no show fee", "cancellation fee"], "type": "number", "kind": "metric", "additive": true, "unit": "currency"}
+  },
+  "detect": {
+    "required_any": [["service_date", "booking_id"], ["party_size", "status", "nights", "departure", "resource"]],
+    "weights": {"party_size": 3, "nights": 2, "departure": 2, "booking_id": 2, "service_date": 2, "booked_on": 2, "resource": 2, "deposit": 2, "status": 1, "channel": 1, "rate": 1, "guest": 1},
+    "negatives": ["pack", "debit", "stage", "on_hand"],
+    "confident": 0.45,
+    "candidate": 0.3
+  },
+  "goals": [
+    {"id": "staff_to_demand", "label": "Staff to demand", "desc": "I'd map bookings by day and hour"},
+    {"id": "cut_no_shows", "label": "Cut no-shows", "desc": "I'd measure no-shows and cancels by channel and lead time"},
+    {"id": "fill_capacity", "label": "Fill more capacity", "desc": "I'd show occupancy and the slow slots"}
+  ],
+  "questions": [
+    {
+      "id": "row_grain",
+      "header": "One row is",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Is each row one booking, one guest or ticket, or one night of a stay?",
+      "options": [
+        {"id": "booking", "label": "One booking"},
+        {"id": "guest", "label": "One guest or ticket"},
+        {"id": "night", "label": "One night of a stay"}
+      ],
+      "why": "Covers, room nights and bookings are different counts, and mixing them overstates demand.",
+      "unblocks": ["demand_map", "no_show_report", "occupancy"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "One row in this sheet is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "visit_counts",
+      "header": "Counts as",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["mixed_values:status"],
+      "prompt": "Which of the {count:status} statuses in {role:status}, such as {values:status}, count as a completed visit?",
+      "options": [
+        {"id": "completed_only", "label": "Completed visits only", "desc": "Only completed visits count"},
+        {"id": "plus_no_show", "label": "Those plus no-shows"},
+        {"id": "not_cancelled", "label": "Everything not cancelled"}
+      ],
+      "why": "No-show and cancellation rates depend on which statuses count as a visit.",
+      "unblocks": ["no_show_report", "demand_map"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["status"], "statement": "A completed visit in {role:status}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "capacity",
+      "header": "Capacity",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["goal:fill_capacity"],
+      "prompt": "How many can you serve at once: rooms, seats or appointment slots?",
+      "options": [
+        {"id": "fixed", "label": "One fixed number (I'll type it)"},
+        {"id": "by_day", "label": "It varies by day"},
+        {"id": "by_resource", "label": "It varies by resource", "desc": "By room or slot"}
+      ],
+      "why": "Occupancy is what was sold divided by what was available, so it needs what was available.",
+      "unblocks": ["occupancy"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "Capacity, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "demand_map", "title": "Demand map", "pitch": "Demand map: bookings and party sizes by day and hour, for staffing and prep.", "requires": ["has_role:service_date"], "needs_answer": ["row_grain"], "goals": ["staff_to_demand"], "value": 3, "job": "analysis"},
+    {"id": "no_show_report", "title": "No-show report", "pitch": "No-show report: no-show and cancellation rates by channel, lead time and party size, with deposit policies to compare.", "requires": ["has_role:status"], "needs_answer": ["visit_counts"], "goals": ["cut_no_shows"], "value": 3, "job": "analysis"},
+    {"id": "occupancy", "title": "Occupancy picture", "pitch": "Occupancy picture: share of capacity sold by day, with average rate and revenue per available room, seat or slot.", "requires": ["has_role:service_date"], "needs_answer": ["capacity", "row_grain"], "goals": ["fill_capacity"], "value": 2, "job": "analysis"}
+  ],
+  "insights": [
+    "date_range:service_date",
+    "mixed:status",
+    "mixed:channel",
+    "top_share:revenue:channel",
+    "top_share:party_size:channel",
+    "top_share:revenue:resource",
+    "count_distinct:guest_email",
+    "duplicates:booking_id",
+    "blank_rate:guest_email"
+  ],
+  "graph": {
+    "sentence": "Dots are channels, rooms or tables, and statuses, with guests shown when records are turned on. Lines show how guests booked and what they used. Bigger means more revenue.",
+    "entities": ["channel", "resource", "status", "guest_email"],
+    "record_cap": {"channel": 30, "resource": 100, "status": 15, "guest_email": 300},
+    "records": ["guest_email"],
+    "size_by": "revenue",
+    "relations": [
+      {"from": "guest_email", "to": "channel", "label": "booked via"},
+      {"from": "guest_email", "to": "resource", "label": "used"},
+      {"from": "channel", "to": "status", "label": "ends as"}
+    ],
+    "mode": "entities"
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["guest", "guest_email"]
+  }
+}

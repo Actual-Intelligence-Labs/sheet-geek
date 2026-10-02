@@ -1,0 +1,388 @@
+{
+  "id": "ledger",
+  "version": "0.1.0",
+  "name": "Ledger or expense log",
+  "looks_like": "a ledger, expense log or P&L export",
+  "summary": "General ledger detail, bank or card transactions, expense logs and P&L exports: money booked to accounts by date, with payees, memos and classes.",
+  "full": true,
+  "roles": {
+    "txn_date": {
+      "label": "Date",
+      "headers": ["date", "transaction date", "txn date", "posting date", "post date", "posted date", "entry date", "gl date", "journal date", "effective date"],
+      "type": "date", "kind": "temporal"
+    },
+    "account": {
+      "label": "Account",
+      "headers": ["account", "account name", "account full name", "gl account", "gl account name", "account title", "ledger account", "distribution account", "expense account", "category"],
+      "type": "text", "kind": "entity", "entity": "account"
+    },
+    "account_num": {
+      "label": "Account #",
+      "headers": ["account #", "account number", "account no", "account code", "account id", "acct #", "acct no", "acct number", "gl code", "gl #", "gl number", "gl account number", "nominal code"],
+      "type": "id", "kind": "identifier"
+    },
+    "account_type": {
+      "label": "Account type",
+      "headers": ["account type", "account class", "account category", "account group", "financial statement", "fs line", "report group", "classification"],
+      "type": "text", "kind": "dimension"
+    },
+    "offset_account": {
+      "label": "Other side (split)",
+      "headers": ["split", "split account", "offset account", "contra account", "other account"],
+      "type": "text", "kind": "dimension"
+    },
+    "debit": {
+      "label": "Debit",
+      "headers": ["debit", "debits", "dr", "debit amount", "debit usd"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "credit": {
+      "label": "Credit",
+      "headers": ["credit", "credits", "cr", "credit amount", "credit usd"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "money_in": {
+      "label": "Money in",
+      "headers": ["deposit", "deposits", "money in", "paid in", "received", "inflow", "inflows"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "money_out": {
+      "label": "Money out",
+      "headers": ["withdrawal", "withdrawals", "money out", "paid out", "spent", "outflow", "outflows"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "amount": {
+      "label": "Amount",
+      "headers": ["amount", "transaction amount", "net amount", "net", "net value", "total", "value", "amount usd", "local amount", "gross"],
+      "type": "number", "kind": "metric", "additive": true, "unit": "currency"
+    },
+    "balance": {
+      "label": "Running balance",
+      "headers": ["balance", "running balance", "ending balance", "closing balance", "cumulative balance", "balance usd"],
+      "type": "number", "kind": "metric", "additive": false, "unit": "currency", "level": true
+    },
+    "memo": {
+      "label": "Memo",
+      "headers": ["memo", "memo description", "description", "transaction description", "line description", "details", "narration", "narrative", "particulars", "notes", "purpose"],
+      "type": "text", "kind": "text"
+    },
+    "payee": {
+      "label": "Payee or name",
+      "headers": ["name", "payee", "payee name", "vendor", "vendor name", "supplier", "customer", "contact", "merchant", "merchant name", "counterparty", "paid to", "received from"],
+      "type": "text", "kind": "entity", "entity": "payee"
+    },
+    "txn_type": {
+      "label": "Transaction type",
+      "headers": ["transaction type", "txn type", "type", "entry type", "source", "source type", "journal", "journal type", "document type"],
+      "type": "text", "kind": "dimension"
+    },
+    "ref_num": {
+      "label": "Reference #",
+      "headers": ["num", "no", "number", "ref", "ref #", "reference", "reference #", "check #", "check number", "check no", "doc #", "doc number", "document number", "journal #", "entry #", "je #", "je number", "transaction id"],
+      "type": "id", "kind": "identifier"
+    },
+    "class": {
+      "label": "Class or department",
+      "headers": ["class", "department", "dept", "cost center", "cost centre", "division", "tracking", "tracking category", "fund", "program", "project", "job", "segment"],
+      "type": "text", "kind": "dimension"
+    },
+    "location": {
+      "label": "Location or entity",
+      "headers": ["location", "site", "store", "property", "branch", "entity", "company", "business unit", "subsidiary"],
+      "type": "text", "kind": "dimension"
+    },
+    "period": {
+      "label": "Period",
+      "headers": ["period", "month", "fiscal period", "fiscal month", "posting period", "accounting period", "fiscal year", "year"],
+      "type": "date", "kind": "temporal"
+    },
+    "cleared": {
+      "label": "Cleared",
+      "headers": ["cleared", "clr", "reconciled", "rec", "reconciliation status", "status", "posted"],
+      "type": "any", "kind": "flag"
+    }
+  },
+  "detect": {
+    "required_any": [["account", "account_num", "memo", "payee"], ["amount", "debit", "credit", "money_in", "money_out", "balance"]],
+    "weights": {
+      "account": 3, "debit": 2, "credit": 2, "balance": 2,
+      "account_num": 1, "txn_type": 1, "offset_account": 1, "memo": 1, "payee": 1, "ref_num": 1,
+      "amount": 1, "txn_date": 1, "money_in": 1, "money_out": 1
+    },
+    "negatives": ["due_date", "pack", "stage", "order_id", "hire_date"],
+    "confident": 0.6,
+    "candidate": 0.3
+  },
+  "goals": [
+    {"id": "monthly_pnl", "label": "See a clean monthly P&L", "desc": "I'd build income and costs by month from these lines"},
+    {"id": "cut_costs", "label": "Find costs to cut", "desc": "I'd list recurring charges and the biggest payees"},
+    {"id": "clean_books", "label": "Clean up the books", "desc": "I'd flag duplicates, odd entries and unsorted lines"},
+    {"id": "budget_actual", "label": "Compare to budget", "desc": "I'd line actuals up against your plan"}
+  ],
+  "questions": [
+    {
+      "id": "coverage",
+      "header": "Coverage",
+      "kind": "coverage",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Do these {rows} lines cover every account for the dates they span?",
+      "options": [
+        {"id": "all_accounts", "label": "Every account"},
+        {"id": "some_accounts", "label": "Some accounts only", "desc": "Only some accounts"},
+        {"id": "one_entity", "label": "One entity of several", "desc": "Other entities keep their own"}
+      ],
+      "why": "A P&L built from a slice of the books looks like the whole business but is not.",
+      "unblocks": ["monthly_pnl", "recurring_costs", "budget_vs_actual"],
+      "fact": {"kind": "coverage", "class": "data", "depends": [], "statement": "Coverage of these ledger lines, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "books_basis",
+      "header": "Books basis",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Are these books kept on a cash basis or an accrual basis?",
+      "options": [
+        {"id": "cash", "label": "Cash", "desc": "Kept on a cash basis"},
+        {"id": "accrual", "label": "Accrual", "desc": "Kept on an accrual basis"},
+        {"id": "cash_adjusted", "label": "Cash, adjusted at year end"}
+      ],
+      "why": "Cash and accrual books put the same sale or bill in different months.",
+      "unblocks": ["monthly_pnl", "budget_vs_actual"],
+      "fact": {"kind": "definition", "class": "data", "depends": [], "statement": "These books are kept on this basis, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "sign_rule",
+      "header": "Plus means",
+      "kind": "unit",
+      "priority": 1,
+      "ask_if": ["has_negatives:amount", "no_role:debit"],
+      "prompt": "{role:amount} has {rows:amount} numbers, some of them negative. What does a positive number mean?",
+      "options": [
+        {"id": "money_in", "label": "Money coming in"},
+        {"id": "debit", "label": "A debit", "desc": "A positive number is a debit"},
+        {"id": "expense", "label": "An expense", "desc": "An expense or charge"}
+      ],
+      "why": "Every total flips if the sign is read the wrong way.",
+      "unblocks": ["monthly_pnl", "books_check"],
+      "fact": {"kind": "unit", "class": "data", "depends": ["amount"], "statement": "A positive number in {role:amount} means, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "leave_out",
+      "header": "Leave out",
+      "kind": "exclusion",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "Which of these should stay out of income and expense totals? Pick all that apply.",
+      "multi": true,
+      "options": [
+        {"id": "transfers", "label": "Transfers between our accounts"},
+        {"id": "owner", "label": "Owner draws", "desc": "The owner's own money out or in"},
+        {"id": "debt_payments", "label": "Debt payments", "desc": "Payments on debt; the charges are already counted"}
+      ],
+      "why": "Transfers and debt payments counted as spending double-count the same dollars.",
+      "unblocks": ["monthly_pnl", "recurring_costs"],
+      "fact": {"kind": "exclusion", "class": "data", "depends": [], "statement": "The owner said to leave these out of income and expense totals: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "class_meaning",
+      "header": "Classes",
+      "kind": "definition",
+      "priority": 2,
+      "ask_if": ["mixed_values:class"],
+      "prompt": "Are the {count:class} values in {role:class}, such as {values:class}, separate businesses, parts of one business, or something else?",
+      "options": [
+        {"id": "separate", "label": "Separate businesses"},
+        {"id": "parts", "label": "Departments of one business"},
+        {"id": "type", "label": "Something else (type it)", "desc": "Type what the values are"}
+      ],
+      "why": "Separate businesses get their own P&L; departments roll up into one.",
+      "unblocks": ["monthly_pnl"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["class"], "statement": "Values in {role:class}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "account_groups",
+      "header": "Numbering",
+      "kind": "mapping",
+      "priority": 3,
+      "ask_if": ["has_role:account_num"],
+      "prompt": "Do the {count:account_num} numbers in {role:account_num} follow the usual ranges: 1000s assets, 2000s liabilities, 3000s equity, 4000s income, 5000s and up costs?",
+      "options": [
+        {"id": "standard", "label": "Yes, the usual ranges"},
+        {"id": "mostly", "label": "Mostly, with exceptions"},
+        {"id": "own", "label": "Our own numbering"}
+      ],
+      "why": "Grouping accounts by number range builds the P&L without asking about each account.",
+      "unblocks": ["monthly_pnl", "books_check"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["account_num"], "statement": "Numbering in {role:account_num}, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "suspense",
+      "header": "Unsorted",
+      "kind": "rule",
+      "priority": 2,
+      "ask_if": ["goal:clean_books"],
+      "prompt": "Where should uncategorized, suspense or ask-my-accountant lines go?",
+      "options": [
+        {"id": "review", "label": "Review them with me"},
+        {"id": "other_expense", "label": "Treat them as other expense"},
+        {"id": "hold", "label": "Leave them out for now"}
+      ],
+      "why": "Unsorted lines are where miscoded spending and missing income hide.",
+      "unblocks": ["books_check"],
+      "fact": {"kind": "rule", "class": "data", "depends": [], "statement": "Uncategorized and suspense lines, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "months_closed",
+      "header": "Closed",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": ["goal:monthly_pnl"],
+      "prompt": "Which months are closed and final?",
+      "options": [
+        {"id": "all", "label": "All of them"},
+        {"id": "all_but_last", "label": "All but the latest month"},
+        {"id": "none", "label": "None yet"}
+      ],
+      "why": "Months that are not closed can still change, so their numbers are marked as not final.",
+      "unblocks": ["monthly_pnl"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "Closed and final months, per the owner: {answer_labels}."},
+      "stale_after": "+31d"
+    },
+    {
+      "id": "budget_source",
+      "header": "Budget",
+      "kind": "history",
+      "priority": 2,
+      "ask_if": ["goal:budget_actual"],
+      "prompt": "Where does the budget you compare against live?",
+      "options": [
+        {"id": "other_tab", "label": "Another tab in this file"},
+        {"id": "other_file", "label": "A separate file", "desc": "A file of its own"},
+        {"id": "none", "label": "There is no written budget"}
+      ],
+      "why": "Budget versus actual needs the plan and the books lined up by account and month.",
+      "unblocks": ["budget_vs_actual"],
+      "fact": {"kind": "history", "class": "data", "depends": [], "statement": "The budget lives in, per the owner: {answer_labels}."},
+      "stale_after": "+365d"
+    }
+  ],
+  "insights": [
+    "top_share:amount:payee",
+    "top_share:money_out:payee",
+    "pareto:amount:account",
+    "top_share:amount:class",
+    "negatives:amount",
+    "duplicates:ref_num",
+    "date_range:txn_date",
+    "count_distinct:account",
+    "blank_rate:account",
+    "blank_rate:memo",
+    "mixed:txn_type",
+    "mixed:class"
+  ],
+  "outputs": [
+    {
+      "id": "monthly_pnl",
+      "title": "Monthly P&L",
+      "pitch": "Monthly P&L: income, cost of sales and expenses by month and by class, built from these lines, with the source lines behind every number.",
+      "requires": ["has_role:txn_date"],
+      "needs_answer": ["leave_out", "books_basis", "coverage"],
+      "goals": ["monthly_pnl"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "recurring_costs",
+      "title": "Recurring costs",
+      "pitch": "Recurring costs: subscriptions and repeat payees with their yearly cost, largest first.",
+      "requires": ["has_role:payee", "has_role:txn_date"],
+      "needs_answer": ["leave_out"],
+      "goals": ["cut_costs"],
+      "value": 3,
+      "job": "analysis"
+    },
+    {
+      "id": "books_check",
+      "title": "Books check",
+      "pitch": "Books check: possible duplicate payments, round-number and weekend entries, unsorted lines and debits that do not match credits.",
+      "requires": [],
+      "needs_answer": ["suspense"],
+      "goals": ["clean_books"],
+      "value": 3,
+      "job": "audit"
+    },
+    {
+      "id": "budget_vs_actual",
+      "title": "Budget vs actual",
+      "pitch": "Budget vs actual: connect your budget or model on account and compare every month, largest gaps first.",
+      "requires": [],
+      "needs_answer": ["budget_source", "books_basis"],
+      "goals": ["budget_actual"],
+      "value": 2,
+      "job": "join"
+    },
+    {
+      "id": "guide_next_owner",
+      "title": "Guide for the next owner",
+      "pitch": "Guide for the next owner: a plain page on how these books are kept, what the signs mean, which lines are left out and how accounts roll up.",
+      "requires": [],
+      "goals": ["monthly_pnl", "clean_books"],
+      "value": 2,
+      "job": "explain"
+    },
+    {
+      "id": "app_blueprint",
+      "title": "App blueprint",
+      "pitch": "App blueprint: expense sorting rules that suggest an account for each new bank or card line and hold anything unsure for your review.",
+      "requires": [],
+      "goals": ["clean_books", "cut_costs"],
+      "value": 1,
+      "job": "blueprint"
+    }
+  ],
+  "gotchas": [
+    {"if": "has_role:balance", "say": "{role:balance} is a running balance: each row restates the total so far, so adding the column up means nothing."},
+    {"if": ["has_role:debit", "has_role:credit"], "say": "Debits and credits sit in separate columns, so totals need one sign rule before they mean anything."},
+    {"if": "has_role:offset_account", "say": "{role:offset_account} names the other side of each entry; rows that read -Split- touch several accounts at once."},
+    {"if": "has_negatives:amount", "say": "{role:amount} mixes positive and negative numbers; whether negative means money out or a credit depends on the export."},
+    {"if": "mixed_values:class", "say": "{role:class} splits activity into {values:class}, so totals across classes mix different parts of the business."},
+    {"if": "has_blanks:account", "say": "{role:account} is blank on some rows; those are often headings, subtotal rows or opening balances rather than transactions."},
+    {"if": "tree_names:account", "say": "Account names written as Parent:Child carry the account tree inside the name."},
+    {"if": "has_role:txn_type", "say": "{role:txn_type} includes types such as {values:txn_type}; transfers and journal entries move money between accounts without being income or spending."},
+    {"if": "has_role:money_out", "say": "{role:money_out} is from the bank's point of view: money leaving the account, which the books record as a credit to cash."},
+    {"if": "has_role:cleared", "say": "{role:cleared} shows which lines are matched to a bank statement; uncleared lines can still change or disappear."}
+  ],
+  "graph": {
+    "sentence": "Dots are account groups, accounts, payees and classes. Lines show where money was booked. Bigger means more money.",
+    "entities": ["account_type", "account", "payee", "class", "location"],
+    "record_cap": {"account_type": 20, "account": 300, "payee": 100, "class": 40, "location": 40},
+    "records": ["payee"],
+    "size_by": "amount",
+    "relations": [
+      {"from": "account", "to": "account_type", "label": "rolls up to"},
+      {"from": "payee", "to": "account", "label": "booked to"},
+      {"from": "class", "to": "account", "label": "uses"},
+      {"from": "location", "to": "class", "label": "includes"}
+    ],
+    "mode": "entities"
+  },
+  "freshness": {
+    "default_stale_after": "+365d",
+    "rules": [
+      {"role": "txn_date", "stale_after": "+31d", "basis": "The latest month of a ledger usually stays open until it is closed, so its totals can still change."}
+    ]
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["memo"]
+  }
+}

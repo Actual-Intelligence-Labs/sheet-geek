@@ -1,0 +1,3088 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="generator" content="sheet-geek 0.2.2">
+<title>Sheet Geek</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e1e1e'/%3E%3Cpath d='M9 22 16 10l8 11M9 22h15' stroke='%23dcddde' stroke-opacity='.35' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='16' cy='10' r='3.6' fill='%235B8DEF'/%3E%3Ccircle cx='9' cy='22' r='3' fill='%23E8A33D'/%3E%3Ccircle cx='24' cy='21' r='2.6' fill='%234F7CFF' stroke='%23dcddde' stroke-width='1'/%3E%3C/svg%3E">
+<style>
+/* Sheet Geek map. A dark graph view in the spirit of Obsidian's. Every chrome color is a token here;
+   the dots take their colors from the graph's own groups so the map, the Excel drawing and the vault match. */
+:root {
+  --bg: #1e1e1e;
+  --side: #252525;
+  --side-2: #2b2b2b;
+  --field: #1a1a1a;
+  --hover: rgba(255, 255, 255, 0.055);
+  --pressed: rgba(255, 255, 255, 0.1);
+  --border: #333333;
+  --border-strong: #444444;
+  --text: #dcddde;
+  --text-dim: #a3a3a3;
+  --text-faint: #6d6d6d;
+  --accent: #8b7cf6;
+  --accent-soft: rgba(139, 124, 246, 0.2);
+  --graph-line: #d8d8d8;
+  --graph-line-alpha: 0.15;
+  --graph-text: #dcddde;
+  --graph-text-dim: #9b9b9b;
+  --select: #ffffff;
+  --shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --side-w: 292px;
+  --panel-w: 410px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 13px/1.5 var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+svg { display: block; }
+
+.app {
+  display: grid;
+  grid-template-columns: var(--side-w) minmax(0, 1fr);
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ---------- left sidebar ---------- */
+.side {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--side);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.brand { display: flex; gap: 11px; align-items: flex-start; padding: 16px 16px 4px; }
+.brand .mark { flex: none; margin-top: 2px; }
+.brand-text { min-width: 0; }
+.brand h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.brand p { margin: 2px 0 0; color: var(--text-dim); font-size: 12px; overflow-wrap: anywhere; }
+.sentence { margin: 8px 16px 2px; color: var(--text-faint); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+
+.search { position: relative; margin: 12px 12px 4px; }
+.search input {
+  width: 100%;
+  height: 32px;
+  padding: 0 30px 0 30px;
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search input::placeholder { color: var(--text-faint); }
+.search input::-webkit-search-cancel-button { display: none; }
+.search input:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
+.search .lens { position: absolute; left: 10px; top: 9px; color: var(--text-faint); pointer-events: none; }
+.search kbd {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  font: 11px/16px var(--font);
+  text-align: center;
+  color: var(--text-faint);
+  pointer-events: none;
+}
+.search input:focus ~ kbd, .search input:not(:placeholder-shown) ~ kbd { display: none; }
+.results { list-style: none; margin: 6px 0 0; padding: 0; }
+.results li { margin: 0; }
+.results button {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr);
+  gap: 1px 9px;
+  align-items: center;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  text-align: left;
+}
+.results button:hover, .results button.active { background: var(--hover); }
+.results .nm { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.results .grp { grid-column: 2; color: var(--text-faint); font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.results .none { padding: 6px 8px; color: var(--text-faint); font-size: 12px; }
+
+.sect { border-top: 1px solid var(--border); margin-top: 10px; }
+.sect > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px 8px;
+  list-style: none;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-weight: 600;
+  user-select: none;
+}
+.sect > summary::-webkit-details-marker { display: none; }
+.sect > summary .chev { color: var(--text-faint); transition: transform .15s; transform: rotate(-90deg); }
+.sect[open] > summary .chev { transform: none; }
+.sect > summary:hover { color: var(--text); }
+.sect-body { padding: 0 10px 8px; }
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  text-align: left;
+  color: var(--text);
+}
+.toggle-row:hover { background: var(--hover); }
+.toggle-row .tl { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.toggle-row .n { color: var(--text-faint); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.toggle-row:disabled { cursor: default; color: var(--text-faint); }
+.toggle-row:disabled:hover { background: transparent; }
+.switch {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: background-color .15s;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  transition: transform .15s;
+}
+[aria-checked="true"] > .switch { background: var(--accent); }
+[aria-checked="true"] > .switch::after { transform: translateX(14px); background: #ffffff; }
+.toggle-row:disabled .switch { opacity: .4; background: var(--border-strong); }
+.toggle-row:disabled .switch::after { background: #9a9a9a; }
+
+.groups { list-style: none; margin: 0; padding: 0; }
+.groups li button {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: center;
+  width: 100%;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-size: 12.5px;
+}
+.groups li button:hover, .groups li button:focus-visible { background: var(--hover); }
+.groups li button[aria-pressed="true"] { background: var(--pressed); }
+.groups .lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.groups .n { color: var(--text-faint); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.groups .off .lbl { color: var(--text-faint); }
+.marks { margin: 8px 0 0; padding: 8px 6px 0; border-top: 1px dashed var(--border); display: grid; gap: 5px; }
+.mk-row { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; align-items: center; color: var(--text-dim); font-size: 12px; }
+.mk-row canvas { width: 16px; height: 16px; }
+
+.dot { display: block; width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--c, #888); }
+.dot.hollow { background: transparent; box-shadow: inset 0 0 0 2px var(--c, #888); }
+.dot.ring { box-shadow: 0 0 0 1.5px var(--side), 0 0 0 2.5px var(--c, #888); }
+.dot.struck { opacity: .6; }
+/* The owner's words are diamonds everywhere: on the map, in the lists and in the key. */
+.dot.diamond { border-radius: 1.5px; transform: rotate(45deg) scale(.82); }
+.dot.diamond.ring { box-shadow: 0 0 0 1.5px var(--side), 0 0 0 2.5px #c9d4ff; }
+.dot.diamond.dashed { background: transparent; border: 1.5px dashed var(--c, #888); }
+
+.warn { margin: 8px 16px 0; padding: 6px 8px; border: 1px solid #5c4a1f; border-radius: 6px; background: rgba(224, 179, 84, 0.08); color: #e6cf9a; font-size: 12px; line-height: 1.45; overflow-wrap: anywhere; }
+.sect-h { display: flex; align-items: center; gap: 9px; margin: 0; padding: 10px 12px 6px; color: var(--text); font-size: 12px; font-weight: 650; }
+.sect-h .dot { margin-left: 2px; }
+.sect-note { margin: -2px 12px 6px; color: var(--text-faint); font-size: 11.5px; line-height: 1.4; }
+.sect.told { margin: 12px 10px 0; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--side-2); }
+.sect.told.sent { border-style: dashed; }
+.told-list { list-style: none; margin: 0; padding: 0 4px 6px; }
+.told-list button {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr);
+  gap: 1px 10px;
+  align-items: start;
+  width: 100%;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  text-align: left;
+}
+.told-list button:hover { background: var(--hover); }
+.told-list .dot { margin-top: 5px; grid-row: span 2; }
+.told-list .tx { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: var(--text); font-size: 12.5px; line-height: 1.45; overflow-wrap: anywhere; }
+.told-list .wh { grid-column: 2; color: var(--text-faint); font-size: 11px; overflow-wrap: anywhere; }
+#qs .sect-body { padding: 0 6px 8px; }
+#qs summary .n { margin-left: 2px; color: var(--text-faint); font-weight: 400; }
+
+.start-list { list-style: none; margin: 0; padding: 0; counter-reset: st; }
+.start-list button {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 8px;
+  width: 100%;
+  padding: 7px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  line-height: 1.45;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.start-list button:hover { background: var(--hover); color: var(--text); }
+.start-list .num {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--side-2);
+  border: 1px solid var(--border-strong);
+  color: var(--text-dim);
+  font-size: 10.5px;
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.side-foot { margin-top: auto; padding: 14px 16px 16px; color: var(--text-faint); font-size: 11.5px; line-height: 1.5; overflow-wrap: anywhere; }
+.side-foot p { margin: 0 0 6px; }
+
+/* ---------- the graph ---------- */
+.stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--bg); }
+.graph { position: absolute; inset: 0; }
+.graph canvas { display: block; }
+.float-tooltip-kap { display: none !important; }
+
+.viewbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(30, 30, 30, 0.86);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--text-dim);
+  font-size: 12.5px;
+  transition: right .2s cubic-bezier(.2, .8, .2, 1);
+}
+.viewbar .vt { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.viewbar .vt b { color: var(--text); font-weight: 600; }
+.pill {
+  flex: none;
+  height: 24px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-size: 12px;
+}
+.pill:hover { background: var(--hover); }
+.stage.panel-open .viewbar { right: var(--panel-w); }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-dim);
+  flex: none;
+}
+.icon-btn:hover { background: var(--hover); color: var(--text); }
+.icon-btn.menu-btn { display: none; position: absolute; left: 8px; top: 5px; }
+
+.zoomer {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--side);
+  box-shadow: var(--shadow);
+  transition: right .2s cubic-bezier(.2, .8, .2, 1);
+}
+.stage.panel-open .zoomer { right: calc(var(--panel-w) + 14px); }
+.hint {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  z-index: 2;
+  margin: 0;
+  color: var(--text-faint);
+  font-size: 11.5px;
+  pointer-events: none;
+}
+
+.key {
+  position: absolute;
+  left: 12px;
+  bottom: 34px;
+  z-index: 3;
+  max-width: min(600px, calc(100% - 84px));
+  padding: 4px 6px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(37, 37, 37, 0.9);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow);
+}
+.key-toggle { display: block; padding: 2px 4px; border: 0; background: none; color: var(--text-dim); font-size: 11.5px; font-weight: 600; }
+.key-toggle:hover { color: var(--text); }
+.key-toggle::after { content: " \2212"; color: var(--text-faint); }
+.key-toggle[aria-expanded="false"]::after { content: " +"; }
+.key-rows { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 1px 12px; }
+.key-row {
+  display: grid;
+  grid-template-columns: 16px minmax(0, auto) auto;
+  gap: 7px;
+  align-items: center;
+  padding: 2px 4px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 11.5px;
+  text-align: left;
+  white-space: nowrap;
+}
+.key-row canvas { width: 16px; height: 16px; }
+.key-row .kl { overflow: hidden; text-overflow: ellipsis; }
+.key-row .n { color: var(--text-faint); font-variant-numeric: tabular-nums; }
+button.key-row:hover { background: var(--hover); color: var(--text); }
+button.key-row[aria-pressed="true"] { background: var(--pressed); color: var(--text); }
+.key-row.off { opacity: .5; }
+
+.lit-chip {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 32px);
+  height: 28px;
+  padding: 0 6px 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--side);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 12px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.lit-chip span { overflow: hidden; text-overflow: ellipsis; }
+.lit-chip button { height: 20px; padding: 0 8px; border: 1px solid var(--border-strong); border-radius: 999px; background: transparent; color: var(--text-dim); font-size: 11.5px; }
+.lit-chip button:hover { color: var(--text); background: var(--hover); }
+.stage.panel-open .lit-chip { left: calc((100% - var(--panel-w)) / 2); }
+
+.notice {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--text-dim);
+  text-align: center;
+  pointer-events: none;
+}
+.notice p { margin: 0; max-width: 46ch; }
+.notice strong { display: block; color: var(--text); font-weight: 600; margin-bottom: 6px; }
+
+/* ---------- the note pane ---------- */
+.panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  width: var(--panel-w);
+  display: flex;
+  flex-direction: column;
+  background: var(--side);
+  border-left: 1px solid var(--border);
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform .2s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .2s;
+}
+.panel.open { visibility: visible; transform: none; transition: transform .2s cubic-bezier(.2, .8, .2, 1), visibility 0s; }
+.handle { display: none; }
+.panel-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 6px 0 14px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+}
+.local-ctl { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+.local-ctl .toggle-row { width: auto; padding: 4px 6px; gap: 9px; font-size: 12.5px; color: var(--text-dim); }
+.local-ctl .toggle-row[aria-checked="true"] { color: var(--text); }
+.depth { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; }
+.depth span { padding: 0 4px 0 5px; color: var(--text-faint); font-size: 11.5px; }
+.depth button {
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+.depth button[aria-pressed="true"] { background: var(--accent-soft); color: var(--text); }
+.depth button:hover { background: var(--hover); }
+.depth[aria-disabled="true"] { opacity: .45; }
+.panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 22px 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.kicker { display: flex; align-items: center; gap: 8px; min-width: 0; color: var(--text-dim); font-size: 12px; }
+.kicker .grp { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kicker .sep { color: var(--text-faint); }
+.kicker .typ { color: var(--text-faint); white-space: nowrap; }
+.p-title {
+  margin: 8px 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.p-title.struck { text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--text-faint); color: var(--text-dim); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid var(--c, var(--border-strong));
+  color: var(--text);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c, var(--text-dim)); }
+
+.callouts { display: flex; flex-direction: column; gap: 10px; }
+.callout {
+  position: relative;
+  padding: 9px 12px 10px 14px;
+  border-radius: 6px;
+  background: var(--tint, rgba(255, 255, 255, 0.04));
+  border-left: 3px solid var(--c, var(--border-strong));
+}
+.callout.hollow { background: transparent; border: 1px dashed var(--border-strong); border-left: 3px dashed var(--c, var(--border-strong)); }
+.callout-head { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-bottom: 4px; min-height: 20px; }
+.callout-title { min-width: 0; color: var(--c, var(--text)); font-weight: 650; font-size: 12px; overflow-wrap: anywhere; }
+.callout-when { color: var(--text-faint); font-size: 11.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.callout-st { color: var(--text-faint); font-size: 11.5px; white-space: nowrap; }
+.callout-open {
+  margin-left: auto;
+  padding: 1px 7px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.callout-open:hover { color: var(--text); background: var(--hover); }
+.callout-text { margin: 0; line-height: 1.55; overflow-wrap: anywhere; color: var(--text); }
+.callout.st-superseded .callout-text { text-decoration: line-through; color: var(--text-faint); }
+
+.p-section { margin-top: 24px; }
+.p-section h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--text);
+}
+.p-section h3 .n { font-weight: 400; color: var(--text-faint); }
+.p-empty { margin: 4px 0 0; color: var(--text-faint); font-size: 12px; }
+.conns { list-style: none; margin: 0 -8px; padding: 0; }
+.conns button {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr);
+  gap: 1px 10px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  text-align: left;
+}
+.conns button:hover { background: var(--hover); }
+.conns .dot { margin-top: 5px; grid-row: span 2; }
+.conns .nm { color: #a99df8; overflow-wrap: anywhere; }
+.conns .line { color: var(--text-dim); overflow-wrap: anywhere; line-height: 1.45; }
+.conns .line .nm { color: #b3a8fa; }
+.conns .rel { color: var(--text-faint); font-size: 12px; overflow-wrap: anywhere; line-height: 1.45; }
+.conns .off .nm { color: var(--text-dim); }
+.conns .tag { margin-left: 6px; padding: 0 5px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text-faint); font-size: 10.5px; }
+.more {
+  margin-top: 4px;
+  padding: 5px 0;
+  border: 0;
+  background: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+.more:hover { color: var(--text); }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------- narrow screens: the sidebar becomes a drawer, the note pane a sheet ---------- */
+@media (max-width: 759px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(88vw, 340px);
+    box-shadow: var(--shadow);
+    transform: translateX(-102%);
+    transition: transform .2s cubic-bezier(.2, .8, .2, 1);
+  }
+  .app.side-open .side { transform: none; }
+  .icon-btn.menu-btn { display: inline-grid; }
+  .viewbar { padding-left: 44px; }
+  .stage.panel-open .viewbar { right: 0; }
+  .hint { display: none; }
+  .zoomer { display: none; }
+  .key { left: 8px; bottom: 8px; max-width: calc(100% - 16px); }
+  .key-rows { grid-template-columns: minmax(0, 1fr); }
+  .stage.panel-open .key { display: none; }
+  .stage.panel-open .lit-chip { left: 50%; }
+  .panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    max-height: 64%;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 14px 14px 0 0;
+    box-shadow: var(--shadow);
+    transform: translateY(100%);
+  }
+  .panel.open { transform: none; }
+  .handle { display: block; width: 36px; height: 4px; margin: 7px auto 0; border-radius: 999px; background: var(--border-strong); flex: none; }
+  .panel-scroll { padding: 12px 16px calc(20px + env(safe-area-inset-bottom)); }
+  .p-title { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side" id="side" aria-label="Map controls">
+    <div class="brand">
+      <svg class="mark" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+        <path d="M5 16 11 5.5l6.5 9.5M5 16h12.5" stroke="#dcddde" stroke-opacity=".35" stroke-width="1.2" fill="none"/>
+        <circle cx="11" cy="5.5" r="3" fill="#5B8DEF"/>
+        <circle cx="5" cy="16" r="2.6" fill="#E8A33D"/>
+        <circle cx="17.5" cy="15" r="2.2" fill="#4F7CFF" stroke="#dcddde" stroke-width=".9"/>
+      </svg>
+      <div class="brand-text">
+        <h1 id="title">Sheet Geek</h1>
+        <p id="subtitle" hidden></p>
+      </div>
+    </div>
+    <p class="sentence" id="sentence" hidden></p>
+
+    <div class="search" role="search">
+      <svg class="lens" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="6" cy="6" r="4.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m9.3 9.3 3.2 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <input id="search" type="search" placeholder="Search dots and notes" autocomplete="off" spellcheck="false"
+             aria-label="Search dots and notes" aria-controls="results">
+      <kbd aria-hidden="true">/</kbd>
+      <ul class="results" id="results" aria-label="Matching dots" hidden></ul>
+    </div>
+
+    <p class="warn" id="dropped" hidden></p>
+
+    <section class="sect told" id="told" hidden aria-labelledby="told-h">
+      <h2 class="sect-h" id="told-h"><span class="dot diamond ring" id="told-dot" aria-hidden="true"></span>What you told it about the file</h2>
+      <ul class="told-list" id="told-list"></ul>
+    </section>
+
+    <section class="sect told sent" id="sent" hidden aria-labelledby="sent-h">
+      <h2 class="sect-h" id="sent-h"><span class="dot diamond dashed" id="sent-dot" aria-hidden="true"></span><span id="sent-h-text">What others wrote, not checked</span></h2>
+      <p class="sect-note">These came with the file. Nobody on this machine has checked them.</p>
+      <ul class="told-list" id="sent-list"></ul>
+    </section>
+
+    <details class="sect" id="start" open hidden>
+      <summary><svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="m2 3.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Start here</summary>
+      <div class="sect-body"><ol class="start-list" id="start-list"></ol></div>
+    </details>
+
+    <details class="sect" id="qs" hidden>
+      <summary><svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="m2 3.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Questions for you <span class="n" id="qs-n"></span></summary>
+      <div class="sect-body"><ul class="told-list" id="qs-list"></ul></div>
+    </details>
+
+    <details class="sect" id="sect-groups" open>
+      <summary><svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="m2 3.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Groups</summary>
+      <div class="sect-body">
+        <ul class="groups" id="legend-groups"></ul>
+      </div>
+    </details>
+
+    <details class="sect" id="sect-filters" open>
+      <summary><svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="m2 3.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Filters</summary>
+      <div class="sect-body" role="group" aria-label="What to show">
+        <button type="button" class="toggle-row" id="t-notes" role="switch" aria-checked="true"><span class="tl"><span>Show notes</span><span class="n" id="n-notes"></span></span><span class="switch" aria-hidden="true"></span></button>
+        <button type="button" class="toggle-row" id="t-guesses" role="switch" aria-checked="true"><span class="tl"><span>Show guesses</span><span class="n" id="n-guesses"></span></span><span class="switch" aria-hidden="true"></span></button>
+        <button type="button" class="toggle-row" id="t-structure" role="switch" aria-checked="false" title="The workbook, its tabs and columns, and the minor notes"><span class="tl"><span>Show structure</span><span class="n" id="n-structure"></span></span><span class="switch" aria-hidden="true"></span></button>
+      </div>
+    </details>
+
+    <div class="side-foot">
+      <p id="footer"></p>
+      <p>Scroll to zoom. Drag the canvas to move. Hover a dot to light up what it touches. Click it to open its note.</p>
+    </div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <div class="graph" id="graph" role="img" aria-label="Graph of the things in this spreadsheet and the notes about them. Use search or the Start here list to open a dot."></div>
+    <div class="viewbar" id="viewbar">
+      <button type="button" class="icon-btn menu-btn" id="menu" aria-label="Show the map controls" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 3.5h10M2 7h10M2 10.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+      <span class="vt" id="view-title">Graph view</span>
+      <button type="button" class="pill" id="local-exit" hidden>Show the whole brain</button>
+    </div>
+    <div class="notice" id="notice" hidden><p><strong id="notice-title"></strong><span id="notice-text"></span></p></div>
+    <p class="hint" id="hint">Double-click empty space to see everything.</p>
+    <div class="lit-chip" id="lit-chip" hidden><span id="lit-text"></span><button type="button" id="lit-clear">Clear</button></div>
+    <div class="key" id="key" role="group" aria-label="Key" hidden>
+      <button type="button" class="key-toggle" id="key-toggle" aria-expanded="true" aria-controls="key-rows">Key</button>
+      <div class="key-rows" id="key-rows"></div>
+    </div>
+
+    <div class="zoomer" id="zoomer" role="group" aria-label="Zoom">
+      <button type="button" class="icon-btn" id="z-in" aria-label="Zoom in"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5v9M1.5 6h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+      <button type="button" class="icon-btn" id="z-out" aria-label="Zoom out"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+      <button type="button" class="icon-btn" id="z-fit" aria-label="Fit everything in view"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 4.2V1.5h2.7M7.8 1.5h2.7v2.7M10.5 7.8v2.7H7.8M4.2 10.5H1.5V7.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+
+    <aside class="panel" id="panel" aria-labelledby="p-title" aria-hidden="true">
+      <div class="handle" aria-hidden="true"></div>
+      <div class="panel-bar">
+        <div class="local-ctl">
+          <button type="button" class="toggle-row" id="t-local" role="switch" aria-checked="false" title="Show only this dot and what it links to"><span class="tl"><span>Local graph</span></span><span class="switch" aria-hidden="true"></span></button>
+          <div class="depth" id="depth" role="group" aria-label="How many steps out">
+            <span aria-hidden="true">Depth</span>
+            <button type="button" id="d-1" aria-pressed="true" aria-label="Depth 1">1</button>
+            <button type="button" id="d-2" aria-pressed="false" aria-label="Depth 2">2</button>
+          </div>
+        </div>
+        <button type="button" class="icon-btn" id="p-close" aria-label="Close the note"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="m2.5 2.5 7 7m0-7-7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="panel-scroll" id="p-body"></div>
+    </aside>
+    <div class="sr-only" id="live" aria-live="polite"></div>
+  </main>
+</div>
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;margin:0;background:#1e1e1e;color:#dcddde;font:13px -apple-system,Segoe UI,sans-serif">This page needs JavaScript to draw the map.</p></noscript>
+
+<!--__THIRD_PARTY_NOTICES__-->
+<script id="force-graph-lib">/*__FORCE_GRAPH_JS__*/</script>
+<script type="application/json" id="graph-data">__GRAPH_JSON__</script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- constants ---------- */
+  var TAU = Math.PI * 2;
+  var GOLDEN = Math.PI * (3 - Math.sqrt(5));
+  var FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif';
+  var MAX_NODES = 6000, MAX_LINKS = 30000, MAX_BODY = 60, MAX_START = 8;
+  var LIST_LIMIT = 30;
+  var DIM_HOVER = 0.1, DIM_SELECT = 0.22, DIM_SEARCH = 0.12;
+  var LAYOUT_TICKS = 320;
+
+  var TYPES = { file: 1, sheet: 1, column: 1, kind: 1, thing: 1, row: 1, other_file: 1, note: 1 };
+  /* Graphs written before version 2 used other names for the same ideas. */
+  var OLD_TYPES = {
+    entity: 'thing', record: 'thing', table: 'sheet', metric: 'column', dimension: 'column',
+    formula_block: 'row', link: 'other_file', cluster: 'kind', insight: 'note'
+  };
+  var BIG = { file: 1, sheet: 1, kind: 1, thing: 1, row: 1, other_file: 1 };
+  var HUB = { file: 1, sheet: 1, kind: 1 };
+  var TYPE_SIZE = { file: 34, sheet: 20, column: 5, kind: 14, thing: 12, row: 12, other_file: 16, note: 5 };
+  var TYPE_RANK = { file: 0, kind: 1, sheet: 2, thing: 3, row: 3, other_file: 3, note: 4, column: 5 };
+  /* 'sender' is a note someone else wrote (the person who sent the file): shown as theirs, never as the owner's. */
+  var NOTE_KINDS = { said: 1, sender: 1, found: 1, guess: 1, question: 1, web: 1 };
+  var WORDS = { said: 1, sender: 1 };
+  var STATUSES = { current: 1, confirmed: 1, unconfirmed: 1, disputed: 1, 'left-out': 1, 'may-be-outdated': 1, superseded: 1 };
+  var SOURCES = { told: 1, computed: 1, inferred: 1, web: 1 };
+  var LINK_TYPES = {
+    part_of: 1, relates: 1, about: 1, joins_on: 1, derived_from: 1, feeds: 1, same_as: 1, links_file: 1, looks_up: 1
+  };
+  var FLOW = { feeds: 1, derived_from: 1, looks_up: 1 };
+
+  var TAG_WORDS = { said: 'The owner said', found: 'Counted', guess: 'Guess', question: 'Open question', web: 'From the web' };
+  var TYPE_WORDS = {
+    file: '', sheet: '', column: '', kind: '', thing: '', row: 'a row in the model', other_file: ''
+  };
+  var NOTE_WORDS = {
+    said: 'what the owner said', found: 'something it counted', guess: 'a guess to confirm',
+    question: 'an open question', web: 'from the web'
+  };
+  var STATUS_CHIP = {
+    disputed: 'Worth a look', 'left-out': 'Left out of totals', 'may-be-outdated': 'May be out of date',
+    unconfirmed: 'Not confirmed yet', confirmed: 'Confirmed by the owner', superseded: 'Replaced'
+  };
+  var GROUP_NAMES = {
+    file: 'The workbook', sheet: 'Tabs', column: 'Columns', 'other file': 'Other files',
+    said: 'What the owner said', sender: 'From someone else, not checked', found: 'What it counted',
+    guess: 'Guesses to confirm', question: 'Open questions', web: 'From the web'
+  };
+  var FIXED = {
+    file: '#F2F1EC', sheet: '#8C8F96', column: '#5A5E66', 'other file': '#B8B2A7',
+    said: '#4F7CFF', sender: '#D9925B', found: '#E0B354', guess: '#8A8F98', question: '#C678DD', web: '#4FB3C8',
+    disputed: '#E5534B', 'left-out': '#7A7F87', 'may-be-outdated': '#E0B354'
+  };
+  var PALETTE = ['#E8A33D', '#5B8DEF', '#3FB68B', '#D96C5F', '#A77BD6', '#4FB3C8', '#C9C34F', '#E07BB0'];
+  /* A group of things may not wear a color the notes or the alerts use (a vendor must never look like
+     something the owner said). When one comes too close, the map swaps it for the nearest safe color here. */
+  var SAFE = [
+    '#F28C28', '#7986CB', '#3FB68B', '#B07D56', '#E07BB0', '#81C784', '#D4E157', '#F06292', '#AED581',
+    '#7ED6B6', '#64B5F6', '#E6A57E', '#9FA8DA', '#26A69A', '#FF8A80', '#EF8354', '#58C4DD', '#9CCC65',
+    '#BA68C8', '#4DB6AC', '#FFA15C', '#5C9DFF', '#43A0D8', '#2FBFA0', '#C77DFF', '#8BC34A', '#F48FB1'
+  ];
+  var TOO_CLOSE = 28, TOO_CLOSE_EACH = 20;
+  var NOTE_ORDER = { said: 0, sender: 1, question: 2, guess: 3, web: 4, found: 5 };
+  var OUT_WORDS = {
+    part_of: 'part of', relates: 'relates to', about: 'about', joins_on: 'matches', derived_from: 'calculated from',
+    feeds: 'feeds', same_as: 're-coded to', links_file: 'links to', looks_up: 'looks up'
+  };
+  var IN_WORDS = {
+    part_of: 'part of this', relates: 'relates to this', about: 'a note about this', joins_on: 'matches this',
+    derived_from: 'calculated from this', feeds: 'feeds this', same_as: 're-coded to this',
+    links_file: 'links to this', looks_up: 'looks this up'
+  };
+  /* How long a line wants to be, by kind of line. Short for notes on what they are about. */
+  var LINK_LEN = {
+    about: 22, part_of: 44, relates: 70, joins_on: 80, derived_from: 70, feeds: 46, same_as: 26,
+    links_file: 60, looks_up: 60
+  };
+
+  /* ---------- small helpers ---------- */
+  function has(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
+  function oneOf(v, map) { return (typeof v === 'string' && has(map, v)) ? v : ''; }
+  function txt(v, max) {
+    var s = typeof v === 'string' ? v : (typeof v === 'number' && isFinite(v)) ? String(v) : '';
+    /* Drop control characters and bidi overrides (they can disguise text, like a file name). */
+    s = s.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u202A-\u202E\u2066-\u2069]/g, '');
+    s = s.replace(/[\s\u2028\u2029]+/g, ' ').trim();
+    if (max && s.length > max) s = s.slice(0, max - 1) + '\u2026';
+    return s;
+  }
+  function num(v, d) {
+    var x = typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
+    return isFinite(x) ? x : d;
+  }
+  function clamp(x, a, b) { return x < a ? a : (x > b ? b : x); }
+  function hex(v) {
+    if (typeof v !== 'string') return '';
+    var s = v.trim();
+    return /^#[0-9a-fA-F]{6}$/.test(s) ? s.toUpperCase() : '';
+  }
+  function rgbOf(h) {
+    var v = parseInt(h.slice(1), 16);
+    return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+  }
+  function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function rgbStr(c) { return 'rgb(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ')'; }
+  function rgbaStr(c, a) { return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a + ')'; }
+  function quant(a, steps) { return Math.round(clamp(a, 0, 1) * steps) / steps; }
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null && text !== '') e.textContent = text;
+    return e;
+  }
+  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+  function fmtInt(x) { try { return Number(x).toLocaleString('en-US'); } catch (e) { return String(x); } }
+  function now() { return (window.performance && performance.now) ? performance.now() : Date.now(); }
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function clip(s, n) { return s.length > n ? s.slice(0, n - 1).replace(/[\s,;:.(]+$/, '') + '\u2026' : s; }
+  /* Cut at a word when there is one near the end. */
+  function clipWords(s, n) {
+    if (s.length <= n) return s;
+    var cut = s.slice(0, n - 1);
+    var sp = cut.lastIndexOf(' ');
+    if (sp > n * 0.55) cut = cut.slice(0, sp);
+    return cut.replace(/[\s,;:.(\-]+$/, '') + '\u2026';
+  }
+  /* Shorten a name but keep a code at its end, so 'CHICKEN BREAST ... (BF1842)' and '(BF1295)' stay apart. */
+  function clipMid(s, n) {
+    if (s.length <= n) return s;
+    var m = /\s*(\([^()]{1,16}\)|#\s?\w{1,12}|\b[A-Z]{0,4}\d[\w-]{1,12})$/.exec(s);
+    if (m && m[0].length < n * 0.5) {
+      var tail = m[0].trim();
+      var head = s.slice(0, s.length - m[0].length);
+      return clipWords(head, n - tail.length - 1) + ' ' + tail;
+    }
+    return clipWords(s, n);
+  }
+  /* Colors compared the way eyes compare them (CIE Lab distance), to keep groups off the reserved colors. */
+  function labOf(rgb) {
+    function lin(c) { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+    var r = lin(rgb[0]), g = lin(rgb[1]), b = lin(rgb[2]);
+    var x = (r * 0.4124 + g * 0.3576 + b * 0.1805) / 0.95047, y = r * 0.2126 + g * 0.7152 + b * 0.0722,
+      z = (r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883;
+    function f(t) { return t > 0.008856 ? Math.pow(t, 1 / 3) : 7.787 * t + 16 / 116; }
+    var fx = f(x), fy = f(y), fz = f(z);
+    return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)];
+  }
+  var labCache = new Map();
+  function labHex(h) {
+    var v = labCache.get(h);
+    if (!v) { v = labOf(rgbOf(h)); labCache.set(h, v); }
+    return v;
+  }
+  function colorGap(h1, h2) {
+    var a = labHex(h1), b = labHex(h2);
+    return Math.sqrt((a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]) + (a[2] - b[2]) * (a[2] - b[2]));
+  }
+  function mq(q) { try { return window.matchMedia ? window.matchMedia(q) : null; } catch (e) { return null; } }
+  function onMq(m, fn) {
+    if (!m) return;
+    if (m.addEventListener) m.addEventListener('change', fn); else if (m.addListener) m.addListener(fn);
+  }
+
+  var reduceMq = mq('(prefers-reduced-motion: reduce)');
+  var MOTION = !(reduceMq && reduceMq.matches);
+  onMq(reduceMq, function (e) { MOTION = !e.matches; });
+
+  /* ---------- read and clean the embedded graph (every string in it is untrusted) ---------- */
+  function readRaw() {
+    var s = $('graph-data');
+    if (!s) return null;
+    try {
+      var g = JSON.parse(s.textContent || '');
+      return (g && typeof g === 'object' && !Array.isArray(g)) ? g : null;
+    } catch (e) { return null; }
+  }
+
+  function kindFromSource(source, status) {
+    if (source === 'told') return status === 'unconfirmed' ? 'question' : 'said';
+    if (source === 'inferred') return 'guess';
+    if (source === 'web') return 'web';
+    return 'found';
+  }
+
+  function parseBody(list) {
+    var out = [];
+    if (!Array.isArray(list)) return out;
+    for (var i = 0; i < list.length && out.length < MAX_BODY; i++) {
+      var b = list[i];
+      if (!b || typeof b !== 'object' || Array.isArray(b)) continue;
+      var st = txt(b.statement, 4000);
+      if (!st) continue;
+      out.push({
+        statement: st,
+        source: oneOf(b.source, SOURCES),
+        status: oneOf(b.status, STATUSES),
+        asOf: txt(b.as_of, 40),
+        saidBy: txt(b.said_by, 120),
+        kind: oneOf(b.note_kind, NOTE_KINDS)
+      });
+    }
+    return out;
+  }
+
+  /* Whose words these are. 'owner' (or nothing) is the person on this machine; the graph may also name
+     them with a top-level "owners" list (or one "owner"). Any other name is someone else, such as the
+     person who sent the file. graph.py already sorts told notes into 'said' and 'sender'; this second
+     check only makes sure a note signed by another name is never drawn as the owner's. */
+  function isOwner(G, who) {
+    var s = (who || '').toLowerCase();
+    return !s || s === 'owner' || s === 'the owner' || G.owners.has(s);
+  }
+  function readOwners(raw) {
+    var set = new Set();
+    var list = Array.isArray(raw.owners) ? raw.owners.slice(0, 20) : [];
+    if (typeof raw.owner === 'string') list.push(raw.owner);
+    list.forEach(function (x) { var s = txt(x, 120).toLowerCase(); if (s) set.add(s); });
+    return set;
+  }
+
+  function addGroup(G, id, label, color, type) {
+    var g = {
+      id: id, label: label || (has(GROUP_NAMES, id) ? GROUP_NAMES[id] : '') || id || 'Other', color: color, type: type,
+      idx: G.groupList.length, total: 0, shown: 0, things: false
+    };
+    G.groups.set(id, g);
+    G.groupList.push(g);
+    return g;
+  }
+
+  function readNode(G, rn) {
+    var id = txt(rn.id, 400);
+    if (!id || G.byId.has(id)) return null;
+    var type = typeof rn.type === 'string' ? rn.type : '';
+    type = has(TYPES, type) ? type : (has(OLD_TYPES, type) ? OLD_TYPES[type] : 'thing');
+    var source = oneOf(rn.source, SOURCES);
+    var status = oneOf(rn.status, STATUSES);
+    var body = parseBody(Array.isArray(rn.body) ? rn.body : rn.notes);
+    var kind = '';
+    if (type === 'note') {
+      /* Older pages called the sender's notes 'sent'. */
+      kind = rn.note_kind === 'sent' ? 'sender' : oneOf(rn.note_kind, NOTE_KINDS);
+      if (!kind) kind = kindFromSource(source, status);
+    }
+    var saidBy = '';
+    if (WORDS[kind] && body[0]) {
+      saidBy = body[0].saidBy;
+      /* A note in the owner's voice that someone else wrote is theirs, not the owner's. */
+      if (kind === 'said' && !isOwner(G, saidBy)) kind = 'sender';
+    }
+    var group = txt(rn.group, 80);
+    /* The sender's notes always sit in the sender's group, whatever group the data names. */
+    if (kind === 'sender') group = 'sender';
+    else if (kind === 'said' && group === 'sender') group = 'said';
+    if (!group && kind) group = kind;
+    if (!G.groups.has(group)) addGroup(G, group, '', '', type);
+    var size = num(rn.size, NaN);
+    if (!(size > 0)) size = TYPE_SIZE[type];
+    var n = {
+      id: id,
+      label: txt(rn.label, 300) || id,
+      type: type,
+      kind: kind,
+      group: group,
+      size: Math.min(size, 400),
+      status: status,
+      source: source,
+      saidBy: kind === 'sender' ? (saidBy || 'someone else') : '',
+      hidden: rn.hidden === true || rn.records === true,
+      sheet: txt(rn.sheet, 80),
+      summary: txt(rn.summary, 2000),
+      body: body,
+      idx: G.nodes.length,
+      out: [], inn: [], nb: new Set(), about: [], aboutMe: [],
+      a: 0, vis: false, appearAt: 0, r: 4, deg: 0
+    };
+    n.guess = kind === 'guess' || (type !== 'note' && source === 'inferred');
+    n.leftOut = status === 'left-out';
+    n.flag = status === 'disputed' || status === 'may-be-outdated' || n.leftOut;
+    G.byId.set(id, n);
+    G.nodes.push(n);
+    var g = G.groups.get(group);
+    g.total++;
+    if (type === 'thing' || type === 'kind' || type === 'row') g.things = true;
+    if (kind === 'sender') G.senders.set(n.saidBy, (G.senders.get(n.saidBy) || 0) + 1);
+    return n;
+  }
+
+  function build(raw) {
+    var G = {
+      title: txt(raw.title, 200),
+      subtitle: txt(raw.subtitle, 300),
+      sentence: txt(raw.sentence, 600),
+      generated: txt(raw.generated, 40),
+      footer: txt(raw.footer, 600),
+      owners: readOwners(raw),
+      nodes: [], links: [], byId: new Map(), groups: new Map(), groupList: [], start: [],
+      alert: {}, alertHex: {}, noteBy: new Map(), senders: new Map(), dropped: 0, droppedCols: 0,
+      card: [], senderCard: [], questions: []
+    };
+    var rawGroups = Array.isArray(raw.groups) ? raw.groups : [];
+    for (var gi = 0; gi < rawGroups.length && G.groupList.length < 200; gi++) {
+      var rg = rawGroups[gi];
+      if (!rg || typeof rg !== 'object') continue;
+      var gid = txt(rg.id, 80);
+      if (G.groups.has(gid)) continue;
+      addGroup(G, gid, txt(rg.label, 80), hex(rg.color), txt(rg.type, 20));
+    }
+    var ac = (raw.alert_colors && typeof raw.alert_colors === 'object' && !Array.isArray(raw.alert_colors)) ? raw.alert_colors : null;
+    ['disputed', 'left-out', 'may-be-outdated'].forEach(function (k) {
+      G.alertHex[k] = hex(has(ac, k) ? ac[k] : '') || FIXED[k];
+      G.alert[k] = rgbOf(G.alertHex[k]);
+    });
+
+    /* The things and the notes are read first and the columns last, so a sheet with thousands of columns
+       can never push what matters off the map. Whatever does not fit is counted and said out loud. */
+    var rawNodes = Array.isArray(raw.nodes) ? raw.nodes : [];
+    var first = [], later = [];
+    for (var i = 0; i < rawNodes.length; i++) {
+      var rn = rawNodes[i];
+      if (!rn || typeof rn !== 'object' || Array.isArray(rn)) continue;
+      var rt = typeof rn.type === 'string' ? rn.type : '';
+      var col = rt === 'column' || (has(OLD_TYPES, rt) && OLD_TYPES[rt] === 'column');
+      (col || rn.hidden === true ? later : first).push(rn);
+    }
+    var queue = first.concat(later);
+    for (var q = 0; q < queue.length; q++) {
+      if (G.nodes.length >= MAX_NODES) {
+        if (txt(queue[q].id, 400)) {
+          G.dropped++;
+          if (queue[q].type === 'column') G.droppedCols++;
+        }
+        continue;
+      }
+      readNode(G, queue[q]);
+    }
+
+    /* The same row name on two tabs (Net Income on the P&L and on Cash Flow), or a row named like a tab
+       (the Revenue row on the P&L next to the Revenue tab), gets its tab added. */
+    var rowNames = new Map();
+    G.nodes.forEach(function (n) {
+      if (n.type === 'row' || n.type === 'sheet') rowNames.set(n.label.toLowerCase(), (rowNames.get(n.label.toLowerCase()) || 0) + 1);
+    });
+    G.nodes.forEach(function (n) {
+      if (n.type === 'row' && rowNames.get(n.label.toLowerCase()) > 1) {
+        var tab = tabOf(G, n);
+        if (tab) n.label = n.label + ' (' + clip(tab, 28) + ')';
+      }
+      n.lower = n.label.toLowerCase();
+      n.hay = (n.summary + ' ' + n.body.map(function (b) { return b.statement; }).join(' ')).toLowerCase().slice(0, 8000);
+    });
+
+    /* One set of words for the kinds of notes, whatever the graph calls them. */
+    ['said', 'found', 'guess', 'question', 'web'].forEach(function (id) {
+      var g = G.groups.get(id);
+      if (g) g.label = GROUP_NAMES[id];
+    });
+    var sent = G.groups.get('sender');
+    if (sent) {
+      var names = Array.from(G.senders.keys());
+      sent.label = names.length === 1 ? 'From ' + clip(names[0], 40) + ', not checked' : GROUP_NAMES.sender;
+    }
+
+    /* Colors: the graph's own when valid, else the shared defaults. */
+    var k = 0;
+    G.groupList.forEach(function (g) {
+      if (!g.color || (g.id === 'sender' && !hex(g.color))) g.color = has(FIXED, g.id) ? FIXED[g.id] : PALETTE[k++ % PALETTE.length];
+    });
+    keepColorsApart(G);
+    G.groupList.forEach(function (g) { g.rgb = rgbOf(g.color); });
+
+    var rawLinks = Array.isArray(raw.links) ? raw.links : [];
+    var byKey = new Map(), pairs = new Map();
+    var firstL = [], laterL = [];
+    for (var li = 0; li < rawLinks.length; li++) {
+      var rl0 = rawLinks[li];
+      if (!rl0 || typeof rl0 !== 'object' || Array.isArray(rl0)) continue;
+      var s0 = G.byId.get(txt(rl0.source, 400)), t0 = G.byId.get(txt(rl0.target, 400));
+      if (!s0 || !t0 || s0 === t0) continue;
+      (s0.type === 'column' || t0.type === 'column' ? laterL : firstL).push([rl0, s0, t0]);
+    }
+    var linkQueue = firstL.concat(laterL);
+    for (var j = 0; j < linkQueue.length && G.links.length < MAX_LINKS; j++) {
+      var rl = linkQueue[j][0], s = linkQueue[j][1], t = linkQueue[j][2];
+      var ltype = oneOf(rl.type, LINK_TYPES) || 'relates';
+      var flip = ltype === 'joins_on' && s.idx > t.idx;
+      var key = (flip ? t.idx + '>' + s.idx : s.idx + '>' + t.idx) + ':' + ltype;
+      var label = txt(rl.label, 120);
+      var weight = clamp(num(rl.weight, 1), 0, 50);
+      var ex = byKey.get(key);
+      if (ex) {
+        if (label && ex.labels.indexOf(label) === -1 && ex.labels.length < 12) ex.labels.push(label);
+        if (weight > ex.weight) ex.weight = weight;
+        continue;
+      }
+      var l = {
+        source: s, target: t, s: s, t: t, type: ltype, labels: label ? [label] : [],
+        status: oneOf(rl.status, STATUSES), weight: weight, idx: G.links.length,
+        a: 0, h: 0, hc: null, curv: 0
+      };
+      var pk = s.idx < t.idx ? s.idx + ':' + t.idx : t.idx + ':' + s.idx;
+      var c = pairs.get(pk) || 0;
+      pairs.set(pk, c + 1);
+      if (c > 0) l.curv = (c % 2 ? 1 : -1) * 0.2 * Math.ceil(c / 2) * (s.idx < t.idx ? 1 : -1);
+      byKey.set(key, l);
+      s.out.push(l); t.inn.push(l);
+      s.nb.add(t); t.nb.add(s);
+      if (ltype === 'about' && s.type === 'note') { s.about.push(t); t.aboutMe.push(s); }
+      G.links.push(l);
+    }
+    G.links.forEach(function (l2) {
+      var ls = l2.labels;
+      if (l2.type === 'joins_on') {
+        /* '<column> matches' from each matched column becomes one list of the columns. */
+        ls = ls.map(function (x) { return x.replace(/\s+matches$/i, ''); });
+        l2.cols = ls;
+      }
+      l2.label = ls.length <= 1 ? (ls[0] || '') : ls.length <= 3 ? ls.join(', ') : ls.slice(0, 3).join(', ') + ' and ' + (ls.length - 3) + ' more';
+    });
+
+    /* The skeleton: columns, minor notes, the workbook dot and its tabs (a tab stays when a model's rows
+       hang on it). Notes that only touch the skeleton sit with it, so what the owner said about the whole
+       file is read in the side panel instead of circling the workbook dot. */
+    var anyThing = G.nodes.some(function (n) { return n.type === 'thing' || n.type === 'row' || n.type === 'kind'; });
+    var rowHub = new Set();
+    G.links.forEach(function (l3) { if (l3.type === 'part_of' && l3.s.type === 'row' && l3.t.type === 'sheet') rowHub.add(l3.t); });
+    G.nodes.forEach(function (n) {
+      n.struct = n.hidden || n.type === 'column' ||
+        (anyThing && (n.type === 'file' || (n.type === 'sheet' && !rowHub.has(n))));
+    });
+    G.nodes.forEach(function (n) {
+      if (n.type === 'note') {
+        n.fileLevel = n.about.length > 0 && n.about.every(function (t2) { return t2.type === 'file' || t2.type === 'sheet' || t2.type === 'column'; });
+        if (!n.struct && n.about.length && n.about.every(function (t2) { return t2.struct; })) n.struct = true;
+      } else if (n.type === 'other_file' && !n.struct && n.nb.size) {
+        var all = true;
+        n.nb.forEach(function (m) { if (!m.struct) all = false; });
+        n.struct = all;
+      }
+    });
+
+    /* A thing's body repeats the notes about it: find each note by its words, so every line can name its kind. */
+    G.nodes.filter(function (n2) { return n2.type === 'note'; })
+      .sort(function (a, b) { return (NOTE_ORDER[a.kind] - NOTE_ORDER[b.kind]) || (a.idx - b.idx); })
+      .forEach(function (n2) {
+        [n2.summary, n2.body[0] ? n2.body[0].statement : ''].forEach(function (key2) {
+          if (key2 && !G.noteBy.has(key2)) G.noteBy.set(key2, n2);
+        });
+        if (n2.kind === 'said' && n2.fileLevel) G.card.push(n2);
+        if (n2.kind === 'sender' && (n2.fileLevel || n2.struct)) G.senderCard.push(n2);
+        if (n2.kind === 'question') G.questions.push(n2);
+      });
+    [G.card, G.senderCard, G.questions].forEach(function (list) { list.sort(function (a, b) { return a.idx - b.idx; }); });
+
+    var rawStart = Array.isArray(raw.start_here) ? raw.start_here : [];
+    for (var si = 0; si < rawStart.length && G.start.length < MAX_START; si++) {
+      var it = rawStart[si];
+      if (!it || typeof it !== 'object') continue;
+      var node = G.byId.get(txt(it.node, 400));
+      if (!node) continue;
+      var text = txt(it.text, 240) || node.label;
+      var about = node.type === 'note' ? node : noteForText(G, text);
+      if (about && about.kind === 'said' && about.fileLevel) continue;   /* already in "What you told it" */
+      if (about && about.kind === 'sender') text = clip(about.saidBy, 40) + ' says (not checked): ' + text;
+      G.start.push({ node: node, text: text });
+    }
+    return G;
+  }
+
+  /* The tab a model row sits on: its own "sheet", else its group ("rows:P&L", or an older graph's "P&L"). */
+  function tabOf(G, n) {
+    if (n.sheet) return n.sheet;
+    var gid = n.group || '';
+    if (/^rows:/.test(gid)) return gid.slice(5);
+    var g = G.groups.get(gid);
+    var lab = g && g.label ? g.label.replace(/\s+rows$/i, '') : '';
+    return lab || gid;
+  }
+
+  /* The note a Start here line quotes: its text is the start of that note's words. */
+  function noteForText(G, text) {
+    var stem = text.replace(/(\.\.\.|\u2026)$/, '').trim();
+    if (stem.length < 8) return null;
+    for (var i = 0; i < G.nodes.length; i++) {
+      var n = G.nodes[i];
+      if (n.type !== 'note') continue;
+      if (n.summary.indexOf(stem) === 0 || (n.body[0] && n.body[0].statement.indexOf(stem) === 0)) return n;
+    }
+    return null;
+  }
+
+  /* No group of things may look like a note kind or an alert. A color that comes too close to one is swapped
+     for the nearest safe color, so the owner's words and "worth a look" always stand apart. */
+  function keepColorsApart(G) {
+    var reserved = [];
+    ['said', 'sender', 'found', 'question', 'web'].forEach(function (id) {
+      var g = G.groups.get(id);
+      if (id === 'sender' || id === 'web') { if (g && g.total) reserved.push(g.color); return; }
+      reserved.push(g && g.color ? g.color : FIXED[id]);
+    });
+    reserved.push(G.alertHex.disputed);
+    var used = [];
+    function ok(c) {
+      for (var i = 0; i < reserved.length; i++) if (colorGap(c, reserved[i]) < TOO_CLOSE) return false;
+      for (var j = 0; j < used.length; j++) if (colorGap(c, used[j]) < TOO_CLOSE_EACH) return false;
+      return true;
+    }
+    G.groupList.forEach(function (g) {
+      if (!g.things) return;
+      if (!ok(g.color)) {
+        var best = '', gap = Infinity;
+        SAFE.forEach(function (s) {
+          if (!ok(s)) return;
+          var d = colorGap(s, g.color);
+          if (d < gap) { gap = d; best = s; }
+        });
+        if (best) { g.graphColor = g.color; g.color = best; }
+      }
+      used.push(g.color);
+    });
+  }
+
+  /* ---------- sizes, colors, ranking, seed positions ---------- */
+  function prepare(G) {
+    /* A kind with many members (21 items) draws them a little smaller than a kind with few (5 hotels),
+       so the long tail does not outshout the few that matter. The biggest in each kind keep their names. */
+    var members = new Map();
+    G.nodes.forEach(function (n) {
+      if (n.type !== 'thing' && n.type !== 'row') return;
+      var list = members.get(n.group);
+      if (!list) members.set(n.group, list = []);
+      list.push(n);
+    });
+    members.forEach(function (list) {
+      var cnt = list.length;
+      var shrink = cnt > 8 ? clamp(Math.sqrt(8 / cnt), 0.72, 1) : 1;
+      var keep = cnt <= 8 ? cnt : Math.max(4, Math.ceil(cnt * 0.3));
+      list.sort(function (a, b) { return (b.size - a.size) || (a.idx - b.idx); });
+      list.forEach(function (n, i) { n.shrink = shrink; n.top = i < keep; });
+    });
+    G.nodes.forEach(function (n) {
+      var deg = 0;
+      n.nb.forEach(function (m) { if (!m.struct) deg++; });
+      n.deg = deg;
+      /* Size from the graph (how much money or how many references), plus a little for how connected it is,
+         the way Obsidian grows a note with many links. */
+      n.r = clamp(1.3 * Math.sqrt(n.size) + 0.3 * Math.sqrt(deg), 2.2, 12) * (n.shrink || 1);
+      /* Kind hubs (Vendors, Items) read like Obsidian's tag dots: bigger, with a ring. */
+      if (n.type === 'kind') n.r = clamp(n.r * 1.4, 7, 14);
+      var g = G.groups.get(n.group);
+      n.rgb = g.rgb;
+      if (n.leftOut) n.rgb = mix(G.alert['left-out'], g.rgb, 0.25);
+      n.color = rgbStr(n.rgb);
+      n.hexColor = g.color;
+    });
+    var ranked = G.nodes.slice().sort(function (a, b) {
+      var ta = TYPE_RANK[a.type], tb = TYPE_RANK[b.type];
+      if (BIG[a.type] && BIG[b.type]) { if (b.size !== a.size) return b.size - a.size; }
+      else if (ta !== tb) return ta - tb;
+      var wa = WORDS[a.kind] ? 0 : 1, wb = WORDS[b.kind] ? 0 : 1;
+      if (wa !== wb) return wa - wb;
+      return (b.size - a.size) || (a.idx - b.idx);
+    });
+    var bi = 0;
+    ranked.forEach(function (n, i) { n.rank = i; n.bigRank = BIG[n.type] ? bi++ : 1e9; });
+    G.ranked = ranked;
+    seed(G);
+  }
+
+  /* Deterministic starting spots: each kind of thing gets its own side of a circle, the workbook sits in the
+     middle, and every note starts next to what it is about. The forces do the rest. */
+  function seed(G) {
+    var ring = [];
+    G.groupList.forEach(function (g) {
+      var any = false;
+      for (var i = 0; i < G.nodes.length && !any; i++) {
+        var n = G.nodes[i];
+        if (n.group === g.id && (n.type === 'thing' || n.type === 'kind' || n.type === 'row')) any = true;
+      }
+      if (any) ring.push(g.id);
+    });
+    var bigCount = G.nodes.filter(function (n) { return BIG[n.type]; }).length;
+    var R = 50 + 16 * Math.sqrt(bigCount);
+    var centers = new Map();
+    ring.forEach(function (gid, i) {
+      var ang = (i / Math.max(1, ring.length)) * TAU - Math.PI / 2;
+      centers.set(gid, [Math.cos(ang) * R, Math.sin(ang) * R]);
+    });
+    var counters = new Map();
+    function spot(n, cx, cy, step) {
+      var j = counters.get(n.group) || 0;
+      counters.set(n.group, j + 1);
+      var rr = step * Math.sqrt(j + 0.5), th = j * GOLDEN + n.idx * 0.001;
+      n.x = cx + rr * Math.cos(th);
+      n.y = cy + rr * Math.sin(th);
+    }
+    G.nodes.forEach(function (n) {
+      if (n.type === 'note' || n.type === 'column') return;
+      var c = centers.get(n.group);
+      if (!c) {
+        var ang = n.type === 'other_file' ? Math.PI * 0.8 : n.idx * GOLDEN;
+        var rad = n.type === 'file' ? 0 : n.type === 'other_file' ? R * 1.3 : 30;
+        c = [Math.cos(ang) * rad, Math.sin(ang) * rad];
+      }
+      spot(n, c[0], c[1], n.type === 'file' ? 0 : 13);
+    });
+    G.nodes.forEach(function (n) {
+      if (n.type !== 'note' && n.type !== 'column') return;
+      var sx = 0, sy = 0, cnt = 0;
+      (n.type === 'note' ? n.out : n.out.concat(n.inn)).forEach(function (l) {
+        var m = l.s === n ? l.t : l.s;
+        if (m.type === 'note' || m.type === 'column' || !isFinite(m.x)) return;
+        sx += m.x; sy += m.y; cnt++;
+      });
+      var th = n.idx * GOLDEN, rr = 14 + (n.idx % 5) * 3;
+      n.x = (cnt ? sx / cnt : 0) + rr * Math.cos(th);
+      n.y = (cnt ? sy / cnt : 0) + rr * Math.sin(th);
+    });
+    G.nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
+  }
+
+  /* ---------- theme colors for the canvas ---------- */
+  var C = {};
+  function readTheme() {
+    var cs = getComputedStyle(document.documentElement);
+    function v(name, d) { return hex(cs.getPropertyValue(name)) || d; }
+    C.bg = rgbOf(v('--bg', '#1E1E1E'));
+    C.text = rgbOf(v('--graph-text', '#DCDDDE'));
+    C.textDim = rgbOf(v('--graph-text-dim', '#9B9B9B'));
+    C.line = rgbOf(v('--graph-line', '#D8D8D8'));
+    C.select = rgbOf(v('--select', '#FFFFFF'));
+    C.lineAlpha = parseFloat(cs.getPropertyValue('--graph-line-alpha')) || 0.15;
+    C.bgStr = rgbStr(C.bg);
+  }
+
+  /* ---------- state ---------- */
+  var G = null;
+  var Graph = null;
+  var app = $('app'), graphEl = $('graph'), stage = $('stage'), panel = $('panel');
+  var W = 0, H = 0;
+  var viewNodes = [], viewLinks = [], viewRanked = [];
+  var showNotes = true, showGuesses = true, showStructure = false;
+  var local = false, depth = 1;
+  var searchQuery = '', searchSet = null;
+  var hoverNode = null, hoverGroup = null, pinGroup = null;
+  var selected = null;
+  var curK = 1, fitK = 1;
+  var userMoved = false, laidOut = false, engineActive = false;
+  var autoFit = null; /* 'all' | 'local' | null: keep the camera fitted while the layout settles */
+  var lastFrame = 0, animating = true, appearUntil = 0;
+  var frameId = 0, frameCount = 0;
+
+  function kick() {
+    animating = true;
+    if (Graph) Graph.autoPauseRedraw(false);
+  }
+
+  /* ---------- what is shown ---------- */
+  /* inLocal: a local graph also shows the workbook and tabs next to the open dot (columns and minor notes
+     still wait for Show structure). */
+  function passes(n, inLocal) {
+    if (n.struct && !showStructure && (!inLocal || n.hidden || n.type === 'column')) return false;
+    if (n.type === 'note') {
+      if (!showNotes) return false;
+      if (n.kind === 'guess' && !showGuesses) return false;
+    }
+    return true;
+  }
+  function localSet() {
+    if (!local || !selected) return null;
+    var set = new Set([selected]), frontier = [selected];
+    for (var d = 0; d < depth; d++) {
+      var next = [];
+      frontier.forEach(function (n) {
+        n.nb.forEach(function (m) { if (!set.has(m) && passes(m, true)) { set.add(m); next.push(m); } });
+      });
+      frontier = next;
+    }
+    return set;
+  }
+  /* The open dot is always drawn, and an open note brings what it is about with it, even when the filters
+     tuck those away (a note about the whole file shows next to the workbook dot). */
+  function forcedSet() {
+    if (!selected && pinGroup === null) return null;
+    var set = new Set();
+    if (selected) {
+      set.add(selected);
+      if (selected.type === 'note') selected.about.forEach(function (t) { set.add(t); });
+    }
+    /* A group pinned from the legend or the key shows all of its dots, even ones the filters tuck away
+       (the sender's notes about a tab, say), with what each note is about. Not in a local graph. */
+    if (pinGroup !== null && !local) {
+      G.nodes.forEach(function (n) {
+        if (n.group !== pinGroup) return;
+        if (n.type === 'column' && !showStructure) return;
+        set.add(n);
+        n.about.forEach(function (t) { if (t.type !== 'column' || showStructure) set.add(t); });
+      });
+    }
+    return set;
+  }
+  /* Opening a note while notes are switched off turns them back on. */
+  function reveal(n) {
+    var changed = false;
+    if (n.type === 'note' && !showNotes) { showNotes = true; changed = true; }
+    if (n.type === 'note' && n.kind === 'guess' && !showGuesses) { showGuesses = true; changed = true; }
+    if (!passes(n) || (n.type === 'note' && n.about.some(function (t) { return !t.vis; }))) changed = true;
+    if (changed) syncToggles();
+    return changed;
+  }
+
+  /* Rebuild the drawn graph after a filter, the local graph or the selection changes. */
+  function applyView(opts) {
+    opts = opts || {};
+    var prev = new Set(viewNodes);
+    var ls = localSet();
+    var t = now(), fresh = 0;
+    var forced = forcedSet();
+    G.nodes.forEach(function (n) {
+      n.vis = (passes(n) && (!ls || ls.has(n))) || (!!forced && forced.has(n));
+    });
+    G.nodes.forEach(function (n) {
+      if (!n.vis || prev.has(n) || !laidOut) return;
+      var anchor = null;
+      n.nb.forEach(function (m) { if (!anchor && prev.has(m) && m.vis) anchor = m; });
+      if (anchor) {
+        var th = n.idx * GOLDEN;
+        n.x = anchor.x + Math.cos(th) * (anchor.r + 12);
+        n.y = anchor.y + Math.sin(th) * (anchor.r + 12);
+      }
+      n.vx = 0; n.vy = 0; n.a = 0;
+      n.appearAt = t + Math.min(400, (fresh++) * 3);
+    });
+    viewNodes = G.nodes.filter(function (n) { return n.vis; });
+    viewLinks = G.links.filter(function (l) { return l.s.vis && l.t.vis; });
+    viewRanked = G.ranked.filter(function (n) { return n.vis; });
+    if (hoverNode && !hoverNode.vis) hoverNode = null;
+    if (!laidOut || opts.instant || !MOTION) {
+      Graph.d3AlphaDecay(0.0228).d3VelocityDecay(0.4).warmupTicks(LAYOUT_TICKS).cooldownTicks(0).cooldownTime(Infinity);
+    } else {
+      /* A short, calm settle: new dots drift in from their neighbors instead of the whole map jumping. */
+      Graph.d3AlphaDecay(0.05).d3VelocityDecay(0.55).warmupTicks(0).cooldownTicks(150).cooldownTime(2600);
+    }
+    engineActive = true;
+    Graph.graphData({ nodes: viewNodes, links: viewLinks });
+    appearUntil = Math.max(appearUntil, t + 900);
+    if (opts.fit) { autoFit = opts.fit; userMoved = false; }
+    refreshFocus();
+    updateCounts();
+    updateViewbar();
+    kick();
+  }
+
+  /* ---------- alpha targets: hover and selection light up a dot and its neighbors ---------- */
+  /* A group lit from the legend or the key: its dots, plus the dots its notes are about. */
+  var litCache = { id: null, set: null };
+  function litSet() {
+    var gid = hoverGroup !== null ? hoverGroup : pinGroup;
+    if (gid === null) return null;
+    if (litCache.id !== gid) {
+      var set = new Set();
+      G.nodes.forEach(function (n) {
+        if (n.group !== gid) return;
+        set.add(n);
+        n.about.forEach(function (t) { set.add(t); });
+      });
+      litCache = { id: gid, set: set };
+    }
+    return litCache.set;
+  }
+  function nodeTarget(n) {
+    var base = n.leftOut ? (n === selected ? 0.9 : 0.62) : 1;
+    if (hoverNode) return (n === hoverNode || hoverNode.nb.has(n)) ? base : DIM_HOVER;
+    var lit = litSet();
+    if (lit) return lit.has(n) ? base : DIM_HOVER;
+    if (searchSet) return searchSet.has(n) ? base : DIM_SEARCH;
+    if (selected && !local) return (n === selected || selected.nb.has(n)) ? base : DIM_SELECT;
+    return base;
+  }
+  function linkBase(l) {
+    if (l.type === 'about' && l.s.kind === 'said') return C.lineAlpha * 2.1;
+    if (l.type === 'about' && l.s.kind === 'sender') return C.lineAlpha * 1.5;
+    if (l.type === 'part_of' && (l.s.type === 'column' || l.t.type === 'column')) return C.lineAlpha * 0.7;
+    return C.lineAlpha;
+  }
+  function linkTarget(l, out) {
+    var base = linkBase(l);
+    out.hc = null; out.h = 0; out.a = base;
+    var lit = litSet();
+    var focus = hoverNode || (selected && !local && !lit && !searchSet ? selected : null);
+    if (focus) {
+      if (l.s === focus || l.t === focus) {
+        out.a = focus === hoverNode ? 0.9 : 0.75; out.h = 1; out.hc = focus.rgb;
+      } else out.a = focus === hoverNode ? 0.03 : 0.05;
+      return;
+    }
+    if (lit) {
+      var gid = litCache.id;
+      if (lit.has(l.s) && lit.has(l.t) && (l.s.group === gid || l.t.group === gid)) {
+        out.a = Math.max(base * 2.5, 0.4); out.h = 1;
+        out.hc = (l.s.group === gid ? l.s : l.t).rgb;
+      } else out.a = 0.03;
+      return;
+    }
+    if (searchSet) {
+      var ia = searchSet.has(l.s), ib = searchSet.has(l.t);
+      out.a = ia && ib ? base * 1.5 : (ia || ib ? base * 0.5 : 0.03);
+    }
+  }
+  var tmpLT = { a: 0, h: 0, hc: null };
+  function stepAlphas(dt) {
+    var f = MOTION ? 1 - Math.exp(-dt / 70) : 1;
+    var busy = false;
+    for (var i = 0; i < viewNodes.length; i++) {
+      var n = viewNodes[i];
+      var t = nodeTarget(n);
+      var d = t - n.a;
+      if (Math.abs(d) > 0.004) { n.a += d * f; busy = true; } else n.a = t;
+    }
+    for (var j = 0; j < viewLinks.length; j++) {
+      var l = viewLinks[j];
+      linkTarget(l, tmpLT);
+      if (tmpLT.hc) l.hc = tmpLT.hc;
+      var da = tmpLT.a - l.a, dh = tmpLT.h - l.h;
+      if (Math.abs(da) > 0.004) { l.a += da * f; busy = true; } else l.a = tmpLT.a;
+      if (Math.abs(dh) > 0.01) { l.h += dh * f; busy = true; } else l.h = tmpLT.h;
+    }
+    return busy;
+  }
+  function appearOf(n) {
+    if (!MOTION) return 1;
+    var t = (lastFrame - n.appearAt) / 320;
+    return t <= 0 ? 0 : (t >= 1 ? 1 : easeOut(t));
+  }
+
+  /* ---------- canvas painters ---------- */
+  function linkRgb(l) {
+    var base = (l.type === 'about' && l.s.kind === 'said') ? mix(C.line, l.s.rgb, 0.7) : C.line;
+    if (l.h > 0.02 && l.hc) return mix(base, l.hc, quant(l.h, 5));
+    return base;
+  }
+  function linkAlpha(l) { return l.a * Math.min(appearOf(l.s), appearOf(l.t)); }
+  function linkColor(l) { return rgbaStr(linkRgb(l), quant(linkAlpha(l), 50)); }
+  function linkWidth(l) {
+    var w = l.type === 'relates' ? 0.55 + 0.35 * Math.sqrt(l.weight) : (l.type === 'part_of' ? 0.8 : 1);
+    return Math.round(Math.min(w, 2) * (1 + 0.7 * l.h) * 10) / 10;
+  }
+  function linkDash(l) {
+    if (l.s.leftOut || l.t.leftOut || l.status === 'unconfirmed') return [3 / curK, 3 / curK];
+    return null;
+  }
+  function arrowLen(l) {
+    if (!FLOW[l.type] || l.h < 0.3) return 0;
+    return 6 / curK + 1.5;
+  }
+  function arrowColor(l) { return rgbaStr(linkRgb(l), quant(Math.min(1, linkAlpha(l) * 1.3), 50)); }
+
+  function ring(ctx, x, y, r, lw, color) {
+    ctx.lineWidth = lw;
+    ctx.strokeStyle = color;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.stroke();
+  }
+  function glow(ctx, x, y, r0, r1, rgb, a) {
+    var g = ctx.createRadialGradient(x, y, r0, x, y, r1);
+    g.addColorStop(0, rgbaStr(rgb, a));
+    g.addColorStop(1, rgbaStr(rgb, 0));
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r1, 0, TAU); ctx.fill();
+  }
+
+  /* A diamond: the owner's own words, a shape no group of things ever uses. */
+  function diamond(ctx, x, y, R) {
+    ctx.beginPath();
+    ctx.moveTo(x, y - R); ctx.lineTo(x + R, y); ctx.lineTo(x, y + R); ctx.lineTo(x - R, y);
+    ctx.closePath();
+  }
+
+  function paintNode(n, ctx, k) {
+    var a = n.a * appearOf(n);
+    if (a < 0.01) return;
+    var x = n.x, y = n.y, r = n.r;
+    if (n === hoverNode) r *= 1.12;
+    var px = 1 / k;
+    ctx.globalAlpha = a;
+    if (n.kind === 'said') glow(ctx, x, y, r * 0.8, r * 2.8, n.rgb, 0.34);
+    if (n.status === 'disputed') glow(ctx, x, y, r * 0.9, r * 2.3, G.alert.disputed, 0.35);
+    if (n.status === 'may-be-outdated') glow(ctx, x, y, r * 0.9, r * 2.1, G.alert['may-be-outdated'], 0.3);
+
+    var R = r * 1.3;
+    if (n.kind === 'said') {
+      diamond(ctx, x, y, R);
+      ctx.fillStyle = n.color; ctx.fill();
+      /* A light edge so the owner's words read as his at a glance. */
+      diamond(ctx, x, y, R + 1.6 + 1.8 * px);
+      ctx.lineWidth = Math.max(0.6, 1.4 * px);
+      ctx.strokeStyle = rgbaStr(mix(n.rgb, C.select, 0.55), 0.95);
+      ctx.stroke();
+    } else if (n.kind === 'sender') {
+      /* Someone else's words: the same diamond, dashed and dim, because nobody here has checked them. */
+      diamond(ctx, x, y, R);
+      ctx.fillStyle = rgbaStr(n.rgb, 0.3); ctx.fill();
+      ctx.setLineDash([2.2 * px, 1.8 * px]);
+      ctx.lineWidth = Math.max(0.8, 1.6 * px);
+      ctx.strokeStyle = n.color;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    } else {
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU);
+      if (n.guess) {
+        var lw = Math.max(1.2 * px, r * 0.3);
+        ctx.fillStyle = C.bgStr; ctx.fill();
+        ring(ctx, x, y, Math.max(0.5, r - lw / 2), lw, n.color);
+      } else {
+        ctx.fillStyle = n.color; ctx.fill();
+      }
+    }
+    /* Kind hubs get an outer ring, like Obsidian's tag dots. */
+    if (n.type === 'kind') ring(ctx, x, y, r + 1.8 + 2.4 * px, Math.max(0.8, 1.6 * px), rgbaStr(n.rgb, 0.75));
+    /* Marks, each drawn in screen pixels so they read at any zoom. */
+    if (n.kind === 'question' && r * k > 6) {
+      ctx.fillStyle = C.bgStr;
+      ctx.font = '700 ' + (r * 1.3) + 'px ' + FONT;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('?', x, y + r * 0.06);
+    }
+    var ringR = WORDS[n.kind] ? R + 2.2 + 3 * px : r + 1.2 + 2 * px;
+    if (n.status === 'disputed') ring(ctx, x, y, ringR, Math.max(0.8, 1.8 * px), rgbStr(G.alert.disputed));
+    if (n.status === 'may-be-outdated') {
+      ctx.setLineDash([2.5 * px, 2 * px]);
+      ring(ctx, x, y, ringR, Math.max(0.7, 1.5 * px), rgbStr(G.alert['may-be-outdated']));
+      ctx.setLineDash([]);
+    }
+    if (n.leftOut) {
+      ctx.lineWidth = Math.max(0.8, 1.6 * px);
+      ctx.strokeStyle = rgbaStr(C.text, 0.85);
+      ctx.beginPath();
+      ctx.moveTo(x - r - 2.5 * px - 1, y + r * 0.55);
+      ctx.lineTo(x + r + 2.5 * px + 1, y - r * 0.55);
+      ctx.stroke();
+    }
+    var outer = WORDS[n.kind] ? R + 1 : (n.type === 'kind' ? r + 3 : r);
+    if (n === selected) ring(ctx, x, y, outer + 2.4 + 3.2 * px, Math.max(0.8, 1.6 * px), rgbaStr(C.select, 0.95));
+    else if (n === hoverNode) ring(ctx, x, y, outer + 1.5 + 2 * px, Math.max(0.6, 1.2 * px), rgbaStr(C.select, 0.55));
+    ctx.globalAlpha = 1;
+  }
+  function paintHit(n, color, ctx, k) {
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(n.x, n.y, Math.max(n.r + 1.5, 6 / k), 0, TAU); ctx.fill();
+  }
+
+  /* Labels sit under their dots, drawn in screen space so they stay crisp. Big dots always carry one;
+     notes and columns fade in as you zoom, the way Obsidian fades its text. */
+  function Grid(cell) { this.cell = cell; this.map = new Map(); }
+  Grid.prototype.each = function (r, fn) {
+    var c = this.cell;
+    for (var gx = Math.floor(r[0] / c); gx <= Math.floor(r[2] / c); gx++) {
+      for (var gy = Math.floor(r[1] / c); gy <= Math.floor(r[3] / c); gy++) {
+        if (fn(gx + ',' + gy)) return true;
+      }
+    }
+    return false;
+  };
+  Grid.prototype.hits = function (r, self) {
+    var map = this.map;
+    return this.each(r, function (key) {
+      var list = map.get(key);
+      if (!list) return false;
+      for (var i = 0; i < list.length; i++) {
+        var o = list[i];
+        if (self && o[4] === self) continue;
+        if (r[0] < o[2] && r[2] > o[0] && r[1] < o[3] && r[3] > o[1]) return true;
+      }
+      return false;
+    });
+  };
+  Grid.prototype.add = function (r) {
+    var map = this.map;
+    this.each(r, function (key) {
+      var list = map.get(key);
+      if (!list) map.set(key, list = []);
+      list.push(r);
+      return false;
+    });
+  };
+
+  /* What the owner said, as a few words on the map: the answer rather than the stock question. */
+  function plainWords(n) {
+    var s = n.label;
+    if (/(\.\.\.|\u2026)$/.test(s) && n.summary) s = n.summary;
+    s = s.replace(/,?\s*per the owner,?/ig, '').replace(/\s+/g, ' ').trim();
+    return s.replace(/^The owner asked to build first:\s*/i, 'Build first: ')
+      .replace(/^The owner's goal for this data is:\s*/i, 'Goal: ')
+      .replace(/^Parked lines the owner identified:\s*/i, 'Parked lines: ')
+      .replace(/^The owner said:\s*/i, '');
+  }
+  function wordsLabel(n) { return clipWords(plainWords(n), 38); }
+  function labelText(n, long) {
+    if (long) return WORDS[n.kind] ? clipWords(n.label, 72) : clipMid(n.label, 64);
+    if (WORDS[n.kind]) return wordsLabel(n);
+    return n.type === 'note' ? clipWords(n.label, 30) : clipMid(n.label, 34);
+  }
+
+  /* Who gets a name, most important first: the open dot and what it touches, then the owner's words,
+     then dots flagged worth a look, then hubs and the biggest things. The rest fade in as you zoom. */
+  function labelPriority(n, focus, lit, zoomRel, few) {
+    var bigFade = clamp((zoomRel - 0.3) / 0.25, 0, 1);
+    if (n === hoverNode || n === selected) return [6, 1];
+    if (focus && focus.nb.has(n)) return [5, 1];
+    if (searchSet && searchSet.has(n)) return [4.5, 1];
+    if (lit && lit.has(n)) return [4, 1];
+    if (WORDS[n.kind]) return [3.5, clamp((zoomRel - 0.2) / 0.2, 0, 1)];
+    if (n.flag && n.type !== 'note') return [3, bigFade];
+    if (HUB[n.type]) return [2.5, bigFade];
+    if (BIG[n.type]) {
+      if (n.top || few) return [2, bigFade];
+      return [1.5, clamp((zoomRel - 1.25) / 0.45, 0, 1)];
+    }
+    if (n.type === 'note') {
+      if (few) return [1, bigFade];
+      if (n.kind === 'question' || n.flag) return [1, clamp((zoomRel - 1.1) / 0.45, 0, 1)];
+      return [0.5, clamp((zoomRel - 1.35) / 0.55, 0, 1)];
+    }
+    return [0, few ? bigFade : clamp((zoomRel - 2.0) / 0.6, 0, 1)];
+  }
+
+  function paintLabels(ctx, k) {
+    if (!Graph || !viewNodes.length) return;
+    frameId++;
+    var o = Graph.graph2ScreenCoords(0, 0);
+    var tx = o.x, ty = o.y;
+    var zoomRel = k / (fitK || k);
+    var scale = clamp(Math.pow(zoomRel, 0.22), 0.92, 1.3);
+    var few = viewNodes.length <= 40;
+    var grid = new Grid(48);
+    var focus = hoverNode || (selected && !local ? selected : null);
+    var lit = litSet();
+
+    /* Reserve where the dots are, so labels do not cover other dots. */
+    for (var v = 0; v < viewNodes.length; v++) {
+      var vn = viewNodes[v];
+      if (vn.a < 0.3) continue;
+      var vx = tx + vn.x * k, vy = ty + vn.y * k, vr = WORDS[vn.kind] ? (vn.r * 1.3 + 1.6) * k + 3 : vn.r * k + 1;
+      if (vx < -vr || vx > W + vr || vy < -vr || vy > H + vr) continue;
+      grid.add([vx - vr, vy - vr, vx + vr, vy + vr, vn]);
+    }
+
+    var cand = [];
+    for (var i = 0; i < viewRanked.length; i++) {
+      var n = viewRanked[i];
+      var pf = labelPriority(n, focus, lit, zoomRel, few);
+      var pri = pf[0], fade = pf[1];
+      if (focus && pri < 5) fade *= focus === hoverNode ? 0.35 : 0.5;
+      else if (lit && pri < 4) fade *= 0.3;
+      if (fade <= 0.02) continue;
+      cand.push([n, pri, fade]);
+    }
+    cand.sort(function (a, b) { return (b[1] - a[1]) || (a[0].rank - b[0].rank); });
+
+    ctx.save();
+    var dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.lineJoin = 'round';
+    var drawn = 0;
+    for (var c = 0; c < cand.length && drawn < 400; c++) {
+      var nn = cand[c][0], pr = cand[c][1];
+      var sx = tx + nn.x * k, sy = ty + nn.y * k;
+      if (sx < -300 || sx > W + 300 || sy < -60 || sy > H + 60) continue;
+      var alpha = nn.a * appearOf(nn) * cand[c][2];
+      if (alpha < 0.03) continue;
+      var long = pr >= 6;
+      var words = WORDS[nn.kind];
+      var big = nn.type === 'file' || nn.type === 'kind' || long;
+      var fs = Math.round((big ? 12.5 : nn.type === 'note' && !words ? 11 : 11.5) * scale * 2) / 2;
+      var text = labelText(nn, long);
+      var font = (big ? '600 ' : words ? '500 ' : nn.type === 'note' ? '400 ' : '500 ') + fs + 'px ' + FONT;
+      ctx.font = font;
+      var mkey = font + (long ? '|l' : '|s');
+      if (nn.mKey !== mkey) { nn.mKey = mkey; nn.mW = ctx.measureText(text).width; }
+      var w = nn.mW;
+      var rk = words ? (nn.r * 1.3 + 1.6) * k + 2 : nn.r * k + (nn.type === 'kind' ? 3 : 0);
+      var spots = [[sx, sy + rk + 4], [sx, sy - rk - 5 - fs]];
+      if (pr >= 1) spots.push([sx + rk + 6 + w / 2, sy - fs / 2 - 1], [sx - rk - 6 - w / 2, sy - fs / 2 - 1]);
+      if (pr >= 2) {
+        spots.push([sx + rk * 0.7 + 4 + w / 2, sy + rk * 0.7 + 2], [sx - rk * 0.7 - 4 - w / 2, sy + rk * 0.7 + 2],
+          [sx + rk * 0.7 + 4 + w / 2, sy - rk * 0.7 - 3 - fs], [sx - rk * 0.7 - 4 - w / 2, sy - rk * 0.7 - 3 - fs]);
+      }
+      /* Keep the names of dots that are on screen inside the canvas instead of cutting them off. */
+      if (sx > 0 && sx < W && w + 12 < W) {
+        for (var sc = 0; sc < spots.length; sc++) spots[sc][0] = clamp(spots[sc][0], w / 2 + 6, W - w / 2 - 6);
+      }
+      var placed = null;
+      for (var sp = 0; sp < spots.length; sp++) {
+        var rc = [spots[sp][0] - w / 2 - 2, spots[sp][1], spots[sp][0] + w / 2 + 2, spots[sp][1] + fs + 1, nn];
+        if (!grid.hits(rc, nn)) { placed = [spots[sp], rc]; break; }
+      }
+      if (!placed) {
+        /* Crowded: the open dot, what it touches and the owner's words still get their names. Other dots
+           yield to the bigger ones next to them and come back as you zoom in, the way Obsidian fades text. */
+        /* While a dot is open or hovered, the dimmed names behind it give way too. */
+        var lit2 = !focus || pr >= 5;
+        var must = pr >= 6 || (pr >= 4 && nn.type !== 'note') ||
+          (lit2 && ((words && pr >= 3.5) || (pr >= 2.5 && nn.bigRank < 6)));
+        if (!must) continue;
+        placed = [spots[0], [spots[0][0] - w / 2 - 2, spots[0][1], spots[0][0] + w / 2 + 2, spots[0][1] + fs + 1, nn]];
+        if (pr < 5) alpha *= 0.7;
+      }
+      grid.add(placed[1]);
+      var lx = placed[0][0], ly = placed[0][1];
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = rgbaStr(C.bg, 0.85);
+      ctx.strokeText(text, lx, ly);
+      var col = C.text;
+      if (nn.type === 'note' && !words && pr < 5) col = C.textDim;
+      if (nn.type === 'column') col = C.textDim;
+      if (nn.kind === 'said') col = mix(C.text, nn.rgb, 0.35);
+      if (nn.kind === 'sender') col = C.textDim;
+      if (nn.status === 'disputed') col = mix(C.text, G.alert.disputed, 0.55);
+      if (nn.leftOut) col = C.textDim;
+      ctx.fillStyle = rgbStr(col);
+      ctx.fillText(text, lx, ly);
+      if (nn.leftOut) {
+        ctx.fillRect(lx - w / 2, ly + fs * 0.55, w, Math.max(1, fs / 11));
+      }
+      drawn++;
+    }
+    ctx.restore();
+  }
+
+  /* ---------- custom forces (no extra libraries) ---------- */
+  function forceGravity(strength, sx, sy) {
+    var nodes = [];
+    function f(alpha) {
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.vx -= n.x * strength * sx * alpha;
+        n.vy -= n.y * strength * sy * alpha;
+      }
+    }
+    f.initialize = function (ns) { nodes = ns; };
+    return f;
+  }
+  function forceCollide(pad) {
+    var nodes = [];
+    function f() {
+      var maxR = 0, i;
+      for (i = 0; i < nodes.length; i++) if (nodes[i].r > maxR) maxR = nodes[i].r;
+      var cell = 2 * maxR + pad, grid = new Map();
+      for (i = 0; i < nodes.length; i++) {
+        var n = nodes[i], key = Math.floor(n.x / cell) + ',' + Math.floor(n.y / cell);
+        var list = grid.get(key);
+        if (!list) grid.set(key, list = []);
+        list.push(n);
+      }
+      for (i = 0; i < nodes.length; i++) {
+        var a = nodes[i];
+        var cx = Math.floor(a.x / cell), cy = Math.floor(a.y / cell);
+        for (var dx = -1; dx <= 1; dx++) {
+          for (var dy = -1; dy <= 1; dy++) {
+            var cl = grid.get((cx + dx) + ',' + (cy + dy));
+            if (!cl) continue;
+            for (var j = 0; j < cl.length; j++) {
+              var b = cl[j];
+              if (b.idx <= a.idx) continue;
+              var ddx = b.x - a.x, ddy = b.y - a.y;
+              var dist2 = ddx * ddx + ddy * ddy, min = a.r + b.r + pad;
+              if (dist2 >= min * min) continue;
+              var dist = Math.sqrt(dist2) || 0.01;
+              var push = (min - dist) / dist * 0.5;
+              var mx = ddx * push, my = ddy * push;
+              var wa = b.r * b.r / (a.r * a.r + b.r * b.r);
+              a.x -= mx * wa; a.y -= my * wa;
+              b.x += mx * (1 - wa); b.y += my * (1 - wa);
+            }
+          }
+        }
+      }
+    }
+    f.initialize = function (ns) { nodes = ns; };
+    return f;
+  }
+
+  /* ---------- camera ---------- */
+  function narrow() { return window.innerWidth < 760; }
+  function panelOpen() { return panel.classList.contains('open'); }
+  function insets() {
+    var ins = { t: 54, b: 40, l: 28, r: 28 };
+    var key = $('key');
+    if (!narrow() && !key.hidden && !$('key-rows').hidden) ins.b = Math.max(ins.b, (key.offsetHeight || 0) + 44);
+    if (narrow()) {
+      ins = { t: 52, b: 28, l: 20, r: 20 };
+      if (panelOpen()) ins.b = Math.min(panel.offsetHeight || H * 0.6, H * 0.64) + 16;
+    } else if (panelOpen()) {
+      ins.r = (panel.offsetWidth || 410) + 60;
+    }
+    return ins;
+  }
+  var measureCtx = null;
+  function labelWidth(n) {
+    if (n.lw === undefined) {
+      if (!measureCtx) measureCtx = document.createElement('canvas').getContext('2d');
+      if (!measureCtx) return 8 * n.label.length;
+      measureCtx.font = '500 12px ' + FONT;
+      n.lw = measureCtx.measureText(labelText(n, false)).width;
+    }
+    return n.lw;
+  }
+  /* The zoom and center that show every dot in `list`, with room for the names under the big ones. */
+  function fitFor(list, maxRel) {
+    if (!list.length || !W || !H) return null;
+    var ins = insets();
+    var aw = Math.max(80, W - ins.l - ins.r), ah = Math.max(80, H - ins.t - ins.b);
+    var maxR = 1, pts = [];
+    for (var i = 0; i < list.length; i++) {
+      var n = list[i];
+      if (!isFinite(n.x) || !isFinite(n.y)) continue;
+      if (n.r > maxR) maxR = n.r;
+      pts.push(n);
+    }
+    if (!pts.length) return null;
+    /* Small sets: never zoom so far that a dot turns into a blob. */
+    var kMax = Math.min(2.6, 22 / maxR);
+    if (maxRel) kMax = Math.min(kMax, fitK * maxRel);
+    var k = 1, box = null;
+    for (var pass = 0; pass < 3; pass++) {
+      var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (var j = 0; j < pts.length; j++) {
+        var p = pts[j];
+        var hw = p.r, below = p.r;
+        if (BIG[p.type] || WORDS[p.kind] || pts.length < 40) {
+          hw = Math.max(p.r, Math.min(labelWidth(p) / 2, narrow() ? 36 : 400) / k);
+          below = p.r + 18 / k;
+        }
+        if (p.x - hw < x0) x0 = p.x - hw;
+        if (p.x + hw > x1) x1 = p.x + hw;
+        if (p.y - p.r < y0) y0 = p.y - p.r;
+        if (p.y + below > y1) y1 = p.y + below;
+      }
+      box = [x0, y0, x1, y1];
+      var bw = Math.max(30, x1 - x0), bh = Math.max(30, y1 - y0);
+      k = clamp(Math.min(aw / bw, ah / bh), 0.03, kMax);
+    }
+    var cx = ins.l + aw / 2, cy = ins.t + ah / 2;
+    return { k: k, x: (box[0] + box[2]) / 2 + (W / 2 - cx) / k, y: (box[1] + box[3]) / 2 + (H / 2 - cy) / k };
+  }
+  function cam(f, ms) {
+    if (!f) return;
+    ms = MOTION ? (ms || 0) : 0;
+    Graph.zoom(f.k, ms);
+    Graph.centerAt(f.x, f.y, ms);
+    kick();
+  }
+  function fitAll(ms) {
+    var f = fitFor(viewNodes);
+    if (!f) return;
+    fitK = f.k;
+    cam(f, ms);
+  }
+  /* Frame a dot with everything it touches. */
+  function neighborhood(n) {
+    var list = [n];
+    n.nb.forEach(function (m) { if (m.vis) list.push(m); });
+    return list;
+  }
+  function focusOn(n, ms) {
+    cam(focusFor(n), ms === undefined ? 700 : ms);
+  }
+  function focusFor(n) {
+    var all = fitFor(viewNodes);
+    if (all) fitK = all.k;
+    if (!isFinite(n.x) || !W || !H) return null;
+    /* Put the dot in the middle of the free space and zoom so everything it touches fits around it. */
+    var ins = insets();
+    var hw = Math.max(40, (W - ins.l - ins.r) / 2), hh = Math.max(40, (H - ins.t - ins.b) / 2);
+    var k = Math.min(3, fitK * 2);
+    neighborhood(n).forEach(function (m) {
+      var dx = Math.abs(m.x - n.x) + m.r, dy = Math.abs(m.y - n.y) + m.r;
+      var lw = BIG[m.type] ? labelWidth(m) / 2 : 0;
+      if (dx > 0) k = Math.min(k, (hw - lw) / dx);
+      if (dy > 0) k = Math.min(k, (hh - 20) / (dy + 1));
+    });
+    k = clamp(k, Math.min(fitK, 0.5), 4);
+    var cx = ins.l + hw, cy = ins.t + hh;
+    return { k: k, x: n.x + (W / 2 - cx) / k, y: n.y + (H / 2 - cy) / k };
+  }
+  /* Where the camera should end up for the current view. */
+  function target() {
+    if (!local && selected && selected.vis) return focusFor(selected);
+    var f = fitFor(viewNodes);
+    if (f) fitK = f.k;
+    return f;
+  }
+  /* After a click, pan just enough that the dot is not hidden under the note pane. */
+  function ensureVisible(n) {
+    var p = Graph.graph2ScreenCoords(n.x, n.y);
+    var ins = insets();
+    var dx = 0, dy = 0;
+    if (!narrow() && p.x > W - ins.r + 20) dx = p.x - (ins.l + (W - ins.l - ins.r) / 2);
+    if (narrow() && p.y > H - ins.b - 10) dy = p.y - (ins.t + (H - ins.t - ins.b) / 2);
+    if (!dx && !dy) return;
+    var c = Graph.centerAt();
+    Graph.centerAt(c.x + dx / curK, c.y + dy / curK, MOTION ? 450 : 0);
+    kick();
+  }
+  function followFit() {
+    var f = target();
+    if (!f) return;
+    var c = Graph.centerAt();
+    Graph.zoom(curK + (f.k - curK) * 0.12);
+    Graph.centerAt(c.x + (f.x - c.x) * 0.14, c.y + (f.y - c.y) * 0.14);
+  }
+
+  /* ---------- search ---------- */
+  var searchInput = $('search'), results = $('results');
+  var resultList = [], activeResult = -1;
+  function matchScore(n, q) {
+    var i = n.lower.indexOf(q);
+    if (i === 0) return 0;
+    if (i > 0) return 1;
+    return n.hay.indexOf(q) !== -1 ? 2 : -1;
+  }
+  function refreshFocus() {
+    if (!searchQuery) { searchSet = null; kick(); return; }
+    var set = new Set();
+    G.nodes.forEach(function (n) { if (n.vis && matchScore(n, searchQuery) >= 0) set.add(n); });
+    searchSet = set;
+    kick();
+  }
+  function renderResults() {
+    clear(results);
+    resultList = [];
+    activeResult = -1;
+    if (!searchQuery) { results.hidden = true; return; }
+    var q = searchQuery;
+    var list = [];
+    G.nodes.forEach(function (n) { var s = matchScore(n, q); if (s >= 0) list.push([n, s]); });
+    list.sort(function (a, b) { return (a[1] - b[1]) || (a[0].rank - b[0].rank); });
+    resultList = list.slice(0, 8).map(function (x) { return x[0]; });
+    if (!resultList.length) results.appendChild(el('li', 'none', 'Nothing matches that.'));
+    resultList.forEach(function (n, i) {
+      var li = el('li');
+      var b = el('button');
+      b.type = 'button';
+      b.id = 'res-' + i;
+      b.appendChild(dotFor(n));
+      b.appendChild(el('span', 'nm', n.label));
+      b.appendChild(el('span', 'grp', groupName(n) + (passes(n) ? '' : ', hidden now')));
+      b.addEventListener('click', function () { choose(n); });
+      b.addEventListener('mouseenter', function () { if (n.vis) setHover(n); });
+      b.addEventListener('mouseleave', function () { setHover(null); });
+      li.appendChild(b);
+      results.appendChild(li);
+    });
+    results.hidden = false;
+  }
+  function setActive(i) {
+    if (!resultList.length) return;
+    activeResult = (i + resultList.length) % resultList.length;
+    Array.prototype.forEach.call(results.querySelectorAll('button'), function (b, j) {
+      b.classList.toggle('active', j === activeResult);
+    });
+  }
+  searchInput.addEventListener('input', function () {
+    searchQuery = searchInput.value.replace(/\s+/g, ' ').trim().toLowerCase().slice(0, 100);
+    refreshFocus();
+    renderResults();
+  });
+  searchInput.addEventListener('keydown', function (ev) {
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); setActive(activeResult + 1); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); setActive(activeResult - 1); }
+    else if (ev.key === 'Enter') {
+      var n = resultList[activeResult >= 0 ? activeResult : 0];
+      if (n) { ev.preventDefault(); choose(n); }
+    } else if (ev.key === 'Escape') {
+      if (searchInput.value) clearSearch(); else searchInput.blur();
+      ev.stopPropagation();
+    }
+  });
+  /* Picking a result jumps to it and clears the search, so the map is not left dimmed. */
+  function choose(n) {
+    setHover(null);
+    clearSearch();
+    searchInput.blur();
+    goTo(n);
+  }
+  function clearSearch() {
+    searchInput.value = ''; searchQuery = '';
+    refreshFocus(); renderResults();
+  }
+
+  /* ---------- toggles ---------- */
+  function setSwitch(btn, on) { btn.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  function syncToggles() {
+    setSwitch($('t-notes'), showNotes);
+    setSwitch($('t-guesses'), showGuesses && showNotes && countGuesses > 0);
+    setSwitch($('t-structure'), showStructure);
+    setSwitch($('t-local'), local);
+    $('t-guesses').disabled = !showNotes || !countGuesses;
+    $('d-1').setAttribute('aria-pressed', depth === 1 ? 'true' : 'false');
+    $('d-2').setAttribute('aria-pressed', depth === 2 ? 'true' : 'false');
+    $('depth').setAttribute('aria-disabled', local ? 'false' : 'true');
+  }
+  var countGuesses = 0;
+  $('t-notes').addEventListener('click', function () {
+    showNotes = !showNotes;
+    if (!showNotes && selected && selected.type === 'note') closePanel(true);
+    syncToggles();
+    applyView({ fit: local ? 'local' : 'all' });
+    announce(showNotes ? 'Showing the notes.' : 'Notes hidden.');
+  });
+  $('t-guesses').addEventListener('click', function () {
+    showGuesses = !showGuesses;
+    if (!showGuesses && selected && selected.kind === 'guess') closePanel(true);
+    syncToggles();
+    applyView({ fit: local ? 'local' : 'all' });
+    announce(showGuesses ? 'Showing the guesses.' : 'Guesses hidden.');
+  });
+  $('t-structure').addEventListener('click', function () {
+    showStructure = !showStructure;
+    if (!showStructure && selected && selected.hidden) closePanel(true);
+    syncToggles();
+    applyView({ fit: local ? 'local' : 'all' });
+    announce(showStructure ? 'Showing the workbook, its tabs and columns, and the minor notes.' : 'Structure hidden.');
+  });
+  function setLocal(on, d) {
+    if (d) depth = d;
+    local = !!on && !!selected;
+    syncToggles();
+    writeHash();
+    applyView({ fit: local ? 'local' : 'all' });
+    announce(local ? 'Local graph of ' + selected.label + '.' : 'Showing the whole brain.');
+  }
+  $('t-local').addEventListener('click', function () { setLocal(!local); });
+  $('d-1').addEventListener('click', function () { if (depth !== 1) { depth = 1; if (local) setLocal(true); else syncToggles(); writeHash(); } });
+  $('d-2').addEventListener('click', function () { if (depth !== 2) { depth = 2; if (local) setLocal(true); else syncToggles(); writeHash(); } });
+  $('local-exit').addEventListener('click', function () { setLocal(false); });
+
+  function updateCounts() {
+    var notes = 0, guesses = 0, structure = 0;
+    G.nodes.forEach(function (n) {
+      if (n.type === 'note' && !n.struct) notes++;
+      if (n.type === 'note' && n.kind === 'guess' && !n.struct) guesses++;
+      if (n.struct) structure++;
+    });
+    countGuesses = guesses;
+    $('n-notes').textContent = notes ? fmtInt(notes) : '0';
+    $('n-guesses').textContent = fmtInt(guesses);
+    $('n-structure').textContent = structure ? fmtInt(structure) : '0';
+    $('t-notes').disabled = !notes && !G.nodes.some(function (n) { return n.type === 'note'; });
+    $('t-structure').disabled = !structure;
+    G.groupList.forEach(function (g) { g.shown = 0; });
+    viewNodes.forEach(function (n) { G.groups.get(n.group).shown++; });
+    groupRows.forEach(function (row) {
+      var g = row.g;
+      row.n.textContent = g.shown === g.total ? fmtInt(g.total) : fmtInt(g.shown) + ' of ' + fmtInt(g.total);
+      row.li.classList.toggle('off', g.shown === 0);
+    });
+  }
+
+  function updateViewbar() {
+    var vt = $('view-title');
+    clear(vt);
+    if (local && selected) {
+      vt.appendChild(document.createTextNode('Local graph of '));
+      vt.appendChild(el('b', null, clip(selected.label, 60)));
+      vt.appendChild(document.createTextNode(depth === 2 ? ', two steps out' : ', one step out'));
+      $('local-exit').hidden = false;
+    } else {
+      vt.textContent = 'Graph view';
+      $('local-exit').hidden = true;
+    }
+  }
+
+  /* ---------- the note pane ---------- */
+  function groupName(n) { return G.groups.get(n.group).label; }
+  function dotFor(n) {
+    var cls = 'dot' + (n.guess ? ' hollow' : '') + (n.kind === 'said' ? ' diamond ring' : '') +
+      (n.kind === 'sender' ? ' diamond dashed' : '') + (n.type === 'kind' ? ' ring' : '') + (n.leftOut ? ' struck' : '');
+    var d = el('span', cls);
+    d.style.setProperty('--c', n.color);
+    d.setAttribute('aria-hidden', 'true');
+    return d;
+  }
+  function tagColor(tag) {
+    var g = G.groups.get(tag);
+    return g ? g.color : has(FIXED, tag) ? FIXED[tag] : '#8A8F98';
+  }
+  function tagFor(b) {
+    var note = G.noteBy.get(b.statement);
+    if (note) return { tag: note.kind, note: note };
+    return { tag: b.kind || kindFromSource(b.source, b.status), note: null };
+  }
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+
+  /* Each link as a short sentence from the open dot's side: 'Delivers to Palm Key', 'Fed by Inputs'.
+     Returns [words before the name, words after the name]. */
+  function relParts(l, n) {
+    var out = l.s === n;
+    var lab = l.label;
+    switch (l.type) {
+      case 'relates':
+        if (out) return [cap(lab || 'relates to') + ' ', ''];
+        return ['', ' ' + (lab || 'relates to') + ' ' + clip(n.label, 40)];
+      case 'feeds': return out ? ['Feeds ', ''] : ['Fed by ', ''];
+      case 'derived_from': return out ? ['Calculated from ', ''] : ['Used to calculate ', ''];
+      case 'looks_up': return out ? ['Looks up ', ''] : ['Looked up by ', ''];
+      case 'same_as': return out ? [cap(lab || 're-coded to') + ' ', ''] : ['Re-coded from ', ''];
+      case 'part_of': return out ? ['Part of ', ''] : ['Includes ', ''];
+      case 'about': return out ? ['About ', ''] : ['', ' is a note about this'];
+      case 'joins_on': return ['Matches ', lab ? ' on ' + lab : ''];
+      case 'links_file': return out ? ['Links to ', lab ? ' (' + lab + ')' : ''] : ['Linked from ', lab ? ' (' + lab + ')' : ''];
+    }
+    return [out ? 'Links to ' : 'Linked from ', ''];
+  }
+
+  /* A note's lines: its own statement, then each note about it in that note's own words, the owner's first.
+     Built from the dots themselves, so the pane always says what the dots say. */
+  function paneEntries(n) {
+    var out = [];
+    if (n.body.length) out.push({ b: n.body[0], note: n.type === 'note' ? n : null });
+    else if (n.summary) out.push({ b: { statement: n.summary, source: n.source, status: '', asOf: '', saidBy: '', kind: '' }, note: n.type === 'note' ? n : null });
+    if (n.type === 'note' || !n.aboutMe.length) {
+      /* Older graphs carry the notes only in the body. */
+      n.body.slice(1).forEach(function (b) { out.push({ b: b, note: n.type === 'note' ? null : (G.noteBy.get(b.statement) || null) }); });
+    } else {
+      n.aboutMe.slice().sort(function (a, b) { return (NOTE_ORDER[a.kind] - NOTE_ORDER[b.kind]) || (a.idx - b.idx); })
+        .forEach(function (m) {
+          var b = m.body[0] || { statement: m.summary || m.label, source: m.source, status: m.status, asOf: '', saidBy: m.saidBy, kind: m.kind };
+          out.push({ b: b, note: m });
+        });
+    }
+    var seen = new Set();
+    return out.filter(function (e) {
+      if (seen.has(e.b.statement)) return false;
+      seen.add(e.b.statement);
+      return true;
+    }).slice(0, MAX_BODY);
+  }
+
+  function callout(entry, n) {
+    var b = entry.b;
+    var tf = entry.note ? { tag: entry.note.kind, note: entry.note } : tagFor(b);
+    var tag = tf.tag;
+    /* Someone else's words are never shown as the owner's. */
+    var who = '';
+    if ((b.source === 'told' || WORDS[tag]) && !isOwner(G, b.saidBy)) who = b.saidBy || (tf.note && tf.note.saidBy) || 'someone else';
+    if (tag === 'said' && who) tag = 'sender';
+    var title = tag === 'sender' ? clip(who || (tf.note && tf.note.saidBy) || 'Someone else', 60) + ' said, not checked'
+      : tag === 'said' && b.saidBy && !/^(the )?owner$/i.test(b.saidBy) ? clip(b.saidBy, 60) + ' (the owner) said'
+      : (TAG_WORDS[tag] || 'Note') + (who && tag !== 'sender' ? ', from ' + clip(who, 60) : '');
+    var color = tagColor(tag);
+    var box = el('div', 'callout tag-' + tag + (tag === 'guess' || tag === 'sender' ? ' hollow' : '') + (b.status ? ' st-' + b.status : ''));
+    var rgb = rgbOf(color);
+    box.style.setProperty('--c', color);
+    box.style.setProperty('--tint', rgbaStr(rgb, 0.09));
+    var head = el('div', 'callout-head');
+    head.appendChild(el('span', 'callout-title', title));
+    if (b.asOf) head.appendChild(el('span', 'callout-when', b.asOf));
+    if (b.status === 'unconfirmed' && tag !== 'question' && tag !== 'sender') head.appendChild(el('span', 'callout-st', 'not confirmed yet'));
+    if (b.status === 'may-be-outdated') head.appendChild(el('span', 'callout-st', 'may be out of date'));
+    if (b.status === 'disputed') head.appendChild(el('span', 'callout-st', 'worth a look'));
+    if (tf.note && tf.note !== n) {
+      var target = tf.note;
+      var open = el('button', 'callout-open', 'Open note');
+      open.type = 'button';
+      open.setAttribute('aria-label', 'Open the note: ' + clip(target.label, 80));
+      open.addEventListener('click', function () { goTo(target); });
+      open.addEventListener('mouseenter', function () { if (target.vis) setHover(target); });
+      open.addEventListener('mouseleave', function () { setHover(null); });
+      head.appendChild(open);
+    }
+    box.appendChild(head);
+    box.appendChild(el('p', 'callout-text', b.statement));
+    return box;
+  }
+
+  function connList(title, links, n, emptyText) {
+    var sec = el('section', 'p-section');
+    var h = el('h3', null, title);
+    var seen = new Set(), items = [];
+    links.forEach(function (l) {
+      var other = l.s === n ? l.t : l.s;
+      if (seen.has(other)) return;
+      seen.add(other);
+      items.push([l, other]);
+    });
+    h.appendChild(el('span', 'n', fmtInt(items.length)));
+    sec.appendChild(h);
+    if (!items.length) {
+      sec.appendChild(el('p', 'p-empty', emptyText));
+      return sec;
+    }
+    items.sort(function (a, b) {
+      var va = passes(a[1]) ? 0 : 1, vb = passes(b[1]) ? 0 : 1;
+      if (va !== vb) return va - vb;
+      var na = a[1].type === 'note' ? 0 : 1, nb2 = b[1].type === 'note' ? 0 : 1;
+      if (na !== nb2) return na - nb2;
+      if (na === 0 && a[1].kind !== b[1].kind) return NOTE_ORDER[a[1].kind] - NOTE_ORDER[b[1].kind];
+      return a[1].rank - b[1].rank;
+    });
+    var ul = el('ul', 'conns');
+    function addRows(from, to) {
+      for (var i = from; i < to; i++) {
+        (function (l, other) {
+          var hiddenNow = !passes(other) && !other.vis;
+          var li = el('li', hiddenNow ? 'off' : null);
+          var btn = el('button');
+          btn.type = 'button';
+          btn.appendChild(dotFor(other));
+          var line = el('span', 'line');
+          var backlink = other.type === 'note' && l.type === 'about' && l.t === n;
+          if (backlink) {
+            line.appendChild(el('span', 'nm', other.label));
+          } else {
+            var parts = relParts(l, n);
+            if (parts[0]) line.appendChild(document.createTextNode(parts[0]));
+            line.appendChild(el('span', 'nm', other.label));
+            if (parts[1]) line.appendChild(document.createTextNode(parts[1]));
+          }
+          if (hiddenNow) line.appendChild(el('span', 'tag', 'hidden'));
+          btn.appendChild(line);
+          if (backlink) {
+            var snip = clip(other.summary || (other.body[0] ? other.body[0].statement : ''), 150);
+            if (other.kind === 'sender') snip = clip(other.saidBy, 40) + ' said, not checked: ' + snip;
+            btn.appendChild(el('span', 'rel', snip));
+          }
+          btn.addEventListener('click', function () { goTo(other); });
+          btn.addEventListener('mouseenter', function () { if (other.vis) setHover(other); });
+          btn.addEventListener('mouseleave', function () { setHover(null); });
+          li.appendChild(btn);
+          ul.appendChild(li);
+        })(items[i][0], items[i][1]);
+      }
+    }
+    addRows(0, Math.min(items.length, LIST_LIMIT));
+    sec.appendChild(ul);
+    if (items.length > LIST_LIMIT) {
+      var more = el('button', 'more', 'Show all ' + fmtInt(items.length));
+      more.type = 'button';
+      more.addEventListener('click', function () { addRows(LIST_LIMIT, items.length); more.remove(); });
+      sec.appendChild(more);
+    }
+    return sec;
+  }
+
+  /* 'Confirmed by the owner' only when the owner's own words confirm it, never for a note someone else
+     sent or for "the owner was not sure". */
+  function ownerConfirmed(n) {
+    if (n.aboutMe.length) {
+      return n.aboutMe.some(function (m) {
+        return m.kind === 'said' && (m.status === 'confirmed' || (!!m.body[0] && m.body[0].status === 'confirmed'));
+      });
+    }
+    return n.body.slice(1).some(function (b) { return b.source === 'told' && b.status === 'confirmed' && isOwner(G, b.saidBy); });
+  }
+  function sendersOf(n) {
+    var names = [];
+    n.aboutMe.forEach(function (m) { if (m.kind === 'sender' && names.indexOf(m.saidBy) === -1) names.push(m.saidBy); });
+    return names;
+  }
+
+  /* Which tab a column is on, from its part_of line. */
+  function columnTab(n) {
+    for (var i = 0; i < n.out.length; i++) {
+      if (n.out[i].type === 'part_of' && n.out[i].t.type === 'sheet') return 'on ' + clip(n.out[i].t.label, 40);
+    }
+    return '';
+  }
+
+  function renderPanel(n) {
+    var body = $('p-body');
+    clear(body);
+    var kick2 = el('div', 'kicker');
+    kick2.appendChild(dotFor(n));
+    var typ = n.type === 'note'
+      ? (n.kind === 'sender' ? 'what ' + clip(n.saidBy, 40) + ' said, not checked' : NOTE_WORDS[n.kind])
+      : n.type === 'kind' ? fmtInt(n.inn.filter(function (l) { return l.type === 'part_of' && l.s.type === 'thing'; }).length) + ' in this group'
+      : n.type === 'column' ? columnTab(n)
+      : TYPE_WORDS[n.type];
+    kick2.appendChild(el('span', 'grp', n.type === 'note' ? 'Note' : groupName(n)));
+    if (typ) {
+      kick2.appendChild(el('span', 'sep', '/'));
+      kick2.appendChild(el('span', 'typ', typ));
+    }
+    body.appendChild(kick2);
+    var h = el('h2', 'p-title' + (n.leftOut ? ' struck' : ''), n.label);
+    h.id = 'p-title';
+    body.appendChild(h);
+
+    var chips = el('div', 'chips');
+    var st = n.status;
+    if (st === 'confirmed' && (n.type === 'note' || !ownerConfirmed(n))) st = '';
+    if (st && STATUS_CHIP[st]) {
+      var chip = el('span', 'chip', STATUS_CHIP[st]);
+      var cc = st === 'disputed' ? rgbStr(G.alert.disputed)
+        : st === 'left-out' ? rgbStr(G.alert['left-out'])
+        : st === 'may-be-outdated' ? rgbStr(G.alert['may-be-outdated'])
+        : st === 'confirmed' ? tagColor('said') : '';
+      if (cc) chip.style.setProperty('--c', cc);
+      chips.appendChild(chip);
+    }
+    var senders = n.type === 'note' ? [] : sendersOf(n);
+    if (n.kind === 'sender') {
+      var sc = el('span', 'chip', 'Not checked by the owner');
+      sc.style.setProperty('--c', tagColor('sender'));
+      chips.appendChild(sc);
+    } else if (senders.length && st !== 'confirmed') {
+      var sc2 = el('span', 'chip', 'Notes from ' + clip(senders[0], 40) + (senders.length > 1 ? ' and others' : '') + ', not checked');
+      sc2.style.setProperty('--c', tagColor('sender'));
+      chips.appendChild(sc2);
+    }
+    if (n.hidden) chips.appendChild(el('span', 'chip', 'Part of the structure'));
+    if (chips.childNodes.length) body.appendChild(chips);
+
+    var list = paneEntries(n);
+    if (list.length) {
+      var wrap = el('div', 'callouts');
+      list.forEach(function (e) { wrap.appendChild(callout(e, n)); });
+      body.appendChild(wrap);
+    } else {
+      body.appendChild(el('p', 'p-empty', 'Nothing written about this yet.'));
+    }
+
+    body.appendChild(connList('Links', n.out, n, 'This dot does not link to anything.'));
+    body.appendChild(connList('Linked mentions', n.inn, n, 'Nothing links here yet.'));
+    body.scrollTop = 0;
+  }
+
+  function openPanel(n) {
+    renderPanel(n);
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    stage.classList.add('panel-open');
+  }
+  /* True when the open dot pulled in dots the filters would otherwise tuck away. */
+  function extras(p) {
+    if (!p) return false;
+    if (!passes(p)) return true;
+    return p.type === 'note' && p.about.some(function (t) { return !passes(t); });
+  }
+  function select(n, opts) {
+    opts = opts || {};
+    var had = extras(selected);
+    var changed = reveal(n) || had;
+    selected = n;
+    openPanel(n);
+    writeHash();
+    announce('Opened ' + n.label + '.');
+    if (local) applyView({ fit: 'local' });
+    else if (changed) applyView({ fit: null });
+    syncToggles();
+    updateViewbar();
+    if (!local) {
+      if (opts.fly) {
+        if (changed) setTimeout(function () { focusOn(n); }, 60);
+        else focusOn(n);
+      } else if (laidOut) {
+        ensureVisible(n);
+      }
+    }
+    kick();
+  }
+  function goTo(n) {
+    userMoved = true;
+    autoFit = null;
+    select(n, { fly: true });
+  }
+  function closePanel(quiet) {
+    var had = extras(selected);
+    selected = null;
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    stage.classList.remove('panel-open');
+    var wasLocal = local;
+    local = false;
+    syncToggles();
+    writeHash();
+    if ((wasLocal || had) && !quiet) applyView({ fit: wasLocal ? 'all' : null });
+    updateViewbar();
+    kick();
+  }
+  $('p-close').addEventListener('click', function () { closePanel(); });
+
+  function setHover(n) {
+    if (hoverNode === n) return;
+    hoverNode = n;
+    kick();
+  }
+
+  var liveEl = $('live');
+  function announce(msg) { liveEl.textContent = msg; }
+
+  /* ---------- the URL hash: #focus=<node id>&local=1&depth=2, for deep links and screenshots ---------- */
+  function readHash() {
+    var out = {};
+    var h = (location.hash || '').replace(/^#/, '');
+    if (!h) return out;
+    h.split('&').forEach(function (part) {
+      var i = part.indexOf('=');
+      var key = i === -1 ? part : part.slice(0, i), val = i === -1 ? '' : part.slice(i + 1);
+      try { out[decodeURIComponent(key)] = decodeURIComponent(val); } catch (e) { /* a broken escape: ignore it */ }
+    });
+    return out;
+  }
+  function writeHash() {
+    var h = '';
+    if (selected) {
+      h = '#focus=' + encodeURIComponent(selected.id);
+      if (local) h += '&local=1';
+      if (depth === 2) h += '&depth=2';
+    }
+    try { history.replaceState(null, '', h || (location.pathname + location.search)); } catch (e) { /* file:// may refuse */ }
+  }
+  function applyHash(hash, first) {
+    var id = typeof hash.focus === 'string' ? hash.focus : (typeof hash.node === 'string' ? hash.node : '');
+    var target = id ? G.byId.get(id) : null;
+    depth = hash.depth === '2' ? 2 : 1;
+    if (!target) { if (!first && selected) closePanel(); return false; }
+    reveal(target);
+    selected = target;
+    local = hash.local === '1';
+    openPanel(target);
+    syncToggles();
+    return true;
+  }
+
+  /* ---------- legend, key, the owner's notes and the start list ---------- */
+  var groupRows = [];
+  var MARKS = [
+    ['said', 'Diamond: what the owner told it'],
+    ['sender', 'Dashed: from someone else, not checked'],
+    ['found', 'Small dot: something it counted'],
+    ['guess', 'Hollow: a guess to confirm'],
+    ['question', 'Question mark: an open question'],
+    ['web', 'From the web'],
+    ['kind', 'Ringed dot: a kind of thing'],
+    ['disputed', 'Red ring: worth a look'],
+    ['left-out', 'Struck through: left out of totals'],
+    ['may-be-outdated', 'Dashed ring: may be out of date']
+  ];
+  function drawMark(canvas, what) {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = 16 * dpr; canvas.height = 16 * dpr;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.scale(dpr, dpr);
+    var x = 8, y = 8, r = 4.2;
+    var side = rgbOf('#252525');
+    function fill(rgb) { ctx.fillStyle = rgbStr(rgb); ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); }
+    var neutral = [150, 150, 150];
+    if (what === 'said') {
+      var c1 = rgbOf(tagColor('said'));
+      diamond(ctx, x, y, 4.6); ctx.fillStyle = rgbStr(c1); ctx.fill();
+      diamond(ctx, x, y, 6.6); ctx.lineWidth = 1.1; ctx.strokeStyle = rgbStr(mix(c1, [255, 255, 255], 0.55)); ctx.stroke();
+    } else if (what === 'sender') {
+      var c2 = rgbOf(tagColor('sender'));
+      diamond(ctx, x, y, 5.6); ctx.fillStyle = rgbaStr(c2, 0.3); ctx.fill();
+      ctx.setLineDash([1.8, 1.5]); ctx.lineWidth = 1.3; ctx.strokeStyle = rgbStr(c2); ctx.stroke(); ctx.setLineDash([]);
+    }
+    else if (what === 'found') { r = 3; fill(rgbOf(tagColor('found'))); }
+    else if (what === 'guess') { ctx.fillStyle = rgbStr(side); ring(ctx, x, y, r - 0.7, 1.6, tagColor('guess')); }
+    else if (what === 'web') { r = 3.4; fill(rgbOf(tagColor('web'))); }
+    else if (what === 'question') {
+      fill(rgbOf(tagColor('question')));
+      ctx.fillStyle = rgbStr(side); ctx.font = '700 6px ' + FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('?', x, y + 0.4);
+    }
+    else if (what === 'kind') { r = 3.6; fill(neutral); ring(ctx, x, y, r + 2.2, 1.2, rgbaStr(neutral, 0.8)); }
+    else if (what === 'disputed') { fill(neutral); ring(ctx, x, y, r + 2, 1.3, rgbStr(G.alert.disputed)); }
+    else if (what === 'left-out') {
+      fill(G.alert['left-out']);
+      ctx.strokeStyle = '#dcddde'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(1.5, 11); ctx.lineTo(14.5, 5); ctx.stroke();
+    }
+    else if (what === 'may-be-outdated') {
+      fill(neutral); ctx.setLineDash([2, 1.6]); ring(ctx, x, y, r + 2, 1.2, rgbStr(G.alert['may-be-outdated'])); ctx.setLineDash([]);
+    }
+  }
+
+  /* Hovering a group lights it for a moment; clicking pins it until Clear, with a chip on the map saying so. */
+  var groupButtons = [];
+  /* True when pinning this group brings in dots the filters would otherwise tuck away. */
+  function pinExtras(gid) {
+    if (gid === null) return false;
+    return G.nodes.some(function (n) {
+      return n.group === gid && (!passes(n) || n.about.some(function (t) { return !passes(t); }));
+    });
+  }
+  function setPin(gid) {
+    var had = pinExtras(pinGroup);
+    pinGroup = gid;
+    litCache = { id: null, set: null };
+    if (!local && (had || pinExtras(gid))) applyView({ fit: 'all' });
+    groupButtons.forEach(function (x) { x.b.setAttribute('aria-pressed', x.g.id === gid ? 'true' : 'false'); });
+    var chip = $('lit-chip');
+    if (gid === null) chip.hidden = true;
+    else {
+      $('lit-text').textContent = 'Showing: ' + G.groups.get(gid).label;
+      chip.hidden = false;
+    }
+    announce(gid === null ? 'Showing everything.' : 'Showing ' + G.groups.get(gid).label + '.');
+    kick();
+  }
+  $('lit-clear').addEventListener('click', function () { setPin(null); });
+  function groupButton(g, b) {
+    b.setAttribute('aria-pressed', 'false');
+    b.title = 'Hover to light up these dots. Click to keep them lit.';
+    b.addEventListener('mouseenter', function () { hoverGroup = g.id; litCache = { id: null, set: null }; kick(); });
+    b.addEventListener('mouseleave', function () { if (hoverGroup === g.id) { hoverGroup = null; litCache = { id: null, set: null }; kick(); } });
+    b.addEventListener('click', function () {
+      hoverGroup = null;
+      setPin(pinGroup === g.id ? null : g.id);
+    });
+    groupButtons.push({ g: g, b: b });
+  }
+
+  function buildLegend() {
+    var ul = $('legend-groups');
+    clear(ul);
+    groupRows = [];
+    /* The kinds of things first, then the skeleton. The kinds of notes are in the key on the map. */
+    var list = G.groupList.filter(function (g) { return g.total && !has(NOTE_KINDS, g.id); });
+    list.sort(function (a, b) { return ((b.things ? 1 : 0) - (a.things ? 1 : 0)) || (a.idx - b.idx); });
+    list.forEach(function (g) {
+      var li = el('li');
+      var b = el('button');
+      b.type = 'button';
+      var d = el('span', 'dot' + (g.id === 'guess' ? ' hollow' : ''));
+      d.style.setProperty('--c', g.color);
+      d.setAttribute('aria-hidden', 'true');
+      b.appendChild(d);
+      b.appendChild(el('span', 'lbl', g.label));
+      var n = el('span', 'n');
+      b.appendChild(n);
+      groupButton(g, b);
+      li.appendChild(b);
+      ul.appendChild(li);
+      groupRows.push({ g: g, li: li, n: n });
+    });
+    $('sect-groups').hidden = !list.length;
+    buildKey();
+  }
+
+  /* The key sits on the map itself, so what each shape means is always in view. */
+  function buildKey() {
+    var rows = $('key-rows');
+    clear(rows);
+    var present = {};
+    G.nodes.forEach(function (n) {
+      if (n.kind) present[n.kind] = 1;
+      if (n.guess) present.guess = 1;
+      if (n.type === 'kind') present.kind = 1;
+      if (n.status === 'disputed' || n.status === 'left-out' || n.status === 'may-be-outdated') present[n.status] = 1;
+    });
+    MARKS.forEach(function (m) {
+      if (!present[m[0]]) return;
+      var g = G.groups.get(m[0]);
+      var isGroup = !!g && g.total > 0 && has(NOTE_KINDS, m[0]);
+      var row = el(isGroup ? 'button' : 'div', 'key-row');
+      var cv = document.createElement('canvas');
+      cv.setAttribute('aria-hidden', 'true');
+      drawMark(cv, m[0]);
+      row.appendChild(cv);
+      var words = m[1];
+      if (m[0] === 'sender' && G.senders.size === 1) words = 'Dashed: from ' + clip(Array.from(G.senders.keys())[0], 32) + ', not checked';
+      row.appendChild(el('span', 'kl', words));
+      if (isGroup) {
+        row.type = 'button';
+        var n = el('span', 'n');
+        row.appendChild(n);
+        groupButton(g, row);
+        groupRows.push({ g: g, li: row, n: n });
+      }
+      rows.appendChild(row);
+    });
+    $('key').hidden = !rows.childNodes.length;
+  }
+  $('key-toggle').addEventListener('click', function () {
+    var open = this.getAttribute('aria-expanded') !== 'true';
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    $('key-rows').hidden = !open;
+  });
+
+  /* What the owner told it about the whole file (or one of its tabs), pinned at the top of the side panel,
+     so those notes do not circle the workbook dot. Notes someone else sent get their own list. */
+  function whereOf(n) {
+    var tabs = [];
+    n.about.forEach(function (t) {
+      var name = t.type === 'sheet' ? t.label : t.type === 'column' ? t.label + ' column' : '';
+      if (name && tabs.indexOf(name) === -1) tabs.push(name);
+    });
+    return tabs.length ? 'On ' + tabs.slice(0, 2).join(', ') + (tabs.length > 2 ? ' and more' : '') : '';
+  }
+  function noteList(ul, notes, withWhere) {
+    clear(ul);
+    notes.forEach(function (n) {
+      var li = el('li');
+      var b = el('button');
+      b.type = 'button';
+      b.appendChild(dotFor(n));
+      var text = el('span', 'tx', wordsText(n));
+      b.appendChild(text);
+      var where = withWhere ? whereOf(n) : '';
+      if (n.status === 'disputed') where = 'Worth a look' + (where ? '. ' + where : '');
+      if (where) b.appendChild(el('span', 'wh', where));
+      b.addEventListener('click', function () { goTo(n); });
+      b.addEventListener('mouseenter', function () { if (n.vis) setHover(n); });
+      b.addEventListener('mouseleave', function () { setHover(null); });
+      li.appendChild(b);
+      ul.appendChild(li);
+    });
+  }
+  function wordsText(n) { return clip(plainWords(n), 200); }
+  function buildTold() {
+    noteList($('told-list'), G.card, true);
+    $('told').hidden = !G.card.length;
+    var sd = $('told-dot');
+    sd.style.setProperty('--c', tagColor('said'));
+    noteList($('sent-list'), G.senderCard, true);
+    $('sent').hidden = !G.senderCard.length;
+    var names = Array.from(G.senders.keys());
+    $('sent-h-text').textContent = names.length === 1 ? 'What ' + clip(names[0], 40) + ' wrote, not checked' : 'What others wrote, not checked';
+    $('sent-dot').style.setProperty('--c', tagColor('sender'));
+    noteList($('qs-list'), G.questions, false);
+    $('qs-n').textContent = fmtInt(G.questions.length);
+    $('qs').hidden = !G.questions.length;
+  }
+
+  function buildStart() {
+    var list = $('start-list');
+    clear(list);
+    G.start.forEach(function (it, i) {
+      var li = el('li');
+      var b = el('button');
+      b.type = 'button';
+      b.appendChild(el('span', 'num', String(i + 1)));
+      b.appendChild(el('span', null, it.text));
+      b.addEventListener('click', function () { goTo(it.node); });
+      b.addEventListener('mouseenter', function () { if (it.node.vis) setHover(it.node); });
+      b.addEventListener('mouseleave', function () { setHover(null); });
+      li.appendChild(b);
+      list.appendChild(li);
+    });
+    $('start').hidden = !G.start.length;
+  }
+
+  /* ---------- page text ---------- */
+  function setText(id, value) {
+    var e = $(id);
+    e.textContent = value || '';
+    e.hidden = !value;
+  }
+  function showNotice(title, text) {
+    $('notice-title').textContent = title;
+    $('notice-text').textContent = text;
+    $('notice').hidden = false;
+    $('zoomer').hidden = true;
+    $('hint').hidden = true;
+  }
+
+  /* The line under the title, counted from what the map holds, with the owner's notes and anyone else's
+     told apart. The graph's own line gives the kind of sheet. */
+  function subtitleFor(G) {
+    var s = G.subtitle;
+    var m = /^(.*?) \. \d/.exec(s);
+    if (!m) {
+      if (!G.senders.size) return s;
+      return (s ? s + ' . ' : '') + senderCounts(G);
+    }
+    var things = 0, notes = 0, said = 0;
+    G.nodes.forEach(function (n) {
+      if (n.type === 'thing' || n.type === 'row') things++;
+      if (n.type === 'note' && !n.hidden) notes++;
+      if (n.kind === 'said') said++;
+    });
+    var parts = [m[1], fmtInt(things) + (things === 1 ? ' thing' : ' things'), fmtInt(notes) + (notes === 1 ? ' note' : ' notes')];
+    if (said) parts.push(fmtInt(said) + ' from the owner');
+    if (G.senders.size) parts.push(senderCounts(G));
+    return parts.join(' . ');
+  }
+  function senderCounts(G) {
+    var out = [], total = 0;
+    G.senders.forEach(function (cnt, name) { total += cnt; out.push(fmtInt(cnt) + ' from ' + clip(name, 40) + ', not checked'); });
+    if (out.length <= 2) return out.join(' . ');
+    return fmtInt(total) + ' from ' + fmtInt(out.length) + ' other people, not checked';
+  }
+
+  /* ---------- boot ---------- */
+  readTheme();
+  var raw = readRaw();
+  if (!raw) {
+    showNotice('No map in this file.', 'The map data is missing or could not be read. Run Sheet Geek again to rebuild this page.');
+    return;
+  }
+  G = build(raw);
+  prepare(G);
+  document.title = G.title ? G.title + ' . Sheet Geek' : 'Sheet Geek';
+  setText('title', G.title || 'Sheet Geek');
+  setText('subtitle', subtitleFor(G));
+  setText('sentence', G.sentence);
+  if (G.dropped) {
+    setText('dropped', G.droppedCols === G.dropped
+      ? 'This workbook is too big to draw in full: ' + fmtInt(G.dropped) + ' of its columns are left off the map. Every thing and note is still here.'
+      : 'This workbook is too big to draw in full: ' + fmtInt(G.dropped) + ' dots are left off the map, ' + fmtInt(G.droppedCols) +
+        ' of them columns. The things and the owner\'s notes come first.');
+  }
+  var foot = G.footer || '';
+  if (G.generated) foot = foot ? foot + ' Made ' + G.generated + '.' : 'Made ' + G.generated + '.';
+  $('footer').textContent = foot;
+
+  if (!G.nodes.length) {
+    showNotice('Nothing to draw yet.', 'This brain has no dots. Once a sheet is studied, the things in it and the notes about them show up here.');
+    return;
+  }
+  if (typeof window.ForceGraph !== 'function') {
+    showNotice('The map library is missing.', 'This page was not built by the Sheet Geek render. Rebuild it to see the map.');
+    return;
+  }
+
+  buildLegend();
+  buildTold();
+  buildStart();
+  updateCounts();
+  if (narrow()) { $('key-toggle').setAttribute('aria-expanded', 'false'); $('key-rows').hidden = true; }
+  applyHash(readHash(), true);
+  syncToggles();
+
+  W = stage.clientWidth; H = stage.clientHeight;
+  var big = G.nodes.length > 800;
+
+  Graph = new window.ForceGraph(graphEl)
+    .width(W).height(H)
+    .backgroundColor('rgba(0,0,0,0)')
+    .nodeId('id')
+    .nodeRelSize(1)
+    .nodeVal(function (n) { return (n.r + 1) * (n.r + 1); })
+    .nodeLabel(function () { return ''; })
+    .linkLabel(function () { return ''; })
+    .nodeCanvasObjectMode(function () { return 'replace'; })
+    .nodeCanvasObject(paintNode)
+    .nodePointerAreaPaint(paintHit)
+    .linkColor(linkColor)
+    .linkWidth(linkWidth)
+    .linkLineDash(linkDash)
+    .linkCurvature(function (l) { return l.curv; })
+    .linkDirectionalArrowLength(arrowLen)
+    .linkDirectionalArrowRelPos(1)
+    .linkDirectionalArrowColor(arrowColor)
+    .linkHoverPrecision(2)
+    .enableNodeDrag(true)
+    .minZoom(0.03)
+    .maxZoom(14)
+    .cooldownTime(Infinity)
+    .onNodeHover(function (n) { setHover(n || null); })
+    .onNodeClick(function (n) { select(n); })
+    .onBackgroundClick(function () { if (selected) closePanel(); })
+    .onNodeDrag(function () { userMoved = true; autoFit = null; })
+    .onEngineTick(function () { engineActive = true; })
+    .onEngineStop(function () {
+      engineActive = false;
+      /* Dragging a dot reheats the layout; give it room to move its neighbors along, like Obsidian. */
+      Graph.d3AlphaDecay(0.045).cooldownTicks(240).cooldownTime(4000);
+      if (!laidOut) {
+        laidOut = true;
+        var all = fitFor(viewNodes);
+        if (all) fitK = all.k;
+        cam(target(), 0);
+        autoFit = null;
+        var t = now();
+        viewRanked.forEach(function (n, i) { n.appearAt = t + 40 + (i / Math.max(1, viewRanked.length)) * 450; n.a = 0; });
+        appearUntil = t + 900;
+      } else if (autoFit && !userMoved) {
+        cam(target(), 350);
+        autoFit = null;
+      }
+      kick();
+    })
+    .onRenderFramePre(function (ctx, k) {
+      var t = now();
+      var dt = lastFrame ? Math.min(1000, t - lastFrame) : 16;
+      lastFrame = t;
+      curK = k;
+      frameCount++;
+      if (laidOut && autoFit && engineActive && !userMoved && MOTION) followFit();
+      animating = stepAlphas(dt);
+    })
+    .onRenderFramePost(function (ctx, k) {
+      paintLabels(ctx, k);
+      var busy = animating || lastFrame < appearUntil || engineActive;
+      Graph.autoPauseRedraw(!busy);
+    });
+
+  /* Forces: a round cloud with clusters around each hub, like Obsidian's default look. */
+  var charge = Graph.d3Force('charge');
+  if (charge) {
+    /* A local graph has few dots, so it spreads them wider to read like Obsidian's local view. */
+    charge.strength(function (n) { return (n.type === 'column' ? -20 : -(big ? 40 : 70) - n.r * 9) * (local ? 1.6 : 1); });
+    if (charge.distanceMax) charge.distanceMax(big ? 320 : 700);
+  }
+  var linkF = Graph.d3Force('link');
+  if (linkF) {
+    linkF.distance(function (l) {
+      var s = l.source, t = l.target;
+      var base = LINK_LEN[l.type] || 50;
+      if (s.type === 'column' || t.type === 'column') base = 14;
+      return (base + (s.r + t.r) * 0.9) * (local ? 1.7 : 1);
+    });
+  }
+  /* Wide screens get a wide cloud and phones a tall one. Two buckets only, so small resizes never reshape it. */
+  var wide = W >= H;
+  Graph.d3Force('gravity', forceGravity(big ? 0.08 : 0.13, wide ? 1 : 1.3, wide ? 1.15 : 0.85));
+  Graph.d3Force('collide', forceCollide(big ? 1.5 : 3));
+
+  applyView({ instant: true });
+  updateViewbar();
+
+  /* If animation frames are starved (a background tab, a headless capture on virtual time, a slow machine),
+     skip the fades and camera glides so the page never sits half drawn. */
+  if (MOTION) {
+    setTimeout(function () {
+      if (frameCount >= 20) return;
+      MOTION = false;
+      viewNodes.forEach(function (n) { n.a = nodeTarget(n); });
+      if (laidOut && !userMoved) cam(target(), 0);
+      kick();
+    }, 1500);
+  }
+
+  /* Once a person moves the camera, stop fitting it for them. */
+  ['wheel', 'pointerdown', 'touchstart'].forEach(function (evt) {
+    graphEl.addEventListener(evt, function () { userMoved = true; autoFit = null; }, { passive: true, capture: true });
+  });
+  graphEl.addEventListener('dblclick', function (ev) {
+    ev.preventDefault();
+    if (hoverNode) return;
+    if (searchQuery) clearSearch();
+    if (local) { setLocal(false); return; }
+    userMoved = false;
+    fitAll(600);
+  });
+  graphEl.addEventListener('mouseleave', function () { setHover(null); });
+
+  $('z-in').addEventListener('click', function () { userMoved = true; Graph.zoom(curK * 1.5, MOTION ? 250 : 0); kick(); });
+  $('z-out').addEventListener('click', function () { userMoved = true; Graph.zoom(curK / 1.5, MOTION ? 250 : 0); kick(); });
+  $('z-fit').addEventListener('click', function () { userMoved = false; fitAll(500); });
+
+  $('menu').addEventListener('click', function () {
+    var open = !app.classList.contains('side-open');
+    app.classList.toggle('side-open', open);
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  function closeDrawer() {
+    if (!app.classList.contains('side-open')) return;
+    app.classList.remove('side-open');
+    $('menu').setAttribute('aria-expanded', 'false');
+  }
+  graphEl.addEventListener('pointerdown', closeDrawer, { passive: true });
+
+  document.addEventListener('keydown', function (ev) {
+    var tag = (ev.target && ev.target.tagName) || '';
+    var typing = tag === 'INPUT' || tag === 'TEXTAREA';
+    if (ev.key === '/' && !typing && !ev.metaKey && !ev.ctrlKey && !ev.altKey) {
+      ev.preventDefault();
+      if (narrow()) { app.classList.add('side-open'); $('menu').setAttribute('aria-expanded', 'true'); }
+      searchInput.focus();
+      searchInput.select();
+    } else if (ev.key === 'Escape' && !typing) {
+      if (app.classList.contains('side-open')) closeDrawer();
+      else if (local) setLocal(false);
+      else if (selected) closePanel();
+      else if (searchQuery) clearSearch();
+    }
+  });
+
+  window.addEventListener('hashchange', function () {
+    var h = readHash();
+    var id = typeof h.focus === 'string' ? h.focus : (typeof h.node === 'string' ? h.node : '');
+    if (selected && id === selected.id && (h.local === '1') === local && (h.depth === '2' ? 2 : 1) === depth) return;
+    if (!applyHash(h, false)) return;
+    applyView({ fit: local ? 'local' : null });
+    if (!local && selected) focusOn(selected);
+    updateViewbar();
+  });
+
+  var resizeTimer = null;
+  function onResize() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h || (w === W && h === H)) return;
+    W = w; H = h;
+    Graph.width(W).height(H);
+    if (!userMoved && laidOut) cam(target(), 0);
+    kick();
+  }
+  if (window.ResizeObserver) {
+    new ResizeObserver(function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(onResize, 60); }).observe(stage);
+  } else {
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(onResize, 60); });
+  }
+})();
+</script>
+</body>
+</html>

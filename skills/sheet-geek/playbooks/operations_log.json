@@ -1,0 +1,124 @@
+{
+  "id": "operations_log",
+  "version": "0.1.0",
+  "name": "Operations log",
+  "looks_like": "an operations or maintenance log",
+  "summary": "Work orders, incident logs, temperature and safety checks, production and waste logs: what happened, to which asset, when, why, and who handled it.",
+  "full": false,
+  "roles": {
+    "event_time": {"label": "Logged at", "headers": ["timestamp", "date", "time", "date time", "event date", "opened", "opened at", "date opened", "reported", "reported at", "created", "created at", "start time", "logged at"], "type": "date", "kind": "temporal"},
+    "closed_time": {"label": "Closed at", "headers": ["closed", "closed at", "date closed", "resolved", "resolved at", "completed", "completed at", "end time", "finished", "finish time"], "type": "date", "kind": "temporal"},
+    "ticket_id": {"label": "Ticket or work order #", "headers": ["ticket #", "ticket", "ticket id", "work order", "work order #", "wo #", "wo number", "incident #", "incident id", "case #", "case number", "request #", "request id", "log id"], "type": "id", "kind": "identifier"},
+    "asset": {"label": "Asset or equipment", "headers": ["asset", "asset id", "asset name", "equipment", "equipment id", "equipment name", "machine", "vehicle", "line", "device", "unit id"], "type": "text", "kind": "entity", "entity": "asset"},
+    "location": {"label": "Location", "headers": ["location", "site", "area", "building", "room", "floor", "zone", "store", "department"], "type": "text", "kind": "entity", "entity": "location"},
+    "category": {"label": "Type", "headers": ["type", "category", "event type", "issue type", "incident type", "work type", "request type", "log type"], "type": "text", "kind": "dimension"},
+    "reason_code": {"label": "Reason or cause", "headers": ["reason", "reason code", "cause", "root cause", "defect", "defect code", "failure code", "fault code", "problem code", "problem", "code"], "type": "text", "kind": "dimension"},
+    "severity": {"label": "Severity", "headers": ["severity", "priority", "impact", "urgency", "risk level"], "type": "text", "kind": "dimension"},
+    "status": {"label": "Status", "headers": ["status", "state", "ticket status", "wo status"], "type": "text", "kind": "dimension"},
+    "handled_by": {"label": "Handled by", "headers": ["technician", "tech", "operator", "assigned to", "handled by", "logged by", "checked by", "initials", "inspector", "employee", "staff"], "type": "text", "kind": "dimension"},
+    "action_taken": {"label": "Action taken", "headers": ["corrective action", "action taken", "action", "resolution", "fix", "notes"], "type": "text", "kind": "text"},
+    "downtime": {"label": "Downtime", "headers": ["downtime", "downtime minutes", "downtime hours", "downtime hrs", "minutes down", "hours down", "duration", "minutes", "time to repair", "labor hours"], "type": "number", "kind": "metric", "additive": true, "unit": "hours"},
+    "reading": {"label": "Reading", "headers": ["reading", "temp", "temp f", "temp c", "temperature", "measurement", "value", "result", "ph", "psi", "level"], "type": "number", "kind": "metric", "additive": false},
+    "qty_produced": {"label": "Produced", "headers": ["qty produced", "produced", "units produced", "output", "good", "good units", "good count", "total count"], "type": "number", "kind": "metric", "additive": true, "unit": "count"},
+    "scrap": {"label": "Scrap or waste", "headers": ["scrap", "scrap qty", "waste", "waste qty", "waste lbs", "waste cost", "rejects", "reject count", "defects"], "type": "number", "kind": "metric", "additive": true}
+  },
+  "detect": {
+    "required_any": [["event_time", "ticket_id"], ["asset", "reason_code", "reading", "downtime", "category", "scrap"]],
+    "weights": {"downtime": 3, "reason_code": 3, "reading": 3, "asset": 3, "handled_by": 2, "action_taken": 2, "closed_time": 1, "ticket_id": 1, "scrap": 1, "qty_produced": 1, "severity": 1, "event_time": 1, "category": 1, "location": 1, "status": 1},
+    "negatives": ["deal_amount", "pack", "debit", "percent_done"],
+    "confident": 0.4,
+    "candidate": 0.25
+  },
+  "goals": [
+    {"id": "top_issues", "label": "Find the biggest problems", "desc": "I'd rank causes by how often they happen and what they cost"},
+    {"id": "reliability", "label": "Keep equipment running", "desc": "I'd score each asset by breakdowns and repair time"},
+    {"id": "compliance", "label": "Show we're compliant", "desc": "I'd flag missed and out-of-range entries"}
+  ],
+  "questions": [
+    {
+      "id": "row_is",
+      "header": "One row is",
+      "kind": "grain",
+      "priority": 1,
+      "ask_if": [],
+      "prompt": "What is one row: an incident or work order, a reading or check, or a whole shift?",
+      "options": [
+        {"id": "incident", "label": "An incident or work order"},
+        {"id": "reading", "label": "A reading or check"},
+        {"id": "shift", "label": "One shift's log"}
+      ],
+      "why": "Counting incidents, checks and shifts answers different questions.",
+      "unblocks": ["issue_pareto", "asset_scorecard", "compliance_check"],
+      "fact": {"kind": "grain", "class": "data", "depends": [], "statement": "One row in this log is, per the owner: {answer_labels}."},
+      "stale_after": "on-change"
+    },
+    {
+      "id": "code_meaning",
+      "header": "Codes",
+      "kind": "definition",
+      "priority": 1,
+      "ask_if": ["coded:reason_code"],
+      "prompt": "{role:reason_code} uses {count:reason_code} codes such as {values:reason_code}. What do the common ones mean?",
+      "options": [
+        {"id": "type_them", "label": "I'll type what they mean"},
+        {"id": "key_file", "label": "Another tab explains them", "desc": "A tab or file; name it"},
+        {"id": "nobody", "label": "Nobody remembers"}
+      ],
+      "why": "A ranking of codes nobody can read shows what happens most, but not what it is.",
+      "unblocks": ["issue_pareto"],
+      "fact": {"kind": "definition", "class": "data", "depends": ["reason_code"], "statement": "Codes in {role:reason_code}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    },
+    {
+      "id": "good_range",
+      "header": "Safe range",
+      "kind": "rule",
+      "priority": 1,
+      "ask_if": ["has_role:reading"],
+      "prompt": "{role:reading} has {rows:reading} readings, such as {values:reading}. What range is acceptable?",
+      "options": [
+        {"id": "type_limits", "label": "I'll type the limits"},
+        {"id": "by_equipment", "label": "It depends on the equipment"},
+        {"id": "standard", "label": "A standard we follow (I'll name it)"}
+      ],
+      "why": "Out-of-range entries can only be flagged against limits you set.",
+      "unblocks": ["compliance_check"],
+      "fact": {"kind": "rule", "class": "data", "depends": ["reading"], "statement": "Acceptable range for {role:reading}, per the owner: {answer_labels}. {answer_text}"},
+      "stale_after": "+365d"
+    }
+  ],
+  "outputs": [
+    {"id": "issue_pareto", "title": "Top issues", "pitch": "Top issues: causes ranked by how often they happen and the downtime or waste they cost.", "requires": ["has_role:reason_code"], "needs_answer": ["code_meaning"], "goals": ["top_issues"], "value": 3, "job": "analysis"},
+    {"id": "asset_scorecard", "title": "Equipment scorecard", "pitch": "Equipment scorecard: breakdowns, time between failures and time to repair for each asset.", "requires": ["has_role:asset"], "needs_answer": ["row_is"], "goals": ["reliability"], "value": 3, "job": "analysis"},
+    {"id": "compliance_check", "title": "Log check", "pitch": "Log check: missed entries, late entries and readings outside your limits, by day and shift.", "requires": ["has_role:reading"], "needs_answer": ["good_range"], "goals": ["compliance"], "value": 3, "job": "audit"}
+  ],
+  "insights": [
+    "pareto:downtime:reason_code",
+    "top_share:downtime:asset",
+    "top_share:scrap:reason_code",
+    "count_distinct:asset",
+    "mixed:category",
+    "mixed:reason_code",
+    "blank_rate:closed_time",
+    "blank_rate:reading",
+    "date_range:event_time",
+    "duplicates:ticket_id"
+  ],
+  "graph": {
+    "sentence": "Dots are equipment, places and causes. Lines show what went wrong where and who handled it. Bigger means more downtime.",
+    "entities": ["asset", "location", "reason_code", "handled_by"],
+    "record_cap": {"asset": 150, "location": 60, "reason_code": 60, "handled_by": 60},
+    "records": ["handled_by"],
+    "size_by": "downtime",
+    "relations": [
+      {"from": "asset", "to": "location", "label": "sits in"},
+      {"from": "reason_code", "to": "asset", "label": "hits"},
+      {"from": "handled_by", "to": "asset", "label": "works on"}
+    ],
+    "mode": "entities"
+  },
+  "sensitivity": {
+    "commercial_roles": [],
+    "private_roles": ["handled_by"]
+  }
+}

@@ -4,7 +4,7 @@
 
 An open-source skill that gives any spreadsheet a brain. The first time your AI opens a sheet, it studies the data with code, asks you only the handful of questions the data can't answer, and writes what it learned into a tab inside the file. Next time anyone opens that file with any AI, it starts from there. Nobody re-explains the sheet, and nothing lives only in one person's head.
 
-Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/zachk-alt/sheet-geek/tree/v0.2.0)); 0.2.1 renames it; how it reads, asks and writes is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
+Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/v0.2.0)); 0.2.1 renames it; how it reads, asks and writes is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
 
 ![The map of a purchasing workbook](docs/map.png)
 
@@ -33,7 +33,7 @@ Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below
 
 **Claude Code**
 ```
-/plugin marketplace add zachk-alt/sheet-geek
+/plugin marketplace add Actual-Intelligence-Labs/sheet-geek
 /plugin install sheet-geek@sheet-geek
 ```
 Then open any spreadsheet in the conversation, or just name one.
@@ -47,6 +47,18 @@ Then open any spreadsheet in the conversation, or just name one.
 **Chat apps without code (ChatGPT's regular Chat mode, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/sheet-geek/references/portable-prompt.md). It carries the method without the code.
 
 Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline.
+
+## Things to ask
+
+- "Give this spreadsheet a brain."
+- "What does each column in this workbook mean?"
+- "Make a data dictionary for this sheet."
+- "I'm handing this file to a new bookkeeper. What will they get wrong?"
+- "How do these two spreadsheets connect?"
+- "Did anything change since the brain was saved?"
+- "Show me the map."
+
+The skill runs when a request is about understanding, documenting, auditing or handing over a spreadsheet, or when a file already has a `_brain` tab. It does not run on every spreadsheet you mention.
 
 ## What works where
 
@@ -71,6 +83,16 @@ Tested so far: Claude Code on macOS, and ChatGPT Work mode with GPT-6.1 Sol (202
 | The other files it links to: name and matching column only | The full map between your files |
 
 The tab is visible by default so people without AI can read it too. Hidden is an option, but hidden is not private.
+
+## What it reads, writes and sends
+
+- **Reads:** the spreadsheets you share or name, every row, with code on your own machine (or in your AI app's sandbox), and its own local index (below). Nothing else on your computer.
+- **Writes:** the `_brain` tab inside your file (or inside a copy, when you ask for one or the file is an upload), a backup of the file before each write, and the local index in `~/.sheet-geek`: private notes, raw answers, backups and the map between your files. Exports and the map are new files where you ask for them. Your data cells are never changed.
+- **Sends:** nothing. The code makes no network calls and has no telemetry or usage tracking. Web research is off unless you say yes to it: your AI app runs the searches with its own web tool, and code first blocks any search that contains a value from your data. The map is one offline HTML file with a content security policy that blocks network access; it opens in your browser.
+- **Claude Code session hooks** (Claude Code only): at the start of a session, a hook reads the local index and mentions, in one line each, up to five files under the current folder that already have a brain. When a message names an `.xlsx`, `.xlsm` or `.csv` path that exists, a hook reads that file's `_brain` tab (or, if the file has none, its brain in the local index) and adds a short summary of it to the conversation. Hooks never change your files and never send anything. They open the local index, which creates `~/.sheet-geek` if it isn't there yet, and record a new path when a file with a brain has moved.
+- **Credit:** the brain's first note ends with "Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai)", and its meta row names the tool version. It is a plain fact, like a "generator" tag, with no link tracking and no ID for you or your file.
+
+Your AI app keeps its own conversation history under its own policy. Answers you type during the questions are part of that conversation. More in [SECURITY.md](SECURITY.md).
 
 ## The format
 
@@ -97,6 +119,16 @@ Two pre-registered studies: each plan was written and frozen before any answer w
 
 ![The map of a financial model: blue diamonds are what the owner said, red rings are rows worth a look](docs/finance-map.png)
 
+## Troubleshooting
+
+- **It didn't start.** Ask for it directly: "Give this spreadsheet a brain." In ChatGPT, use a Work chat and type `@sheet geek`. A plain "take a look at this file" may not start it.
+- **"This workbook looks open in Excel or LibreOffice."** Close the file in that app and ask again. Sheet Geek never writes to a file another app has open.
+- **"This file is password-protected or an old .xls."** Save it as `.xlsx` (without a password) and ask again.
+- **"No module named openpyxl" or similar.** Run `python3 -m pip install openpyxl`. CSV files need nothing extra.
+- **The file I uploaded didn't change.** In claude.ai, ChatGPT and other hosted apps, the brain is saved into a copy you download. Use that copy from then on.
+- **My "this machine only" notes are gone.** In a hosted app, "this machine" is a temporary sandbox that ends with the chat. Save to the file instead if you want the notes to last.
+- **The map didn't open.** Ask for the map as a file ("save the map as an HTML file") and open it in any browser.
+
 ## Security
 
 Spreadsheets are untrusted input, and this tool treats them that way: the defenses are in code, not in a prompt. See [SECURITY.md](SECURITY.md).
@@ -114,8 +146,8 @@ All test data is synthetic. No real company's data is in this repository.
 
 ## Credits
 
-Built by [Actual Intelligence Labs](https://actualintelligencelabs.ai), an AI research and implementation lab in Sarasota, Florida. The map uses [force-graph](https://github.com/vasturiano/force-graph) (MIT).
+Built by [Actual Intelligence Labs](https://actualintelligencelabs.ai), an AI research and implementation lab in Sarasota, Florida. Support: interested@actualintelligencelabs.ai or a GitHub issue. The map uses [force-graph](https://github.com/vasturiano/force-graph) (MIT); see [NOTICE](NOTICE).
 
 ## License
 
-Apache-2.0
+Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).

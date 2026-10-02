@@ -45,7 +45,7 @@ except ImportError:  # pragma: no cover - depends on the sandbox
     _HAVE_DEFUSED = False
 
 FORMAT_VERSION = "0.1"
-TOOL_VERSION = "0.2.1"          # the tool that wrote a brain, named in its meta note (the format above is separate)
+TOOL_VERSION = "0.2.2"          # the tool that wrote a brain, named in its meta note (the format above is separate)
 BRAIN_SHEET = "_brain"
 FORMAT_LABEL = f"spreadsheet-brain {FORMAT_VERSION} | record"
 # The tab's columns, in the order a reader needs them: what the note is (A to F),

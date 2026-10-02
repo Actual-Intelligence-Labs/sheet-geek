@@ -2,7 +2,8 @@
   "name": "sheet-geek",
   "description": "The Sheet Geek plugin: gives any spreadsheet a brain that travels inside the file.",
   "owner": {
-    "name": "Actual Intelligence Labs"
+    "name": "Actual Intelligence Labs",
+    "email": "interested@actualintelligencelabs.ai"
   },
   "plugins": [
     {

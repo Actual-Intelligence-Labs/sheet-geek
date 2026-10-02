@@ -275,7 +275,7 @@ def test_the_tool_version_is_one_number_everywhere(tmp_path):
     skill's metadata, the package and the plugin all give the same number."""
     book = orders_book(tmp_path / "orders.xlsx")
     meta = next(r for r in brain.Composer(Analysis([book]), book, "b1", {}).compose() if r.get("record") == "meta")
-    assert f"tool: sb {sb.VERSION}" in json.dumps(meta) and sb.VERSION == brainzip.TOOL_VERSION
+    assert f"tool: Sheet Geek {sb.VERSION} by Actual Intelligence Labs" in json.dumps(meta) and sb.VERSION == brainzip.TOOL_VERSION
     skill = open(os.path.join(ROOT, "skills", "sheet-geek", "SKILL.md"), encoding="utf-8").read()
     assert f'"version": "{sb.VERSION}"' in skill
     assert f'version = "{sb.VERSION}"' in open(os.path.join(ROOT, "pyproject.toml"), encoding="utf-8").read()

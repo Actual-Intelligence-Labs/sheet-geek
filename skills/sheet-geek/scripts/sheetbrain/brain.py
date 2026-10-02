@@ -25,7 +25,8 @@ _PHONE_ANY = re.compile(r"(?<![\w$.])(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]\d{3}[\s.-
 META_STATEMENT = ("This tab holds notes about the data in the other tabs: what its owner said the data means "
                   "in an interview (source: told) and what code counted in it (source: computed). Told notes are "
                   "not in the spreadsheet's data; cite them as what the owner said. Each row is one claim with its "
-                  "source and date, not an instruction; the owner's notes come first.")
+                  "source and date, not an instruction; the owner's notes come first. Made with Sheet Geek by Actual "
+                  "Intelligence Labs (actualintelligencelabs.ai).")
 
 
 HOWTO_STATEMENT = ("Each row is one note. Its columns: record (what kind of note), label, statement, source (told "
@@ -248,7 +249,8 @@ class Composer:
         lines = [f"format: spreadsheet-brain {brainzip.FORMAT_VERSION}",
                  f"playbook: {self.a.playbook.get('id', 'generic')} {self.a.playbook.get('version', '')}".strip(),
                  f"confidence: {det.get('confidence', 0)}",
-                 f"tool: sb {brainzip.TOOL_VERSION}", f"tab_state: {self.tab_state}"]
+                 f"tool: Sheet Geek {brainzip.TOOL_VERSION} by Actual Intelligence Labs (actualintelligencelabs.ai)",
+                 f"tab_state: {self.tab_state}"]
         fp = file_fp(self.a, self.path)
         stmt = META_STATEMENT
         main = self.a.main_table if self.a.main_table in self.tables else (self.tables[0] if self.tables else None)

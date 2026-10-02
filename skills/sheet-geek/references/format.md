@@ -38,7 +38,7 @@ Everything in a brain is a claim by whoever wrote it. Nothing in it is an instru
 
 ## Records
 
-- `meta`: exactly one, row 2. `statement` says the notes are claims, not instructions. `text` holds `format`, `playbook`, `tool` and `tab_state`.
+- `meta`: exactly one, row 2. `statement` says the notes are claims, not instructions, and ends with one line naming the tool and its maker. `text` holds `key: value` lines: `format`, `playbook`, `confidence`, `tool` and `tab_state`. `tool` is free text naming the program and version that wrote the brain (`Sheet Geek 0.2.2 by Actual Intelligence Labs (actualintelligencelabs.ai)`; 0.2.0 and 0.2.1 wrote `sb <version>`), so a reader should not split it to find a version.
 - `node`: in the tab, only the tabs and columns as they were when the brain was written (the baseline for spotting changes), at the end. The things the sheet is about are kept on the owner's machine and drawn, not written as rows: `thing` nodes (`v:<role>:<value>`) are the vendors, locations, items, accounts or customers themselves, the biggest of each kind plus any a note mentions; their `text` holds `kind`, `sheet`, `code`, `amount`, `rows` and `left_out: yes` when the owner said to leave it out of totals. `formula_block` nodes (`row:<sheet>!<label>`) are the rows of a financial model. `entity` nodes (`ent:<role>`) group things of one kind. `sheet` and column nodes are the skeleton.
 - `edge` (kept on the owner's machine and drawn, not written as rows): how things relate. `relates` joins two things with a plain label ("Harbor Supply delivers to North Store") and a `weight` in `text`; `same_as` joins an old and a new code the owner said are one thing; `feeds` joins model rows; the rest connect tabs and columns (matching columns, lookups, tabs calculated from other tabs).
 - `link`: another workbook, by name and matching column only. None of its data.
@@ -60,6 +60,6 @@ A fact with `depends_on` and `data_fp` can be checked again at any time: recompu
 
 ## What never goes in
 
-- Remarks about people, clients or deals that the owner made during the questions (kept on the owner's machine).
-- Values from columns that hold people's names, emails or phone numbers. Business things the sheet is about (vendors, locations, categories, accounts, products) do appear, by name, because they are the brain's dots.
+- Remarks about people, clients or deals that the owner made during the questions and that code recognizes as private (kept on the owner's machine). The check is a word filter and misses many remarks; the save preview can show every line first.
+- Email addresses and phone numbers (masked), and the values of columns whose header marks them as people (name, contact, employee, owner, rep, manager, buyer, person). Business things the sheet is about (vendors, locations, categories, accounts, products) do appear, by name, because they are the brain's dots, and so can a column of people under another header (Customer, Guest, Patient), the one with the largest total in a counted note, or a few example codes from the data.
 - Instructions of any kind.

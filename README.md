@@ -2,9 +2,9 @@
 
 **Your AI doesn't know what correlates to what in your spreadsheet. Now it can.**
 
-An open-source skill that gives any spreadsheet a brain. The first time your AI opens a sheet, it studies the data with code, asks you only the handful of questions the data can't answer, and writes what it learned into a tab inside the file. Next time anyone opens that file with any AI, it starts from there. Nobody re-explains the sheet, and nothing lives only in one person's head.
+An open-source skill that gives any spreadsheet a brain. The first time your AI opens a sheet, it studies the data with code, asks you only the handful of questions the data can't answer, and writes what it learned into a tab inside the file. Next time anyone opens that file with an AI that reads its tabs, it can start from there. Nobody re-explains the sheet, and nothing lives only in one person's head.
 
-Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/v0.2.0)); 0.2.1 renames it; how it reads, asks and writes is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
+Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/v0.2.0)); 0.2.1 renames it, and 0.2.2 narrows when it starts, fixes the Claude Code hooks and names its maker in the brain's first note; how it reads and asks is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
 
 ![The map of a purchasing workbook](docs/map.png)
 
@@ -23,7 +23,7 @@ Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below
 - **The brain travels inside the file.** Email it, drop it in Drive, upload it to claude.ai or ChatGPT: the knowledge goes with it. Hand the file to a coworker, your accountant or an investor, and their AI starts from what you told yours. Links to your other spreadsheets carry only a name and a matching column, so sending one sheet never leaks the others.
 - **Code conducts, the model is the voice.** Which question to ask, how to word it, which option to recommend, every number: all code. That is why it works on smaller models too, not just the biggest one.
 - **It knows the difference between what you said, what it counted, and what it guessed.** Guesses stay marked as guesses until someone confirms them.
-- **Private stays private.** Say "between us, Dave always rounds up" and that remark is kept on your machine, not written into the file you'll send to Dave.
+- **What you mark private stays private.** Say "between us, Dave always rounds up" and that remark is kept on your machine, not written into the file you'll send to Dave.
 
 ## Try it first
 
@@ -33,7 +33,7 @@ Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below
 
 **Claude Code**
 ```
-/plugin marketplace add Actual-Intelligence-Labs/sheet-geek
+/plugin marketplace add Actual-Intelligence-Labs/sheet-geek#release
 /plugin install sheet-geek@sheet-geek
 ```
 Then open any spreadsheet in the conversation, or just name one.
@@ -42,11 +42,11 @@ Then open any spreadsheet in the conversation, or just name one.
 
 **ChatGPT (Work mode):** download `sheet-geek.zip` from Releases, then Customize > Skills > Add > Upload from your computer. Or skip the upload: in a Work chat, attach your spreadsheet and paste this repo's link, and ChatGPT clones it and runs it. Then say "Give this spreadsheet a brain" (or type `@sheet geek`). A plain "take a look" may not start it.
 
-**Codex, Cursor, VS Code Copilot, Gemini CLI, and other tools that load Agent Skills:** copy `skills/sheet-geek` into the tool's skills folder (for example `.agents/skills/`), and add the snippet from `adapters/` for your tool.
+**Codex, Cursor, VS Code Copilot, Gemini CLI, and other tools that load Agent Skills:** copy `skills/sheet-geek` (from this repo or `sheet-geek.zip`) into the tool's skills folder (for example `.agents/skills/`), and add the snippet from `adapters/` for your tool.
 
 **Chat apps without code (ChatGPT's regular Chat mode, Gemini Gems, Copilot agents):** paste the prompt in [`references/portable-prompt.md`](skills/sheet-geek/references/portable-prompt.md). It carries the method without the code.
 
-Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline.
+Requirements: Python 3.10+ and `openpyxl` (`python3 -m pip install openpyxl`). CSV needs nothing else. Works offline.
 
 ## Things to ask
 
@@ -58,7 +58,7 @@ Requirements: Python 3.10+ and `openpyxl`. CSV needs nothing else. Works offline
 - "Did anything change since the brain was saved?"
 - "Show me the map."
 
-The skill runs when a request is about understanding, documenting, auditing or handing over a spreadsheet, or when a file already has a `_brain` tab. It does not run on every spreadsheet you mention.
+The skill runs when a request is about understanding, documenting, auditing or handing over a spreadsheet, or when a file already has a `_brain` tab. It does not run on every spreadsheet you mention. In Claude Code, naming a file that already has a brain also adds its notes to the conversation (see the hooks below).
 
 ## What works where
 
@@ -76,7 +76,7 @@ Tested so far: Claude Code on macOS, and ChatGPT Work mode with GPT-6.1 Sol (202
 
 | In the `_brain` tab (travels) | On your machine only (`~/.sheet-geek`) |
 |---|---|
-| What each column means, units, what one row is | Remarks about people, clients or deals |
+| What each column means, units, what one row is | Remarks it recognizes as private: about people, clients or deals |
 | Rules for reading it ("credits count, transfers don't") | Business terms you mention: contract prices, markups, rebate rates (unless you choose to include them) |
 | How tabs and columns connect | Your raw answers |
 | Counted insights, dated | Backups of the file |
@@ -84,13 +84,22 @@ Tested so far: Claude Code on macOS, and ChatGPT Work mode with GPT-6.1 Sol (202
 
 The tab is visible by default so people without AI can read it too. Hidden is an option, but hidden is not private.
 
+Both columns have limits. The private-remarks check is a word filter: it keeps a sentence marked "between us" or "confidential" on your machine, and some remarks judging a person or about HR matters or deals, but it misses many others. Code masks email addresses and phone numbers and does not list the values of columns whose header marks them as people; a column of people under another header (Customer, Guest, Patient) can be listed, and a counted note can name the person or customer with the largest total. Before saving into a file you will share, read the preview ("show every line"), or share a copy without the brain. Sheet Geek is not designed for health records, payment card data, government ID numbers or passwords; please don't use it with them.
+
 ## What it reads, writes and sends
 
-- **Reads:** the spreadsheets you share or name, every row, with code on your own machine (or in your AI app's sandbox), and its own local index (below). Nothing else on your computer.
-- **Writes:** the `_brain` tab inside your file (or inside a copy, when you ask for one or the file is an upload), a backup of the file before each write, and the local index in `~/.sheet-geek`: private notes, raw answers, backups and the map between your files. Exports and the map are new files where you ask for them. Your data cells are never changed.
-- **Sends:** nothing. The code makes no network calls and has no telemetry or usage tracking. Web research is off unless you say yes to it: your AI app runs the searches with its own web tool, and code first blocks any search that contains a value from your data. The map is one offline HTML file with a content security policy that blocks network access; it opens in your browser.
-- **Claude Code session hooks** (Claude Code only): at the start of a session, a hook reads the local index and mentions, in one line each, up to five files under the current folder that already have a brain. When a message names an `.xlsx`, `.xlsm` or `.csv` path that exists, a hook reads that file's `_brain` tab (or, if the file has none, its brain in the local index) and adds a short summary of it to the conversation. Hooks never change your files and never send anything. They open the local index, which creates `~/.sheet-geek` if it isn't there yet, and record a new path when a file with a brain has moved.
-- **Credit:** the brain's first note ends with "Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai)", and its meta row names the tool version. It is a plain fact, like a "generator" tag, with no link tracking and no ID for you or your file.
+- **Reads:** the spreadsheets you share or name, every row, with code on your own machine (or in your AI app's sandbox), a CSV's `<name>.brain.json`, and its own local index (below). Nothing else on your computer.
+- **Writes:**
+  - the `_brain` tab inside a workbook (inside a copy instead, when you ask for one or the file is an upload). A visible brain becomes the tab the file opens on; removing the brain puts that back.
+  - for a CSV, a new file next to it, `<name>.brain.json`. The CSV itself is never written to.
+  - a backup of the workbook before each write, kept in the local index (the five newest per file).
+  - exports (guide, data dictionary, app blueprint) as new files next to the spreadsheet, and the map as an HTML file in the local index, unless you name a path.
+  - the local index in `~/.sheet-geek` (`~/.spreadsheet-brain` if you used it before 0.2.1): the notes, private notes, raw answers, backups, a profile of the data, a log, and the spreadsheets it has worked on.
+
+  Your data cells are never changed.
+- **Sends:** nothing. The code makes no network calls and has no telemetry or usage tracking. Web research is off unless you say yes. Code checks each proposed search against the text values in the data tables and the file and tab names, marks any search containing one (or any number other than a four-digit year) as blocked, and your AI app runs only the searches that pass, with its own web tool. The map is one offline HTML file with a content security policy that blocks network access.
+- **Claude Code session hooks** (Claude Code only; they run when Python 3.10+ is on your PATH as `python3` or `python`, and on Windows they need Git Bash; otherwise they do nothing): at the start of a session, a hook names up to five files under the current folder that have a saved brain. When a message names an `.xlsx`, `.xlsm` or `.csv` that has a brain (its `_brain` tab, a CSV's `.brain.json`, or one kept in the local index), a hook adds that brain's notes to the conversation, or a one-line pointer when they are too long. Hooks never change your files, make no network calls and never add a file to the index; they open the local index (creating `~/.sheet-geek` if needed) and update it only when a file with a brain has moved. What they add goes to your AI app with the rest of the conversation. A hook that hits an error stays silent instead of blocking your message.
+- **Credit:** the brain's first note ends with "Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai).", and its meta row names the tool and version. It is a plain fact, like a "generator" tag, with no link tracking and nothing that identifies you. The meta row's `id` is a random brain id made on your machine so the tool can recognize the file later; it travels only inside the file.
 
 Your AI app keeps its own conversation history under its own policy. Answers you type during the questions are part of that conversation. More in [SECURITY.md](SECURITY.md).
 
@@ -100,7 +109,7 @@ The brain is a plain table any tool can read. See [the format](skills/sheet-geek
 
 ## How it was tested
 
-Two pre-registered studies: each plan was written and frozen before any answer was collected, and every deviation, trial, verdict and script ships in [`evals/`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/main/evals/). The scripts there use the tool's old folder name, so rerun them from tag `v0.2.0`. All businesses are synthetic, and all judges are AI models.
+Two pre-registered studies: each plan was written and frozen before any answer was collected, and every deviation, trial, verdict and script is in [`evals/`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/main/evals/). The scripts there use the tool's old folder name, so rerun them from tag `v0.2.0`. All businesses are synthetic, and all judges are AI models.
 
 **Study 2 (confirmatory, version 0.2).** Twelve new businesses, built after the tool was frozen by agents that never saw it (a dental practice, a law firm, a coffee roaster, a trucking company and eight more). An agent played each owner from a written brief. Each AI got the same workbook and the same request twice, with and without the brain, in a locked folder; two blind judges from two model families graded both answers.
 
@@ -115,19 +124,20 @@ Two pre-registered studies: each plan was written and frozen before any answer w
 
 **Study 1 (version 0.1).** Four held-out businesses: 7.0 vs 5.1 of 15 with and without the brain, better in 25 of 31 pairs (p = 0.00009), but only 3 of 4 businesses positive (p = 0.11), which is why Study 2 was run. [`evals/PREREG-2026-09-26.md`](https://github.com/Actual-Intelligence-Labs/sheet-geek/blob/main/evals/PREREG-2026-09-26.md).
 
-**Engineering checks.** Writing, updating and removing a brain leaves every other part of the workbook byte-identical; 1,890 tests, including a seeded generator of synthetic trap workbooks, each trap with a look-alike twin that must stay silent.
+**Engineering checks.** Writing, updating and removing a brain leaves every sheet of your data byte-identical (the workbook's list of tabs gains the brain's entry, and a visible brain becomes the tab it opens on; removing it puts both back); 1,896 tests, including a seeded generator of synthetic trap workbooks, each trap with a look-alike twin that must stay silent.
 
 ![The map of a financial model: blue diamonds are what the owner said, red rings are rows worth a look](docs/finance-map.png)
 
 ## Troubleshooting
 
 - **It didn't start.** Ask for it directly: "Give this spreadsheet a brain." In ChatGPT, use a Work chat and type `@sheet geek`. A plain "take a look at this file" may not start it.
-- **"This workbook looks open in Excel or LibreOffice."** Close the file in that app and ask again. Sheet Geek never writes to a file another app has open.
-- **"This file is password-protected or an old .xls."** Save it as `.xlsx` (without a password) and ask again.
-- **"No module named openpyxl" or similar.** Run `python3 -m pip install openpyxl`. CSV files need nothing extra.
-- **The file I uploaded didn't change.** In claude.ai, ChatGPT and other hosted apps, the brain is saved into a copy you download. Use that copy from then on.
+- **"This workbook looks open in Excel or LibreOffice."** Close the file in that app and ask again. Sheet Geek won't write to a workbook while Excel or LibreOffice has it open.
+- **"Old .xls files are not supported." or "This file is password-protected or an old .xls."** Save it as `.xlsx` (without a password) and ask again.
+- **"Reading .xlsx files needs the openpyxl package."** Run `python3 -m pip install openpyxl`. CSV files need nothing extra.
+- **The file I uploaded didn't change.** In ChatGPT (and, we expect, claude.ai and other hosted apps), the brain is saved into a copy you download. Use that copy from then on.
 - **My "this machine only" notes are gone.** In a hosted app, "this machine" is a temporary sandbox that ends with the chat. Save to the file instead if you want the notes to last.
 - **The map didn't open.** Ask for the map as a file ("save the map as an HTML file") and open it in any browser.
+- **The Claude Code hooks never add anything.** They need Python 3.10 or later on your PATH as `python3` or `python` (and Git Bash on Windows). Without it they stay silent, and the skill still works when you ask for it.
 
 ## Security
 

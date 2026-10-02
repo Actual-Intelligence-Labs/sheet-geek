@@ -2,7 +2,7 @@
 # (https://learn.chatgpt.com/docs/build-skills). Without it, ChatGPT writes its own description.
 interface:
   display_name: "Sheet Geek"
-  short_description: "Gives a spreadsheet a brain: reads it first, asks only what the data can't tell it, and saves the answers inside the file as a tab any AI can read. Never changes your data."
+  short_description: "Studies a spreadsheet and saves notes; never changes its data"
   brand_color: "#FF7DB5"
   default_prompt: "Give this spreadsheet a brain."
 

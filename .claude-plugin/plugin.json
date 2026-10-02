@@ -2,7 +2,7 @@
   "name": "sheet-geek",
   "displayName": "Sheet Geek",
   "version": "0.2.2",
-  "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file, keeps it current, and draws a map of what connects to what.",
+  "description": "Gives any spreadsheet a brain: studies the data with code, asks only what the data can't answer, writes what it learned into a tab inside the file (a file next to a CSV), keeps it current, and draws a map of what connects to what.",
   "author": {
     "name": "Actual Intelligence Labs",
     "email": "interested@actualintelligencelabs.ai",

@@ -10,12 +10,12 @@ import sys
 import pytest
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SB = os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py")
+HOOK = os.path.join(ROOT, "hooks", "hook.py")
 DEMO = os.path.join(ROOT, "demo", "try-it")
 
 
 def hook(event, payload, env):
-    p = subprocess.run([sys.executable, SB, "hook", event], input=json.dumps(payload), capture_output=True,
+    p = subprocess.run([sys.executable, HOOK, event], input=json.dumps(payload), capture_output=True,
                        text=True, env=env, timeout=120)
     ctx = json.loads(p.stdout)["hookSpecificOutput"]["additionalContext"] if p.stdout.strip() else ""
     return p.returncode, ctx
@@ -57,3 +57,9 @@ def test_naming_a_file_without_a_brain_does_not_make_it_one(work):
     assert code == 0 and ctx == ""
     code, ctx = hook("session-start", {"cwd": str(tmp)}, env)
     assert code == 0 and "plain.xlsx" not in ctx
+
+
+def test_the_skill_itself_carries_no_hook_code():
+    # the hooks live in the Claude Code plugin; the skill uploaded to other platforms has none
+    sb = open(os.path.join(ROOT, "skills", "sheet-geek", "scripts", "sb.py"), encoding="utf-8").read()
+    assert "additionalContext" not in sb and "def _hook" not in sb

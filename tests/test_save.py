@@ -838,7 +838,7 @@ def test_a_received_brain_counts_only_what_people_wrote_as_instructions():
 def test_a_correction_is_screened_like_every_other_answer(tmp_path, monkeypatch, capsys):
     home(monkeypatch, tmp_path)
     book = orders_book(tmp_path / "orders.xlsx")
-    recs = brain.Composer(Analysis([book]), book, "b1",
+    recs = brain.Composer(Analysis([book]), book, "0000000000b1",
                           {"house_rules": rule_answer("Vendor Name and Qty come from the export.")}).compose()
     for r in recs:
         if r["id"] == "f:house_rules":
@@ -850,12 +850,12 @@ def test_a_correction_is_screened_like_every_other_answer(tmp_path, monkeypatch,
            "We pay cost plus 5% on every line."
     r = run_sb(capsys, "review", book, "--text", said)
     assert r["updated"] == ["f:house_rules"]
-    ov = sb.Store().answers("b1")["_status:f:house_rules"]
+    ov = sb.Store().answers("0000000000b1")["_status:f:house_rules"]
     # in the owner's order, with the owner's line break; the private sentence is out, and a column
     # name at the start is not read as a command
     assert ov["text"] == "Check Date: the day the check was cut.\nWe pay cost plus 5% on every line."
     assert ov["commercial"] is True
-    assert [p["text"] for p in sb.Store().private("b1")] == ["Between us, Dana at North Supply is leaving."]
+    assert [p["text"] for p in sb.Store().private("0000000000b1")] == ["Between us, Dana at North Supply is leaving."]
     fixed = {x["id"]: x for x in sb.apply_overrides(recs, {"_status:f:house_rules": ov})}["f:house_rules"]
     assert fixed["class"] == "commercial" and fixed["_travel"] == "machine" and fixed["source"] == "told"
     fixed = {x["id"]: x for x in sb.apply_overrides(recs, {"_status:f:house_rules": ov}, True)}["f:house_rules"]

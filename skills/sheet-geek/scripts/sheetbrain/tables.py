@@ -301,7 +301,8 @@ _NUM_TEXT = re.compile(r"^\s*\(?\s*-?\s*[$€£]?\s*-?(\d{1,3}(,\d{3})+|\d+)?(\.
 def _num_text(s):
     """'$179.00', '1,250', '(42.10)' as a number; None for anything else,
     including codes kept with a leading zero ('0042')."""
-    if not isinstance(s, str) or not _NUM_TEXT.match(s) or not any(ch.isdigit() for ch in s):
+    # a number is never longer than 40 characters; the cap also keeps the regex from backtracking
+    if not isinstance(s, str) or len(s) > 40 or not _NUM_TEXT.match(s) or not any(ch.isdigit() for ch in s):
         return None
     core = re.sub(r"[\s$€£,()]", "", s)
     digits = core.lstrip("-")

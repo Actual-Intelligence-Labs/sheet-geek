@@ -48,7 +48,7 @@ LONG_DESCRIPTION = (
     "Limits: it never changes your data cells. Notes kept on \"this machine only\" stay in a .sheet-geek "
     "folder on your computer; in ChatGPT they last only as long as the chat. Password-protected files and old "
     ".xls files are not supported, and it is not for health records, payment card data, government ID numbers "
-    "or passwords. The code makes no network calls; web research runs only if you say yes. "
+    "or passwords. The code makes no network calls, never starts another program and never searches the web. "
     "Each brain's first note ends with one line naming Sheet Geek and Actual Intelligence Labs.\n\n"
     "Open source (Apache-2.0) by Actual Intelligence Labs."
 )
@@ -77,9 +77,9 @@ def check_frontmatter() -> None:
 def skill_files():
     """(path on disk, path inside the skill folder) for every file that ships."""
     for base, dirs, files in os.walk(SKILL):
-        dirs[:] = sorted(d for d in dirs if d != "__pycache__")
+        dirs[:] = sorted(d for d in dirs if d != "__pycache__" and not d.startswith("."))   # no caches
         for f in sorted(files):
-            if f.endswith((".pyc", ".DS_Store")):
+            if f.endswith((".pyc", ".DS_Store")) or f.startswith("."):
                 continue
             p = os.path.join(base, f)
             yield p, os.path.relpath(p, SKILL)

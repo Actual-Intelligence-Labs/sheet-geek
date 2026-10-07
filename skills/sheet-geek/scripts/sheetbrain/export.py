@@ -32,7 +32,7 @@ def _facts_for(records: list, sheet: str, header: str) -> list:
 
 def _tag(r: dict) -> str:
     return {"told": "the owner said", "computed": "counted", "inferred": "a guess, not confirmed",
-            "web": "from the web"}.get(r.get("source", ""), r.get("source", ""))
+            "web": "from the web"}.get(r.get("source", ""), "a note")
 
 
 def guide(analysis, path: str, records: list) -> str:

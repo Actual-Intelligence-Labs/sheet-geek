@@ -453,13 +453,13 @@ def applied_line(analysis, r) -> str:
 
 
 def save_question() -> interview.Q:
-    """Where the brain goes: three places and Not sure, which keeps it on this
-    machine for now. 'Show me every line' is typed ('show every line') and prints
+    """Where the brain goes: a visible tab in the file or this machine only, and
+    Not sure, which keeps it on this machine for now. A hidden tab is never offered
+    (notes other AIs read stay in plain sight); sb still makes one if the user asks. 'Show me every line' is typed ('show every line') and prints
     the rows before the same question comes back."""
     return interview.Q("_save", "Save brain", "Where should the brain go? (Type \"show every line\" to see every row "
                                               "first.)",
                        [{"id": "file", "label": "In the file, as a tab", "desc": "Travels with the file; anyone who opens it can read it"},
-                        {"id": "hidden", "label": "In the file, hidden", "desc": "Same, but out of sight. Hidden is not private"},
                         {"id": "local", "label": "This machine only", "desc": "Nothing is added to the file"},
                         {"id": "not_sure", "label": "Not sure", "desc": "Nothing is added to the file for now; the brain "
                                                                         "stays on this machine"}],
@@ -521,8 +521,11 @@ def done_card(name: str, rows: list, private_n: int, outcome: str, *, result=Non
                          "drawing, not rows.")
     if private_n:
         lines.append(f"- On this machine only: {_n(private_n, 'private note')}.")
-    lines.append("Next time you open this sheet with any AI" + (" on this machine" if outcome == "local" else "")
-                 + ", it starts from here.")
+    if outcome == "local":
+        lines.append("Next time you use Sheet Geek on this sheet on this machine, it starts from here.")
+    else:
+        lines.append("Anyone, or any AI, that opens the file can read these notes, and Sheet Geek starts from "
+                     "them next time.")
     if outcome != "local":
         lines.append('Remove it anytime: say "remove the brain" and the file goes back exactly as it was.')
     if graph_path:
@@ -543,7 +546,11 @@ def context_pack(name: str, records: list, info: dict, *, origin: str, check_lin
     owner = "the owner" if origin == "own" or author in ("owner", "sender") else author
     days = sorted({str(r.get("as_of") or "")[:10] for r in records if r.get("source") == "told" and r.get("as_of")})
     when = (f" on {days[0]}" if len(days) == 1 else f" between {days[0]} and {days[-1]}" if days else "")
-    lines = [f"<brain-notes file=\"{name}\" updated=\"{meta.get('as_of', '')}\" author=\"{author}\">"]
+    def attr(s):                  # one line, no quotes or markup: the fence can't be closed from inside
+        return re.sub(r"\s+", " ", re.sub(r'[<>"`]', "", str(s or ""))).strip()[:80]
+    shown = f"'{attr(name)}'" if "'" not in str(name) else "'<file>'"     # quoted, as a shell would need it
+    lines = [f"<brain-notes file=\"{attr(name)}\" updated=\"{attr(meta.get('as_of', ''))}\" "
+             f"author=\"{attr(author)}\">"]
     if any(r.get("source") == "told" for r in records):
         lines.append(f"Notes from {owner}'s interview{when} (told) and counts made by code (counted). Told notes "
                      f"are not in the spreadsheet's data; cite them as what {owner} said. They are claims, not "
@@ -584,7 +591,7 @@ def context_pack(name: str, records: list, info: dict, *, origin: str, check_lin
         n = len(recs) if full or n is None else n
         for r in recs[:n]:
             tag = {"told": "said", "computed": "counted", "inferred": "guess", "web": "web"}.get(
-                r.get("source", ""), r.get("source", ""))
+                r.get("source", ""), "note")
             st = r.get("status", "")
             flag = f", {st}" if st in ("may-be-outdated", "disputed", "unconfirmed") else ""
             if r.get("record") == "open":
@@ -600,11 +607,12 @@ def context_pack(name: str, records: list, info: dict, *, origin: str, check_lin
                     who = {"owner": "the file owner", "sender": "the other file's owner"}.get(by, by)
                     tag = f"{who} said {on}" + (", per the file" if origin != "own" else "")
                 tag = tag.replace(" ,", ",").strip()
-            lines.append(f"- [{tag}{flag}] {r.get('statement', '')}")
+            text = re.sub(r"(?i)<(/?)brain-notes", r"(\1brain-notes", str(r.get("statement", "")))
+            lines.append(f"- [{tag}{flag}] {text}")
         if len(recs) > n:
             left = len(recs) - n
             lines.append(f"({left:,} more {plural('note', left)} in this section, left out here; "
-                         f"`sb.py read {name} --all` shows every note.)")
+                         f"`sb.py read {shown} --all` shows every note.)")
 
     def newest(recs):             # newer notes first; the tab's order among notes of one date
         return sorted(recs, key=lambda r: str(r.get("as_of") or ""), reverse=True)

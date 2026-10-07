@@ -80,8 +80,8 @@ def _load_xlsx(path: str) -> Book:
     try:
         import openpyxl  # noqa: PLC0415  (only needed for workbooks)
     except ImportError:
-        raise brainzip.BrainError("Reading .xlsx files needs the openpyxl package. Install it with: "
-                                  "python3 -m pip install openpyxl") from None
+        raise brainzip.BrainError("Reading .xlsx files needs the openpyxl package, which is not installed "
+                                  "here.") from None
 
     warnings.filterwarnings("ignore", module="openpyxl")
 
@@ -128,11 +128,14 @@ def _load_xlsx(path: str) -> Book:
     return book
 
 
+MAX_FORMULA = 8192 + 1024  # Excel's limit is 8,192 characters (plus the '=' and _xlfn. prefixes); longer is not read
+
+
 def _formula_text(v) -> str | None:
     if isinstance(v, str):
-        return v if v.startswith("=") and len(v) > 1 else None
+        return v if v.startswith("=") and 1 < len(v) <= MAX_FORMULA else None
     text = getattr(v, "text", None)          # ArrayFormula
-    if isinstance(text, str) and text.startswith("="):
+    if isinstance(text, str) and text.startswith("=") and len(text) <= MAX_FORMULA:
         return text
     return None
 
@@ -165,7 +168,9 @@ def parse_scalar(s: str):
     t = s.strip()
     if t == "":
         return None
-    if _NUM.match(t) and any(ch.isdigit() for ch in t):
+    # a number is never longer than 40 characters; the length check also keeps the regex from
+    # backtracking for minutes on a cell of thousands of digits
+    if len(t) <= 40 and _NUM.match(t) and any(ch.isdigit() for ch in t):
         neg = t.startswith("(") and t.endswith(")")
         core = t.strip("()").replace("$", "").replace(",", "").strip()
         pct = core.endswith("%")

@@ -10,9 +10,13 @@ import datetime as dt
 import hashlib
 import json
 import os
+import re
 import secrets
 import sqlite3
+import tempfile
 
+BRAIN_ID = re.compile(r"[0-9a-f]{12}")                    # secrets.token_hex(6), the only ids this tool writes
+BACKUP_NAME = re.compile(r"\d{8}T\d{12}Z__.+")           # brainzip.make_backup's stamp
 SYNC_MARKERS = ("Dropbox", "OneDrive", "iCloud", "CloudStorage", "Google Drive", "Box Sync")
 
 SCHEMA = """
@@ -50,11 +54,12 @@ def home() -> str:
         old = os.path.join(os.path.expanduser("~"), ".spreadsheet-brain")
         if not os.path.isdir(h) and os.path.isdir(old):
             h = old
-    os.makedirs(h, exist_ok=True)
-    try:
-        os.chmod(h, 0o700)
-    except OSError:
-        pass
+    if not os.path.isdir(h):
+        os.makedirs(h, exist_ok=True)
+        try:
+            os.chmod(h, 0o700)                                 # only a folder this tool just made
+        except OSError:
+            pass
     return h
 
 
@@ -75,25 +80,27 @@ class Store:
         self.db.close()
 
     # paths ---------------------------------------------------------------
-    def work_dir(self, brain_id: str) -> str:
-        d = os.path.join(self.root, "work", brain_id)
+    def _dir(self, kind: str, name: str) -> str:
+        """A folder inside the index. Names come from brain ids and folder slugs:
+        letters, digits and hyphens only, so no name can lead outside it."""
+        name = str(name)
+        if not name or len(name) > 64 or not all(ch.isalnum() or ch == "-" for ch in name):
+            raise ValueError(f"not a folder name the index uses: {name!r}")
+        d = os.path.join(self.root, kind, name)
         os.makedirs(d, exist_ok=True)
         return d
+
+    def work_dir(self, brain_id: str) -> str:
+        return self._dir("work", brain_id)
 
     def backup_dir(self, brain_id: str) -> str:
-        d = os.path.join(self.root, "backups", brain_id)
-        os.makedirs(d, exist_ok=True)
-        return d
+        return self._dir("backups", brain_id)
 
     def cache_dir(self, brain_id: str) -> str:
-        d = os.path.join(self.root, "cache", brain_id)
-        os.makedirs(d, exist_ok=True)
-        return d
+        return self._dir("cache", brain_id)
 
     def project_dir(self, project: str) -> str:
-        d = os.path.join(self.root, "projects", project)
-        os.makedirs(d, exist_ok=True)
-        return d
+        return self._dir("projects", project)
 
     @staticmethod
     def project_for(path: str) -> str:
@@ -102,8 +109,9 @@ class Store:
         return f"{slug.strip('-') or 'root'}-{hashlib.sha256(folder.encode()).hexdigest()[:6]}"
 
     # files ---------------------------------------------------------------
-    def brain_id_for(self, path: str, meta_id: str | None = None) -> tuple:
-        """(brain_id, origin). meta_id is the id found inside the file, if any."""
+    def brain_id_for(self, path: str, meta_id: str | None = None, has_brain: bool = False) -> tuple:
+        """(brain_id, origin). meta_id is the id found inside the file, if any; has_brain
+        says the file carries brain notes, so one with no usable id is someone else's."""
         path = os.path.abspath(path)
         if meta_id:
             row = self.db.execute("SELECT origin, path FROM files WHERE brain_id=?", (meta_id,)).fetchone()
@@ -118,8 +126,10 @@ class Store:
             return meta_id, "received"
         row = self.db.execute("SELECT brain_id, origin FROM files WHERE path=? "
                               "ORDER BY updated_at DESC LIMIT 1", (path,)).fetchone()
-        if row:
+        if row and BRAIN_ID.fullmatch(str(row[0])):       # an older index row with any other id is set aside
             return row[0], row[1]
+        if has_brain:             # notes this machine never wrote and no id: theirs, and never added to the index
+            return hashlib.sha256(path.encode("utf-8", "replace")).hexdigest()[:12], "received"
         new_id = secrets.token_hex(6)
         kind = "csv" if path.lower().endswith((".csv", ".tsv")) else "xlsx"
         self.upsert_file(new_id, path, kind, "own")      # remember it from first contact
@@ -129,7 +139,7 @@ class Store:
         """(brain_id, origin) of a file the index already has, without adding it."""
         row = self.db.execute("SELECT brain_id, origin FROM files WHERE path=? "
                               "ORDER BY updated_at DESC LIMIT 1", (os.path.abspath(path),)).fetchone()
-        return (row[0], row[1]) if row else None
+        return (row[0], row[1]) if row and BRAIN_ID.fullmatch(str(row[0])) else None
 
     def upsert_file(self, brain_id: str, path: str, kind: str, origin: str, tab_state: str = "",
                     fingerprint: dict | None = None, archetype: str = ""):
@@ -248,11 +258,11 @@ class Store:
         return {}
 
     def save_state(self, brain_id: str, state: dict):
-        p = os.path.join(self.work_dir(brain_id), "state.json")
-        tmp = p + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as fh:
+        d = self.work_dir(brain_id)
+        fd, tmp = tempfile.mkstemp(dir=d, prefix=".state-", suffix=".tmp")
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
             json.dump(state, fh, indent=1, default=str)
-        os.replace(tmp, p)
+        os.replace(tmp, os.path.join(d, "state.json"))
 
     def write_json(self, brain_id: str, name: str, data) -> str:
         p = os.path.join(self.work_dir(brain_id), name)
@@ -262,7 +272,7 @@ class Store:
 
     def prune_backups(self, brain_id: str, keep: int = 5):
         d = self.backup_dir(brain_id)
-        files = sorted(os.listdir(d))
+        files = sorted(f for f in os.listdir(d) if BACKUP_NAME.fullmatch(f))    # only backups this tool made
         for f in files[:-keep]:
             try:
                 os.remove(os.path.join(d, f))

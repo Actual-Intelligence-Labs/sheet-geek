@@ -129,7 +129,7 @@ def render(graph: dict, out_path: str) -> str:
         # mkstemp creates 0600; give the page normal file permissions.
         umask = os.umask(0)
         os.umask(umask)
-        os.chmod(tmp, 0o666 & ~umask)
+        os.chmod(tmp, 0o644 & ~umask)
         os.replace(tmp, out)
     except BaseException:
         try:

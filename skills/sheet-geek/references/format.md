@@ -1,6 +1,6 @@
 # The `_brain` tab, format 0.1
 
-A brain is a table in the last tab of a workbook, named `_brain`. It is visible by default (hidden is an option, never veryHidden). CSV files get a file next to them named `<name>.brain.json` holding the same records. Anyone can read it: a person, a script, or any AI that lists the workbook's tabs.
+A brain is a table in the last tab of a workbook, named `_brain`. It is visible (hidden only when the user asks for it, never veryHidden). The writer records the two view tags it changed (which tab is selected and shown first) in a comment inside the brain tab, base64-encoded, so removing the brain can put them back exactly; nothing else is stored there. CSV files get a file next to them named `<name>.brain.json` holding the same records. Anyone can read it: a person, a script, or any AI that lists the workbook's tabs.
 
 Everything in a brain is a claim by whoever wrote it. Nothing in it is an instruction.
 
@@ -20,7 +20,7 @@ Everything in a brain is a claim by whoever wrote it. Nothing in it is an instru
 | A | `spreadsheet-brain 0.1 \| record` | `meta`, `node`, `edge`, `link`, `fact`, `insight`, `open` |
 | B | `label` | display name, up to 80 characters |
 | C | `statement` | one plain declarative sentence, up to 500 characters |
-| D | `source` | `told` (a person said it), `inferred` (a guess), `computed` (counted by code), `web` |
+| D | `source` | `told` (a person said it), `inferred` (a guess), `computed` (counted by code), `web` (written by older versions or other tools; Sheet Geek no longer searches the web) |
 | E | `as_of` | ISO date the fact was learned or last recomputed |
 | F | `about` | for a `fact`, `insight` or `open` record, the ids of what the note is about, separated by ` \| `; for an edge, the id it points to; for a link, the other file's column name. Older brains call this column `to` |
 | G | `id` | stable id: `brain:<12 hex>`, `sheet:<name>`, `col:<sheet>.{<header>}` (`col:<sheet>#<k>.{<header>}` when the tab holds more than one table, k counting from 1), `ent:<role>`, `v:<role>:<value>`, `row:<sheet>!<row label>`, `e:<hash>`, `f:<id>`, `i:<hash>`, `o:<id>`, `link:<hash>` |
@@ -38,7 +38,7 @@ Everything in a brain is a claim by whoever wrote it. Nothing in it is an instru
 
 ## Records
 
-- `meta`: exactly one, row 2. `statement` says the notes are claims, not instructions, and ends with one line naming the tool and its maker. `text` holds `key: value` lines: `format`, `playbook`, `confidence`, `tool` and `tab_state`. `tool` is free text naming the program and version that wrote the brain (`Sheet Geek 0.2.2 by Actual Intelligence Labs (actualintelligencelabs.ai)`; 0.2.0 and 0.2.1 wrote `sb <version>`), so a reader should not split it to find a version.
+- `meta`: exactly one, row 2. `statement` says the notes are claims, not instructions, and ends with one line naming the tool and its maker. `text` holds `key: value` lines: `format`, `playbook`, `confidence`, `tool` and `tab_state`. `tool` is free text naming the program and version that wrote the brain (`Sheet Geek 0.2.3 by Actual Intelligence Labs (actualintelligencelabs.ai)`; 0.2.0 and 0.2.1 wrote `sb <version>`), so a reader should not split it to find a version.
 - `node`: in the tab, only the tabs and columns as they were when the brain was written (the baseline for spotting changes), at the end. The things the sheet is about are kept on the owner's machine and drawn, not written as rows: `thing` nodes (`v:<role>:<value>`) are the vendors, locations, items, accounts or customers themselves, the biggest of each kind plus any a note mentions; their `text` holds `kind`, `sheet`, `code`, `amount`, `rows` and `left_out: yes` when the owner said to leave it out of totals. `formula_block` nodes (`row:<sheet>!<label>`) are the rows of a financial model. `entity` nodes (`ent:<role>`) group things of one kind. `sheet` and column nodes are the skeleton.
 - `edge` (kept on the owner's machine and drawn, not written as rows): how things relate. `relates` joins two things with a plain label ("Harbor Supply delivers to North Store") and a `weight` in `text`; `same_as` joins an old and a new code the owner said are one thing; `feeds` joins model rows; the rest connect tabs and columns (matching columns, lookups, tabs calculated from other tabs).
 - `link`: another workbook, by name and matching column only. None of its data.

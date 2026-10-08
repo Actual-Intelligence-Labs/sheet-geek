@@ -7,3 +7,4 @@ dev/screenshots/*.tmp
 ~$*
 dist/
 .DS_Store
+.ruff_cache/

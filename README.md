@@ -4,7 +4,7 @@
 
 An open-source skill that gives any spreadsheet a brain. The first time your AI opens a sheet, it studies the data with code, asks you only the handful of questions the data can't answer, and writes what it learned into a tab inside the file. Next time anyone opens that file with an AI that reads its tabs, it can start from there. Nobody re-explains the sheet, and nothing lives only in one person's head.
 
-Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/v0.2.0)); 0.2.1 renames it, and 0.2.2 narrows when it starts, fixes the Claude Code hooks and names its maker in the brain's first note; how it reads and asks is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
+Sheet Geek was called spreadsheet-brain through version 0.2.0. The studies below tested 0.2.0 under that name (tag [`v0.2.0`](https://github.com/Actual-Intelligence-Labs/sheet-geek/tree/v0.2.0)); 0.2.1 renames it, and 0.2.2 narrows when it starts, fixes the Claude Code hooks and names its maker in the brain's first note; 0.2.3 hardens it against crafted files, drops the optional web research, saves the map as a file instead of opening a browser, and stops offering a hidden tab; how it reads and asks is unchanged. The `_brain` tab keeps its format label, `spreadsheet-brain 0.1`, so every brain reads the same.
 
 ![The map of a purchasing workbook](docs/map.png)
 
@@ -58,13 +58,13 @@ Requirements: Python 3.10+ and `openpyxl` (`python3 -m pip install openpyxl`). C
 - "Did anything change since the brain was saved?"
 - "Show me the map."
 
-The skill runs when a request is about understanding, documenting, auditing or handing over a spreadsheet, or when a file already has a `_brain` tab. It does not run on every spreadsheet you mention. In Claude Code, naming a file that already has a brain also adds its notes to the conversation (see the hooks below).
+The skill runs when a request is about understanding, documenting, auditing or handing over a spreadsheet, or when you ask about a file that already has a `_brain` tab. It does not run on every spreadsheet you mention. In Claude Code, naming a file that already has a brain also adds its notes to the conversation (see the hooks below).
 
 ## What works where
 
 | | Read a brain | Run the questions | Write the brain | Map |
 |---|---|---|---|---|
-| Claude Code | Yes, loads automatically | Yes, structured questions | Yes, in place with a backup | Opens in your browser |
+| Claude Code | Yes, loads automatically | Yes, structured questions | Yes, in place with a backup | Yes, as an HTML file |
 | claude.ai (skill) | Expected | Expected, as text | Expected, as a copy you download | Expected, as an HTML file |
 | ChatGPT (Work mode) | Yes, even without the skill | Yes, as text | Yes, as a copy you download | Yes, as an HTML file |
 | Codex, Cursor, VS Code, Gemini CLI | Expected | Expected | Expected | Expected |
@@ -82,7 +82,7 @@ Tested so far: Claude Code on macOS, and ChatGPT Work mode with GPT-6.1 Sol (202
 | Counted insights, dated | Backups of the file |
 | The other files it links to: name and matching column only | The full map between your files |
 
-The tab is visible by default so people without AI can read it too. Hidden is an option, but hidden is not private.
+The tab is visible so people without AI can read it too. It is hidden only if you ask, and hidden is not private.
 
 Both columns have limits. The private-remarks check is a word filter: it keeps a sentence marked "between us" or "confidential" on your machine, and some remarks judging a person or about HR matters or deals, but it misses many others. Code masks email addresses and phone numbers and does not list the values of columns whose header marks them as people; a column of people under another header (Customer, Guest, Patient) can be listed, and a counted note can name the person or customer with the largest total. Before saving into a file you will share, read the preview ("show every line"), or share a copy without the brain. Sheet Geek is not designed for health records, payment card data, government ID numbers or passwords; please don't use it with them.
 
@@ -97,7 +97,7 @@ Both columns have limits. The private-remarks check is a word filter: it keeps a
   - the local index in `~/.sheet-geek` (`~/.spreadsheet-brain` if you used it before 0.2.1): the notes, private notes, raw answers, backups, a profile of the data, a log, and the spreadsheets it has worked on.
 
   Your data cells are never changed.
-- **Sends:** nothing. The code makes no network calls and has no telemetry or usage tracking. Web research is off unless you say yes. Code checks each proposed search against the text values in the data tables and the file and tab names, marks any search containing one (or any number other than a four-digit year) as blocked, and your AI app runs only the searches that pass, with its own web tool. The map is one offline HTML file with a content security policy that blocks network access.
+- **Sends:** nothing. The code makes no network calls and has no telemetry or usage tracking, `sb` never starts another program, and the skill does no web searches. The map is one offline HTML file with a content security policy that blocks network access.
 - **Claude Code session hooks** (Claude Code only; they run when Python 3.10+ is on your PATH as `python3` or `python`, and on Windows they need Git Bash; otherwise they do nothing): at the start of a session, a hook names up to five files under the current folder that have a saved brain. When a message names an `.xlsx`, `.xlsm` or `.csv` that has a brain (its `_brain` tab, a CSV's `.brain.json`, or one kept in the local index), a hook adds that brain's notes to the conversation, or a one-line pointer when they are too long. Hooks never change your files, make no network calls and never add a file to the index; they open the local index (creating `~/.sheet-geek` if needed) and update it only when a file with a brain has moved. What they add goes to your AI app with the rest of the conversation. A hook that hits an error stays silent instead of blocking your message.
 - **Credit:** the brain's first note ends with "Made with Sheet Geek by Actual Intelligence Labs (actualintelligencelabs.ai).", and its meta row names the tool and version. It is a plain fact, like a "generator" tag, with no link tracking and nothing that identifies you. The meta row's `id` is a random brain id made on your machine so the tool can recognize the file later; it travels only inside the file.
 
@@ -136,7 +136,7 @@ Two pre-registered studies: each plan was written and frozen before any answer w
 - **"Reading .xlsx files needs the openpyxl package."** Run `python3 -m pip install openpyxl`. CSV files need nothing extra.
 - **The file I uploaded didn't change.** In ChatGPT (and, we expect, claude.ai and other hosted apps), the brain is saved into a copy you download. Use that copy from then on.
 - **My "this machine only" notes are gone.** In a hosted app, "this machine" is a temporary sandbox that ends with the chat. Save to the file instead if you want the notes to last.
-- **The map didn't open.** Ask for the map as a file ("save the map as an HTML file") and open it in any browser.
+- **Where is the map?** `sb.py graph` saves it as one HTML file and names the path. Open it in any browser; it needs no internet.
 - **The Claude Code hooks never add anything.** They need Python 3.10 or later on your PATH as `python3` or `python` (and Git Bash on Windows). Without it they stay silent, and the skill still works when you ask for it.
 
 ## Security

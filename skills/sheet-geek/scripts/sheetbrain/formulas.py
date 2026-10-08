@@ -4,6 +4,9 @@ the actuals boundary in time-series models. No formula engine needed.
 """
 from __future__ import annotations
 
+import ast
+import functools
+import operator
 import re
 from collections import Counter, defaultdict
 
@@ -1078,6 +1081,47 @@ class Unsupported(Exception):
 
 _EVAL_FUNCS = {"SUM": "_sum", "MAX": "_max", "MIN": "_min", "ROUND": "_round", "ABS": "_abs", "AVERAGE": "_avg"}
 MAX_EVAL_RANGE = 5000     # cells one range may hold in an evaluated formula
+MAX_EXPONENT = 1000       # no planning formula raises to more; a huge integer power would run for minutes
+
+
+def _power(a, b):
+    if abs(b) > MAX_EXPONENT:
+        raise OverflowError("exponent")
+    r = float(a) ** b             # Excel works in doubles: a huge base overflows at once, never runs long
+    if isinstance(r, complex):    # a negative base to a fractional power is #NUM! in Excel
+        raise ValueError("complex")
+    return r
+
+
+_ARITH = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv,
+          ast.Pow: _power}
+
+
+@functools.lru_cache(maxsize=256)
+def _parsed(expr: str):
+    return ast.parse(expr, mode="eval").body
+
+
+def _calc(node, funcs: dict):
+    """The value of an expression _compile wrote: numbers, cell keys, + - * / and
+    power, a leading minus, and the six functions. Any other piece of Python raises
+    ValueError, so nothing but this arithmetic ever runs."""
+    if isinstance(node, ast.Constant) and type(node.value) in (int, float, str):
+        return node.value
+    if isinstance(node, (ast.Tuple, ast.List)):
+        vals = [_calc(e, funcs) for e in node.elts]
+        return tuple(vals) if isinstance(node, ast.Tuple) else vals
+    if isinstance(node, ast.BinOp) and type(node.op) in _ARITH:
+        x, y = _calc(node.left, funcs), _calc(node.right, funcs)
+        if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
+            raise TypeError("arithmetic on a range")      # Excel's array math is not modeled
+        return _ARITH[type(node.op)](x, y)
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.USub, ast.UAdd)):
+        v = _calc(node.operand, funcs)
+        return -v if isinstance(node.op, ast.USub) else +v
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in funcs and not node.keywords:
+        return funcs[node.func.id](*[_calc(a, funcs) for a in node.args])
+    raise ValueError(type(node).__name__)
 
 
 class Model:
@@ -1113,6 +1157,8 @@ class Model:
 
     def _compile(self, key):
         if key in self.code:
+            if isinstance(self.code[key], Unsupported):      # refused once: refused again at no cost
+                raise self.code[key]
             return self.code[key]
         name, r, c = key
         expr, deps = [], []
@@ -1124,13 +1170,17 @@ class Model:
         carets = sum(1 for k, x in toks if k == "op" and x == "^")
         if carets > 1 or (carets and unary):
             raise Unsupported("^")
+        n_cells = 0
         for tok in toks:
             kind, text = tok
             ref = ref_of(tok, name)
             if ref is not None:
                 s2, r1, c1, r2, c2 = ref
-                if (r2 - r1 + 1) * (c2 - c1 + 1) > MAX_EVAL_RANGE:
-                    raise Unsupported(text)
+                size = (r2 - r1 + 1) * (c2 - c1 + 1)
+                n_cells += size
+                if size > MAX_EVAL_RANGE or n_cells > 4 * MAX_EVAL_RANGE:      # per range, and per formula
+                    self.code[key] = Unsupported("too many cells")
+                    raise self.code[key]
                 cells = [(s2, rr, cc) for rr in range(r1, r2 + 1) for cc in range(c1, c2 + 1)]
                 deps += cells
                 expr.append(f"_v({cells!r})" if kind == "range" or (kind == "sref" and ":" in text)
@@ -1177,20 +1227,20 @@ class Model:
 
         def flat(xs):
             return [x for x in xs if x is not None]
-        env = {"__builtins__": {}, "_one": lambda k: memo[k], "_v": lambda ks: [memo[k] for k in ks],
+        env = {"_one": lambda k: memo[k], "_v": lambda ks: [memo[k] for k in ks],
                "_sum": lambda *a: sum(sum(x) if isinstance(x, list) else x for x in a),
                "_max": lambda *a: max(flat([y for x in a for y in (x if isinstance(x, list) else [x])])),
                "_min": lambda *a: min(flat([y for x in a for y in (x if isinstance(x, list) else [x])])),
-               "_round": lambda x, n=0: round(x, int(n)), "_abs": abs,
+               "_round": lambda x, n=0: round(float(x), max(-308, min(308, int(n)))), "_abs": abs,
                "_avg": lambda *a: (lambda ys: sum(ys) / len(ys))([y for x in a for y in
                                                                    (x if isinstance(x, list) else [x])])}
         try:
-            v = eval(expr, env)          # noqa: S307: built only from this module's own tokens
-        except (ZeroDivisionError, ValueError, TypeError, SyntaxError, OverflowError):
+            v = _calc(_parsed(expr), env)
+            if isinstance(v, list):
+                raise Unsupported(expr)
+            return float(v)
+        except (ZeroDivisionError, ValueError, TypeError, SyntaxError, OverflowError, RecursionError):
             raise Unsupported(expr)
-        if isinstance(v, list):
-            raise Unsupported(expr)
-        return float(v)
 
 
 def _actuals_boundary(sheets: dict, tables_by_sheet: dict) -> dict:

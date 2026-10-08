@@ -684,7 +684,7 @@ def test_the_coverage_line_is_counted_and_never_speaks_for_the_owner(tmp_path):
 def test_the_save_question_offers_not_sure_in_its_structured_options():
     q = say.save_question()
     opts = interview.render_ask([q])["questions"][0]["options"]
-    assert len(opts) == 4 and opts[-1]["label"] == "Not sure"
+    assert len(opts) == 3 and opts[-1]["label"] == "Not sure"        # a tab, this machine only, Not sure
     assert "Not sure is fine" not in interview.render_ask([q])["questions"][0]["question"]
 
 

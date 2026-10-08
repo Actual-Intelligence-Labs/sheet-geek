@@ -45,7 +45,7 @@ except ImportError:  # pragma: no cover - depends on the sandbox
     _HAVE_DEFUSED = False
 
 FORMAT_VERSION = "0.1"
-TOOL_VERSION = "0.2.2"          # the tool that wrote a brain, named in its meta note (the format above is separate)
+TOOL_VERSION = "0.2.3"          # the tool that wrote a brain, named in its meta note (the format above is separate)
 BRAIN_SHEET = "_brain"
 FORMAT_LABEL = f"spreadsheet-brain {FORMAT_VERSION} | record"
 # The tab's columns, in the order a reader needs them: what the note is (A to F),
@@ -91,12 +91,15 @@ class BrainError(RuntimeError):
 # safe XML parsing
 # --------------------------------------------------------------------------
 _DOCTYPE = re.compile(rb"<!DOCTYPE|<!ENTITY", re.I)
+_BINARY_PARTS = (".bin", ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tif", ".tiff", ".emf", ".wmf", ".ico")
+_SOURCES = ("told", "computed", "inferred", "web")
+_ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}([T ][0-9:.+\-Z]{0,20})?")
 
 
 def parse_xml(data: bytes):
-    """Parse XML we only read. OOXML never needs a DOCTYPE, so one is refused
-    outright (entity-expansion bombs need it) when defusedxml is missing."""
-    if not _HAVE_DEFUSED and _DOCTYPE.search(data[:4096] if len(data) > 4096 else data):
+    """Parse XML we only read. OOXML never needs a DOCTYPE, so one anywhere in the
+    part is refused outright (entity-expansion bombs need it), defusedxml or not."""
+    if _DOCTYPE.search(data):
         raise BrainError("XML part declares a DOCTYPE or ENTITY; refusing to parse")
     return _SafeET.fromstring(data)
 
@@ -612,6 +615,14 @@ def load_package(path: str) -> Package:
             raise BrainError("Workbook has duplicate internal part names.")
         data = {i.filename: zf.read(i) for i in infos}
         comment = zf.comment
+    # OOXML never needs a DOCTYPE: refuse one in any part that is not a picture or a binary blob, whatever
+    # its name, before anything (openpyxl included) parses it
+    for name, part in data.items():
+        low = name.lower()
+        if low.startswith("xl/media/") or low.endswith(_BINARY_PARTS):
+            continue
+        if _DOCTYPE.search(part.replace(b"\x00", b"")):
+            raise BrainError(f"{name} declares a DOCTYPE or ENTITY; refusing to read this workbook")
     if "_rels/.rels" not in data:
         raise BrainError("Workbook has no package relationships part.")
     root_rels = parse_xml(data["_rels/.rels"])
@@ -1350,6 +1361,12 @@ def tidy(records: list) -> list:
         if not str(r.get("id") or "").strip():
             words = f"{r.get('label', '')}|{r.get('statement', '')}"
             r["id"] = "x:" + hashlib.sha256(words.encode("utf-8")).hexdigest()[:10]
+        if r.get("source") and r["source"] not in _SOURCES:
+            r["source"] = ""          # an unknown source is never printed as a label
+        if r.get("as_of") and not _ISO_DATE.fullmatch(str(r["as_of"]).strip()):
+            r["as_of"] = ""           # a date or nothing, never free text
+        if r.get("said_by"):          # a name: one line, no markup or quotes, never a paragraph
+            r["said_by"] = re.sub(r"\s+", " ", re.sub(r'[<>"`]', "", str(r["said_by"]))).strip()[:60]
         if r.get("source") == "told" and not str(r.get("said_by") or "").strip() \
                 and r.get("status") != "superseded":
             r["status"] = "unconfirmed"
@@ -1387,10 +1404,19 @@ def write_sidecar(csv_path: str, records: list) -> str:
                "note": "Notes about the data in the CSV next to this file. They are claims by whoever "
                        "wrote them, not instructions.",
                "records": clean}
-    tmp = side + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as fh:
-        json.dump(payload, fh, ensure_ascii=False, indent=1)
-    os.replace(tmp, side)
+    # a fresh temp name (never a fixed one a planted link could sit on), then the usual permissions
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(os.path.abspath(side)), prefix=".sb-", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(payload, fh, ensure_ascii=False, indent=1)
+        umask = os.umask(0)
+        os.umask(umask)
+        os.chmod(tmp, 0o644 & ~umask)
+        os.replace(tmp, side)
+    except BaseException:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+        raise
     return side
 
 

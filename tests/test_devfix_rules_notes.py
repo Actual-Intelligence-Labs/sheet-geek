@@ -413,7 +413,7 @@ def test_the_read_pack_is_never_cut(tmp_path):
     pack = say.context_pack("book.xlsx", recs, {}, origin="own")
     assert len(pack) > 7000 and pack.endswith("</brain-notes>")
     assert all(f"Owner note {i}:" in pack for i in range(60))
-    assert "8 more notes in this section, left out here; `sb.py read book.xlsx --all` shows every note." in pack
+    assert "8 more notes in this section, left out here; `sb.py read 'book.xlsx' --all` shows every note." in pack
     full = say.context_pack("book.xlsx", recs, {}, origin="own", full=True)
     assert all(f"Counted fact {i}." in full for i in range(20)) and "more notes" not in full
 

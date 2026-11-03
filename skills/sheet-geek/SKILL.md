@@ -3,7 +3,7 @@ name: sheet-geek
 description: Builds a brain for a spreadsheet. Studies the data with code first, asks the owner only the few questions the data cannot answer, suggests what it can build, saves what it learned inside the file as a _brain tab (for a CSV, a .brain.json file next to it; the data is never changed), flags notes that went stale when the data changed, and draws a clickable map of what connects to what. Use when someone shares or names a spreadsheet (.xlsx, .xlsm, .csv) and asks to give it a brain, explain or document it, build a data dictionary, audit it, hand it to someone new, join it with another file or build an app from it; when someone asks about a workbook that has a _brain tab; or when someone asks what a sheet means or how its sheets connect.
 license: Apache-2.0
 compatibility: Python 3.10+ with openpyxl. CSV needs only the standard library. Works offline.
-metadata: {"format": "spreadsheet-brain 0.1", "version": "0.2.3"}
+metadata: {"format": "spreadsheet-brain 0.1", "version": "0.2.4"}
 ---
 
 # Sheet Geek
